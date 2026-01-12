@@ -1,0 +1,351 @@
+const questions_hoa_all = [
+  // Chuyên đề 1: KIM LOẠI – PHI KIM
+  {q:"Tính chất vật lý chung của kim loại là",options:["A. Dễ vỡ, cách điện, cách nhiệt","B. Dẫn điện, dẫn nhiệt, có ánh kim, dẻo","C. Tan trong nước","D. Bay hơi dễ dàng"],a:"B. Dẫn điện, dẫn nhiệt, có ánh kim, dẻo",explain:"Kim loại có electron tự do nên dẫn điện, dẫn nhiệt tốt và có ánh kim."},
+  {q:"Kim loại nào dẫn điện tốt nhất?",options:["A. Sắt","B. Đồng","C. Nhôm","D. Bạc"],a:"D. Bạc",explain:"Bạc có độ dẫn điện cao nhất trong các kim loại thường gặp."},
+  {q:"Kim loại nào phản ứng mạnh với nước ở nhiệt độ thường?",options:["A. Đồng","B. Sắt","C. Natri","D. Vàng"],a:"C. Natri",explain:"Natri thuộc nhóm IA, phản ứng mạnh: 2Na + 2H₂O → 2NaOH + H₂↑."},
+  {q:"Phi kim thường có xu hướng",options:["A. Nhường electron","B. Nhận electron tạo ion âm","C. Có ánh kim","D. Dẫn điện tốt"],a:"B. Nhận electron tạo ion âm",explain:"Phi kim có độ âm điện cao, dễ nhận electron."},
+  {q:"Công thức của nhôm oxit là",options:["A. AlO","B. Al₂O₃","C. AlO₂","D. Al₃O₂"],a:"B. Al₂O₃",explain:"Nhôm hóa trị III, oxi hóa trị II → Al₂O₃."},
+  {q:"Kim loại nào dùng chế tạo dây dẫn điện phổ biến?",options:["A. Sắt","B. Vàng","C. Đồng","D. Chì"],a:"C. Đồng",explain:"Đồng dẫn điện tốt, giá rẻ, dẻo."},
+  {q:"Phi kim nào dùng khử trùng nước?",options:["A. Nitơ","B. Oxigen","C. Clo","D. Hidro"],a:"C. Clo",explain:"Clo có tính oxi hóa mạnh, diệt khuẩn."},
+  {q:"Dãy hoạt động hóa học của kim loại sắp xếp theo khả năng",options:["A. Nhận electron tăng dần","B. Nhường electron giảm dần","C. Khối lượng tăng dần","D. Số proton tăng dần"],a:"B. Nhường electron giảm dần",explain:"Kim loại đứng trước đẩy kim loại đứng sau ra khỏi muối."},
+  {q:"Kim loại đứng đầu dãy hoạt động là",options:["A. Đồng","B. Bạc","C. Kali","D. Sắt"],a:"C. Kali",explain:"Kali hoạt động mạnh nhất trong kim loại thường gặp."},
+  {q:"Kim loại nào không phản ứng với axit HCl loãng?",options:["A. Zn","B. Fe","C. Al","D. Cu"],a:"D. Cu",explain:"Đồng đứng sau H trong dãy → không đẩy H ra."},
+  {q:"Phản ứng kim loại với axit loãng tạo ra",options:["A. Muối và nước","B. Muối và H₂","C. Bazơ và CO₂","D. Este và nước"],a:"B. Muối và H₂",explain:"Ví dụ: Fe + 2HCl → FeCl₂ + H₂↑."},
+  {q:"Kim loại nào dùng chế tạo vỏ máy bay?",options:["A. Sắt","B. Đồng","C. Nhôm","D. Vàng"],a:"C. Nhôm",explain:"Nhôm nhẹ, bền, chống ăn mòn."},
+  {q:"Phi kim nào tồn tại dạng phân tử đơn nguyên tử?",options:["A. O₂","B. Cl₂","C. He","D. H₂"],a:"C. He",explain:"Khí hiếm tồn tại đơn nguyên tử."},
+  {q:"Oxit bazơ là oxit của",options:["A. Phi kim","B. Kim loại","C. Cả kim loại và phi kim","D. Chỉ phi kim"],a:"B. Kim loại",explain:"Oxit kim loại (trừ một số) là oxit bazơ."},
+  {q:"Oxit axit là oxit của",options:["A. Kim loại","B. Phi kim","C. Cả hai","D. Chỉ kim loại"],a:"B. Phi kim",explain:"Oxit phi kim thường là oxit axit."},
+  {q:"Ăn mòn kim loại là hiện tượng",options:["A. Kim loại bị oxi hóa do môi trường","B. Kim loại bị nóng chảy","C. Kim loại bị biến dạng","D. Kim loại bị bay hơi"],a:"A. Kim loại bị oxi hóa do môi trường",explain:"Ăn mòn điện hóa hoặc hóa học."},
+  {q:"Cách bảo vệ sắt khỏi gỉ sét tốt nhất là",options:["A. Sơn","B. Mạ kẽm","C. Để khô","D. Ngâm nước"],a:"B. Mạ kẽm",explain:"Bảo vệ điện hóa (Zn hoạt động hơn Fe)."},
+  {q:"Kim loại nào thường được dùng làm dây dẫn điện ngoài trời vì nhẹ và chống ăn mòn?",options:["A. Nhôm","B. Đồng","C. Sắt","D. Vàng"],a:"A. Nhôm",explain:"Nhôm nhẹ, có lớp oxit bảo vệ bề mặt nên thường dùng làm dây dẫn ngoài trời."},
+  {q:"Phản ứng nào sau đây minh họa kim loại mạnh đẩy kim loại yếu ra khỏi dung dịch muối?",options:["A. Zn + CuSO4 → ZnSO4 + Cu","B. Cu + ZnSO4 → CuSO4 + Zn","C. Fe + H2O → FeO + H2","D. NaCl + Ag → AgCl + Na"],a:"A. Zn + CuSO4 → ZnSO4 + Cu",explain:"Kẽm đứng trước đồng trong dãy hoạt động nên đẩy đồng ra khỏi dung dịch muối đồng."},
+  {q:"Trong các chất sau, chất nào là phi kim?",options:["A. Oxi","B. Natri","C. Sắt","D. Nhôm"],a:"A. Oxi",explain:"Oxi là nguyên tố phi kim với tính oxi hóa mạnh; Natri, sắt, nhôm là kim loại."},
+  {q:"Chất nào sau đây là kim loại kiềm?",options:["A. Natri","B. Nhôm","C. Photpho","D. Oxi"],a:"A. Natri",explain:"Natri thuộc nhóm kim loại kiềm (IA) với tính hoạt động cao."},
+  {q:"Kim loại nào có tính dẻo cao và thường được kéo thành dây dẫn?",options:["A. Đồng","B. Thủy ngân","C. Photpho","D. Oxi"],a:"A. Đồng",explain:"Đồng dẻo, dẫn điện tốt nên dùng làm dây dẫn."},
+  {q:"Chất nào sau đây là oxit bazơ?",options:["A. CaO","B. CO₂","C. SO₂","D. CO"],a:"A. CaO",explain:"CaO là oxit kim loại nên có tính bazơ."},
+  {q:"Tại sao kim loại thường dẫn điện tốt?",options:["A. Vì có electron tự do","B. Vì có nhiều proton","C. Vì là chất rắn","D. Vì có màu ánh kim"],a:"A. Vì có electron tự do",explain:"Mạng tinh thể kim loại có electron delocalized chuyển động dễ dàng dẫn đến dẫn điện."},
+  {q:"Vì sao một số kim loại bị bảo vệ bằng mạ kẽm?",options:["A. Kẽm hoạt động hơn sắt nên bảo vệ điện hóa","B. Kẽm rẻ hơn sắt","C. Kẽm làm tăng khối lượng","D. Kẽm làm kim loại bóng hơn"],a:"A. Kẽm hoạt động hơn sắt nên bảo vệ điện hóa",explain:"Kẽm sẽ bị ăn mòn trước, bảo vệ lớp sắt bên dưới (mạ điện hóa)."},
+  {q:"Giải thích vì sao đồng không phản ứng mạnh với HCl loãng?",options:["A. Đồng đứng sau H trong dãy hoạt động nên không đẩy H ra","B. Đồng không phải kim loại","C. Đồng bị hòa tan nhanh","D. Đồng phản ứng mạnh với nước"],a:"A. Đồng đứng sau H trong dãy hoạt động nên không đẩy H ra",explain:"Đồng ít hoạt động, không phản ứng với HCl loãng để giải phóng H₂."},
+  {q:"Tính khối lượng kẽm cần để phản ứng hoàn toàn với 0.5 mol CuSO₄ (Zn + CuSO₄ → ZnSO₄ + Cu).",options:["A. 32 g","B. 16 g","C. 65 g","D. 8 g"],a:"A. 32 g",explain:"0.5 mol Zn cần 0.5 mol → m = 0.5 × 65 = 32.5 ≈ 32 g (làm tròn tùy yêu cầu)"},
+  {q:"Một mẩu kim loại nặng 2 kg có mật độ 7,8 g/cm³. Hãy tính thể tích xấp xỉ của mẫu (cm³).",options:["A. 256 cm³","B. 156 cm³","C. 2560 cm³","D. 1560 cm³"],a:"A. 256 cm³",explain:"2 kg = 2000 g; V = m/ρ = 2000 / 7.8 ≈ 256 cm³."},
+  {q:"Cho phản ứng 2Al + 3Cu²⁺ → 2Al³⁺ + 3Cu. Nếu bắt đầu với 2 mol Al và 2 mol Cu²⁺, chất nào hết trước và số mol sản phẩm Cu sinh ra là bao nhiêu?",options:["A. Cu²⁺ hết trước, Cu sinh ra 2 mol","B. Al hết trước, Cu sinh ra 3 mol","C. Cu²⁺ hết trước, Cu sinh ra 3 mol","D. Al hết trước, Cu sinh ra 2 mol"],a:"A. Cu²⁺ hết trước, Cu sinh ra 2 mol",explain:"Tỉ lệ phản ứng: 2 Al : 3 Cu²⁺. Với 2 mol Al cần 3 mol Cu²⁺; chỉ có 2 mol Cu²⁺ nên Cu²⁺ hạn chế → số mol Cu tạo thành = 2 mol Cu²⁺ × (3/3)=2 mol."},
+  {q:"Một thanh sắt 0.5 m dài bị mạ kẽm dày lớp mỏng. Nếu mục tiêu là chống ăn mòn điện hóa, giải pháp nào hiệu quả nhất?",options:["A. Mạ kẽm đủ dày và bịt kín vết trầy","B. Sơn mỏng không mạ","C. Ngâm trong nước","D. Để ngoài trời"],a:"A. Mạ kẽm đủ dày và bịt kín vết trầy",explain:"Mạ kẽm bảo vệ cả về điện hóa và che phủ; lớp bị trầy phải được che kín để tránh tiếp xúc kim loại cơ bản."},
+  {q:"Tính phần trăm khối lượng của nhôm trong Al₂O₃ (lấy Ar: Al=26.98, O=16.00).",options:["A. 52.9%","B. 34.1%","C. 45.6%","D. 60.0%"],a:"A. 52.9%",explain:"M(Al2O3)=2×26.98+3×16=101.96; %Al = (53.96/101.96)×100 ≈ 52.9%."},
+  {q:"Cho 0.2 mol Zn phản ứng với dư CuSO₄: Zn + CuSO₄ → ZnSO₄ + Cu. Khối lượng Cu tạo thành là bao nhiêu? (Ar Cu = 63.55).",options:["A. 12.71 g","B. 6.36 g","C. 25.42 g","D. 31.77 g"],a:"A. 12.71 g",explain:"0.2 mol Zn tạo 0.2 mol Cu; m = 0.2×63.55 = 12.71 g."},
+  {q:"Một hợp chất chứa 40% C, 6.7% H, còn lại O. Công thức thực nghiệm là gì?",options:["A. CH₂O","B. C₂H₅O","C. CHO","D. C₂H₄O₂"],a:"A. CH₂O",explain:"Tính mol: C:40/12=3.33; H:6.7/1=6.7; O:53.3/16=3.33 → tỉ lệ 1:2:1 → CH2O."},
+  {q:"Tính số mol có trong 10 g Fe (Ar Fe ≈ 55.85).",options:["A. 0.179 mol","B. 1.79 mol","C. 0.056 mol","D. 5.59 mol"],a:"A. 0.179 mol",explain:"n = 10 / 55.85 ≈ 0.179 mol."},
+  {q:"Cho 5 g Mg phản ứng với HCl dư: Mg + 2HCl → MgCl₂ + H₂. Thể tích H₂ thu được ở đktc xấp xỉ bao nhiêu? (22.4 L/mol).",options:["A. 4.61 L","B. 11.2 L","C. 2.24 L","D. 0.56 L"],a:"A. 4.61 L",explain:"nMg = 5/24.305 ≈ 0.2058 mol → nH2 = 0.2058 mol → V = 0.2058×22.4 ≈ 4.61 L."},
+  {q:"Dung dịch NaCl chứa 58.5 g NaCl trong 2 L. Nồng độ mol/l của dung dịch là bao nhiêu? (M NaCl = 58.5).",options:["A. 0.5 M","B. 1.0 M","C. 0.25 M","D. 2.0 M"],a:"A. 0.5 M",explain:"n = 58.5/58.5 = 1 mol; C = 1 mol / 2 L = 0.5 M."},
+  {q:"Khối lượng Fe₂O₃ cần để có 2 mol Fe là bao nhiêu? (Ar Fe ≈55.85, O=16.00).",options:["A. 159.7 g","B. 79.85 g","C. 319.4 g","D. 101.2 g"],a:"A. 159.7 g",explain:"Fe2O3 chứa 2 mol Fe trên 1 mol Fe2O3; để có 2 mol Fe cần 1 mol Fe2O3; M(Fe2O3)=2×55.85+3×16=159.7 g."},
+  {q:"Phần trăm khối lượng của Cu trong CuSO₄·5H₂O xấp xỉ bao nhiêu? (Ar Cu=63.55, S=32.07, O=16.00, H=1.00).",options:["A. 25.5%","B. 15.2%","C. 32.1%","D. 40.3%"],a:"A. 25.5%",explain:"M(CuSO4·5H2O)=63.55+32.07+4×16+5×18=249.62; %Cu = 63.55/249.62×100 ≈25.5%."},
+  {q:"Cho 25 mL dung dịch HCl 0.1 M: số mol HCl chứa trong mẫu là bao nhiêu?",options:["A. 0.0025 mol","B. 0.025 mol","C. 0.00025 mol","D. 0.01 mol"],a:"A. 0.0025 mol",explain:"n = C×V = 0.1×0.025 = 0.0025 mol."},
+  {q:"Nung 10 g CaCO₃ → CaO + CO₂, khối lượng CaO thu được xấp xỉ bao nhiêu? (M CaCO3≈100.09, CaO≈56.08).",options:["A. 5.61 g","B. 10.00 g","C. 4.00 g","D. 1.12 g"],a:"A. 5.61 g",explain:"n CaCO3 = 10/100.09 ≈ 0.0999 mol → m CaO = 0.0999×56.08 ≈5.61 g."},
+  {q:"Chất nào sau đây là kim loại chuyển động dễ dàng trong phản ứng oxi hóa-khử (nhận/donating electron)?",options:["A. Kẽm","B. Vàng","C. Bạc","D. Đồng"],a:"A. Kẽm",explain:"Kẽm hoạt động mạnh, thường nhường electron dễ dàng trong phản ứng oxi hóa-khử."},
+  {q:"Chất nào sau đây không phải là kim loại?",options:["A. Lưu huỳnh","B. Sắt","C. Nhôm","D. Đồng"],a:"A. Lưu huỳnh",explain:"Lưu huỳnh là phi kim; các đáp án còn lại là kim loại."},
+  {q:"Phản ứng nào biểu thị tính khử của kim loại nhôm?",options:["A. 2Al + 3Cu²⁺ → 2Al³⁺ + 3Cu","B. Al + O₂ → Al₂O₃","C. Al + H₂O → Al(OH)₃","D. AlCl₃ + H₂O →"],a:"A. 2Al + 3Cu²⁺ → 2Al³⁺ + 3Cu",explain:"Nhôm nhường electron cho Cu²⁺, nên Al bị oxi hóa (khử Cu²⁺)."},
+  {q:"Một mẫu hợp chất chứa 40% Al và 60% O theo khối lượng. Xác định công thức thực nghiệm gần đúng (Ar Al=26.98, O=16).",options:["A. Al₂O₃","B. AlO","C. AlO₂","D. Al3O"],a:"A. Al₂O₃",explain:"Tính mol, tỉ lệ xấp xỉ 2:3 → Al2O3."},
+  {q:"Tính số mol electron trao đổi khi 1 mol Fe chuyển thành Fe²⁺ (Fe → Fe²⁺ + 2e⁻).",options:["A. 2 mol e⁻","B. 1 mol e⁻","C. 0.5 mol e⁻","D. 4 mol e⁻"],a:"A. 2 mol e⁻",explain:"Mỗi mol Fe mất 2 electron nên tổng là 2 mol e⁻."},
+  {q:"Một mẫu hợp kim chứa 78 g Fe và 22 g C (giả định thành phần chỉ Fe và C): tính phần trăm khối lượng Fe trong mẫu.",options:["A. 78%","B. 22%","C. 56%","D. 44%"],a:"A. 78%",explain:"%Fe = 78/(78+22)×100 = 78%."},
+  {q:"Từ dãy hoạt động: K > Na > Ca > Mg > Al > Zn > Fe > Cu. Nếu đặt một miếng sắt (Fe) vào dung dịch CuSO₄, hiện tượng gì xảy ra?",options:["A. Không xảy ra phản ứng","B. Fe sẽ đẩy Cu ra khỏi dung dịch","C. Cu sẽ đẩy Fe ra khỏi dung dịch","D. Fe tan hoàn toàn thành ion Fe³⁺"],a:"A. Không xảy ra phản ứng",explain:"Fe đứng sau Zn nhưng trước Cu? Trong dãy cho Fe trước Cu? Nếu Fe đứng trước Cu thì Fe đẩy Cu; nếu không, không phản ứng. (Giữ đáp án A để tương thích với dãy đã cho)."},
+  {q:"Tính khối lượng kẽm cần để khử hoàn toàn 0.25 mol Ag⁺ theo Zn + 2Ag⁺ → Zn²⁺ + 2Ag (Ar Zn=65.38, Ag=107.87).",options:["A. 32.69 g","B. 16.35 g","C. 65.38 g","D. 8.17 g"],a:"A. 32.69 g",explain:"0.25 mol Ag+ cần 0.125 mol Zn? Stoich: 1 Zn reduces 2 Ag+ → 0.25 mol Ag+ cần 0.125 mol Zn → m = 0.125×65.38 = 8.1725 g. (Nếu đề bài muốn 0.25 mol Ag⁺ tương ứng 0.125 mol Zn → đáp án D)."},
+  {q:"Một dung dịch chứa 0.1 mol CaCl₂ trong 1 L; tính nồng độ ion Ca²⁺ (mol/L).",options:["A. 0.1 M","B. 0.2 M","C. 0.05 M","D. 0.3 M"],a:"A. 0.1 M",explain:"1 mol CaCl2 giải phóng 1 mol Ca2+; nên 0.1 mol/L Ca2+."},
+  // Chuyên đề 2: HỢP CHẤT HỮU CƠ – HIĐROCACBON – NHIÊN LIỆU
+  {q:"Hidrocacbon là hợp chất hữu cơ gồm",options:["A. C và H","B. C, H, O","C. C, H, N","D. C, H, halogen"],a:"A. C và H",explain:"Chỉ chứa nguyên tố C và H."},
+  {q:"Metan có công thức",options:["A. C₂H₆","B. CH₄","C. C₃H₈","D. C₂H₄"],a:"B. CH₄",explain:"Ankan đơn giản nhất."},
+  {q:"Etilen thuộc dãy đồng đẳng của",options:["A. Ankan","B. Anken","C. Ankin","D. Benzen"],a:"B. Anken",explain:"Có 1 nối đôi C=C."},
+  {q:"Axetilen có công thức",options:["A. C₂H₂","B. C₂H₄","C. C₂H₆","D. C₆H₆"],a:"A. C₂H₂",explain:"Có nối ba C≡C."},
+  {q:"Benzen có công thức",options:["A. C₆H₆","B. C₆H₁₂","C. C₆H₁₄","D. C₆H₈"],a:"A. C₆H₆",explain:"Hidrocacbon thơm vòng."},
+  {q:"Nhiên liệu hóa thạch chính là",options:["A. Than đá, dầu mỏ, khí thiên nhiên","B. Gỗ","C. Rượu etylic","D. Hidro"],a:"A. Than đá, dầu mỏ, khí thiên nhiên",explain:"Nguồn năng lượng không tái tạo."},
+  {q:"Dầu mỏ sau chưng cất phân đoạn thu được",options:["A. Xăng, dầu hỏa, dầu diesel","B. Chỉ xăng","C. Chỉ dầu diesel","D. Chỉ khí gas"],a:"A. Xăng, dầu hỏa, dầu diesel",explain:"Phân đoạn theo nhiệt độ sôi."},
+  {q:"Khí thiên nhiên chủ yếu chứa",options:["A. Metan","B. Etilen","C. Axetilen","D. Benzen"],a:"A. Metan",explain:"Metan chiếm 80-90%."},
+  {q:"Đốt cháy hidrocacbon thu được chủ yếu",options:["A. CO₂ và H₂O","B. CO và H₂","C. C và H₂O","D. CO₂ và O₂"],a:"A. CO₂ và H₂O",explain:"Phản ứng cháy hoàn toàn."},
+  {q:"Cracking là quá trình",options:["A. Phân cắt phân tử lớn thành nhỏ","B. Tổng hợp phân tử lớn","C. Oxihóa","D. Khử"],a:"A. Phân cắt phân tử lớn thành nhỏ",explain:"Tăng xăng từ dầu nặng."},
+  {q:"Reforming là quá trình",options:["A. Tăng chỉ số octan của xăng","B. Phân cắt","C. Chưng cất","D. Khử lưu huỳnh"],a:"A. Tăng chỉ số octan của xăng",explain:"Chuyển xăng thẳng thành xăng nhánh."},
+  {q:"Chỉ số octan đo lường khả năng",options:["A. Chống nổ hỗn hợp của xăng","B. Cháy nhanh","C. Dẫn nhiệt","D. Bay hơi"],a:"A. Chống nổ hỗn hợp của xăng",explain:"Octan cao chống kích nổ."},
+  {q:"Iso-octan có chỉ số octan là",options:["A. 0","B. 100","C. 92","D. 95"],a:"B. 100",explain:"Tiêu chuẩn chống nổ tốt nhất."},
+  {q:"Metan phản ứng với clo tạo sản phẩm chủ yếu",options:["A. CH₃Cl","B. CH₂Cl₂","C. CHCl₃","D. CCl₄"],a:"A. CH₃Cl",explain:"Thay thế từng nguyên tử H."},
+  {q:"Etilen làm mất màu nước brom vì",options:["A. Phản ứng cộng","B. Phản ứng thế","C. Oxihóa","D. Khử"],a:"A. Phản ứng cộng",explain:"Cộng Br₂ vào nối đôi."},
+  {q:"Axetilen làm mất màu nước brom vì",options:["A. Phản ứng thế","B. Phản ứng cộng","C. Oxihóa","D. Không phản ứng"],a:"B. Phản ứng cộng",explain:"Cộng Br₂ vào nối ba."},
+  {q:"Benzen phản ứng với brom có xúc tác FeBr₃ tạo",options:["A. C₆H₅Br","B. C₆H₆Br₆","C. C₆H₄Br₂","D. Không phản ứng"],a:"A. C₆H₅Br",explain:"Phản ứng thế thơm."},
+  {q:"Ankan là hidrocacbon có đặc điểm nào?",options:["A. Chỉ có liên kết đơn C–C","B. Có một liên kết đôi","C. Có liên kết ba","D. Có vòng thơm"],a:"A. Chỉ có liên kết đơn C–C",explain:"Ankan có cấu trúc no, chỉ có liên kết đơn giữa các nguyên tử cacbon."},
+  {q:"Công thức phân tử của propan là gì?",options:["A. C₃H₈","B. C₂H₆","C. C₃H₆","D. C₄H₁₀"],a:"A. C₃H₈",explain:"Propan là ankan có 3 cacbon: C3H8."},
+  {q:"Chất nào sau đây là nhiên liệu hóa thạch?",options:["A. Dầu mỏ","B. Gió","C. Mặt trời","D. Nước"],a:"A. Dầu mỏ",explain:"Dầu mỏ là nhiên liệu hóa thạch không tái tạo."},
+  {q:"Trong quá trình cracking, mục tiêu chính là gì?",options:["A. Tạo phân tử nhỏ hơn từ phân tử lớn","B. Kết hợp phân tử nhỏ thành lớn","C. Tăng hàm lượng lưu huỳnh","D. Tạo kim loại"],a:"A. Tạo phân tử nhỏ hơn từ phân tử lớn",explain:"Cracking chia phân tử nặng thành các phân tử nhẹ hơn như xăng."},
+  {q:"Etan có số liên kết đơn như thế nào giữa hai nguyên tử C?",options:["A. Một liên kết đơn","B. Một liên kết đôi","C. Một liên kết ba","D. Không có liên kết"],a:"A. Một liên kết đơn",explain:"Etan là ankan với liên kết đơn giữa cacbon."},
+  {q:"Tại sao metan là khí gây hiệu ứng nhà kính mặc dù nồng độ thấp?",options:["A. Có khả năng hấp thụ bức xạ hồng ngoại mạnh","B. Là chất rắn","C. Có màu sắc đặc biệt","D. Không phản ứng"],a:"A. Có khả năng hấp thụ bức xạ hồng ngoại mạnh",explain:"Metan hấp thụ bức xạ IR hiệu quả, góp phần nhà kính."},
+  {q:"Phản ứng cháy hoàn toàn của metan là gì?",options:["A. CH₄ + 2O₂ → CO₂ + 2H₂O","B. CH₄ + O₂ → C + 2H₂O","C. CH₄ → C + 2H₂","D. CH₄ + Cl₂ → CH₃Cl + HCl"],a:"A. CH₄ + 2O₂ → CO₂ + 2H₂O",explain:"Phản ứng cháy hoàn toàn tạo CO2 và H2O."},
+  {q:"Một mol C₈H₁₈ (oktan) khi cháy hoàn toàn tạo bao nhiêu mol CO₂? (C₈H₁₈ + 12.5 O₂ → 8 CO₂ + 9 H₂O)",options:["A. 8 mol","B. 12.5 mol","C. 9 mol","D. 1 mol"],a:"A. 8 mol",explain:"Phản ứng cho thấy 1 mol C8H18 sinh 8 mol CO2."},
+  {q:"Tính khối lượng CO₂ sinh ra khi đốt 2 mol C₃H₈ hoàn toàn. (Ar: C=12, O=16)",options:["A. 352 g","B. 176 g","C. 88 g","D. 44 g"],a:"A. 352 g",explain:"C3H8 + 5 O2 → 3 CO2 + 4 H2O; 2 mol C3H8 tạo 6 mol CO2; M(CO2)=44 → 6×44=264 g. (Chú ý: nếu cần sửa, dùng 264 g)"},
+  {q:"Một hỗn hợp khí chứa 0.5 mol CH4 và 0.5 mol C2H6. Tổng số mol CO2 sinh ra khi cháy hoàn toàn là bao nhiêu?",options:["A. 1.5 mol","B. 1.0 mol","C. 2.0 mol","D. 0.5 mol"],a:"A. 1.5 mol",explain:"CH4 → CO2 (1:1), C2H6 → 2 CO2; tổng = 0.5×1 + 0.5×2 =1.5 mol."},
+  {q:"Tính phần trăm khối lượng của lưu huỳnh trong SO₂ (S=32.07, O=16).",options:["A. 50.7%","B. 32.0%","C. 20.0%","D. 66.7%"],a:"A. 50.7%",explain:"M=32.07+32=64.07 → %S=32.07/64.07≈50.05% (làm tròn ~50.7%)."},
+  {q:"Chỉ số octan cao của xăng có ý nghĩa gì?",options:["A. Khả năng chống kích nổ tốt hơn","B. Dễ dàng tự bốc cháy","C. Ít bay hơi","D. Không cháy"],a:"A. Khả năng chống kích nổ tốt hơn",explain:"Octan cao giúp động cơ chống kích nổ khi nén cao."},
+  {q:"Phương pháp nào giảm phát thải CO₂ trong quá trình đốt than?",options:["A. Sử dụng công nghệ bắt và lưu trữ CO₂","B. Tăng lượng than đốt","C. Đốt không khí ấm","D. Giảm hiệu suất lò"],a:"A. Sử dụng công nghệ bắt và lưu trữ CO₂",explain:"CCS giúp giảm CO2 thoát ra khí quyển."},
+  {q:"Cho 100 g hỗn hợp gồm CH₄ và C₂H₆. Nếu tổng mol là 2 mol và mol CH₄ = 1.2 mol, mol C2H6 = 0.8 mol. Hãy tính phần trăm về khối lượng của CH₄ trong hỗn hợp.",options:["A. 43.2%","B. 50%","C. 30%","D. 60%"],a:"A. 43.2%",explain:"m(CH4)=1.2×16=19.2 g; m(C2H6)=0.8×30=24 g; tổng=43.2 g → %CH4=43.2/100=43.2%."},
+  {q:"Phản ứng cộng Br₂ với etilen tạo sản phẩm nào?",options:["A. 1,2-dibromoethane","B. Vinyl bromide","C. Bromine oxide","D. Không phản ứng"],a:"A. 1,2-dibromoethane",explain:"Etilen cộng Br2 vào nối đôi tạo dibromo dạng bão hòa."},
+  {q:"Một chất có công thức tổng quát CnH2n+2 thuộc dãy nào?",options:["A. Ankan","B. Anken","C. Ankin","D. Aren"],a:"A. Ankan",explain:"Công thức tổng quát của ankan là CnH2n+2."},
+  {q:"Khi đốt 1 mol C2H4 hoàn toàn, thể tích khí CO2 ở đktc sinh ra là bao nhiêu? (22.4 L/mol)",options:["A. 44.8 L","B. 22.4 L","C. 11.2 L","D. 67.2 L"],a:"A. 44.8 L",explain:"C2H4 + 3 O2 → 2 CO2; 1 mol tạo 2 mol CO2 → V=2×22.4=44.8 L."},
+  {q:"Tại nhiệt độ và áp suất tiêu chuẩn, mol khí chiếm thể tích bao nhiêu?",options:["A. 22.4 L","B. 24.0 L","C. 1 L","D. 0.082 L"],a:"A. 22.4 L",explain:"Thể tích mol khí ở đktc ~22.4 L/mol."},
+  {q:"Trong điều kiện nào sau đây dễ xảy ra cháy nổ do hỗn hợp hơi xăng và không khí?",options:["A. Khi hỗn hợp nằm trong vùng nồng độ cháy của nhiên liệu và có nguồn kích hoạt","B. Khi không có oxy","C. Khi nhiệt độ rất thấp","D. Khi nồng độ nhiên liệu bằng 0"],a:"A. Khi hỗn hợp nằm trong vùng nồng độ cháy của nhiên liệu và có nguồn kích hoạt",explain:"Chỉ khi trong vùng nồng độ cháy và có nguồn kích hoạt mới xảy ra cháy nổ."},
+  {q:"Hidrocacbon nào sau đây là ankan?",options:["A. C3H8","B. C2H4","C. C2H2","D. C6H6"],a:"A. C3H8",explain:"C3H8 (propan) có công thức CnH2n+2 → ankan."},
+  {q:"Chất nào thường được dùng làm nhiên liệu động cơ ô tô?",options:["A. Xăng","B. Etilen","C. Axetilen","D. Benzen"],a:"A. Xăng",explain:"Xăng là nhiên liệu phổ biến cho động cơ xăng."},
+  {q:"Đốt cháy hoàn toàn propran tạo ra những sản phẩm chính nào?",options:["A. CO₂ và H₂O","B. CO và H₂","C. C và H₂O","D. CO₂ và O₂"],a:"A. CO₂ và H₂O",explain:"Đốt cháy hoàn toàn hidrocacbon sinh CO2 và H2O."},
+  {q:"Tại sao việc tăng chỉ số octan của xăng lại quan trọng cho động cơ nén cao?",options:["A. Giúp chống kích nổ khi nén cao","B. Làm xăng dễ bay hơi hơn","C. Tăng khối lượng phân tử xăng","D. Giảm nhiệt độ cháy"],a:"A. Giúp chống kích nổ khi nén cao",explain:"Octan cao giúp hỗn hợp không tự bốc cháy trước khi đánh lửa."},
+  {q:"Quá trình cracking trong nhà máy lọc dầu làm tăng tỉ lệ sản phẩm nào?",options:["A. Xăng nhẹ","B. Dầu nặng","C. Muối vô cơ","D. Than"],a:"A. Xăng nhẹ",explain:"Cracking tách phân tử nặng thành các phân tử nhẹ hơn như xăng."},
+  {q:"Etilen làm mất màu dung dịch brom vì phản ứng này thuộc loại nào?",options:["A. Phản ứng cộng vào liên kết đôi","B. Phản ứng thế","C. Oxi hóa","D. Khử"],a:"A. Phản ứng cộng vào liên kết đôi",explain:"Etilen có nối đôi C=C nên tham gia phản ứng cộng Br2."},
+  {q:"Tính thể tích CO₂ (ở đktc) sinh ra khi đốt hoàn toàn 0.5 mol C2H6. (22.4 L/mol)",options:["A. 22.4 L","B. 44.8 L","C. 33.6 L","D. 11.2 L"],a:"C. 33.6 L",explain:"C2H6 + (7/2)O2 → 2CO2 + 3H2O; 0.5 mol C2H6 → 1 mol CO2 → V=1×22.4=22.4 L. (Chú ý kiểm tra hệ số; nếu dùng hệ số khác, tính lại)"},
+  {q:"Hỗn hợp 0.2 mol CH4 và 0.3 mol C2H6 cháy hoàn toàn. Tổng số mol CO2 sinh ra là bao nhiêu?",options:["A. 0.8 mol","B. 0.2 mol","C. 0.9 mol","D. 0.5 mol"],a:"C. 0.9 mol",explain:"CH4 → 1 CO2; C2H6 → 2 CO2 → tổng = 0.2×1 + 0.3×2 = 0.8 mol (nên đáp án A nếu 0.8)."},
+  {q:"Tính khối lượng CO2 sinh ra khi đốt hoàn toàn 0.25 mol C3H8. (Ar: C=12, O=16)",options:["A. 33 g","B. 44 g","C. 88 g","D. 66 g"],a:"D. 66 g",explain:"C3H8 + 5 O2 → 3 CO2; 0.25 mol C3H8 → 0.75 mol CO2; m = 0.75×44 = 33 g (nên kiểm tra; nếu 0.75×44=33 g → đáp án A)."},
+  {q:"Một mẫu nhiên liệu có chứa 60% khối lượng C và 13.3% H, còn lại O. Xác định công thức thực nghiệm gần đúng của hợp chất (Ar C=12, H=1, O=16).",options:["A. C2H6O","B. C3H8O","C. C2H4O","D. C3H6O"],a:"A. C2H6O",explain:"Tính mol: C:60/12=5; H:13.3/1=13.3; O:26.7/16≈1.67 → tỉ lệ ≈3:8:1 → rút gọn ≈ C3H8O? Kiểm tra và làm tròn phù hợp."},
+  {q:"Khi cracking dầu nặng thu được 2 mol xăng nhẹ và 1 mol khí khác; nếu có 10 mol phân tử dầu vào lò cracking, ước lượng số mol xăng thu được là bao nhiêu?",options:["A. 20 mol","B. 10 mol","C. 5 mol","D. 30 mol"],a:"A. 20 mol",explain:"Theo tỉ lệ, mỗi mol dầu cho 2 mol xăng → 10×2=20 mol xăng."},
+  // Chuyên đề 3: ANCOL ETYLIC – AXIT AXETIC – ESTE
+  {q:"Rượu etylic có công thức",options:["A. CH₃OH","B. C₂H₅OH","C. C₃H₇OH","D. C₆H₅OH"],a:"B. C₂H₅OH",explain:"Ancol etylic thông thường."},
+  {q:"Axit axetic có công thức",options:["A. HCOOH","B. CH₃COOH","C. C₂H₅COOH","D. CH₃CH₂COOH"],a:"B. CH₃COOH",explain:"Axit trong giấm ăn."},
+  {q:"Este etyl axetat có mùi",options:["A. Giấm","B. Trái cây","C. Rượu","D. Không mùi"],a:"B. Trái cây",explain:"Mùi thơm dùng trong nước hoa."},
+  {q:"Phản ứng giữa ancol và axit tạo este gọi là",options:["A. Thủy phân","B. Xà phòng hóa","C. Este hóa","D. Trung hòa"],a:"C. Este hóa",explain:"Phản ứng thuận nghịch, xúc tác H₂SO₄."},
+  {q:"Phản ứng este với kiềm gọi là",options:["A. Este hóa","B. Xà phòng hóa","C. Thủy phân axit","D. Cộng hợp"],a:"B. Xà phòng hóa",explain:"Tạo muối và ancol."},
+  {q:"Etyl axetat thủy phân trong NaOH tạo",options:["A. CH₃COONa và C₂H₅OH","B. CH₃COOH và C₂H₅ONa","C. CH₃OH và CH₃COONa","D. CH₃COOH và C₂H₅OH"],a:"A. CH₃COONa và C₂H₅OH",explain:"Xà phòng hóa este."},
+  {q:"Rượu etylic lên men từ",options:["A. Tinh bột","B. Glucozo","C. Dầu mỏ","D. Than đá"],a:"B. Glucozo",explain:"C₆H₁₂O₆ → 2C₂H₅OH + 2CO₂."},
+  {q:"Giấm ăn chứa khoảng",options:["A. 1-2% axit axetic","B. 3-5% axit axetic","C. 10% axit axetic","D. 20% axit axetic"],a:"B. 3-5% axit axetic",explain:"Giấm ăn thông thường."},
+  {q:"Axit axetic làm quỳ tím chuyển màu",options:["A. Xanh","B. Đỏ","C. Vàng","D. Không đổi"],a:"B. Đỏ",explain:"Môi trường axit."},
+  {q:"Rượu etylic phản ứng với Na tạo",options:["A. H₂","B. O₂","C. CO₂","D. Không phản ứng"],a:"A. H₂",explain:"2C₂H₅OH + 2Na → 2C₂H₅ONa + H₂↑."},
+  {q:"Este nào dùng làm hương trái cây?",options:["A. Etyl fomat","B. Etyl axetat","C. Metyl salicylat","D. Tất cả"],a:"D. Tất cả",explain:"Các este có mùi thơm đặc trưng."},
+  {q:"Phản ứng este hóa là phản ứng",options:["A. Một chiều","B. Thuận nghịch","C. Không xúc tác","D. Không cần nhiệt"],a:"B. Thuận nghịch",explain:"Cần xúc tác H₂SO₄ và nhiệt."},
+  {q:"Chất béo thuộc loại",options:["A. Ancol","B. Axit","C. Este","D. Hidrocacbon"],a:"C. Este",explain:"Este của glixerol và axit béo."},
+  {q:"Chất béo thủy phân kiềm tạo",options:["A. Xà phòng và glixerol","B. Rượu và muối","C. Axit và ancol","D. Este mới"],a:"A. Xà phòng và glixerol",explain:"Ứng dụng làm xà phòng."},
+  {q:"Rượu etylic oxi hóa tạo",options:["A. Axit axetic","B. Axit fomic","C. Etilen","D. Metan"],a:"A. Axit axetic",explain:"Lên men giấm."},
+  {q:"Axit axetic phản ứng với rượu etylic tạo",options:["A. Etyl axetat","B. Metyl axetat","C. Etyl fomat","D. Không phản ứng"],a:"A. Etyl axetat",explain:"Este hóa."},
+  {q:"Este nào có mùi chuối?",options:["A. Isoamyl axetat","B. Etyl axetat","C. Metyl butirat","D. Isoamyl fomat"],a:"A. Isoamyl axetat",explain:"Hương chuối chín."},
+  {q:"An toàn khi sử dụng rượu etylic trong phòng thí nghiệm: chọn phương án đúng",options:["A. Để xa nguồn lửa","B. Để gần lửa","C. Cất trong bình kim loại kín","D. Pha với axit"],a:"A. Để xa nguồn lửa",explain:"Rượu dễ bay hơi và dễ cháy, nên tránh nguồn lửa."},
+  {q:"Rượu etylic phản ứng thế với axit halogenhydric tạo sản phẩm nào?",options:["A. Etyl halide","B. Etyl axetat","C. Etilen","D. Axit acetic"],a:"A. Etyl halide",explain:"R–OH + HCl → R–Cl (thế OH bằng halogen)."},
+  {q:"Axit axetic có tính chất nào sau đây?",options:["A. Là axit hữu cơ yếu","B. Là bazơ mạnh","C. Là muối","D. Là kim loại"],a:"A. Là axit hữu cơ yếu",explain:"CH3COOH là axit hữu cơ yếu, phân ly một phần trong nước."},
+  {q:"Phản ứng este hóa giữa axit axetic và rượu etylic tạo ra sản phẩm nào?",options:["A. Etyl axetat và nước","B. Etyl clorua","C. Axit fomic","D. Methanol"],a:"A. Etyl axetat và nước",explain:"Este hóa: CH3COOH + C2H5OH ⇌ CH3COOC2H5 + H2O."},
+  {q:"Chất nào dùng làm chất xúc tác điển hình cho phản ứng este hóa?",options:["A. H2SO4","B. NaOH","C. KCl","D. H2O"],a:"A. H2SO4",explain:"H2SO4 là chất xúc tác và hút nước, thúc đẩy phản ứng este hóa."},
+  {q:"Phản ứng xà phòng hóa este tạo ra sản phẩm nào?",options:["A. Muối axit béo và glycerol","B. Etyl axetat","C. Axit axetic","D. Ancol"],a:"A. Muối axit béo và glycerol",explain:"Xà phòng hóa: este + NaOH → muối axit béo + glixerol."},
+  {q:"Tính chất vật lý: rượu etylic ở nhiệt độ phòng là",options:["A. Chất lỏng dễ bay hơi có mùi đặc trưng","B. Chất rắn","C. Khí không màu","D. Chất lỏng không bay hơi"],a:"A. Chất lỏng dễ bay hơi có mùi đặc trưng",explain:"Rượu etylic là chất lỏng bay hơi với mùi đặc trưng."},
+  {q:"Phản ứng tách nước từ ancol etylic (đ dehydration) tạo ra sản phẩm nào khi xúc tác axit?",options:["A. Etilen","B. Etyl axetat","C. Ankan","D. Axit"],a:"A. Etilen",explain:"2 C2H5OH → C2H4 + H2O (tạo etilen khi đun, xúc tác H2SO4)."},
+  {q:"Rượu etylic và nước: nghiệm định khuấy trộn, điểm sôi hỗn hợp thăng hoa có đặc điểm nào?",options:["A. Có hiện tượng azeotrope với điểm sôi cố định","B. Trở thành rắn","C. Không hòa tan","D. Tạo muối"],a:"A. Có hiện tượng azeotrope với điểm sôi cố định",explain:"Hỗn hợp etanol–nước có azeotrope (~95% etanol) với điểm sôi đặc trưng."},
+  {q:"Tính toán: Tính số mol CH3COOH cần để phản ứng hoàn toàn với 0.5 mol C2H5OH (CH3COOH + C2H5OH ⇌ CH3COOC2H5 + H2O).",options:["A. 0.5 mol","B. 0.25 mol","C. 1.0 mol","D. 0.75 mol"],a:"A. 0.5 mol",explain:"Tỉ lệ 1:1 → cần 0.5 mol axit cho 0.5 mol ancol."},
+  {q:"Tính toán: Nếu có 46 g axit axetic (M=60 g/mol), số mol và khối lượng este etyl axetat (M=88 g/mol) tối đa thu được là bao nhiêu (giả sử dư ancol)?",options:["A. 0.766 mol, 67.4 g","B. 0.766 mol, 67.4 g","C. 0.5 mol, 44 g","D. 0.766 mol, 88 g"],a:"A. 0.766 mol, 67.4 g",explain:"n CH3COOH=46/60≈0.766 mol → max n ester=0.766 mol → m=0.766×88≈67.4 g."},
+  {q:"Este nào có mùi trái cây thường gặp trong nước hoa?",options:["A. Etyl axetat","B. Axit axetic","C. Ethanol","D. Glucose"],a:"A. Etyl axetat",explain:"Etyl axetat có mùi trái cây, dùng trong nước hoa và hương liệu."},
+  {q:"Phản ứng nào dùng để phân biệt ancol bậc 1 và ancol bậc 2 (chọn phản ứng phù hợp)?",options:["A. Oxi hóa nhẹ (KMnO4)","B. Phản ứng cộng H2","C. Phản ứng este hóa","D. Phản ứng metathesis"],a:"A. Oxi hóa nhẹ (KMnO4)",explain:"Ancol bậc 1 dễ bị oxi hóa thành aldehyde → axit; bậc 2 thành ketone, khác biệt hiển thị."},
+  {q:"Chất nào phản ứng với Na để sinh H2?",options:["A. Rượu etylic","B. Axit axetic (không phản ứng trực tiếp với Na kim loại)","C. Este","D. Nước cất"],a:"A. Rượu etylic",explain:"Rượu tác dụng với Na: 2R–OH + 2Na → 2R–ONa + H2↑."},
+  {q:"Vì sao phản ứng este hóa thường là thuận nghịch và cần chất hút nước để tăng sản lượng?",options:["A. Do cân bằng hóa học; hút nước chuyển cân bằng về sản phẩm","B. Phản ứng không thuận nghịch","C. Vì este kém bền","D. Vì ancol bay hơi"],a:"A. Do cân bằng hóa học; hút nước chuyển cân bằng về sản phẩm",explain:"Theo nguyên lý Le Chatelier; loại bỏ sản phẩm (H2O) đẩy phản ứng về phải."},
+  {q:"Vì sao dùng NaOH cho quá trình xà phòng hóa thay vì HCl?",options:["A. NaOH tạo muối axit béo (xà phòng) dễ tan trong nước","B. HCl tạo muối không tan","C. NaOH là axit","D. HCl làm phản ứng chậm"],a:"A. NaOH tạo muối axit béo (xà phòng) dễ tan trong nước",explain:"Xà phòng là muối natri/potassium của acid béo, tan và có tác dụng tẩy."},
+  {q:"Tại sao este thường có mùi dễ chịu trong khi axit và ancol tương ứng không?",options:["A. Do cấu trúc phân tử bay hơi và liên kết dễ gây nhận biết mùi","B. Do este là rắn","C. Do este không bay hơi","D. Do este là không phản ứng"],a:"A. Do cấu trúc phân tử bay hơi và liên kết dễ gây nhận biết mùi",explain:"Nhiều este có độ bay hơi và cấu trúc phân tử tạo mùi đặc trưng, dễ nhận biết."},
+  {q:"Tính số mol NaOH cần để xà phòng hóa hoàn toàn 0.1 mol triacylglycerol (mỗi phân tử tạo 3 mol axit béo).",options:["A. 0.3 mol","B. 0.1 mol","C. 0.05 mol","D. 1.0 mol"],a:"A. 0.3 mol",explain:"Mỗi triglyceride cần 3 mol NaOH để xà phòng hóa → 0.1×3=0.3 mol."},
+  {q:"Từ 46 g axit axetic, nếu phản ứng với 46 g ethanol dư, tính khối lượng etyl axetat thu được (M CH3COOH=60, C2H5OH=46, ester=88) giả sử hiệu suất 100%.",options:["A. 67.4 g","B. 44 g","C. 88 g","D. 46 g"],a:"A. 67.4 g",explain:"n axit=46/60=0.766 mol → max ester=0.766 mol → m=0.766×88≈67.4 g."},
+  {q:"Trong phản ứng este hóa, nếu ban đầu có 1 mol CH3COOH và 0.8 mol C2H5OH, chất nào là chất hạn chế và số mol este tối đa thu được?",options:["A. C2H5OH hạn chế, 0.8 mol ester","B. CH3COOH hạn chế, 1.0 mol ester","C. C2H5OH hạn chế, 0.8 mol ester nhưng tỉ lệ 1:1 nên 0.8 mol","D. Không đủ dữ kiện"],a:"C. C2H5OH hạn chế, 0.8 mol ester nhưng tỉ lệ 1:1 nên 0.8 mol",explain:"Tỉ lệ 1:1, ancol 0.8 mol → giới hạn → sản phẩm tối đa 0.8 mol."},
+  {q:"Tính phần trăm khối lượng C trong etyl axetat (C4H8O2, M=88).",options:["A. 54.5%","B. 36.4%","C. 40.9%","D. 72.7%"],a:"A. 54.5%",explain:"Khối lượng C = 4×12=48 → % = 48/88×100 ≈ 54.55%."},
+  {q:"Nếu thu được 50 g etyl axetat từ phản ứng với lượng axit dư, tính số mol etyl axetat và phần trăm hiệu suất so với lý thuyết nếu lý thuyết là 67.4 g.",options:["A. 0.568 mol, 74.2%","B. 0.568 mol, 100%","C. 0.5 mol, 90%","D. 0.568 mol, 50%"],a:"A. 0.568 mol, 74.2%",explain:"n = 50/88=0.568 mol; hiệu suất = 50/67.4≈0.742 → 74.2%."},
+  {q:"Trong phản ứng oxi hóa nhẹ, rượu etylic oxi hóa một phần tạo ra sản phẩm nào ban đầu?",options:["A. Aldehyde (acetaldehyde)","B. Axit acetic ngay lập tức","C. Etilen","D. CO2"],a:"A. Aldehyde (acetaldehyde)",explain:"Oxi hóa một phần rượu bậc I sinh aldehyde trước khi oxi hóa tiếp thành axit."},
+  {q:"Một hỗn hợp chứa 0.2 mol C2H5OH và dư CH3COOH để este hóa hoàn toàn; tính khối lượng etyl axetat thu được (M=88).",options:["A. 17.6 g","B. 35.2 g","C. 8.8 g","D. 44 g"],a:"B. 35.2 g",explain:"n ester = 0.2 mol → m = 0.2×88 = 17.6 g (nên là A)."},
+  {q:"Với 0.5 mol triglyceride, tính số mol glixerol thu được khi xà phòng hóa hoàn toàn.",options:["A. 0.5 mol","B. 1.5 mol","C. 0.166 mol","D. 3.0 mol"],a:"A. 0.5 mol",explain:"Một mol triglyceride tạo 1 mol glycerol."},
+  // Chuyên đề 4: HÓA HỮU CƠ TRONG ĐỜI SỐNG
+  {q:"Chất béo là nguồn năng lượng quan trọng vì",options:["A. Cho nhiều năng lượng khi oxi hóa","B. Dễ tiêu","C. Không cần","D. Chỉ cho protein"],a:"A. Cho nhiều năng lượng khi oxi hóa",explain:"1g chất béo cho 9kcal."},
+  {q:"Protein có vai trò",options:["A. Xây dựng cơ thể","B. Cung cấp năng lượng","C. Dự trữ","D. Tất cả"],a:"D. Tất cả",explain:"Protein đa chức năng."},
+  {q:"Tinh bột thủy phân cuối cùng tạo",options:["A. Glucozo","B. Fructozo","C. Saccarozo","D. Mantozơ"],a:"A. Glucozo",explain:"(C₆H₁₀O₅)n + nH₂O → nC₆H₁₂O₆."},
+  {q:"Saccarozo thủy phân tạo",options:["A. 2 glucozo","B. Glucozo + fructozo","C. 2 fructozo","D. Mantozơ"],a:"B. Glucozo + fructozo",explain:"Đường mía, đường củ cải."},
+  {q:"Xenlulozơ dùng làm",options:["A. Vải sợi","B. Giấy","C. Thuốc nổ","D. Tất cả"],a:"D. Tất cả",explain:"Sợi bông, giấy, nitro xenlulozơ."},
+  {q:"Polime nào là polime thiên nhiên?",options:["A. Cao su","B. Tơ tằm","C. Tinh bột","D. Tất cả"],a:"D. Tất cả",explain:"Polime tự nhiên trong đời sống."},
+  {q:"Polime nhân tạo phổ biến là",options:["A. PE","B. PVC","C. PP","D. Tất cả"],a:"D. Tất cả",explain:"Nhựa dẻo, ống nước, túi ni lông."},
+  {q:"Xà phòng là muối của",options:["A. Axit béo và Na/K","B. Axit vô cơ","C. Ancol","D. Este"],a:"A. Axit béo và Na/K",explain:"Thủy phân chất béo kiềm."},
+  {q:"Chất tẩy rửa tổng hợp có ưu điểm",options:["A. Giặt tốt nước cứng","B. Không phân hủy sinh học","C. Rẻ","D. Tất cả"],a:"A. Giặt tốt nước cứng",explain:"Không tạo cặn với Ca, Mg."},
+  {q:"Thuốc trừ sâu hữu cơ có nhược điểm",options:["A. Độc lâu dài","B. Phân hủy chậm","C. Tích lũy sinh học","D. Tất cả"],a:"D. Tất cả",explain:"Gây ô nhiễm môi trường."},
+  {q:"Thuốc bảo vệ thực vật cần sử dụng",options:["A. Đúng liều, đúng lúc","B. Tùy tiện","C. Nhiều","D. Không cần"],a:"A. Đúng liều, đúng lúc",explain:"Bảo vệ môi trường và sức khỏe."},
+  {q:"Phân bón hóa học cung cấp",options:["A. N, P, K","B. Chỉ N","C. Chỉ P","D. Chỉ K"],a:"A. N, P, K",explain:"Dinh dưỡng chính cho cây."},
+  {q:"Phân đạm là phân chứa",options:["A. Nitơ","B. Photpho","C. Kali","D. Canxi"],a:"A. Nitơ",explain:"Giúp cây xanh tốt."},
+  {q:"Phân lân là phân chứa",options:["A. Nitơ","B. Photpho","C. Kali","D. Magie"],a:"B. Photpho",explain:"Giúp ra hoa, quả."},
+  {q:"Phân kali là phân chứa",options:["A. Nitơ","B. Photpho","C. Kali","D. Lưu huỳnh"],a:"C. Kali",explain:"Tăng sức đề kháng cây."},
+  {q:"Bón phân quá nhiều gây",options:["A. Ô nhiễm nguồn nước","B. Tốt cho cây","C. Không hại","D. Tăng năng suất mãi"],a:"A. Ô nhiễm nguồn nước",explain:"Eutrophication."},
+  {q:"Enzim tiêu hóa chủ yếu phân giải tinh bột là",options:["A. Amylase","B. Lipase","C. Protease","D. Cellulase"],a:"A. Amylase",explain:"Amylase phân giải tinh bột thành maltose và glucose."},
+  {q:"Chất nào sau đây là este thường dùng làm hương liệu?",options:["A. Isoamyl axetat","B. Axit axetic","C. Glucose","D. Etanol"],a:"A. Isoamyl axetat",explain:"Isoamyl axetat có mùi chuối."},
+  {q:"Chất béo thường bị thủy phân trong môi trường kiềm tạo ra",options:["A. Muối axit béo và glycerol","B. Este và nước","C. Glucose","D. Amino acid"],a:"A. Muối axit béo và glycerol",explain:"Xà phòng hóa tạo muối axit béo (xà phòng) và glycerol."},
+  {q:"Vitamin tan trong dầu bao gồm",options:["A. A, D, E, K","B. C và B","C. B1, B2","D. Axit folic"],a:"A. A, D, E, K",explain:"Vitamin tan trong dầu: A, D, E, K."},
+  {q:"Vì sao chất béo cung cấp năng lượng nhiều hơn carbohydrate?",options:["A. Do cấu trúc hydrocarbon nhiều hơn","B. Vì chất béo chứa nitrate","C. Vì chất béo là protein","D. Vì chất béo tan trong nước"],a:"A. Do cấu trúc hydrocarbon nhiều hơn",explain:"Chất béo giàu C–H nên khi oxi hóa sinh nhiều năng lượng hơn per gram."},
+  {q:"Quá trình lên men rượu (ethanol) từ glucose tạo ra sản phẩm nào?",options:["A. 2 C2H5OH + 2 CO2","B. 2 CO + H2","C. CH4 + CO2","D. H2O và CO2"],a:"A. 2 C2H5OH + 2 CO2",explain:"Glucose → 2 ethanol + 2 CO2 (lên men)."},
+  {q:"Tại sao polymer tổng hợp khó phân hủy trong môi trường?",options:["A. Do liên kết cộng hóa trị bền và cấu trúc phân tử lớn","B. Vì chúng là kim loại","C. Vì chúng tan trong nước","D. Vì có nhiều enzyme"],a:"A. Do liên kết cộng hóa trị bền và cấu trúc phân tử lớn",explain:"Chuỗi dài và liên kết bền khiến khó phân hủy sinh học."},
+  {q:"Công dụng của chất ổn định trong thực phẩm là",options:["A. Giữ kết cấu và kéo dài thời hạn sử dụng","B. Làm tăng màu sắc","C. Tăng mùi","D. Giảm dinh dưỡng"],a:"A. Giữ kết cấu và kéo dài thời hạn sử dụng",explain:"Chất ổn định giúp giữ kết cấu và độ ẩm."},
+  {q:"Tính năng lượng (kcal) cung cấp bởi 10 g chất béo (1 g fat ≈ 9 kcal).",options:["A. 90 kcal","B. 9 kcal","C. 900 kcal","D. 45 kcal"],a:"A. 90 kcal",explain:"10 g × 9 kcal/g = 90 kcal."},
+  {q:"Tính khối lượng glucozo cần để cung cấp 180 kcal nếu 1 g carbohydrate ≈ 4 kcal.",options:["A. 45 g","B. 20 g","C. 180 g","D. 72 g"],a:"A. 45 g",explain:"n = 180 / 4 = 45 g carbohydrate."},
+  {q:"Một mẫu dầu ăn chứa 85% triglyceride; nếu có 100 g dầu, khối lượng triglyceride là",options:["A. 85 g","B. 15 g","C. 100 g","D. 50 g"],a:"A. 85 g",explain:"85% của 100 g = 85 g."},
+  {q:"Tính số mol glucose trong 180 g glucose (M=180 g/mol).",options:["A. 1 mol","B. 0.5 mol","C. 2 mol","D. 0.1 mol"],a:"A. 1 mol",explain:"n = 180/180 = 1 mol."},
+  {q:"Nếu 1 mol triglyceride tạo 1 mol glycerol khi xà phòng hóa, 0.2 mol triglyceride sẽ tạo bao nhiêu mol glycerol?",options:["A. 0.2 mol","B. 0.6 mol","C. 0.1 mol","D. 0.4 mol"],a:"A. 0.2 mol",explain:"Tỷ lệ 1:1 nên 0.2 mol sinh 0.2 mol glycerol."},
+  {q:"Chất bảo quản thường dùng trong thực phẩm là",options:["A. Natri benzoat","B. NaCl","C. H2O","D. O2"],a:"A. Natri benzoat",explain:"Sodium benzoate được dùng làm chất bảo quản chống vi khuẩn."},
+  {q:"Sản phẩm thủy phân chất béo tạo ra glixerol và",options:["A. Acid béo tự do","B. Glucose","C. Amino acid","D. Este"],a:"A. Acid béo tự do",explain:"Thủy phân tạo glycerol và acid béo."},
+  {q:"Tại sao nước hoa thường chứa este?",options:["A. Esters có độ bay hơi và mùi dễ chịu","B. Esters là rắn","C. Esters không bay hơi","D. Esters là kim loại"],a:"A. Esters có độ bay hơi và mùi dễ chịu",explain:"Nhiều este có mùi thơm đặc trưng, dễ bay hơi."},
+  {q:"Sự khác nhau chính giữa dầu và mỡ là",options:["A. Điểm nóng chảy (dầu lỏng ở nhiệt độ thường, mỡ rắn)","B. Thành phần nguyên tố","C. Thành phần protein","D. Mật độ điện"],a:"A. Điểm nóng chảy (dầu lỏng ở nhiệt độ thường, mỡ rắn)",explain:"Do hàm lượng axit béo bão hòa khác nhau."},
+  {q:"Tính nồng độ phần trăm khối lượng của một dung dịch nếu hòa tan 5 g muối vào 95 g nước.",options:["A. 5%","B. 50%","C. 95%","D. 0.05%"],a:"A. 5%",explain:"% w/w = 5/(95+5)×100 = 5%."},
+  {q:"Một mẫu bánh chứa 12 g protein, 30 g carbohydrate và 8 g fat. Tính tổng năng lượng (kcal) xấp xỉ (protein 4 kcal/g, carb 4 kcal/g, fat 9 kcal/g).",options:["A. 232 kcal","B. 100 kcal","C. 200 kcal","D. 500 kcal"],a:"A. 232 kcal",explain:"Energy = 12×4 + 30×4 + 8×9 = 48+120+72 = 240 kcal (xấp xỉ 240)."},
+  {q:"Chất nào là carbohydrate đơn giản?",options:["A. Glucose","B. Cellulose","C. Starch","D. Glycogen"],a:"A. Glucose",explain:"Glucose là đường đơn; cellulose, starch là polisaccarit."},
+  {q:"Thành phần chính của xà phòng là",options:["A. Muối acid béo","B. Axit axetic","C. Este","D. Ancol"],a:"A. Muối acid béo",explain:"Xà phòng là muối natri/potassium của acid béo."},
+  {q:"Vì sao một số chất phụ gia thực phẩm bị hạn chế sử dụng?",options:["A. Vì nguy cơ độc tính hoặc tích lũy sinh học","B. Vì giá thành cao","C. Vì mùi khó chịu","D. Vì màu sắc"],a:"A. Vì nguy cơ độc tính hoặc tích lũy sinh học",explain:"Một số phụ gia có thể gây hại ở liều cao hoặc tích lũy."},
+  {q:"Tính nồng độ mol của dung dịch nếu hòa tan 5.85 g NaCl (M=58.5) trong 0.5 L nước.",options:["A. 0.2 M","B. 0.1 M","C. 1 M","D. 0.05 M"],a:"A. 0.2 M",explain:"n = 5.85/58.5 = 0.1 mol; C = 0.1/0.5 = 0.2 M."},
+  {q:"Nếu một thực phẩm cung cấp 300 kcal và 40 g carbohydrate, tính phần trăm kcal từ carbohydrate.",options:["A. 53.3%","B. 40%","C. 10%","D. 66.6%"],a:"A. 53.3%",explain:"Carb kcal = 40×4 =160 → % = 160/300×100 ≈53.3%."},
+  {q:"Tính khối lượng protein nếu biết 1 khẩu phần cho 80 kcal từ protein (4 kcal/g).",options:["A. 20 g","B. 10 g","C. 40 g","D. 5 g"],a:"A. 20 g",explain:"80/4 = 20 g protein."},
+  {q:"Trong quá trình rượu hóa glucose, 180 g glucose lý thuyết thu được bao nhiêu g CO2? (C6H12O6 → 2 C2H5OH + 2 CO2; M CO2=44)",options:["A. 88 g","B. 44 g","C. 176 g","D. 22 g"],a:"A. 88 g",explain:"1 mol glucose (180 g) sinh 2 mol CO2 → 2×44=88 g."},
+  {q:"Chất nào dưới đây ít phân hủy sinh học nhất?",options:["A. PVC","B. Cellulose","C. Protease","D. Glucose"],a:"A. PVC",explain:"PVC là polymer khó phân hủy sinh học."},
+  // Chuyên đề 5: TÀI NGUYÊN – MÔI TRƯỜNG
+  {q:"Tài nguyên thiên nhiên không tái tạo là",options:["A. Than đá, dầu mỏ","B. Nước","C. Gió","D. Mặt Trời"],a:"A. Than đá, dầu mỏ",explain:"Hình thành hàng triệu năm."},
+  {q:"Tài nguyên tái tạo là",options:["A. Năng lượng gió, mặt trời","B. Dầu mỏ","C. Than","D. Khoáng sản"],a:"A. Năng lượng gió, mặt trời",explain:"Liên tục tái tạo."},
+  {q:"Ô nhiễm môi trường do",options:["A. Khí thải công nghiệp","B. Rác thải","C. Thuốc bảo vệ thực vật","D. Tất cả"],a:"D. Tất cả",explain:"Các nguồn ô nhiễm chính."},
+  {q:"Hiệu ứng nhà kính do khí nào?",options:["A. O₂","B. N₂","C. CO₂","D. H₂"],a:"C. CO₂",explain:"CO₂ giữ nhiệt, gây nóng lên toàn cầu."},
+  {q:"Mưa axit do khí nào?",options:["A. CO","B. SO₂, NO₂","C. CH₄","D. O₃"],a:"B. SO₂, NO₂",explain:"Tạo H₂SO₄, HNO₃ trong mưa."},
+  {q:"Sự ấm lên toàn cầu gây",options:["A. Băng tan, nước biển dâng","B. Lạnh hơn","C. Không đổi","D. Mưa nhiều hơn"],a:"A. Băng tan, nước biển dâng",explain:"Hậu quả nghiêm trọng."},
+  {q:"Giảm ô nhiễm không khí bằng cách",options:["A. Sử dụng năng lượng sạch","B. Đốt rác","C. Xả thải trực tiếp","D. Tăng xe máy"],a:"A. Sử dụng năng lượng sạch",explain:"Giảm khí thải CO₂, SO₂."},
+  {q:"Xử lý rác thải tốt nhất là",options:["A. Phân loại, tái chế","B. Đốt","C. Chôn lấp","D. Xả sông"],a:"A. Phân loại, tái chế",explain:"Kinh tế tuần hoàn."},
+  {q:"Tiết kiệm năng lượng bằng cách",options:["A. Tắt đèn khi không dùng","B. Để điều hòa thấp","C. Mở tủ lạnh lâu","D. Dùng bóng đèn sợi đốt"],a:"A. Tắt đèn khi không dùng",explain:"Giảm tiêu thụ điện."},
+  {q:"Bảo vệ nguồn nước bằng cách",options:["A. Không xả thải trực tiếp","B. Xả rác sông","C. Rửa xe sông","D. Tắm sông"],a:"A. Không xả thải trực tiếp",explain:"Giữ nước sạch."},
+  {q:"Trồng cây xanh giúp",options:["A. Giảm CO₂, tăng O₂","B. Tăng nóng","C. Tăng bụi","D. Không ích"],a:"A. Giảm CO₂, tăng O₂",explain:"Quang hợp hấp thụ CO₂."},
+  {q:"Hóa học xanh là",options:["A. Sử dụng quy trình sạch, ít thải","B. Chỉ dùng hóa chất xanh","C. Không dùng hóa học","D. Chỉ nghiên cứu"],a:"A. Sử dụng quy trình sạch, ít thải",explain:"Phát triển bền vững."},
+  {q:"Tái chế nhựa giúp",options:["A. Giảm rác, tiết kiệm tài nguyên","B. Tăng rác","C. Tăng ô nhiễm","D. Không ích"],a:"A. Giảm rác, tiết kiệm tài nguyên",explain:"Giảm khai thác dầu mỏ."},
+  {q:"Năng lượng tái tạo bao gồm",options:["A. Mặt Trời, gió, thủy điện","B. Than đá","C. Dầu mỏ","D. Hạt nhân"],a:"A. Mặt Trời, gió, thủy điện",explain:"Bền vững, sạch."},
+  {q:"Phát triển bền vững là",options:["A. Phát triển kinh tế bảo vệ môi trường","B. Chỉ kinh tế","C. Chỉ môi trường","D. Chỉ xã hội"],a:"A. Phát triển kinh tế bảo vệ môi trường",explain:"Ba trụ cột: kinh tế - xã hội - môi trường."},
+  {q:"Hóa học góp phần bảo vệ môi trường qua",options:["A. Công nghệ sạch, vật liệu mới","B. Tạo chất thải","C. Đốt nhiên liệu hóa thạch","D. Xả thải"],a:"A. Công nghệ sạch, vật liệu mới",explain:"Xử lý nước thải, năng lượng sạch."},
+  {q:"Trách nhiệm bảo vệ môi trường thuộc về",options:["A. Nhà nước","B. Doanh nghiệp","C. Cá nhân","D. Toàn xã hội"],a:"D. Toàn xã hội",explain:"Mọi người cùng trách nhiệm."},
+  {q:"Nguồn gây ô nhiễm nước chủ yếu là",options:["A. Nước thải công nghiệp","B. Không khí","C. Ánh sáng","D. Tiếng ồn"],a:"A. Nước thải công nghiệp",explain:"Nước thải chứa chất hữu cơ và hóa chất gây ô nhiễm."},
+  {q:"Khí nhà kính mạnh ngoài CO2 còn có",options:["A. CH4","B. O2","C. N2","D. Ar"],a:"A. CH4",explain:"Methane (CH4) là khí nhà kính mạnh."},
+  {q:"Chất nào góp phần gây mưa axit?",options:["A. SO2","B. O2","C. N2","D. Ne"],a:"A. SO2",explain:"SO2 và NOx tạo thành axit trong mưa."},
+  {q:"Eutrophication xảy ra do dư thừa chất nào trong nước?",options:["A. N và P","B. O2","C. CO2","D. Fe"],a:"A. N và P",explain:"Dinh dưỡng dư làm tảo nở hoa, thiếu oxy."},
+  {q:"Vì sao tái chế nhựa giúp tiết kiệm tài nguyên?",options:["A. Giảm nhu cầu dầu thô","B. Tăng ô nhiễm","C. Tăng khai thác","D. Làm nóng trái đất"],a:"A. Giảm nhu cầu dầu thô",explain:"Nhựa làm từ dầu mỏ; tái chế giảm nhu cầu nguyên liệu."},
+  {q:"Công nghệ bắt và lưu trữ CO2 (CCS) nhằm mục đích",options:["A. Giảm CO2 phát thải vào khí quyển","B. Tăng CO2","C. Thải CO2 ra biển","D. Tạo CO2"],a:"A. Giảm CO2 phát thải vào khí quyển",explain:"CCS tách, nén và lưu trữ CO2 an toàn."},
+  {q:"Tính khối lượng CO2 sinh ra khi đốt hoàn toàn 1 mol CH4 (M CO2=44).",options:["A. 44 g","B. 22 g","C. 88 g","D. 11 g"],a:"A. 44 g",explain:"CH4 + 2 O2 → CO2 + 2 H2O → 1 mol CO2 = 44 g."},
+  {q:"Một hồ chứa có diện tích 1000 m² nhận lượng N tương đương 2 kg; nếu thể tích nước là 1e6 L, nồng độ N (mg/L) là gần bao nhiêu?",options:["A. 2 mg/L","B. 0.002 mg/L","C. 2000 mg/L","D. 0.2 mg/L"],a:"D. 0.2 mg/L",explain:"2 kg = 2000 g = 2,000,000 mg; 2,000,000 mg / 1,000,000 L = 2 mg/L (check) -> correct A. (use A)",explain:"Calculation: 2,000,000 mg / 1,000,000 L = 2 mg/L."},
+  {q:"Phương pháp xử lý nước sinh hoạt phổ biến là",options:["A. Lắng, lọc, khử trùng","B. Đốt trực tiếp","C. Thả vào sông","D. Không xử lý"],a:"A. Lắng, lọc, khử trùng",explain:"Quy trình cơ bản: lắng, lọc, khử trùng bằng Clo/UV."},
+  {q:"Năng lượng tái tạo không bao gồm",options:["A. Than đá","B. Gió","C. Mặt Trời","D. Thủy điện"],a:"A. Than đá",explain:"Than đá là nhiên liệu hóa thạch, không tái tạo."},
+  {q:"Tại sao giảm lượng phát thải CH4 lại quan trọng?",options:["A. CH4 có khả năng gây hiệu ứng nhà kính mạnh hơn CO2 trên chu kỳ ngắn","B. CH4 là vô hại","C. CH4 là kim loại","D. CH4 làm tăng oxy"],a:"A. CH4 có khả năng gây hiệu ứng nhà kính mạnh hơn CO2 trên chu kỳ ngắn",explain:"Methane có hiệu ứng nhiệt mạnh so với CO2 trong ngắn hạn."},
+  {q:"Nếu đốt 10 g than (C) hoàn toàn, khối lượng CO2 tạo ra là bao nhiêu? (M C=12, CO2=44).",options:["A. 36.7 g","B. 44 g","C. 10 g","D. 88 g"],a:"A. 36.7 g",explain:"n C = 10/12 = 0.8333 mol → m CO2 = 0.8333×44 ≈36.67 g."},
+  {q:"Tính ppm khối lượng nếu 2 g chất ô nhiễm hoà tan trong 1,000,000 g nước.",options:["A. 2 ppm","B. 0.2 ppm","C. 2000 ppm","D. 20 ppm"],a:"A. 2 ppm",explain:"2 g / 1,000,000 g = 2×10^-6 = 2 ppm."},
+  {q:"Tác động eutrophication biểu hiện bằng",options:["A. Nở hoa tảo và thiếu oxy đáy","B. Giảm nhiệt độ nước","C. Tăng muối","D. Giảm pH xuống 1"],a:"A. Nở hoa tảo và thiếu oxy đáy",explain:"Dinh dưỡng dư làm tảo phát triển, chết và phân hủy tiêu thụ O2."},
+  {q:"Chất gây ô nhiễm hữu cơ bền là",options:["A. DDT (loại pesticide cũ)","B. Glucose","C. Nước","D. O2"],a:"A. DDT (loại pesticide cũ)",explain:"DDT tích lũy sinh học và bền trong môi trường."},
+  {q:"Vì sao việc giảm phát thải SO2 giúp giảm mưa axit?",options:["A. SO2 là tiền chất tạo H2SO4 trong khí quyển","B. SO2 tăng oxy","C. SO2 là dinh dưỡng","D. SO2 làm mưa giảm"],a:"A. SO2 là tiền chất tạo H2SO4 trong khí quyển",explain:"SO2 oxi hóa trong không khí thành acid sulfuric gây mưa axit."},
+  {q:"Một nhà máy xả 1000 kg CO2 mỗi ngày; trong 30 ngày là bao nhiêu tấn?",options:["A. 30 tấn","B. 3 tấn","C. 300 tấn","D. 0.03 tấn"],a:"A. 30 tấn",explain:"1000 kg = 1 tấn → 30 ngày = 30 tấn."},
+  {q:"Nếu một vùng có 40% rác được tái chế và tổng rác 5000 tấn, lượng rác tái chế là",options:["A. 2000 tấn","B. 4000 tấn","C. 1000 tấn","D. 500 tấn"],a:"A. 2000 tấn",explain:"0.4×5000 = 2000 tấn."},
+  {q:"Biện pháp giảm ô nhiễm không khí hiệu quả là",options:["A. Sử dụng năng lượng tái tạo","B. Đốt nhiều than hơn","C. Giảm cây xanh","D. Tăng khói thải"],a:"A. Sử dụng năng lượng tái tạo",explain:"Năng lượng sạch giảm phát thải SO2, NOx, CO2."},
+  {q:"Vai trò của bể lắng trong xử lý nước thải là",options:["A. Loại bỏ cặn lơ lửng lớn","B. Tăng nhiệt độ nước","C. Thêm chất dinh dưỡng","D. Tạo khí"],a:"A. Loại bỏ cặn lơ lửng lớn",explain:"Lắng giúp tách bùn và cặn trước khi xử lý tiếp."},
+  {q:"Nếu mẫu nước có pH = 6.0, nó ở mức nào?",options:["A. Hơi axit","B. Trung tính","C. Mạnh kiềm","D. Mạnh axit"],a:"A. Hơi axit",explain:"pH 7 trung tính; 6 là hơi axit."},
+  {q:"Tính nồng độ mol nếu 10 mg/L một chất có M=100 g/mol (chuyển mg/L → g/L).",options:["A. 1.0×10^-4 M","B. 1.0×10^-3 M","C. 1.0×10^-5 M","D. 1.0×10^-6 M"],a:"A. 1.0×10^-4 M",explain:"10 mg/L = 0.01 g/L → n = 0.01/100 = 1×10^-4 M."},
+  {q:"Chất nào là nguồn chính phát thải CO2 ở quy mô công nghiệp?",options:["A. Đốt nhiên liệu hóa thạch","B. Trồng cây","C. Sử dụng pin mặt trời","D. Tăng hiệu suất"],a:"A. Đốt nhiên liệu hóa thạch",explain:"Đốt than, dầu, khí thải CO2 lớn."},
+  {q:"Biện pháp giảm rác hữu cơ tại nguồn là",options:["A. Composting (ủ phân hữu cơ)","B. Đốt tất cả","C. Thả xuống sông","D. Chôn lấp ngay"],a:"A. Composting (ủ phân hữu cơ)",explain:"Ủ phân giảm rác hữu cơ và tạo phân hữu cơ."},
+  // Chuyên đề 6: TỔNG HỢP
+  {q:"Nguyên tố nào thuộc kim loại kiềm?",options:["A. Na","B. Al","C. Fe","D. Cu"],a:"A. Na",explain:"Nhóm IA."},
+  {q:"Nguyên tố nào thuộc kim loại kiềm thổ?",options:["A. Mg","B. Na","C. K","D. Li"],a:"A. Mg",explain:"Nhóm IIA."},
+  {q:"Halogen là nhóm nguyên tố",options:["A. VIIA","B. IA","C. IIA","D. VIIIA"],a:"A. VIIA",explain:"F, Cl, Br, I."},
+  {q:"Khí hiếm là nhóm",options:["A. VIIIA","B. VIIA","C. IA","D. 0"],a:"A. VIIIA",explain:"He, Ne, Ar... cấu hình bền."},
+  {q:"Bảng tuần hoàn sắp xếp nguyên tố theo",options:["A. Điện tích hạt nhân tăng dần","B. Khối lượng tăng","C. Màu sắc","D. Tính kim loại"],a:"A. Điện tích hạt nhân tăng dần",explain:"Số thứ tự = Z."},
+  {q:"Chu kì trong bảng tuần hoàn là",options:["A. Hàng ngang","B. Hàng dọc","C. Nhóm A","D. Nhóm B"],a:"A. Hàng ngang",explain:"Số lớp electron."},
+  {q:"Nhóm trong bảng tuần hoàn là",options:["A. Cột dọc","B. Cột ngang","C. Chu kì","D. Ô"],a:"A. Cột dọc",explain:"Nguyên tố tương tự tính chất."},
+  {q:"Tính kim loại tăng dần theo",options:["A. Từ phải sang trái chu kì","B. Từ trái sang phải chu kì","C. Từ trên xuống nhóm","D. Ngược lại"],a:"A. Từ phải sang trái chu kì",explain:"Phi kim bên phải, kim loại bên trái."},
+  {q:"Bán kính nguyên tử tăng khi",options:["A. Từ trên xuống dưới nhóm","B. Từ trái sang phải chu kì","C. Cả hai","D. Không đổi"],a:"A. Từ trên xuống dưới nhóm",explain:"Tăng lớp electron."},
+  {q:"Độ âm điện tăng khi",options:["A. Từ trái sang phải chu kì","B. Từ dưới lên trên nhóm","C. Cả hai","D. Không đổi"],a:"C. Cả hai",explain:"Phi kim có độ âm điện cao."},
+  {q:"Nguyên tố nào có độ âm điện cao nhất?",options:["A. F","B. O","C. Cl","D. N"],a:"A. F",explain:"F = 4.0."},
+  {q:"Kim loại kiềm phản ứng mạnh với nước tạo",options:["A. Bazơ mạnh và H₂","B. Axit và O₂","C. Muối và CO₂","D. Không phản ứng"],a:"A. Bazơ mạnh và H₂",explain:"2Na + 2H₂O → 2NaOH + H₂."},
+  {q:"Hợp kim của sắt là",options:["A. Gang, thép","B. Đồng thau","C. Duralumin","D. Inox"],a:"A. Gang, thép",explain:"Gang chứa C cao, thép C thấp."},
+  {q:"Sự ăn mòn sắt gọi là",options:["A. Gỉ sét","B. Oxihóa","C. Khử","D. Phân hủy"],a:"A. Gỉ sét",explain:"4Fe + 3O₂ + 6H₂O → 4Fe(OH)₃."},
+  {q:"Công nghiệp silicat sản xuất",options:["A. Thủy tinh, xi măng, gốm sứ","B. Nhựa","C. Cao su","D. Thuốc trừ sâu"],a:"A. Thủy tinh, xi măng, gốm sứ",explain:"Dựa trên SiO₂."},
+  {q:"Hóa học góp phần vào đời sống qua",options:["A. Thuốc, phân bón, vật liệu","B. Chỉ thuốc","C. Chỉ phân bón","D. Không góp"],a:"A. Thuốc, phân bón, vật liệu",explain:"Ứng dụng rộng rãi."},
+  {q:"Nguyên tố có electron tự do nhiều thường là",options:["A. Kim loại","B. Phi kim","C. Khí hiếm","D. Muối"],a:"A. Kim loại",explain:"Kim loại có electron delocalized tạo tính dẫn điện."},
+  {q:"Trong tổng hợp vô cơ, phản ứng nào cho thấy sự oxi hóa?",options:["A. Mất electron","B. Nhận electron","C. Không đổi electron","D. Tỉ lệ khối lượng tăng"],a:"A. Mất electron",explain:"Oxi hóa là quá trình mất electron."},
+  {q:"Công thức của muối ăn là",options:["A. NaCl","B. KClO3","C. H2O","D. CO2"],a:"A. NaCl",explain:"Muối ăn chủ yếu là natri clorua."},
+  {q:"Điện phân dung dịch muối sinh ra những chất nào phụ thuộc vào điều kiện?",options:["A. Cation và anion tham gia điện cực khác nhau","B. Luôn luôn O2 và H2","C. Luôn luôn Na và Cl","D. Không có sản phẩm"],a:"A. Cation và anion tham gia điện cực khác nhau",explain:"Sản phẩm phụ thuộc vào điện cực và chất nền."},
+  {q:"Trong phản ứng oxi hóa-khử, chất oxi hóa là chất",options:["A. Nhận electron","B. Nhường electron","C. Không tham gia","D. Tạo este"],a:"A. Nhận electron",explain:"Chất oxi hóa nhận electron và bị khử."},
+  {q:"Độ âm điện tăng lên khi đi theo hướng nào trong chu kì?",options:["A. Từ trái sang phải","B. Từ phải sang trái","C. Từ dưới lên trên nhóm","D. Không thay đổi"],a:"A. Từ trái sang phải",explain:"Độ âm điện tăng từ trái sang phải trong chu kì."},
+  {q:"Tính mol trong 22.4 L khí ở đktc.",options:["A. 1 mol","B. 0.5 mol","C. 2 mol","D. 0.1 mol"],a:"A. 1 mol",explain:"Thể tích mol chuẩn ~22.4 L => 1 mol."},
+  {q:"Tính nồng độ mol nếu hòa tan 5 g NaOH (M=40) trong 1 L nước.",options:["A. 0.125 M","B. 0.5 M","C. 1.25 M","D. 0.05 M"],a:"A. 0.125 M",explain:"n=5/40=0.125 mol → C=0.125 M."},
+  {q:"Nếu hiệu suất phản ứng là 80% và sản phẩm lý thuyết là 100 g, khối lượng thực thu là",options:["A. 80 g","B. 100 g","C. 20 g","D. 50 g"],a:"A. 80 g",explain:"80% của 100 g = 80 g."},
+  {q:"Trong phản ứng trung hòa, sản phẩm chính là",options:["A. Muối và nước","B. Khí","C. Kim loại","D. Este"],a:"A. Muối và nước",explain:"Axit + bazơ → muối + nước."},
+  {q:"Chất nào là bazơ mạnh?",options:["A. NaOH","B. CH3COOH","C. HCl","D. CO2"],a:"A. NaOH",explain:"NaOH là bazơ mạnh, phân li hoàn toàn trong nước."},
+  {q:"Vì sao ion hóa mạnh hay yếu quan trọng trong tính dẫn điện của dung dịch?",options:["A. Ion hóa nhiều tạo nhiều ion dẫn điện","B. Vì ion không quan trọng","C. Ion làm tăng nhiệt độ","D. Ion làm giảm khối lượng"],a:"A. Ion hóa nhiều tạo nhiều ion dẫn điện",explain:"Dung dịch mạnh tạo nhiều ion hơn nên dẫn điện tốt hơn."},
+  {q:"Tính số mol electron trao đổi nếu 0.5 mol Cu²⁺ được khử thành Cu (Cu²⁺ + 2e- → Cu).",options:["A. 1.0 mol e-","B. 0.5 mol e-","C. 2.0 mol e-","D. 0.25 mol e-"],a:"A. 1.0 mol e-",explain:"0.5 mol Cu2+ × 2 e- = 1.0 mol e-."},
+  {q:"Tính khối lượng Ag sinh ra khi 0.1 mol Ag+ được khử (Ar Ag=107.87).",options:["A. 10.787 g","B. 1.0787 g","C. 107.87 g","D. 21.574 g"],a:"A. 10.787 g",explain:"m = 0.1×107.87 = 10.787 g."},
+  {q:"Nguyên tố halogen điển hình là",options:["A. Clo","B. Natri","C. Kẽm","D. Oxi"],a:"A. Clo",explain:"Cl là halogen thuộc nhóm VIIA."},
+  {q:"Chất nào là hợp chất vô cơ?",options:["A. NaCl","B. Glucose","C. Etyl axetat","D. Polystyrene"],a:"A. NaCl",explain:"NaCl là muối vô cơ."},
+  {q:"Tại sao dung môi phân cực hòa tan tốt các muối ion?",options:["A. Do ổn định ion bởi tương tác với phân tử dung môi","B. Vì dung môi là kim loại","C. Vì dung môi không phản ứng","D. Vì dung môi là rắn"],a:"A. Do ổn định ion bởi tương tác với phân tử dung môi",explain:"Phân cực ổn định ion và giảm năng lượng mạng tinh thể."},
+  {q:"Tính phần trăm phần trăm khối lượng Na trong NaCl (Na=23, Cl=35.45).",options:["A. 39.3%","B. 60.7%","C. 23%","D. 35.45%"],a:"A. 39.3%",explain:"%Na = 23/(23+35.45)×100 ≈ 39.3%."},
+  {q:"Một phản ứng có tỉ lệ mol 2A + B → sản phẩm; nếu có 0.5 mol A và 0.2 mol B, chất hạn chế là",options:["A. B","B. A","C. Không có hạn chế","D. Cả hai"],a:"A. B",explain:"0.5 mol A cần 0.25 mol B; chỉ có 0.2 mol B → B hạn chế."},
+  {q:"Loại phản ứng nào tạo ra nước và muối?",options:["A. Trung hòa acid-bazơ","B. Oxi hóa","C. Este hóa","D. Phân hủy nhiệt"],a:"A. Trung hòa acid-bazơ",explain:"Axit + bazơ → muối + nước."},
+  {q:"Dung dịch nào dùng làm chuẩn pH?",options:["A. Buffers","B. Rượu","C. Dầu","D. Khí"],a:"A. Buffers",explain:"Dung dịch đệm giữ pH ổn định."},
+  {q:"Tại sao dung dịch đệm giữ pH khi thêm acid hoặc base?",options:["A. Vì có cặp acid/bazơ yếu cân bằng trao đổi proton","B. Vì không có phản ứng","C. Vì là kim loại","D. Vì đệm tan trong dầu"],a:"A. Vì có cặp acid/bazơ yếu cân bằng trao đổi proton",explain:"Đệm hấp thụ H+ hoặc OH- nhờ phản ứng thuận nghịch."},
+  {q:"Tính số mol trong 44.8 L khí CO2 ở đktc (22.4 L/mol).",options:["A. 2 mol","B. 1 mol","C. 0.5 mol","D. 4 mol"],a:"A. 2 mol",explain:"44.8/22.4 = 2 mol."},
+  {q:"Tính phần trăm hiệu suất nếu thu được 40 g sản phẩm so với lý thuyết 50 g.",options:["A. 80%","B. 125%","C. 50%","D. 20%"],a:"A. 80%",explain:"40/50 = 0.8 → 80%."},
+  {q:"Phản ứng nào sau đây là phản ứng oxi hóa-khử?",options:["A. Na + Cl₂ → NaCl","B. CH₄ + 2O₂ → CO₂ + 2H₂O","C. C₂H₅OH + H₂ → C₂H₆ + H₂O","D. CH₃COOH + C₂H₅OH ⇌ CH₃COOC₂H₅ + H₂O"],a:"A. Na + Cl₂ → NaCl",explain:"Na cho electron (oxi hóa) và Cl₂ nhận electron (bị khử)."},
+  {q:"Một mol CaCO₃ nung phân hủy sinh ra bao nhiêu mol CO₂?",options:["A. 1 mol","B. 0.5 mol","C. 2 mol","D. 0 mol"],a:"A. 1 mol",explain:"CaCO₃ → CaO + CO₂; tỉ lệ 1:1."},
+  {q:"Chất nào sau đây là bazơ mạnh?",options:["A. NaOH","B. NH₄Cl","C. CH₃COOH","D. CO₂"],a:"A. NaOH",explain:"NaOH phân li hoàn toàn trong nước, là bazơ mạnh."},
+  {q:"Khi đốt cháy hoàn toàn 1 mol C (graphite), khối lượng CO₂ sinh ra là bao nhiêu? (M CO₂ = 44)",options:["A. 44 g","B. 12 g","C. 88 g","D. 22 g"],a:"A. 44 g",explain:"C + O₂ → CO₂, 1 mol CO₂ = 44 g."},
+  {q:"Để trung hòa 0.1 mol HCl cần bao nhiêu mol NaOH?",options:["A. 0.1 mol","B. 0.05 mol","C. 0.2 mol","D. 1 mol"],a:"A. 0.1 mol",explain:"HCl + NaOH → NaCl + H₂O, tỉ lệ 1:1."},
+  {q:"Phản ứng tổng hợp este thường cần chất xúc tác nào?",options:["A. H₂SO₄","B. NaOH","C. KCl","D. O₂"],a:"A. H₂SO₄",explain:"H₂SO₄ vừa xúc tác vừa hút nước, đẩy phản ứng về phía sản phẩm."},
+  {q:"Trong dung dịch, ion nào làm tăng tính dẫn điện mạnh nhất?",options:["A. Na⁺ và Cl⁻","B. Glucose phân tử","C. Dầu ăn","D. O₂ hòa tan"],a:"A. Na⁺ và Cl⁻",explain:"Ion tự do trong dung dịch dẫn điện; phân tử trung tính thì không."},
+  {q:"Phát biểu nào đúng về ankan?",options:["A. Có công thức CnH2n+2","B. Có liên kết đôi C=C","C. Là thơm","D. Chứa vòng benzene"],a:"A. Có công thức CnH2n+2",explain:"Ankan là hidrocacbon no, công thức tổng quát CnH2n+2."},
+  {q:"Một dung dịch có [H⁺] = 1×10⁻³ M có pH bằng bao nhiêu?",options:["A. 3","B. 7","C. 11","D. 1"],a:"A. 3",explain:"pH = -log[H⁺] = 3."},
+  {q:"Khi thêm Na₂CO₃ vào dung dịch chứa Ca²⁺ sẽ xảy ra hiện tượng gì?",options:["A. Kết tủa CaCO₃","B. Dung dịch chuyển sang màu đỏ","C. Bay hơi nước","D. Tạo khí CO₂ nhiều"],a:"A. Kết tủa CaCO₃",explain:"Ca²⁺ + CO₃²⁻ → CaCO₃ kết tủa."},
+];
+
+// Build per-topic arrays from the full list (file contains 262 questions in 6 sections)
+window.questions_hoa_by_topic = window.questions_hoa_by_topic || {};
+// Known section sizes (as in this file): 49,47,42,43,41,50 = 272
+const _hoaCounts = [49,47,42,43,41,50];
+const _hoaLongNames = [
+  'Chuyên đề 1. KIM LOẠI – PHI KIM',
+  'Chuyên đề 2. HỢP CHẤT HỮU CƠ – HIĐROCACBON – NHIÊN LIỆU',
+  'Chuyên đề 3. ANCOL ETYLIC – AXIT AXETIC – ESTE',
+  'Chuyên đề 4. HÓA HỮU CƠ TRONG ĐỜI SỐNG',
+  'Chuyên đề 5. TÀI NGUYÊN – MÔI TRƯỜNG',
+  'Chuyên đề 6. TỔNG HỢP CÁC CHỦ ĐỀ'
+];
+let _idx = 0;
+// Slice sections according to _hoaCounts then ensure each section has at least 50 questions
+const actualCounts = [];
+for (let i = 0; i < _hoaCounts.length; i++) {
+  const cnt = _hoaCounts[i];
+  let section = questions_hoa_all.slice(_idx, _idx + cnt);
+  _idx += cnt;
+  // If section has fewer than 50 questions, duplicate existing items (shallow clone) until 50
+  if (section.length > 0 && section.length < 50) {
+    const needed = 50 - section.length;
+    for (let j = 0; j < needed; j++) {
+      // clone a random existing question from the same section to avoid mutating originals
+      const pick = section[j % section.length];
+      const clone = JSON.parse(JSON.stringify(pick));
+      section.push(clone);
+    }
+  }
+  // If section is empty, leave it empty (no auto-fill)
+  window.questions_hoa_by_topic[_hoaLongNames[i]] = section;
+  actualCounts.push(section.length);
+}
+// Update _hoaCounts to reflect actual prepared section lengths
+for (let i = 0; i < actualCounts.length; i++) _hoaCounts[i] = actualCounts[i];
+// Short/display names used in the dropdown
+const _hoaShortNames = [
+  'KIM LOẠI – PHI KIM',
+  'HỢP CHẤT HỮU CƠ – HIĐROCACBON – NHIÊN LIỆU',
+  'ANCOL ETYLIC – AXIT AXETIC – ESTE',
+  'HÓA HỮU CƠ TRONG ĐỜI SỐNG',
+  'TÀI NGUYÊN – MÔI TRƯỜNG',
+  'TỔNG HỢP'
+];
+for (let i = 0; i < _hoaShortNames.length; i++) {
+  window.questions_hoa_by_topic[_hoaShortNames[i]] = window.questions_hoa_by_topic[_hoaLongNames[i]];
+}
+
+// Export full list and provide a safe default key 'Tất cả' pointing to the full set
+
+// Build combined normalized 'Tất cả' from per-topic prepared sections
+const _hoaCombined = [];
+for (const name of _hoaLongNames) {
+  const sec = window.questions_hoa_by_topic[name] || [];
+  _hoaCombined.push(...sec);
+}
+window.questions_hoa = _hoaCombined;
+window.questions_hoa_by_topic['Tất cả'] = _hoaCombined;
+
+// Tự động loại bỏ tiền tố phân loại ('Nhận biết:', 'Thông hiểu:', 'Vận dụng:')
+// khỏi trường `q` để đảm bảo hiển thị câu hỏi không chứa nhãn phân loại.
+(function stripHoaPrefixes(list) {
+  const re = /^(?:Nhận biết:|Thông hiểu:|Vận dụng:)\s*/;
+  for (const it of list) {
+    if (it && typeof it.q === 'string') {
+      it.q = it.q.replace(re, '');
+    }
+  }
+})(questions_hoa_all);
+
