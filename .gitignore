@@ -1,0 +1,13 @@
+# Ignore common OS/editor files
+.vscode/
+.DS_Store
+Thumbs.db
+node_modules/
+*.log
+.env
+
+# Editor temp
+*.tmp
+
+# Windows thumbnails
+desktop.ini
