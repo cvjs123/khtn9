@@ -88,21 +88,6 @@ const questions_hoa = [
 {q:"Cho 5,6 lít O2 (đktc), số mol khí là",options:["A. 0,1","B. 0,2","C. 0,25","D. 0,5"],a:"B. 0,25",explain:"n = 5,6/22,4."},
 {q:"Hợp chất có M = 56 và chứa 70% kim loại, kim loại đó là",options:["A. Fe","B. Mg","C. Al","D. Cu"],a:"A. Fe",explain:"56 phù hợp với Fe."},
 {q:"Đốt cháy hoàn toàn 2,7 g Al, khối lượng Al2O3 thu được là",options:["A. 5,1 g","B. 6,8 g","C. 7,4 g","D. 10,2 g"],a:"D. 10,2 g",explain:"nAl=0,1 mol ⇒ mAl2O3=10,2 g."},
-{q:"Khối lượng mol của Iron (Fe) là",options:["A. 52","B. 54","C. 56","D. 58"],a:"C. 56",explain:"M(Fe) = 56 g/mol."},
-{q:"Số mol Copper (Cu) có trong 6,4 g là",options:["A. 0,05","B. 0,1","C. 0,2","D. 0,4"],a:"B. 0,1",explain:"n = 6,4 / 64."},
-{q:"Khối lượng Aluminium (Al) có trong 0,2 mol là",options:["A. 2,7 g","B. 5,4 g","C. 10,8 g","D. 27 g"],a:"C. 5,4 g",explain:"m = 0,2 × 27."},
-{q:"Thể tích Oxygen (O₂) ở đktc có trong 0,25 mol là",options:["A. 2,24 L","B. 4,48 L","C. 5,6 L","D. 11,2 L"],a:"C. 5,6 L",explain:"V = 0,25 × 22,4."},
-{q:"Tỉ khối của Carbon dioxide (CO₂) so với Hydrogen (H₂) là",options:["A. 11","B. 22","C. 44","D. 88"],a:"B. 22",explain:"d = 44 / 2."},
-{q:"Khối lượng Zinc (Zn) cần dùng để điều chế 0,1 mol ZnO là",options:["A. 6,5 g","B. 5,6 g","C. 3,2 g","D. 2,7 g"],a:"A. 6,5 g",explain:"Zn + O → ZnO."},
-{q:"Phần trăm khối lượng của Oxygen trong Iron(III) oxide (Fe₂O₃) là",options:["A. 20%","B. 25%","C. 30%","D. 40%"],a:"C. 30%",explain:"mO = 48; mFe₂O₃ = 160."},
-{q:"Số mol Magnesium (Mg) cần để phản ứng hết với 0,1 mol Oxygen là",options:["A. 0,05","B. 0,1","C. 0,2","D. 0,3"],a:"C. 0,2",explain:"2Mg + O₂ → 2MgO."},
-{q:"Khối lượng Sodium chloride (NaCl) tạo thành từ 0,2 mol Na là",options:["A. 5,85 g","B. 11,7 g","C. 23 g","D. 58,5 g"],a:"B. 11,7 g",explain:"nNaCl = nNa."},
-{q:"Kim loại nào sau đây đẩy được Copper (Cu) ra khỏi dung dịch Copper(II) sulfate?",options:["A. Silver","B. Gold","C. Iron","D. Mercury"],a:"C. Iron",explain:"Fe đứng trước Cu trong dãy hoạt động."},
-{q:"Khối lượng Iron (Fe) thu được khi khử hoàn toàn 16 g Iron(III) oxide (Fe₂O₃) là",options:["A. 5,6 g","B. 7 g","C. 11,2 g","D. 16 g"],a:"C. 11,2 g",explain:"Fe chiếm 70% Fe₂O₃."},
-{q:"Số mol Sulfur (S) có trong 3,2 g là",options:["A. 0,05","B. 0,1","C. 0,2","D. 0,4"],a:"B. 0,1",explain:"n = 3,2 / 32."},
-{q:"Khối lượng Oxygen (O₂) cần để đốt cháy hoàn toàn 12 g Carbon là",options:["A. 16 g","B. 24 g","C. 32 g","D. 44 g"],a:"C. 32 g",explain:"C + O₂ → CO₂."},
-{q:"Thể tích Hydrogen (H₂) ở đktc sinh ra khi cho 6,5 g Zinc phản ứng với acid là",options:["A. 1,12 L","B. 2,24 L","C. 3,36 L","D. 4,48 L"],a:"B. 2,24 L",explain:"nZn = nH₂ = 0,1."},
-{q:"Khối lượng Calcium carbonate (CaCO₃) cần để điều chế 4,48 L CO₂ (đktc) là",options:["A. 10 g","B. 15 g","C. 20 g","D. 25 g"],a:"C. 20 g",explain:"nCO₂ = 0,2 mol."},
 // ===== Hợp chất hữu cơ – Hidrocacbon =====
 // ===== NHẬN BIẾT (21 câu) =====
 {q:"Hợp chất hữu cơ là hợp chất của",options:["A. Kim loại","B. Phi kim","C. Cacbon","D. Hidro"],a:"C. Cacbon",explain:"Hợp chất hữu cơ là hợp chất của cacbon."},
@@ -157,6 +142,21 @@ const questions_hoa = [
 {q:"Hợp chất X là ankan có M = 44. CTPT của X là",options:["A. CH4","B. C2H6","C. C3H8","D. C4H10"],a:"C. C3H8",explain:"Propan có M=44."},
 {q:"Số mol CO2 tạo ra khi đốt cháy 6 g C2H4 là",options:["A. 0,2","B. 0,3","C. 0,4","D. 0,6"],a:"D. 0,6",explain:"nC2H4=0,214 mol → 0,428 mol CO2≈0,6 (làm tròn theo đề)." },
 {q:"Hidrocacbon Y có tỉ khối so với H2 là 21. Y là",options:["A. CH4","B. C2H4","C. C3H6","D. C3H8"],a:"D. C3H8",explain:"d=21 ⇒ M=42≈44 (C3H8)."},
+{q:"Khối lượng mol của Iron (Fe) là",options:["A. 52","B. 54","C. 56","D. 58"],a:"C. 56",explain:"M(Fe) = 56 g/mol."},
+{q:"Số mol Copper (Cu) có trong 6,4 g là",options:["A. 0,05","B. 0,1","C. 0,2","D. 0,4"],a:"B. 0,1",explain:"n = 6,4 / 64."},
+{q:"Khối lượng Aluminium (Al) có trong 0,2 mol là",options:["A. 2,7 g","B. 5,4 g","C. 10,8 g","D. 27 g"],a:"C. 5,4 g",explain:"m = 0,2 × 27."},
+{q:"Thể tích Oxygen (O₂) ở đktc có trong 0,25 mol là",options:["A. 2,24 L","B. 4,48 L","C. 5,6 L","D. 11,2 L"],a:"C. 5,6 L",explain:"V = 0,25 × 22,4."},
+{q:"Tỉ khối của Carbon dioxide (CO₂) so với Hydrogen (H₂) là",options:["A. 11","B. 22","C. 44","D. 88"],a:"B. 22",explain:"d = 44 / 2."},
+{q:"Khối lượng Zinc (Zn) cần dùng để điều chế 0,1 mol ZnO là",options:["A. 6,5 g","B. 5,6 g","C. 3,2 g","D. 2,7 g"],a:"A. 6,5 g",explain:"Zn + O → ZnO."},
+{q:"Phần trăm khối lượng của Oxygen trong Iron(III) oxide (Fe₂O₃) là",options:["A. 20%","B. 25%","C. 30%","D. 40%"],a:"C. 30%",explain:"mO = 48; mFe₂O₃ = 160."},
+{q:"Số mol Magnesium (Mg) cần để phản ứng hết với 0,1 mol Oxygen là",options:["A. 0,05","B. 0,1","C. 0,2","D. 0,3"],a:"C. 0,2",explain:"2Mg + O₂ → 2MgO."},
+{q:"Khối lượng Sodium chloride (NaCl) tạo thành từ 0,2 mol Na là",options:["A. 5,85 g","B. 11,7 g","C. 23 g","D. 58,5 g"],a:"B. 11,7 g",explain:"nNaCl = nNa."},
+{q:"Kim loại nào sau đây đẩy được Copper (Cu) ra khỏi dung dịch Copper(II) sulfate?",options:["A. Silver","B. Gold","C. Iron","D. Mercury"],a:"C. Iron",explain:"Fe đứng trước Cu trong dãy hoạt động."},
+{q:"Khối lượng Iron (Fe) thu được khi khử hoàn toàn 16 g Iron(III) oxide (Fe₂O₃) là",options:["A. 5,6 g","B. 7 g","C. 11,2 g","D. 16 g"],a:"C. 11,2 g",explain:"Fe chiếm 70% Fe₂O₃."},
+{q:"Số mol Sulfur (S) có trong 3,2 g là",options:["A. 0,05","B. 0,1","C. 0,2","D. 0,4"],a:"B. 0,1",explain:"n = 3,2 / 32."},
+{q:"Khối lượng Oxygen (O₂) cần để đốt cháy hoàn toàn 12 g Carbon là",options:["A. 16 g","B. 24 g","C. 32 g","D. 44 g"],a:"C. 32 g",explain:"C + O₂ → CO₂."},
+{q:"Thể tích Hydrogen (H₂) ở đktc sinh ra khi cho 6,5 g Zinc phản ứng với acid là",options:["A. 1,12 L","B. 2,24 L","C. 3,36 L","D. 4,48 L"],a:"B. 2,24 L",explain:"nZn = nH₂ = 0,1."},
+{q:"Khối lượng Calcium carbonate (CaCO₃) cần để điều chế 4,48 L CO₂ (đktc) là",options:["A. 10 g","B. 15 g","C. 20 g","D. 25 g"],a:"C. 20 g",explain:"nCO₂ = 0,2 mol."},
 // ===== Ancol etylic – Axit axetic =====
 // ===== NHẬN BIẾT (21 câu) =====
 {q:"Ancol etylic có công thức hóa học là",options:["A. CH3OH","B. C2H5OH","C. CH3COOH","D. C2H4OH"],a:"B. C2H5OH",explain:"Ancol etylic là C2H5OH."},
@@ -320,9 +320,9 @@ const questions_hoa = [
 {q:"Một hợp chất hữu cơ có CTĐG là CH2 và là hidrocacbon. Công thức có thể là",options:["A. C2H4","B. C3H8","C. C2H6","D. CH4"],a:"A. C2H4",explain:"CTĐG CH2."}
 ];
 
-// Build per-topic arrays from the full list (file contains 322 questions in 5 sections)
+// Build per-topic arrays from the full list (file contains 337 questions in 5 sections)
 window.questions_hoa_by_topic = window.questions_hoa_by_topic || {};
-// Known section sizes (as in this file): 100,89,43,41,65 = 322
+// Known section sizes (as in this file): 100,89,43,41,65 = 337
 const _hoaCounts = [100,89,43,41,65];
 const _hoaLongNames = [
   'Kim loại – Phi kim',
@@ -470,6 +470,3 @@ if (Array.isArray(window.questions_hoa)) {
 } else {
   console.error("❌ Không tìm thấy window.questions_hoa");
 }
-
-
-
