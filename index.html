@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ôn Tập KHTN Lớp 9 - Thi Vào 10</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="https://uxwing.com/wp-content/themes/uxwing/download/education-school/graduation-cap-icon.svg" type="image/svg+xml">
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-ch3.js"></script>
+</head>
+<body>
+
+    <div class="header">
+        <div class="header-inner d-flex align-items-center justify-content-center px-4">
+            <div class="brand d-flex align-items-center">
+                <div class="brand-badge me-3"><i class="fas fa-graduation-cap"></i></div>
+                <div>
+                    <h1 class="app-title mb-0" data-text="ÔN TẬP KHTN LỚP 9">Ôn Tập <span class="accent">KHTN Lớp 9</span></h1>
+                    <p class="slogan mb-0">Thử thách 30 ngày — Chinh phục 3 môn, giành điểm mơ ước!</p>
+                </div>
+            </div>
+            <div class="ms-3 d-flex align-items-center">
+                <button id="soundToggle" class="btn btn-sm btn-light me-2" title="Bật/Tắt hiệu ứng">
+                    <i class="fas fa-volume-up"></i>
+                </button>
+                <button id="bgToggle" class="btn btn-sm btn-light" title="Bật/Tắt nhạc nền">
+                    <i class="fas fa-music"></i>
+                </button>
+                <div id="userArea" class="ms-3 d-flex align-items-center">
+                    <button class="btn btn-sm btn-light" onclick="openAuthModal('login')">Đăng nhập</button>
+                    <button class="btn btn-sm btn-primary ms-2" onclick="openAuthModal('register')">Đăng ký</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SIDEBAR TRÁI -->
+    <div class="sidebar sidebar-left">
+        <div class="p-4">
+            <h5 class="text-primary mb-2"><i class="fas fa-newspaper me-2"></i>Tin tức</h5>
+            <div class="list-group list-group-flush mb-3" id="newsList"></div>
+            <p><a href="pages/news.html" class="btn btn-sm btn-outline-primary">Xem thêm Tin tức</a></p>
+
+            <hr>
+
+            <h5 class="text-success mb-2"><i class="fas fa-lightbulb me-2"></i>Mẹo hay</h5>
+            <div class="list-group list-group-flush mb-3" id="tipsList"></div>
+            <p><a href="pages/tips.html" class="btn btn-sm btn-outline-success">Xem thêm Mẹo hay</a></p>
+
+            <hr>
+
+            <h5 class="text-success mb-3"><i class="fas fa-trophy me-2"></i>Bảng Đua Top</h5>
+            <ol class="list-group list-group-numbered" id="leaderboard"></ol>
+        </div>
+    </div>
+
+    <!-- SIDEBAR PHẢI -->
+    <div class="sidebar sidebar-right">
+        <div class="p-4">
+            <h5 class="text-info mb-4 text-center"><i class="fas fa-chart-line me-2"></i>Tiến Độ Học Tập</h5>
+            <div id="progressBars">
+                <div class="mb-4">
+                    <div class="d-flex justify-content-between mb-1"><span>Vật Lý</span><span id="lyPercent">0%</span></div>
+                    <div class="small text-muted mb-1" id="lyCountLabel">0/0</div>
+                    <div class="progress" style="height:20px;"><div id="lyBar" class="progress-bar bg-danger" style="width:0%">0%</div></div>
+                </div>
+                <div class="mb-4">
+                    <div class="d-flex justify-content-between mb-1"><span>Hóa Học</span><span id="hoaPercent">0%</span></div>
+                    <div class="small text-muted mb-1" id="hoaCountLabel">0/0</div>
+                    <div class="progress" style="height:20px;"><div id="hoaBar" class="progress-bar bg-success" style="width:0%">0%</div></div>
+                </div>
+                <div class="mb-4">
+                    <div class="d-flex justify-content-between mb-1"><span>Sinh Học</span><span id="sinhPercent">0%</span></div>
+                    <div class="small text-muted mb-1" id="sinhCountLabel">0/0</div>
+                    <div class="progress" style="height:20px;"><div id="sinhBar" class="progress-bar bg-warning text-dark" style="width:0%">0%</div></div>
+                </div>
+            </div>
+            <hr>
+            <p class="text-center"><strong id="totalProgress">Tổng tiến độ: 0%</strong></p>
+            <p class="text-center mb-2"><strong id="bestScore">Điểm cao nhất: 0</strong></p>
+            <p class="text-center"><strong id="achievements">Huy hiệu: Chưa có</strong></p>
+
+            <hr>
+
+            <!-- Chatbot trợ giúp nhanh -->
+            <div id="chatbotWidget" class="p-2">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                    <h6 class="mb-0"><i class="fas fa-robot me-2"></i>Trợ lý học tập</h6>
+                    <button id="chatbotToggle" class="btn btn-sm btn-outline-secondary">Thu nhỏ</button>
+                </div>
+                <div id="chatbotPanel">
+                    <div id="chatbotMessages" class="border rounded bg-white p-2 mb-2" style="height:220px; overflow:auto;"></div>
+                    <div class="d-flex">
+                        <input id="chatbotInput" class="form-control" placeholder="Hỏi về bảng tan, bảng tuần hoàn, mẹo..." />
+                        <button id="chatbotSend" class="btn btn-sm btn-primary ms-2">Gửi</button>
+                    </div>
+                    <small class="text-muted">Chatbot online: hỏi về bảng tan, bảng tuần hoàn, mẹo...</small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="main-content">
+        <div class="container py-5">
+            <div class="options-grid" id="mainMenu">
+                <!-- Ô 1 -->
+                <div class="card card-option h-100 shadow-lg bg-white">
+                    <div class="card-body text-center p-5">
+                        <h3 class="card-title text-primary"><i class="fas fa-book fa-2x mb-3"></i><br>Ôn Lý Thuyết</h3>
+                        <p class="card-text">Tóm tắt kiến thức 3 môn</p>
+                        <button class="btn btn-outline-primary btn-lg mt-auto" onclick="window.location.href='pages/ly-thuyet.html'">Bắt đầu</button>
+                    </div>
+                </div>
+                <!-- Ô 2 -->
+                <div class="card card-option h-100 shadow-lg bg-white">
+                    <div class="card-body text-center p-5">
+                        <h3 class="card-title text-danger"><i class="fas fa-bolt fa-2x mb-3"></i><br>Vật Lý</h3>
+                        <p class="card-text">Trắc nghiệm theo chủ đề</p>
+                        <button class="btn btn-danger btn-lg mt-auto" onclick="showSubjectOptions('ly')">Bắt đầu</button>
+                    </div>
+                </div>
+                <!-- Ô 3 -->
+                <div class="card card-option h-100 shadow-lg bg-white">
+                    <div class="card-body text-center p-5">
+                        <h3 class="card-title text-success"><i class="fas fa-flask fa-2x mb-3"></i><br>Hóa Học</h3>
+                        <p class="card-text">Trắc nghiệm theo chủ đề</p>
+                        <button class="btn btn-success btn-lg mt-auto" onclick="showSubjectOptions('hoa')">Bắt đầu</button>
+                    </div>
+                </div>
+                <!-- Ô 4 -->
+                <div class="card card-option h-100 shadow-lg bg-white">
+                    <div class="card-body text-center p-5">
+                        <h3 class="card-title text-warning"><i class="fas fa-dna fa-2x mb-3"></i><br>Sinh Học</h3>
+                        <p class="card-text">Trắc nghiệm theo chủ đề</p>
+                        <button class="btn btn-warning btn-lg mt-auto text-dark" onclick="showSubjectOptions('sinh')">Bắt đầu</button>
+                    </div>
+                </div>
+                <!-- Ô 5 -->
+                <div class="card card-option h-100 shadow-lg bg-white">
+                    <div class="card-body text-center p-5">
+                        <h3 class="card-title text-info"><i class="fas fa-file-alt fa-2x mb-3"></i><br>Thi Thử Tổ Hợp</h3>
+                        <p class="card-text">40 câu, 90 phút</p>
+                        <button class="btn btn-info btn-lg mt-auto" onclick="startFullExam()">Bắt đầu thi</button>
+                    </div>
+                </div>
+                <!-- Ô 6 -->
+                <div class="card card-option h-100 shadow-lg bg-white">
+                    <div class="card-body text-center p-5">
+                        <h3 class="card-title text-secondary"><i class="fas fa-bolt-lightning fa-2x mb-3"></i><br>Ôn Nhanh Flashcard</h3>
+                        <p class="card-text">Công thức, mẹo nhớ nhanh</p>
+                        <button class="btn btn-secondary btn-lg mt-auto" onclick="window.location.href='pages/flashcard.html'">Bắt đầu</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="contentArea" class="mt-5"></div>
+            <!-- Mobile: show news & tips when sidebars are hidden -->
+            <div id="mobileNewsTips" class="mobile-only mt-4">
+                <h5 class="text-primary mb-2"><i class="fas fa-newspaper me-2"></i>Tin tức</h5>
+                <div class="list-group list-group-flush mb-3" id="mobileNewsList"></div>
+                <h5 class="text-success mb-2 mt-3"><i class="fas fa-lightbulb me-2"></i>Mẹo vặt</h5>
+                <div class="list-group list-group-flush mb-3" id="mobileTipsList"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        © 2026 - Trang ôn tập KHTN miễn phí cho học sinh lớp 9
+    </div>
+
+    <!-- Âm thanh: dùng file trong thư mục sounds/ -->
+    <audio id="correctSound"><source src="sounds/correct.mp3" type="audio/mpeg"></audio>
+    <audio id="wrongSound"><source src="sounds/wrong.mp3" type="audio/mpeg"></audio>
+    <audio id="successSound"><source src="sounds/completion.mp3" type="audio/mpeg"></audio>
+    <!-- clickSound removed to disable click audio globally -->
+    <audio id="completionMusic"><source src="sounds/completion.mp3" type="audio/mpeg"></audio>
+    <audio id="encourageSound"><source src="sounds/encourage.mp3" type="audio/mpeg"></audio>
+    <audio id="bgMusic" loop><source src="sounds/background.mp3" type="audio/mpeg"></audio>
+
+    <!-- Modal chủ đề & số câu -->
+    <div id="subjectModal" class="khtn-modal" style="display:none;">
+        <div class="khtn-modal-backdrop" onclick="closeSubjectModal()"></div>
+        <div class="khtn-modal-dialog">
+            <div class="khtn-modal-header">
+                <h5 id="subjectModalTitle">Chọn cấu hình ôn tập</h5>
+                <button class="khtn-modal-close" onclick="closeSubjectModal()">×</button>
+            </div>
+            <div class="khtn-modal-body">
+                <div class="mb-3">
+                    <label class="form-label">Chủ đề</label>
+                    <select id="subjectTopicSelect" class="form-select">
+                        <option value="all">Tất cả</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Số lượng câu hỏi</label>
+                    <input id="subjectCountInput" type="number" class="form-control" min="1" max="50" value="10">
+                    <div class="form-text">Tối đa sẽ giới hạn theo số câu có sẵn.</div>
+                </div>
+            </div>
+            <div class="khtn-modal-footer">
+                <button class="btn btn-secondary me-2" onclick="closeSubjectModal()">Hủy</button>
+                <button class="btn btn-primary" onclick="startFilteredQuiz(currentModalSubject)">Bắt đầu</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal đăng nhập / đăng ký -->
+    <div id="authModal" class="khtn-modal" style="display:none;">
+        <div class="khtn-modal-backdrop" onclick="closeAuthModal()"></div>
+        <div class="khtn-modal-dialog">
+            <div class="khtn-modal-header">
+                <h5 id="authModalTitle">Đăng nhập</h5>
+                <button class="khtn-modal-close" onclick="closeAuthModal()">×</button>
+            </div>
+            <div class="khtn-modal-body">
+                <div id="authForms">
+                    <div id="loginForm">
+                        <div class="mb-3">
+                            <label class="form-label">Tên đăng nhập</label>
+                            <input id="loginUsername" class="form-control" placeholder="Tên đăng nhập">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Mật khẩu</label>
+                            <input id="loginPassword" type="password" class="form-control" placeholder="Mật khẩu">
+                        </div>
+                    </div>
+                    <div id="registerForm" style="display:none;">
+                        <div class="mb-3">
+                            <label class="form-label">Tên đăng nhập</label>
+                            <input id="regUsername" class="form-control" placeholder="Tên đăng nhập">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Mật khẩu</label>
+                            <input id="regPassword" type="password" class="form-control" placeholder="Mật khẩu">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Nhập lại mật khẩu</label>
+                            <input id="regPassword2" type="password" class="form-control" placeholder="Nhập lại mật khẩu">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="khtn-modal-footer">
+                <button id="switchToRegister" class="btn btn-link me-auto" onclick="switchAuthMode('register')">Đăng ký</button>
+                <button class="btn btn-secondary me-2" onclick="closeAuthModal()">Hủy</button>
+                <button id="authPrimaryBtn" class="btn btn-primary" onclick="handleAuthPrimary()">Đăng nhập</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Question data -->
+    <script src="js/questions-ly.js" defer></script>
+    <script src="js/questions-hoa.js" defer></script>
+    <script src="js/questions-sinh.js" defer></script>
+    <script src="js/topics.js?cb=20260110" defer></script>
+    <script src="js/news-tips.js?cb=20260110" defer></script>
+    <script src="js/chatbot.js?cb=20260110" defer></script>
+    <script src="js/main.js?cb=20260110" defer></script>
+    <script src="js/quiz.js?cb=20260110" defer></script>
+    <script src="js/full-exam.js?cb=20260110" defer></script>
+</body>
+</html>
