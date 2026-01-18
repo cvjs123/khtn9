@@ -111,6 +111,28 @@ const questions_hoa = [
 {q:"Hidrocacbon có trong khí thiên nhiên chủ yếu là",options:["A. C2H6","B. C3H8","C. CH4","D. C2H4"],a:"C. CH4",explain:"Khí thiên nhiên chủ yếu là metan."},
 {q:"Ankan đầu tiên trong dãy là",options:["A. C2H6","B. CH4","C. C3H8","D. C4H10"],a:"B. CH4",explain:"Ankan nhỏ nhất là metan."},
 {q:"Hidrocacbon không tan trong",options:["A. Nước","B. Dầu","C. Benzen","D. Xăng"],a:"A. Nước",explain:"Hidrocacbon không tan trong nước."},
+{q:"Hydrocarbon là hợp chất hữu cơ chỉ gồm",options:["A. Carbon và Oxygen","B. Carbon và Hydrogen","C. Carbon, Hydrogen và Oxygen","D. Carbon và Nitrogen"],a:"B. Carbon và Hydrogen",explain:"Hydrocarbon chỉ gồm C và H."},
+{q:"Alkane là hydrocarbon",options:["A. Không no","B. No","C. Thơm","D. Mạch vòng"],a:"B. No",explain:"Alkane chỉ có liên kết đơn."},
+{q:"Tên IUPAC của CH₄ là",options:["A. Methene","B. Methyne","C. Methane","D. Methyl"],a:"C. Methane",explain:"CH₄ là methane."},
+{q:"Ethane (C₂H₆) thuộc loại hydrocarbon",options:["A. Alkane","B. Alkene","C. Alkyne","D. Arene"],a:"A. Alkane",explain:"Ethane là alkane."},
+{q:"Công thức chung của alkane là",options:["A. CnH2n","B. CnH2n−2","C. CnH2n+2","D. CnHn"],a:"C. CnH2n+2",explain:"Alkane no mạch hở."},
+{q:"Tên IUPAC của C₂H₄ là",options:["A. Ethane","B. Ethene","C. Ethyne","D. Ethyl"],a:"B. Ethene",explain:"C₂H₄ là ethene."},
+{q:"Hydrocarbon có liên kết đôi C=C là",options:["A. Alkane","B. Alkene","C. Alkyne","D. Arene"],a:"B. Alkene",explain:"Alkene có liên kết đôi."},
+{q:"Tên IUPAC của C₂H₂ là",options:["A. Ethane","B. Ethene","C. Ethyne","D. Ethyl"],a:"C. Ethyne",explain:"C₂H₂ là ethyne."},
+{q:"Hydrocarbon có liên kết ba C≡C là",options:["A. Alkane","B. Alkene","C. Alkyne","D. Cycloalkane"],a:"C. Alkyne",explain:"Alkyne có liên kết ba."},
+{q:"Công thức chung của alkene là",options:["A. CnH2n+2","B. CnH2n","C. CnH2n−2","D. CnHn"],a:"B. CnH2n",explain:"Alkene mạch hở."},
+{q:"Ethyne thường được dùng để",options:["A. Nấu ăn","B. Hàn cắt kim loại","C. Sản xuất nhựa","D. Sản xuất phân bón"],a:"B. Hàn cắt kim loại",explain:"Ethyne cháy cho ngọn lửa rất nóng."},
+{q:"Hydrocarbon thơm (arene) điển hình là",options:["A. Methane","B. Ethene","C. Benzene","D. Propane"],a:"C. Benzene",explain:"Benzene là arene."},
+{q:"Công thức phân tử của Benzene là",options:["A. C6H14","B. C6H6","C. C6H12","D. C6H10"],a:"B. C6H6",explain:"Benzene có công thức C6H6."},
+{q:"Hydrocarbon thơm có đặc điểm",options:["A. Không có vòng","B. Có vòng và hệ liên hợp","C. Chỉ có liên kết đơn","D. Tan tốt trong nước"],a:"B. Có vòng và hệ liên hợp",explain:"Đặc trưng của arene."},
+{q:"Alkane đầu tiên trong dãy đồng đẳng là",options:["A. Ethane","B. Propane","C. Methane","D. Butane"],a:"C. Methane",explain:"CH₄ là alkane đầu tiên."},
+{q:"Hydrocarbon không no có thể tham gia phản ứng",options:["A. Thế","B. Cộng","C. Trung hòa","D. Trao đổi"],a:"B. Cộng",explain:"Do có liên kết π."},
+{q:"Ethene (C₂H₄) là nguyên liệu chính để sản xuất",options:["A. PVC","B. Polyethylene","C. Nylon-6,6","D. Bakelite"],a:"B. Polyethylene",explain:"Ethene trùng hợp tạo PE."},
+{q:"Hydrocarbon thường không tan trong nước vì",options:["A. Nhẹ","B. Không phân cực","C. Dễ bay hơi","D. Có màu"],a:"B. Không phân cực",explain:"Nước là dung môi phân cực."},
+{q:"Benzene có cấu trúc",options:["A. Mạch thẳng","B. Mạch nhánh","C. Vòng phẳng","D. Chuỗi xoắn"],a:"C. Vòng phẳng",explain:"Benzene có vòng lục giác phẳng."},
+{q:"Tên gọi chung của alkane, alkene, alkyne là",options:["A. Alcohols","B. Hydrocarbons","C. Carbohydrates","D. Polymers"],a:"B. Hydrocarbons",explain:"Chỉ gồm C và H."},
+{q:"Hydrocarbon có mạch vòng no là",options:["A. Alkane","B. Alkene","C. Cycloalkane","D. Arene"],a:"C. Cycloalkane",explain:"Cycloalkane là mạch vòng no."},
+{q:"Propane (C₃H₈) thường được dùng làm",options:["A. Dung môi","B. Nhiên liệu","C. Chất dẻo","D. Phân bón"],a:"B. Nhiên liệu",explain:"Propane dùng trong gas."},
 // ===== THÔNG HIỂU (14 câu) =====
 {q:"Vì sao hidrocacbon không tan trong nước?",options:["A. Nhẹ","B. Không màu","C. Không phân cực","D. Dễ bay hơi"],a:"C. Không phân cực",explain:"Nước là dung môi phân cực."},
 {q:"Ankan kém hoạt động hóa học vì",options:["A. Không có liên kết đôi","B. Không có liên kết ba","C. Chỉ có liên kết đơn bền","D. Không có H"],a:"C. Chỉ có liên kết đơn bền",explain:"Liên kết đơn rất bền."},
@@ -126,6 +148,20 @@ const questions_hoa = [
 {q:"Hidrocacbon không no có thể làm mất màu",options:["A. Nước","B. Dung dịch brom","C. Quỳ tím","D. NaOH"],a:"B. Dung dịch brom",explain:"Do phản ứng cộng."},
 {q:"Ankan cháy tỏa nhiều nhiệt nên được dùng làm",options:["A. Phân bón","B. Nhiên liệu","C. Dung môi","D. Chất oxi hóa"],a:"B. Nhiên liệu",explain:"Tỏa nhiều nhiệt khi cháy."},
 {q:"Etilen tham gia phản ứng trùng hợp tạo ra",options:["A. Polietilen","B. PVC","C. Cao su","D. Xenlulozơ"],a:"A. Polietilen",explain:"Etilen trùng hợp tạo PE."},
+{q:"Alkane ít tham gia phản ứng cộng vì",options:["A. Có liên kết đôi","B. Có liên kết ba","C. Chỉ có liên kết đơn","D. Có vòng thơm"],a:"C. Chỉ có liên kết đơn",explain:"Alkane là hydrocarbon no."},
+{q:"Ethene (C2H4) dễ tham gia phản ứng cộng vì",options:["A. Có liên kết đơn","B. Có liên kết đôi","C. Có vòng","D. Có mạch nhánh"],a:"B. Có liên kết đôi",explain:"Liên kết π dễ bị phá vỡ."},
+{q:"Ethyne (C2H2) có khả năng phản ứng mạnh hơn ethene vì",options:["A. Phân tử lớn hơn","B. Có hai liên kết π","C. Tan trong nước","D. Có mạch vòng"],a:"B. Có hai liên kết π",explain:"Liên kết ba kém bền."},
+{q:"Hydrocarbon không tan trong nước chủ yếu vì",options:["A. Có khối lượng nhỏ","B. Có mạch dài","C. Không phân cực","D. Có mùi"],a:"C. Không phân cực",explain:"Nước là dung môi phân cực."},
+{q:"Benzene tham gia phản ứng thế thay vì phản ứng cộng vì",options:["A. Có mạch vòng","B. Có hệ liên hợp bền","C. Có khối lượng lớn","D. Không có liên kết π"],a:"B. Có hệ liên hợp bền",explain:"Phản ứng cộng phá vỡ tính thơm."},
+{q:"Polyethylene được điều chế từ ethene nhờ phản ứng",options:["A. Thế","B. Trùng hợp","C. Trao đổi","D. Trung hòa"],a:"B. Trùng hợp",explain:"Ethene → polyethylene."},
+{q:"Alkane có nhiệt độ sôi tăng dần khi",options:["A. Số nguyên tử C tăng","B. Có liên kết đôi","C. Có vòng","D. Có nhánh"],a:"A. Số nguyên tử C tăng",explain:"Lực tương tác tăng."},
+{q:"Hydrocarbon thơm có mùi đặc trưng vì",options:["A. Có vòng","B. Có hệ liên hợp","C. Có liên kết đơn","D. Có khối lượng nhỏ"],a:"B. Có hệ liên hợp",explain:"Đặc trưng của arene."},
+{q:"Ethene làm mất màu dung dịch bromine vì",options:["A. Phản ứng thế","B. Phản ứng oxi hóa","C. Phản ứng cộng","D. Phản ứng trùng hợp"],a:"C. Phản ứng cộng",explain:"Cộng Br2 vào liên kết đôi."},
+{q:"Alkane cháy hoàn toàn tạo ra",options:["A. CO và H2O","B. CO2 và H2","C. CO2 và H2O","D. C và H2O"],a:"C. CO2 và H2O",explain:"Phản ứng cháy hoàn toàn."},
+{q:"Benzene không làm mất màu dung dịch bromine ở điều kiện thường vì",options:["A. Không phản ứng","B. Phản ứng chậm","C. Cấu trúc bền","D. Tan trong nước"],a:"C. Cấu trúc bền",explain:"Hệ thơm ổn định."},
+{q:"Hydrocarbon không no thường dùng để điều chế polymer vì",options:["A. Nhẹ","B. Có liên kết π","C. Có mùi","D. Tan tốt"],a:"B. Có liên kết π",explain:"Dễ tham gia trùng hợp."},
+{q:"Alkane thường tham gia phản ứng thế với",options:["A. Oxygen","B. Chlorine","C. Hydrogen","D. Nitrogen"],a:"B. Chlorine",explain:"Phản ứng thế halogen."},
+{q:"Hydrocarbon là nhiên liệu tốt vì",options:["A. Tan trong nước","B. Cháy tỏa nhiều nhiệt","C. Có vòng","D. Có mạch dài"],a:"B. Cháy tỏa nhiều nhiệt",explain:"Phản ứng oxi hóa mạnh."},
 // ===== VẬN DỤNG – TÍNH TOÁN (15 câu) =====
 {q:"Đốt cháy hoàn toàn 4,48 lít CH4 (đktc). Thể tích CO2 thu được là",options:["A. 2,24 lít","B. 4,48 lít","C. 6,72 lít","D. 8,96 lít"],a:"B. 4,48 lít",explain:"Tỉ lệ mol 1:1."},
 {q:"Số mol của 8,96 lít C2H4 (đktc) là",options:["A. 0,2","B. 0,3","C. 0,4","D. 0,5"],a:"C. 0,4",explain:"n=V/22,4."},
@@ -157,6 +193,21 @@ const questions_hoa = [
 {q:"Khối lượng Oxygen (O₂) cần để đốt cháy hoàn toàn 12 g Carbon là",options:["A. 16 g","B. 24 g","C. 32 g","D. 44 g"],a:"C. 32 g",explain:"C + O₂ → CO₂."},
 {q:"Thể tích Hydrogen (H₂) ở đktc sinh ra khi cho 6,5 g Zinc phản ứng với acid là",options:["A. 1,12 L","B. 2,24 L","C. 3,36 L","D. 4,48 L"],a:"B. 2,24 L",explain:"nZn = nH₂ = 0,1."},
 {q:"Khối lượng Calcium carbonate (CaCO₃) cần để điều chế 4,48 L CO₂ (đktc) là",options:["A. 10 g","B. 15 g","C. 20 g","D. 25 g"],a:"C. 20 g",explain:"nCO₂ = 0,2 mol."},
+{q:"Khối lượng mol của Methane (CH4) là",options:["A. 14","B. 15","C. 16","D. 18"],a:"C. 16",explain:"CH4 = 12 + 4."},
+{q:"Số mol Ethane (C2H6) có trong 6 g là",options:["A. 0,1","B. 0,2","C. 0,25","D. 0,3"],a:"A. 0,1",explain:"n = 6 / 30."},
+{q:"Thể tích Ethene (C2H4) ở đktc của 0,25 mol là",options:["A. 2,24 L","B. 4,48 L","C. 5,6 L","D. 11,2 L"],a:"C. 5,6 L",explain:"V = 0,25 × 22,4."},
+{q:"Khối lượng Carbon dioxide tạo thành khi đốt cháy hoàn toàn 16 g Methane là",options:["A. 22 g","B. 32 g","C. 44 g","D. 64 g"],a:"C. 44 g",explain:"1 mol CH4 → 1 mol CO2."},
+{q:"Tỉ khối của Ethene (C2H4) so với Hydrogen (H2) là",options:["A. 7","B. 14","C. 28","D. 2"],a:"B. 14",explain:"d = 28 / 2."},
+{q:"Khối lượng Benzene (C6H6) có trong 0,1 mol là",options:["A. 6,5 g","B. 7,8 g","C. 9,2 g","D. 12 g"],a:"B. 7,8 g",explain:"M = 78."},
+{q:"Số mol Oxygen cần để đốt cháy hoàn toàn 1 mol Propane (C3H8) là",options:["A. 3","B. 4","C. 5","D. 6"],a:"C. 5",explain:"C3H8 + 5O2 → 3CO2 + 4H2O."},
+{q:"Khối lượng Ethyne (C2H2) có trong 4,48 L (đktc) là",options:["A. 2,6 g","B. 3,2 g","C. 5,2 g","D. 6,4 g"],a:"B. 3,2 g",explain:"n = 0,2; m = 0,2 × 26."},
+{q:"Thể tích CO2 sinh ra khi đốt cháy hoàn toàn 0,2 mol Ethene là",options:["A. 2,24 L","B. 4,48 L","C. 6,72 L","D. 8,96 L"],a:"C. 6,72 L",explain:"1 mol C2H4 → 2 mol CO2."},
+{q:"Khối lượng Oxygen cần để đốt cháy hoàn toàn 14 g Ethene là",options:["A. 16 g","B. 24 g","C. 32 g","D. 48 g"],a:"C. 32 g",explain:"nC2H4 = 0,5 → nO2 = 1."},
+{q:"Hydrocarbon có công thức phân tử C4H10 là",options:["A. Butane","B. Butene","C. Butyne","D. Benzene"],a:"A. Butane",explain:"CnH2n+2."},
+{q:"Khối lượng Propane (C3H8) có trong 11,2 L (đktc) là",options:["A. 11 g","B. 18 g","C. 22 g","D. 44 g"],a:"B. 18 g",explain:"n = 0,5; M = 44."},
+{q:"Hydrocarbon có công thức CnH2n−2 thuộc loại",options:["A. Alkane","B. Alkene","C. Alkyne","D. Arene"],a:"C. Alkyne",explain:"Hydrocarbon mạch hở không no."},
+{q:"Khối lượng CO2 thu được khi đốt cháy hoàn toàn 6 g Ethane là",options:["A. 8,8 g","B. 11 g","C. 17,6 g","D. 22 g"],a:"C. 17,6 g",explain:"nC2H6 = 0,2 → nCO2 = 0,4."},
+{q:"Hydrocarbon có tỉ khối so với Hydrogen bằng 15 là",options:["A. Methane","B. Ethane","C. Ethene","D. Propane"],a:"B. Ethane",explain:"d = M / 2 → M = 30."},
 // ===== Ancol etylic – Axit axetic =====
 // ===== NHẬN BIẾT (21 câu) =====
 {q:"Ancol etylic có công thức hóa học là",options:["A. CH3OH","B. C2H5OH","C. CH3COOH","D. C2H4OH"],a:"B. C2H5OH",explain:"Ancol etylic là C2H5OH."},
@@ -322,8 +373,8 @@ const questions_hoa = [
 
 // Build per-topic arrays from the full list (file contains 337 questions in 5 sections)
 window.questions_hoa_by_topic = window.questions_hoa_by_topic || {};
-// Known section sizes (as in this file): 100,89,43,41,65 = 337
-const _hoaCounts = [100,89,43,41,65];
+// Known section sizes (as in this file): 100,140,43,41,65 = 389
+const _hoaCounts = [100,140,43,41,65];
 const _hoaLongNames = [
   'Kim loại – Phi kim',
   'Hợp chất hữu cơ – Hydrocarbon',
