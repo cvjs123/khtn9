@@ -322,8 +322,8 @@ const questions_hoa = [
 
 // Build per-topic arrays from the full list (file contains 322 questions in 5 sections)
 window.questions_hoa_by_topic = window.questions_hoa_by_topic || {};
-// Known section sizes (as in this file): 84,89,43,41,65 = 322
-const _hoaCounts = [84,89,43,41,65];
+// Known section sizes (as in this file): 100,89,43,41,65 = 322
+const _hoaCounts = [100,89,43,41,65];
 const _hoaLongNames = [
   'Kim loại – Phi kim',
   'Hợp chất hữu cơ – Hydrocarbon',
@@ -470,5 +470,6 @@ if (Array.isArray(window.questions_hoa)) {
 } else {
   console.error("❌ Không tìm thấy window.questions_hoa");
 }
+
 
 
