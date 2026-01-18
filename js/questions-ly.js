@@ -1,4 +1,3 @@
-
 // js/questions-ly.js - Vật lý lớp 9 (template)
 // This file provides per-topic arrays for Lý in the same structure as questions-hoa.js.
 // Currently the topic arrays are empty; populate them with question objects
@@ -78,8 +77,10 @@ const questions_ly_topic1 = [
 {q:"Thế năng của vật tăng gấp đôi khi",options:["A. h tăng gấp đôi","B. m tăng gấp đôi","C. m hoặc h tăng gấp đôi","D. v tăng"],a:"C. m hoặc h tăng gấp đôi",explain:"Wt=mgh."},
 {q:"Công suất 100 W trong 5 s thì công là",options:["A. 20 J","B. 500 J","C. 100 J","D. 50 J"],a:"B. 500 J",explain:"A=P.t."},
 {q:"Vật rơi tự do, bỏ qua ma sát. Cơ năng",options:["A. Tăng","B. Giảm","C. Bảo toàn","D. Mất"],a:"C. Bảo toàn",explain:"Không hao phí."},
-{q:"Khi vật chạm đất, thế năng chuyển thành",options:["A. Nhiệt năng","B. Động năng","C. Cơ năng","D. Công"],a:"B. Động năng",explain:"Chuyển hóa năng lượng."},
+{q:"Khi vật chạm đất, thế năng chuyển thành",options:["A. Nhiệt năng","B. Động năng","C. Cơ năng","D. Công"],a:"B. Động năng",explain:"Chuyển hóa năng lượng."}
+];
 // Chuyên đề 2: ÁNH SÁNG
+const questions_ly_topic2 = [
 /* ===== NHẬN BIẾT (25 câu) ===== */
 {q:"Nguồn sáng là vật",options:["A. Nhận ánh sáng","B. Truyền ánh sáng","C. Phát ra ánh sáng","D. Phản xạ ánh sáng"],a:"C. Phát ra ánh sáng",explain:"Nguồn sáng tự phát ra ánh sáng."},
 {q:"Vật sáng là vật",options:["A. Phát ra ánh sáng","B. Nhận ánh sáng rồi truyền đi","C. Nhận ánh sáng","D. Nhận và phản xạ ánh sáng"],a:"D. Nhận và phản xạ ánh sáng",explain:"Vật sáng có thể không phải nguồn sáng."},
@@ -109,7 +110,7 @@ const questions_ly_topic1 = [
 /* ===== THÔNG HIỂU (15 câu) ===== */
 {q:"Ánh sáng truyền thẳng chứng tỏ",options:["A. Có vận tốc","B. Có năng lượng","C. Không uốn cong trong môi trường đồng tính","D. Phản xạ"],a:"C. Không uốn cong trong môi trường đồng tính",explain:"Tính chất cơ bản."},
 {q:"Gương phẳng cho ảnh ảo vì",options:["A. Không có ánh sáng","B. Ảnh không hứng được","C. Ảnh nhỏ","D. Ảnh mờ"],a:"B. Ảnh không hứng được",explain:"Đặc điểm ảnh ảo."},
-{q:"Gương cầu lồi cho ảnh nhỏ vì",options:["A. Hội tụ","B. Phân kì ánh sáng","C. Không phản xạ","D. Hấp thụ ánh sáng"],a:"B. Phân kì ánh sáng",explain:"Chùm tia loe ra."},
+{q:"Gương cầu lồi cho ảnh nhỏ vì",options:["A. Hội tụ","B. Phân kì ánh sáng","C. Không phản xạ","D. Hấp thụ"],a:"B. Phân kì ánh sáng",explain:"Chùm tia loe ra."},
 {q:"Dùng gương cầu lồi giúp",options:["A. Nhìn rõ hơn","B. Nhìn ảnh lớn","C. Quan sát vùng rộng","D. Tập trung ánh sáng"],a:"C. Quan sát vùng rộng",explain:"Ứng dụng giao thông."},
 {q:"Gương cầu lõm có thể tạo ảnh thật vì",options:["A. Phân kì","B. Hội tụ tia phản xạ","C. Không phản xạ","D. Bẻ cong ánh sáng"],a:"B. Hội tụ tia phản xạ",explain:"Giao nhau tạo ảnh thật."},
 {q:"Ảnh thật khác ảnh ảo ở điểm",options:["A. Màu sắc","B. Kích thước","C. Hứng được trên màn","D. Khoảng cách"],a:"C. Hứng được trên màn",explain:"Đặc trưng ảnh thật."},
@@ -132,11 +133,8 @@ const questions_ly_topic1 = [
 {q:"Gương nào không tạo ảnh thật",options:["A. Gương cầu lõm","B. Gương phẳng","C. Gương hội tụ","D. Gương lõm"],a:"B. Gương phẳng",explain:"Chỉ ảnh ảo."},
 {q:"Quan sát vật lớn ở khoảng cách gần nên dùng",options:["A. Gương phẳng","B. Gương cầu lồi","C. Gương cầu lõm","D. Không dùng gương"],a:"C. Gương cầu lõm",explain:"Ảnh ảo, lớn."},
 {q:"Vùng chỉ nhận một phần ánh sáng gọi là",options:["A. Bóng tối","B. Bóng nửa tối","C. Ảnh","D. Vật sáng"],a:"B. Bóng nửa tối",explain:"Định nghĩa."},
-{q:"Ánh sáng từ vật tới mắt giúp ta",options:["A. Nghe","B. Ngửi","C. Nhìn thấy","D. Sờ"],a:"C. Nhìn thấy",explain:"Điều kiện thị giác."},
+{q:"Ánh sáng từ vật tới mắt giúp ta",options:["A. Nghe","B. Ngửi","C. Nhìn thấy","D. Sờ"],a:"C. Nhìn thấy",explain:"Điều kiện thị giác."}
 ];
-
-// Chuyên đề 2: ÁNH SÁNG
-const questions_ly_topic2 = [];
 
 // Chuyên đề 3: ĐIỆN HỌC
 const questions_ly_topic3 = [
@@ -192,7 +190,7 @@ const questions_ly_topic3 = [
 {q:"Một bàn là 1000 W dùng 30 phút tiêu thụ điện năng là",options:["A. 0,3 kWh","B. 0,5 kWh","C. 1 kWh","D. 30 kWh"],a:"A. 0,3 kWh",explain:"0,5 h × 1 kW."},
 {q:"Muốn dòng điện giảm một nửa cần",options:["A. Giảm U một nửa","B. Tăng R gấp đôi","C. Cả A và B","D. Không làm được"],a:"C. Cả A và B",explain:"Theo I = U/R."},
 {q:"Thiết bị công suất 2000 W dùng 1 giờ hết tiền điện (2000 đ/kWh) là",options:["A. 2000 đ","B. 3000 đ","C. 4000 đ","D. 1000 đ"],a:"C. 4000 đ",explain:"2 kWh × 2000 đ."},
-{q:"Dòng điện qua mạch tăng khi",options:["A. Tăng R","B. Giảm U","C. Giảm R","D. Tăng thời gian"],a:"C. Giảm R",explain:"I tỉ lệ nghịch R."},
+{q:"Dòng điện qua mạch tăng khi",options:["A. Tăng R","B. Giảm U","C. Giảm R","D. Tăng thời gian"],a:"C. Giảm R",explain:"I tỉ lệ nghịch R."}
 ];
 // Chuyên đề 4: ĐIỆN TỪ
 const questions_ly_topic4 = [
