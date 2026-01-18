@@ -305,10 +305,10 @@ const questions_hoa = [
 {q:"Một hợp chất hữu cơ có CTĐG là CH2 và là hidrocacbon. Công thức có thể là",options:["A. C2H4","B. C3H8","C. C2H6","D. CH4"],a:"A. C2H4",explain:"CTĐG CH2."}
 ];
 
-// Build per-topic arrays from the full list (file contains 308 questions in 5 sections)
+// Build per-topic arrays from the full list (file contains 322 questions in 5 sections)
 window.questions_hoa_by_topic = window.questions_hoa_by_topic || {};
-// Known section sizes (as in this file): 70,89,43,41,65 = 308
-const _hoaCounts = [70,89,43,41,65];
+// Known section sizes (as in this file): 84,89,43,41,65 = 322
+const _hoaCounts = [84,89,43,41,65];
 const _hoaLongNames = [
   'Kim loại – Phi kim',
   'Hợp chất hữu cơ – Hydrocarbon',
@@ -455,3 +455,4 @@ if (Array.isArray(window.questions_hoa)) {
 } else {
   console.error("❌ Không tìm thấy window.questions_hoa");
 }
+
