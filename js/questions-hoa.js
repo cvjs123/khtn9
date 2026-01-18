@@ -22,6 +22,27 @@ const questions_hoa = [
 {q:"Phi kim tạo phân đạm là",options:["A. C","B. N","C. S","D. P"],a:"B. N",explain:"Nitơ dùng sản xuất phân đạm.", level: "nhan_biet"},
 {q:"Kim loại bảo vệ sắt bằng mạ là",options:["A. Cu","B. Zn","C. Ag","D. Pb"],a:"B. Zn",explain:"Mạ kẽm chống gỉ.", level: "nhan_biet"},
 {q:"Phi kim cần cho hô hấp là",options:["A. N2","B. O2","C. CO2","D. H2"],a:"B. O2",explain:"Oxi cần cho hô hấp.", level: "nhan_biet"},
+{q:"Nguyên tố Sodium (Na) thuộc loại",options:["A. Phi kim","B. Kim loại","C. Á kim","D. Khí hiếm"],a:"B. Kim loại",explain:"Sodium là kim loại kiềm."},
+{q:"Nguyên tố Chlorine (Cl) thuộc nhóm",options:["A. Kim loại kiềm","B. Kim loại kiềm thổ","C. Halogen","D. Khí hiếm"],a:"C. Halogen",explain:"Chlorine thuộc nhóm halogen."},
+{q:"Chất nào sau đây là kim loại theo IUPAC?",options:["A. Sulfur","B. Oxygen","C. Aluminium","D. Nitrogen"],a:"C. Aluminium",explain:"Aluminium là kim loại."},
+{q:"Nguyên tố Iron (Fe) có tính chất đặc trưng là",options:["A. Không dẫn điện","B. Dẫn điện và dẫn nhiệt","C. Tan trong nước","D. Bay hơi"],a:"B. Dẫn điện và dẫn nhiệt",explain:"Iron là kim loại."},
+{q:"Phi kim thường có tính chất",options:["A. Dẻo","B. Ánh kim","C. Dẫn điện tốt","D. Kém dẫn điện"],a:"D. Kém dẫn điện",explain:"Phi kim kém dẫn điện."},
+{q:"Nguyên tố Oxygen (O) là",options:["A. Kim loại","B. Phi kim","C. Á kim","D. Kim loại kiềm"],a:"B. Phi kim",explain:"Oxygen là phi kim."},
+{q:"Copper (Cu) được sử dụng phổ biến vì",options:["A. Nhẹ","B. Dẫn điện tốt","C. Tan trong nước","D. Không phản ứng"],a:"B. Dẫn điện tốt",explain:"Copper dẫn điện rất tốt."},
+{q:"Sulfur (S) có màu đặc trưng là",options:["A. Trắng","B. Vàng","C. Đen","D. Xanh"],a:"B. Vàng",explain:"Sulfur là phi kim màu vàng."},
+{q:"Kim loại nào sau đây phản ứng mạnh với nước lạnh?",options:["A. Iron","B. Copper","C. Sodium","D. Aluminium"],a:"C. Sodium",explain:"Sodium phản ứng mạnh với nước."},
+{q:"Nguyên tố Carbon (C) thuộc loại",options:["A. Kim loại","B. Phi kim","C. Á kim","D. Kim loại chuyển tiếp"],a:"B. Phi kim",explain:"Carbon là phi kim."},
+{q:"Kim loại thường có cấu trúc tinh thể do",options:["A. Electron tự do","B. Proton","C. Neutron","D. Ion âm"],a:"A. Electron tự do",explain:"Electron tự do tạo liên kết kim loại."},
+{q:"Chất nào sau đây là phi kim theo IUPAC?",options:["A. Magnesium","B. Calcium","C. Phosphorus","D. Zinc"],a:"C. Phosphorus",explain:"Phosphorus là phi kim."},
+{q:"Alkaline earth metals là tên quốc tế của",options:["A. Kim loại kiềm","B. Kim loại kiềm thổ","C. Kim loại chuyển tiếp","D. Á kim"],a:"B. Kim loại kiềm thổ",explain:"Nhóm IIA."},
+{q:"Nguyên tố Magnesium (Mg) có tính chất",options:["A. Kém dẫn điện","B. Dễ bay hơi","C. Có ánh kim","D. Không dẫn nhiệt"],a:"C. Có ánh kim",explain:"Magnesium là kim loại."},
+{q:"Halogen thường tồn tại ở dạng",options:["A. Đơn chất kim loại","B. Phân tử hai nguyên tử","C. Ion dương","D. Hợp kim"],a:"B. Phân tử hai nguyên tử",explain:"Ví dụ Cl₂, F₂."},
+{q:"Kim loại thường có nhiệt độ nóng chảy",options:["A. Thấp","B. Cao","C. Bằng nước","D. Không xác định"],a:"B. Cao",explain:"Do liên kết kim loại bền."},
+{q:"Nitrogen (N) tồn tại trong không khí chủ yếu ở dạng",options:["A. N","B. N₂","C. NH₃","D. NO₂"],a:"B. N₂",explain:"Nitrogen tồn tại dạng phân tử."},
+{q:"Kim loại dẫn điện được là nhờ",options:["A. Proton","B. Neutron","C. Electron tự do","D. Ion âm"],a:"C. Electron tự do",explain:"Đặc trưng của kim loại."},
+{q:"Phi kim thường tạo liên kết",options:["A. Kim loại","B. Ion dương","C. Cộng hóa trị","D. Kim loại – ion"],a:"C. Cộng hóa trị",explain:"Phi kim thường liên kết cộng hóa trị."},
+{q:"Nguyên tố Zinc (Zn) thuộc loại",options:["A. Phi kim","B. Kim loại","C. Á kim","D. Halogen"],a:"B. Kim loại",explain:"Zinc là kim loại."},
+{q:"Kim loại có tính dẻo vì",options:["A. Liên kết ion","B. Liên kết cộng hóa trị","C. Liên kết kim loại","D. Không có liên kết"],a:"C. Liên kết kim loại",explain:"Liên kết kim loại không định hướng."},
 // ===== THÔNG HIỂU (14 câu) =====
 {q:"Kim loại hoạt động hóa học mạnh vì",options:["A. Nhận electron","B. Dễ nhường electron","C. Có ánh kim","D. Bền"],a:"B. Dễ nhường electron",explain:"Dễ nhường electron nên phản ứng mạnh.", level: "thong_hieu"},
 {q:"Vì sao nhôm không bị gỉ sâu trong không khí?",options:["A. Không phản ứng với O2","B. Có lớp oxit bảo vệ","C. Rất bền","D. Không dẫn điện"],a:"B. Có lớp oxit bảo vệ",explain:"Lớp Al2O3 bền."},
@@ -420,3 +441,4 @@ if (Array.isArray(window.questions_hoa)) {
 } else {
   console.error("❌ Không tìm thấy window.questions_hoa");
 }
+
