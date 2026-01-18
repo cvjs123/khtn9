@@ -58,6 +58,20 @@ const questions_hoa = [
 {q:"Kim loại đẩy Fe khỏi dung dịch FeSO4 là",options:["A. Cu","B. Zn","C. Ag","D. Au"],a:"B. Zn",explain:"Zn hoạt động mạnh hơn Fe."},
 {q:"Kim loại dẫn nhiệt tốt do",options:["A. Ion lớn","B. Electron tự do","C. Ánh kim","D. Liên kết ion"],a:"B. Electron tự do",explain:"Electron truyền nhiệt."},
 {q:"Phi kim thường tồn tại dạng",options:["A. Nguyên tử","B. Ion","C. Phân tử","D. Kim loại"],a:"C. Phân tử",explain:"Phi kim thường là phân tử."},
+{q:"Kim loại dẫn điện tốt hơn phi kim vì",options:["A. Có proton tự do","B. Có electron tự do","C. Có ion âm","D. Có phân tử nhỏ"],a:"B. Có electron tự do",explain:"Electron tự do chuyển động trong mạng tinh thể kim loại."},
+{q:"Phi kim thường giòn và dễ vỡ vì",options:["A. Liên kết ion","B. Liên kết kim loại","C. Liên kết cộng hóa trị định hướng","D. Không có liên kết"],a:"C. Liên kết cộng hóa trị định hướng",explain:"Liên kết cộng hóa trị khó trượt lớp."},
+{q:"Aluminium (Al) được dùng làm dây dẫn dù dẫn điện kém Copper vì",options:["A. Nhẹ và bền","B. Rẻ","C. Không oxi hóa","D. Không dẫn nhiệt"],a:"A. Nhẹ và bền",explain:"Aluminium nhẹ hơn Copper."},
+{q:"Sodium (Na) phải bảo quản trong dầu vì",options:["A. Dễ bay hơi","B. Dễ tan trong dầu","C. Phản ứng mạnh với Oxygen và Water","D. Không dẫn điện"],a:"C. Phản ứng mạnh với Oxygen và Water",explain:"Na rất hoạt động hóa học."},
+{q:"Halogen có tính oxi hóa mạnh vì",options:["A. Có bán kính lớn","B. Có nhiều electron tự do","C. Dễ nhận electron","D. Có ánh kim"],a:"C. Dễ nhận electron",explain:"Halogen có độ âm điện lớn."},
+{q:"Carbon (C) có nhiều dạng thù hình vì",options:["A. Có khối lượng lớn","B. Có khả năng liên kết khác nhau","C. Tan trong nước","D. Là kim loại"],a:"B. Có khả năng liên kết khác nhau",explain:"C tạo kim cương, graphite."},
+{q:"Iron (Fe) bị gỉ trong không khí ẩm do",options:["A. Bay hơi","B. Phản ứng oxi hóa","C. Phản ứng trung hòa","D. Phản ứng thế"],a:"B. Phản ứng oxi hóa",explain:"Fe bị oxi hóa tạo rust."},
+{q:"Kim loại kiềm (Alkali metals) phản ứng mạnh với nước vì",options:["A. Có 1 electron hóa trị","B. Có 3 electron hóa trị","C. Có cấu trúc bền","D. Có liên kết cộng hóa trị"],a:"A. Có 1 electron hóa trị",explain:"Dễ nhường electron."},
+{q:"Phi kim thường tạo anion khi phản ứng vì",options:["A. Dễ nhường electron","B. Dễ nhận electron","C. Có ánh kim","D. Có electron tự do"],a:"B. Dễ nhận electron",explain:"Phi kim có độ âm điện lớn."},
+{q:"Copper (Cu) ít phản ứng với Water ở điều kiện thường vì",options:["A. Hoạt động mạnh","B. Hoạt động trung bình","C. Hoạt động yếu","D. Không dẫn điện"],a:"C. Hoạt động yếu",explain:"Cu đứng sau H trong dãy hoạt động."},
+{q:"Magnesium (Mg) cháy sáng trong Oxygen vì",options:["A. Phản ứng thu nhiệt","B. Phản ứng tỏa nhiệt mạnh","C. Không phản ứng","D. Bay hơi"],a:"B. Phản ứng tỏa nhiệt mạnh",explain:"Mg + O₂ → MgO."},
+{q:"Sulfur (S) không dẫn điện vì",options:["A. Có electron tự do","B. Có ion dương","C. Không có electron tự do","D. Có ánh kim"],a:"C. Không có electron tự do",explain:"Phi kim không có electron tự do."},
+{q:"Zinc (Zn) được dùng mạ Iron vì",options:["A. Dẫn điện tốt","B. Nhẹ","C. Bị oxi hóa trước Iron","D. Không phản ứng"],a:"C. Bị oxi hóa trước Iron",explain:"Zn bảo vệ Fe khỏi gỉ."},
+{q:"Kim loại thường có nhiệt độ nóng chảy cao do",options:["A. Liên kết ion","B. Liên kết cộng hóa trị","C. Liên kết kim loại bền","D. Phân tử nhỏ"],a:"C. Liên kết kim loại bền",explain:"Liên kết kim loại giữ các ion dương."},
 // ===== VẬN DỤNG – TÍNH TOÁN (15 câu) =====
 {q:"Hòa tan 6,5 g Zn vào HCl dư, thể tích H2 (đktc) là",options:["A. 1,12 lít","B. 2,24 lít","C. 3,36 lít","D. 4,48 lít"],a:"B. 2,24 lít",explain:"nZn=0,1 mol ⇒ V=2,24 lít.", level: "van_dung"},
 {q:"Cho 5,6 g Fe phản ứng với HCl dư, khối lượng FeCl2 là",options:["A. 11,1 g","B. 12,7 g","C. 16,2 g","D. 19,0 g"],a:"B. 12,7 g",explain:"nFe=0,1 mol."},
@@ -273,6 +287,20 @@ const questions_hoa = [
 {q:"Polime thiên nhiên có sẵn trong tự nhiên như",options:["A. PE","B. PVC","C. Xenlulozơ","D. Nilon"],a:"C. Xenlulozơ",explain:"Xenlulozơ có sẵn."},
 {q:"Chất béo không tan trong nước vì",options:["A. Nhẹ","B. Không phân cực","C. Nặng","D. Có O"],a:"B. Không phân cực",explain:"Nước là dung môi phân cực."},
 {q:"Hidrocacbon không làm đổi màu quỳ tím vì",options:["A. Không tan","B. Trung tính","C. Không cháy","D. Không mùi"],a:"B. Trung tính",explain:"Không phải axit hay bazơ."},
+{q:"Kim loại dẫn điện tốt hơn phi kim vì",options:["A. Có proton tự do","B. Có electron tự do","C. Có ion âm","D. Có phân tử nhỏ"],a:"B. Có electron tự do",explain:"Electron tự do chuyển động trong mạng tinh thể kim loại."},
+{q:"Phi kim thường giòn và dễ vỡ vì",options:["A. Liên kết ion","B. Liên kết kim loại","C. Liên kết cộng hóa trị định hướng","D. Không có liên kết"],a:"C. Liên kết cộng hóa trị định hướng",explain:"Liên kết cộng hóa trị khó trượt lớp."},
+{q:"Aluminium (Al) được dùng làm dây dẫn dù dẫn điện kém Copper vì",options:["A. Nhẹ và bền","B. Rẻ","C. Không oxi hóa","D. Không dẫn nhiệt"],a:"A. Nhẹ và bền",explain:"Aluminium nhẹ hơn Copper."},
+{q:"Sodium (Na) phải bảo quản trong dầu vì",options:["A. Dễ bay hơi","B. Dễ tan trong dầu","C. Phản ứng mạnh với Oxygen và Water","D. Không dẫn điện"],a:"C. Phản ứng mạnh với Oxygen và Water",explain:"Na rất hoạt động hóa học."},
+{q:"Halogen có tính oxi hóa mạnh vì",options:["A. Có bán kính lớn","B. Có nhiều electron tự do","C. Dễ nhận electron","D. Có ánh kim"],a:"C. Dễ nhận electron",explain:"Halogen có độ âm điện lớn."},
+{q:"Carbon (C) có nhiều dạng thù hình vì",options:["A. Có khối lượng lớn","B. Có khả năng liên kết khác nhau","C. Tan trong nước","D. Là kim loại"],a:"B. Có khả năng liên kết khác nhau",explain:"C tạo kim cương, graphite."},
+{q:"Iron (Fe) bị gỉ trong không khí ẩm do",options:["A. Bay hơi","B. Phản ứng oxi hóa","C. Phản ứng trung hòa","D. Phản ứng thế"],a:"B. Phản ứng oxi hóa",explain:"Fe bị oxi hóa tạo rust."},
+{q:"Kim loại kiềm (Alkali metals) phản ứng mạnh với nước vì",options:["A. Có 1 electron hóa trị","B. Có 3 electron hóa trị","C. Có cấu trúc bền","D. Có liên kết cộng hóa trị"],a:"A. Có 1 electron hóa trị",explain:"Dễ nhường electron."},
+{q:"Phi kim thường tạo anion khi phản ứng vì",options:["A. Dễ nhường electron","B. Dễ nhận electron","C. Có ánh kim","D. Có electron tự do"],a:"B. Dễ nhận electron",explain:"Phi kim có độ âm điện lớn."},
+{q:"Copper (Cu) ít phản ứng với Water ở điều kiện thường vì",options:["A. Hoạt động mạnh","B. Hoạt động trung bình","C. Hoạt động yếu","D. Không dẫn điện"],a:"C. Hoạt động yếu",explain:"Cu đứng sau H trong dãy hoạt động."},
+{q:"Magnesium (Mg) cháy sáng trong Oxygen vì",options:["A. Phản ứng thu nhiệt","B. Phản ứng tỏa nhiệt mạnh","C. Không phản ứng","D. Bay hơi"],a:"B. Phản ứng tỏa nhiệt mạnh",explain:"Mg + O₂ → MgO."},
+{q:"Sulfur (S) không dẫn điện vì",options:["A. Có electron tự do","B. Có ion dương","C. Không có electron tự do","D. Có ánh kim"],a:"C. Không có electron tự do",explain:"Phi kim không có electron tự do."},
+{q:"Zinc (Zn) được dùng mạ Iron vì",options:["A. Dẫn điện tốt","B. Nhẹ","C. Bị oxi hóa trước Iron","D. Không phản ứng"],a:"C. Bị oxi hóa trước Iron",explain:"Zn bảo vệ Fe khỏi gỉ."},
+{q:"Kim loại thường có nhiệt độ nóng chảy cao do",options:["A. Liên kết ion","B. Liên kết cộng hóa trị","C. Liên kết kim loại bền","D. Phân tử nhỏ"],a:"C. Liên kết kim loại bền",explain:"Liên kết kim loại giữ các ion dương."}
 // ===== VẬN DỤNG (15 câu) =====
 {q:"Số mol NaOH có trong 8 g NaOH là",options:["A. 0,1","B. 0,2","C. 0,3","D. 0,4"],a:"B. 0,2",explain:"n=8/40."},
 {q:"Khối lượng CO2 tạo ra khi đốt cháy 0,1 mol CH4 là",options:["A. 2,2 g","B. 4,4 g","C. 6,6 g","D. 8,8 g"],a:"B. 4,4 g",explain:"1 mol CH4 → 1 mol CO2."},
@@ -291,10 +319,10 @@ const questions_hoa = [
 {q:"Một hợp chất hữu cơ có CTĐG là CH2 và là hidrocacbon. Công thức có thể là",options:["A. C2H4","B. C3H8","C. C2H6","D. CH4"],a:"A. C2H4",explain:"CTĐG CH2."}
 ];
 
-// Build per-topic arrays from the full list (file contains 308 questions in 5 sections)
+// Build per-topic arrays from the full list (file contains 322 questions in 5 sections)
 window.questions_hoa_by_topic = window.questions_hoa_by_topic || {};
-// Known section sizes (as in this file): 70,89,43,41,65 = 308
-const _hoaCounts = [70,89,43,41,65];
+// Known section sizes (as in this file): 84,89,43,41,65 = 322
+const _hoaCounts = [84,89,43,41,65];
 const _hoaLongNames = [
   'Kim loại – Phi kim',
   'Hợp chất hữu cơ – Hydrocarbon',
@@ -441,3 +469,4 @@ if (Array.isArray(window.questions_hoa)) {
 } else {
   console.error("❌ Không tìm thấy window.questions_hoa");
 }
+
