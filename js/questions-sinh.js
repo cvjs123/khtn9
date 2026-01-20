@@ -1,32 +1,49 @@
-// js/questions-sinh.js - Sinh học lớp 9 (template)
+﻿// js/questions-sinh.js - Sinh học lớp 9 (template)
 // This file provides per-topic arrays for Sinh in the same structure as questions-ly.js.
-// Currently the topic arrays are empty; populate them with question objects
-// of the shape: { q: "...", options: [...], a: "A. ...", explain: "..." }
+// Content based on ly-thuyet.html
+
+const _sinhShortNames = [
+'PHÂN TỬ',
+'TẾ BÀO',
+'QUY LUẬT',
+'ỨNG DỤNG',
+'MÔI TRƯỜNG'
+];
+
+const _sinhLongNames = [
+'CƠ SỞ VẬT CHẤT, CƠ CHẾ DI TRUYỀN VÀ BIẾN DỊ Ở CẤP ĐỘ PHÂN TỬ',
+'CƠ SỞ VẬT CHẤT, CƠ CHẾ DI TRUYỀN VÀ BIẾN DỊ Ở CẤP ĐỘ TẾ BÀO',
+'TÍNH QUY LUẬT CỦA HIỆN TƯỢNG DI TRUYỀN',
+'ỨNG DỤNG DI TRUYỀN TRONG CHỌN GIỐNG VÀ CÔNG NGHỆ SINH HỌC',
+'MÔI TRƯỜNG VÀ ĐA DẠNG SINH HỌC'
+];
+
+const _sinhCounts = [50,50,50,50,50];
 
 // Utility: generate N placeholder questions for a topic
 function _makePlaceholders(topic, count) {
-	const levels = ['nhan_biet', 'thong_hieu', 'van_dung'];
-	const out = [];
-	for (let i = 1; i <= count; i++) {
-		const level = levels[(i - 1) % levels.length]; // Cycle through levels
-		out.push({
-			q: `${topic} — Câu ${i}: (mẫu) Viết nội dung câu hỏi ở đây`,
-			options: [
-				'A. Đáp án mẫu 1',
-				'B. Đáp án mẫu 2',
-				'C. Đáp án mẫu 3',
-				'D. Đáp án mẫu 4'
-			],
-			a: i % 4 === 1 ? 'A. Đáp án mẫu 1' : (i % 4 === 2 ? 'B. Đáp án mẫu 2' : (i % 4 === 3 ? 'C. Đáp án mẫu 3' : 'D. Đáp án mẫu 4')),
-			explain: 'Giải thích mẫu — cập nhật khi chỉnh sửa câu hỏi.',
-			level: level
-		});
-	}
-	return out;
+const levels = ['nhan_biet', 'thong_hieu', 'van_dung'];
+const out = [];
+for (let i = 1; i <= count; i++) {
+const level = levels[(i - 1) % levels.length]; // Cycle through levels
+out.push({
+q: `${topic} — Câu ${i}: (mẫu) Viết nội dung câu hỏi ở đây`,
+options: [
+'A. Đáp án mẫu 1',
+'B. Đáp án mẫu 2',
+'C. Đáp án mẫu 3',
+'D. Đáp án mẫu 4'
+],
+a: i % 4 === 1 ? 'A. Đáp án mẫu 1' : (i % 4 === 2 ? 'B. Đáp án mẫu 2' : (i % 4 === 3 ? 'C. Đáp án mẫu 3' : 'D. Đáp án mẫu 4')),
+explain: 'Giải thích mẫu — cập nhật khi chỉnh sửa câu hỏi.',
+level: level
+});
 }
+return out;
+}
+
 // Chuyên đề 1: CƠ SỞ VẬT CHẤT, CƠ CHẾ DI TRUYỀN VÀ BIẾN DỊ Ở CẤP ĐỘ PHÂN TỬ
 const questions_sinh_topic1 = [
-	// --- Cơ sở vật chất, cơ chế di truyền và biến dị ở cấp độ phân tử
 /* ===== NHẬN BIẾT (25 câu) ===== */
 {q:"DNA là viết tắt của",options:["A. Deoxyribonucleic acid","B. Ribonucleic acid","C. Amino acid","D. Nucleoprotein"],a:"A. Deoxyribonucleic acid",explain:"DNA là axit đêoxiribônuclêic.", level: "nhan_biet"},
 {q:"Đơn phân cấu tạo nên DNA là",options:["A. Amino acid","B. Nucleotide","C. Protein","D. Monosaccharide"],a:"B. Nucleotide",explain:"DNA được cấu tạo từ các nucleotide."},
@@ -83,7 +100,6 @@ const questions_sinh_topic1 = [
 
 // Chuyên đề 2: CƠ SỞ VẬT CHẤT, CƠ CHẾ DI TRUYỀN VÀ BIẾN DỊ Ở CẤP ĐỘ TẾ BÀO
 const questions_sinh_topic2 = [
-	// --- Cơ sở vật chất, cơ chế di truyền và biến dị ở cấp độ tế bào
 /* ===== NHẬN BIẾT (25 câu) ===== */
 {q:"Nhiễm sắc thể (chromosome) được cấu tạo chủ yếu từ",options:["A. Protein","B. DNA và protein","C. RNA và protein","D. Lipid"],a:"B. DNA và protein",explain:"NST gồm DNA quấn quanh protein histone."},
 {q:"Protein chủ yếu tham gia cấu tạo nhiễm sắc thể là",options:["A. Enzyme","B. Histone","C. Keratin","D. Collagen"],a:"B. Histone",explain:"DNA quấn quanh protein histone."},
@@ -135,8 +151,10 @@ const questions_sinh_topic2 = [
 {q:"Giảm phân chỉ xảy ra ở",options:["A. Tế bào sinh dưỡng","B. Tế bào sinh dục chín","C. Hợp tử","D. Mọi tế bào"],a:"B. Tế bào sinh dục chín",explain:"Tạo giao tử."},
 {q:"NST đóng vai trò quan trọng trong di truyền vì",options:["A. Dễ quan sát","B. Mang gen","C. Có hình dạng","D. Co xoắn"],a:"B. Mang gen",explain:"Gen nằm trên NST."},
 {q:"Biến dị phát sinh ở cấp độ tế bào chủ yếu là",options:["A. Đột biến gen","B. Biến dị tổ hợp","C. Thường biến","D. Đột biến cấu trúc protein"],a:"B. Biến dị tổ hợp",explain:"Do giảm phân."},
-{q:"Cơ chế di truyền ở cấp độ tế bào gắn liền với",options:["A. Phiên mã","B. Dịch mã","C. Phân bào","D. Đột biến gen"],a:"C. Phân bào",explain:"Nguyên phân và giảm phân."},
-	// --- Tính quy luật của hiện tượng di truyền
+{q:"Cơ chế di truyền ở cấp độ tế bào gắn liền với",options:["A. Phiên mã","B. Dịch mã","C. Phân bào","D. Đột biến gen"],a:"C. Phân bào",explain:"Nguyên phân và giảm phân."}
+];
+// Chuyên đề 3: TÍNH QUY LUẬT CỦA HIỆN TƯỢNG DI TRUYỀN
+const questions_sinh_topic3 = [
 /* ===== NHẬN BIẾT (25 câu) ===== */
 {q:"Quy luật phân li được Gregor Mendel phát hiện khi nghiên cứu",options:["A. Lai hai cặp tính trạng","B. Lai một cặp tính trạng","C. Lai phân tích","D. Lai thuận nghịch"],a:"B. Lai một cặp tính trạng",explain:"Mendel nghiên cứu lai đơn."},
 {q:"Quy luật phân li còn được gọi là",options:["A. Law of Independent Assortment","B. Law of Segregation","C. Law of Dominance","D. Law of Linkage"],a:"B. Law of Segregation",explain:"Tên quốc tế của quy luật phân li."},
@@ -162,7 +180,6 @@ const questions_sinh_topic2 = [
 {q:"Yếu tố quyết định tính trạng là",options:["A. Môi trường","B. Gen","C. Protein","D. NST"],a:"B. Gen",explain:"Gen quy định tính trạng."},
 {q:"Quy luật Mendel phản ánh sự phân li của",options:["A. Tính trạng","B. Alen","C. NST","D. Kiểu hình"],a:"B. Alen",explain:"Phân li của alen."},
 {q:"Mendel nghiên cứu đối tượng nào?",options:["A. Đậu Hà Lan (Pisum sativum)","B. Lúa","C. Ngô","D. Chuột"],a:"A. Đậu Hà Lan (Pisum sativum)",explain:"Đối tượng thí nghiệm của Mendel."},
-
 /* ===== THÔNG HIỂU (25 câu) ===== */
 {q:"Tỉ lệ 3 : 1 ở F₂ phản ánh sự phân li của",options:["A. Tính trạng","B. NST","C. Alen","D. Kiểu gen"],a:"C. Alen",explain:"Alen phân li trong giảm phân."},
 {q:"Tại sao alen trội biểu hiện ở thể dị hợp?",options:["A. Do số lượng alen","B. Do tác động của môi trường","C. Do alen trội át alen lặn","D. Do NST giới tính"],a:"C. Do alen trội át alen lặn",explain:"Alen trội chi phối."},
@@ -182,80 +199,95 @@ const questions_sinh_topic2 = [
 {q:"Kiểu hình là kết quả của sự tương tác giữa",options:["A. Kiểu gen và môi trường","B. Gen và NST","C. DNA và RNA","D. Protein và enzyme"],a:"A. Kiểu gen và môi trường",explain:"Phenotype = genotype + environment."},
 {q:"Quy luật Mendel phản ánh tính",options:["A. Ngẫu nhiên","B. Ổn định","C. Quy luật","D. Biến đổi"],a:"C. Quy luật",explain:"Di truyền có tính quy luật."},
 {q:"Nếu gen nằm trên NST giới tính, phép lai thuận nghịch sẽ",options:["A. Giống nhau","B. Khác nhau","C. Không có kết quả","D. Không lai được"],a:"B. Khác nhau",explain:"Ảnh hưởng giới tính."},
-{q:"Tỉ lệ kiểu hình phản ánh",options:["A. Kiểu gen","B. Cách phân li alen","C. Số NST","D. Protein"],a:"B. Cách phân li alen",explain:"Liên quan giảm phân."}
-];
-
-// Chuyên đề 3: TÍNH QUY LUẬT CỦA HIỆN TƯỢNG DI TRUYỀN
-const questions_sinh_topic3 = [
+{q:"Tỉ lệ kiểu hình phản ánh",options:["A. Kiểu gen","B. Cách phân li alen","C. Số NST","D. Protein"],a:"B. Cách phân li alen",explain:"Liên quan giảm phân."},
 {q:"Sự phân li và tổ hợp alen diễn ra trong",options:["A. Nguyên phân","B. Giảm phân và thụ tinh","C. Phiên mã","D. Dịch mã"],a:"B. Giảm phân và thụ tinh",explain:"Cơ sở của di truyền."},
 {q:"Quy luật Mendel là cơ sở cho",options:["A. Sinh học phân tử","B. Di truyền học","C. Sinh thái học","D. Tiến hóa"],a:"B. Di truyền học",explain:"Nền tảng di truyền học."},
 {q:"Mendel không phát hiện quy luật liên kết gen vì",options:["A. Sai phương pháp","B. Chọn đối tượng phù hợp","C. Không nghiên cứu","D. Chưa có kính hiển vi"],a:"B. Chọn đối tượng phù hợp",explain:"Gen nằm trên NST khác nhau."},
 {q:"Quy luật phân li độc lập chỉ đúng khi số cặp NST là",options:["A. 1","B. 2","C. Nhiều","D. Bất kỳ"],a:"C. Nhiều",explain:"Nhiều cặp NST khác nhau."},
-{q:"Ý nghĩa của quy luật Mendel là",options:["A. Giải thích cơ chế di truyền","B. Dự đoán kết quả lai","C. Tăng biến dị","D. Tạo giống mới"],a:"B. Dự đoán kết quả lai",explain:"Ứng dụng trong chọn giống."}
+{q:"Ý nghĩa của quy luật Mendel là",options:["A. Giải thích cơ chế di truyền","B. Dự đoán kết quả lai","C. Tăng biến dị","D. Tạo giống mới"],a:"B. Dự đoán kết quả lai",explain:"Ứng dụng trong chọn giống."}];
+// Chuyên đề 4: ỨNG DỤNG DI TRUYỀN TRONG CHỌN GIỐNG VÀ CÔNG NGHỆ SINH HỌC
+const questions_sinh_topic4 = [
+{q:"Công nghệ sinh học là",options:["A. Nuôi trồng thủy sản","B. Ứng dụng sinh học vào sản xuất","C. Chăn nuôi gia súc","D. Trồng trọt"],a:"B. Ứng dụng sinh học vào sản xuất",explain:"Công nghệ sử dụng sinh vật."},
+{q:"Lai tạo giống là",options:["A. Nhân giống vô tính","B. Chọn lọc tự nhiên","C. Lai tạo có kiểm soát","D. Đột biến ngẫu nhiên"],a:"C. Lai tạo có kiểm soát",explain:"Lai tạo có mục đích."},
+{q:"Kỹ thuật thụ tinh nhân tạo dùng để",options:["A. Tăng sản lượng","B. Cải thiện chất lượng","C. Bảo tồn giống","D. Tất cả đều đúng"],a:"D. Tất cả đều đúng",explain:"Nhiều mục đích."},
+{q:"Công nghệ gen là",options:["A. Nghiên cứu gen","B. Thay đổi gen","C. Sao chép gen","D. Tất cả"],a:"D. Tất cả",explain:"Công nghệ gen bao gồm nhiều kỹ thuật."},
+{q:"Ứng dụng của công nghệ sinh học trong nông nghiệp là",options:["A. Tạo giống mới","B. Sản xuất phân bón","C. Bảo vệ thực vật","D. Tất cả"],a:"D. Tất cả",explain:"Nhiều ứng dụng."},
+{q:"Lai giống giúp",options:["A. Tăng năng suất","B. Tăng chất lượng","C. Tăng sức đề kháng","D. Tất cả"],a:"D. Tất cả",explain:"Lai giống cải thiện nhiều tính trạng."},
+{q:"Công nghệ sinh học dùng enzyme để",options:["A. Cắt DNA","B. Ghép DNA","C. Nhân bản DNA","D. Tất cả"],a:"D. Tất cả",explain:"Enzyme như restriction enzyme."},
+{q:"Thụ tinh nhân tạo là",options:["A. Lai tự nhiên","B. Lai nhân tạo","C. Nhân giống vô tính","D. Chọn lọc"],a:"B. Lai nhân tạo",explain:"Thụ tinh ngoài cơ thể."},
+{q:"Công nghệ gen tạo ra",options:["A. GMO","B. Thuốc","C. Vaccine","D. Tất cả"],a:"D. Tất cả",explain:"Nhiều sản phẩm."},
+{q:"Ứng dụng công nghệ sinh học trong y tế là",options:["A. Sản xuất insulin","B. Sản xuất vaccine","C. Ghép gene","D. Tất cả"],a:"D. Tất cả",explain:"Nhiều ứng dụng."}
 ];
 
-const _sinhLongNames = [
-	'Chuyên đề 1: CƠ SỞ VẬT CHẤT, CƠ CHẾ DI TRUYỀN VÀ BIẾN DỊ Ở CẤP ĐỘ PHÂN TỬ',
-	'Chuyên đề 2: CƠ SỞ VẬT CHẤT, CƠ CHẾ DI TRUYỀN VÀ BIẾN DỊ Ở CẤP ĐỘ TẾ BÀO',
-	'Chuyên đề 3: TÍNH QUY LUẬT CỦA HIỆN TƯỢNG DI TRUYỀN'
+// Chuyên đề 5: MÔI TRƯỜNG VÀ ĐA DẠNG SINH HỌC
+const questions_sinh_topic5 = [
+{q:"Đa dạng sinh học là",options:["A. Số loài","B. Sự đa dạng gen","C. Sự đa dạng hệ sinh thái","D. Tất cả"],a:"D. Tất cả",explain:"Ba cấp độ đa dạng."},
+{q:"Nguyên nhân gây suy giảm đa dạng sinh học là",options:["A. Ô nhiễm","B. Khai thác quá mức","C. Biến đổi khí hậu","D. Tất cả"],a:"D. Tất cả",explain:"Nhiều nguyên nhân."},
+{q:"Bảo tồn đa dạng sinh học nhằm",options:["A. Bảo vệ môi trường","B. Phát triển kinh tế","C. Nghiên cứu khoa học","D. Tất cả"],a:"D. Tất cả",explain:"Nhiều mục đích."},
+{q:"Hệ sinh thái là",options:["A. Tập hợp sinh vật","B. Môi trường sống","C. Sinh vật và môi trường","D. Chỉ sinh vật"],a:"C. Sinh vật và môi trường",explain:"Định nghĩa hệ sinh thái."},
+{q:"Chuỗi thức ăn là",options:["A. Quan hệ ăn uống","B. Quan hệ cạnh tranh","C. Quan hệ cộng sinh","D. Quan hệ ký sinh"],a:"A. Quan hệ ăn uống",explain:"Luân chuyển năng lượng."},
+{q:"Mạng thức ăn phức tạp hơn",options:["A. Chuỗi thức ăn","B. Quan hệ cạnh tranh","C. Quan hệ cộng sinh","D. Quan hệ ký sinh"],a:"A. Chuỗi thức ăn",explain:"Mạng thức ăn có nhiều mối quan hệ."},
+{q:"Đa dạng gen là",options:["A. Sự khác nhau giữa loài","B. Sự khác nhau trong loài","C. Sự khác nhau giữa hệ sinh thái","D. Sự khác nhau giữa cá thể"],a:"B. Sự khác nhau trong loài",explain:"Đa dạng ở cấp độ gen."},
+{q:"Bảo tồn in situ là",options:["A. Bảo tồn trong vườn thực vật","B. Bảo tồn trong môi trường tự nhiên","C. Bảo tồn trong phòng thí nghiệm","D. Bảo tồn trong bảo tàng"],a:"B. Bảo tồn trong môi trường tự nhiên",explain:"Bảo tồn tại chỗ."},
+{q:"Bảo tồn ex situ là",options:["A. Bảo tồn trong môi trường tự nhiên","B. Bảo tồn ngoài môi trường tự nhiên","C. Bảo tồn trong rừng","D. Bảo tồn trong sông"],a:"B. Bảo tồn ngoài môi trường tự nhiên",explain:"Bảo tồn ngoài chỗ."},
+{q:"Ô nhiễm môi trường gây",options:["A. Tăng đa dạng","B. Giảm đa dạng","C. Không ảnh hưởng","D. Tăng số loài"],a:"B. Giảm đa dạng",explain:"Ô nhiễm làm suy giảm đa dạng."}
 ];
-const _sinhShortNames = [
-	'PHÂN TỬ',
-	'TẾ BÀO',
-	'QUY LUẬT'
-];
 
-window.questions_sinh_by_topic = window.questions_sinh_by_topic || {};
+// Combine all questions for 'Tất cả' view
+const questions_sinh_all = [].concat(
+questions_sinh_topic1,
+questions_sinh_topic2,
+questions_sinh_topic3,
+questions_sinh_topic4,
+questions_sinh_topic5
+);
 
-for (let i = 0; i < _sinhShortNames.length; i++) {
-	const arr = [questions_sinh_topic1, questions_sinh_topic2, questions_sinh_topic3][i] || [];
-	window.questions_sinh_by_topic[_sinhLongNames[i]] = arr;
-	window.questions_sinh_by_topic[_sinhShortNames[i]] = arr;
-}
-
-const _sinhMinPerTopic = 50;
+// Export globals and per-topic mapping
+(function ensureSinhTopicCounts(minPerTopic = 50) {
 const _sinhList = [
-	{ short: _sinhShortNames[0], arr: questions_sinh_topic1 },
-	{ short: _sinhShortNames[1], arr: questions_sinh_topic2 },
-	{ short: _sinhShortNames[2], arr: questions_sinh_topic3 }
+{ short: _sinhShortNames[0], arr: questions_sinh_topic1 },
+{ short: _sinhShortNames[1], arr: questions_sinh_topic2 },
+{ short: _sinhShortNames[2], arr: questions_sinh_topic3 },
+{ short: _sinhShortNames[3], arr: questions_sinh_topic4 },
+{ short: _sinhShortNames[4], arr: questions_sinh_topic5 }
 ];
 _sinhList.forEach(item => {
-	const arr = item.arr;
-	if (!Array.isArray(arr)) return;
-	if (arr.length === 0) {
-		// create simple placeholders if topic is empty
-		for (let k = 0; k < _sinhMinPerTopic; k++) {
-			arr.push({ q: `${item.short} — câu mẫu ${k+1}`, options: ['A. Đáp án A','B. Đáp án B','C. Đáp án C','D. Đáp án D'], a: 'A. Đáp án A', explain: 'Câu hỏi mẫu.' });
-		}
-	} else {
-		// clone existing entries in round-robin until reach minPerTopic
-		let idx = 0;
-		while (arr.length < _sinhMinPerTopic) {
-			const src = arr[idx % arr.length];
-			const clone = JSON.parse(JSON.stringify(src));
-			arr.push(clone);
-			idx++;
-		}
-	}
+const arr = item.arr;
+if (!Array.isArray(arr)) return;
+if (arr.length === 0) {
+// create simple placeholders if topic is empty
+for (let k = 0; k < minPerTopic; k++) {
+arr.push({ q: `${item.short} — câu mẫu ${k+1}`, options: ['A. Đáp án A','B. Đáp án B','C. Đáp án C','D. Đáp án D'], a: 'A. Đáp án A', explain: 'Câu hỏi mẫu.' });
+}
+} else {
+// clone existing entries in round-robin until reach minPerTopic
+let idx = 0;
+while (arr.length < minPerTopic) {
+const src = arr[idx % arr.length];
+const clone = JSON.parse(JSON.stringify(src));
+arr.push(clone);
+idx++;
+}
+}
 });
 
 // Rebuild combined list and maps after normalization
-const _sinhCombined = [].concat(questions_sinh_topic1, questions_sinh_topic2, questions_sinh_topic3);
+const _sinhCombined = [].concat(questions_sinh_topic1, questions_sinh_topic2, questions_sinh_topic3, questions_sinh_topic4, questions_sinh_topic5);
+if (typeof window !== 'undefined') {
 window.questions_sinh = _sinhCombined;
+window.questions_sinh_by_topic = window.questions_sinh_by_topic || {};
+for (let i = 0; i < _sinhShortNames.length; i++) {
+const arr = [questions_sinh_topic1, questions_sinh_topic2, questions_sinh_topic3, questions_sinh_topic4, questions_sinh_topic5][i] || [];
+window.questions_sinh_by_topic[_sinhLongNames[i]] = arr;
+window.questions_sinh_by_topic[_sinhShortNames[i]] = arr;
+}
 window.questions_sinh_by_topic['Tất cả'] = _sinhCombined;
-
-// Add level to questions for compatibility
-questions_sinh_topic1.forEach((q, i) => {
-  q.level = i < 25 ? 'nhan_biet' : 'thong_hieu';
-});
-questions_sinh_topic2.forEach((q, i) => {
-  q.level = i < 25 ? 'nhan_biet' : 'thong_hieu';
-});
-questions_sinh_topic3.forEach((q) => {
-  q.level = 'thong_hieu';
-});
-
-// Note: Populate the topic arrays above with question objects to enable
-// subject-specific quizzes. The quiz code expects question objects shaped
-// like: { q, options, a, explain }.
+} else {
+global.questions_sinh_topic1 = questions_sinh_topic1;
+global.questions_sinh_topic2 = questions_sinh_topic2;
+global.questions_sinh_topic3 = questions_sinh_topic3;
+global.questions_sinh_topic4 = questions_sinh_topic4;
+global.questions_sinh_topic5 = questions_sinh_topic5;
+}
+})();
 

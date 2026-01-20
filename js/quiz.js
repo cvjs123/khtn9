@@ -4,9 +4,17 @@ let currentQuiz = [];
 let currentQuestion = 0;
 let score = 0;
 let currentSubject = '';
+let currentTopic = '';
+
+// Expose current topic to global scope for progress display
+window.currentTopic = currentTopic;
+window.currentSubject = currentSubject;
 
 function startSubjectQuiz(subject, topic = null, count = null) {
     currentSubject = subject;
+    currentTopic = topic;
+    window.currentTopic = topic;
+    window.currentSubject = subject;
 
     // Resolve base question array for the subject
     const baseName = `questions_${subject}`;
@@ -32,33 +40,28 @@ function startSubjectQuiz(subject, topic = null, count = null) {
         if (target === normalize('Tất cả')) {
             const perTopicKeys = Object.keys(byTopic).filter(k => normalize(k) !== normalize('Tất cả'));
             if (perTopicKeys.length > 0 && typeof count === 'number' && count > 0) {
-                // helper shuffle
+                // Get all unique questions from all topics
+                const all = [].concat(...perTopicKeys.map(k => Array.isArray(byTopic[k]) ? byTopic[k] : []));
+                // Remove duplicates based on question text
+                const uniqueQuestions = [];
+                const seen = new Set();
+                for (const q of all) {
+                    if (q && q.q && !seen.has(q.q)) {
+                        seen.add(q.q);
+                        uniqueQuestions.push(q);
+                    }
+                }
+                // Shuffle and limit to requested count or available questions
                 const shuffle = arr => {
                     for (let i = arr.length - 1; i > 0; i--) {
                         const j = Math.floor(Math.random() * (i + 1));
                         [arr[i], arr[j]] = [arr[j], arr[i]];
                     }
                 };
-                const per = Math.floor(count / perTopicKeys.length);
-                let remainder = count - per * perTopicKeys.length;
-                let selection = [];
-                for (const k of perTopicKeys) {
-                    const pool = Array.isArray(byTopic[k]) ? [...byTopic[k]] : [];
-                    shuffle(pool);
-                    let take = Math.min(per, pool.length);
-                    if (remainder > 0) { take = Math.min(take + 1, pool.length); remainder--; }
-                    selection = selection.concat(pool.slice(0, take));
-                }
-                // If we still need more (because some topics had fewer items), fill from full pool
-                if (selection.length < count) {
-                    const all = [].concat(...perTopicKeys.map(k => Array.isArray(byTopic[k]) ? byTopic[k] : []));
-                    shuffle(all);
-                    for (let i = 0; i < all.length && selection.length < count; i++) {
-                        if (!selection.includes(all[i])) selection.push(all[i]);
-                    }
-                }
-                shuffle(selection);
-                questions = selection;
+                shuffle(uniqueQuestions);
+                questions = uniqueQuestions.slice(0, Math.min(count, uniqueQuestions.length));
+                // Update count to reflect actual number of questions available
+                count = questions.length;
             } else {
                 // fallback to existing 'Tất cả' array if no count specified
                 let t = byTopic['Tất cả'] || byTopic['TAT CA'] || null;
@@ -84,6 +87,17 @@ function startSubjectQuiz(subject, topic = null, count = null) {
         }
     }
 
+    // Update the global questions array for this subject to reflect current topic selection
+    // This ensures progress bars show the correct count for the selected topic
+    if (topic && topic !== 'Tất cả') {
+        window[baseName] = questions;
+    }
+
+    // Update progress sidebar to reflect the new question count
+    if (typeof updateProgressSidebar === 'function') {
+        updateProgressSidebar();
+    }
+
     if (!Array.isArray(questions) || questions.length === 0) {
         document.getElementById('contentArea').innerHTML = `
             <div class="text-center py-5">
@@ -104,6 +118,8 @@ function startSubjectQuiz(subject, topic = null, count = null) {
     }
     if (typeof count === 'number' && count > 0) {
         currentQuiz = currentQuiz.slice(0, Math.min(count, currentQuiz.length));
+        // Update count to reflect actual number of questions available
+        count = currentQuiz.length;
     }
     currentQuestion = 0;
     score = 0;
@@ -347,6 +363,9 @@ function backToMenu() {
     currentQuestion = 0;
     score = 0;
     currentSubject = '';
+    currentTopic = '';
+    window.currentSubject = '';
+    window.currentTopic = '';
     // Stop background music when returning to main menu
     try {
         const bg = document.getElementById('bgMusic');

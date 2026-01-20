@@ -88,15 +88,6 @@ function closeSubjectModal() {
     if (modal) modal.style.display = 'none';
 }
 
-function startFilteredQuiz(subject) {
-    const topicSelect = document.getElementById('subjectTopicSelect');
-    const countInput = document.getElementById('subjectCountInput');
-    const topic = topicSelect.value === 'all' ? null : topicSelect.value;
-    const count = parseInt(countInput.value) || null;
-    closeSubjectModal();
-    startSubjectQuiz(subject, topic, count);
-}
-
 // Authentication modal handlers
 let currentAuthMode = 'login';
 
@@ -208,8 +199,7 @@ function updateProgressSidebar() {
     try {
         const done = (data.progress && data.progress.ly && Number(data.progress.ly.done)) || 0;
         const questions = Array.isArray(window.questions_ly) ? window.questions_ly : (window.questions_ly_by_topic && Array.isArray(window.questions_ly_by_topic['Tất cả']) ? window.questions_ly_by_topic['Tất cả'] : []);
-        const total = questions.length > 0 ? new Set(questions.map(q => q.q)).size : 0;
-        console.log('Ly: questions.length', questions.length, 'total unique', total);
+        const total = questions.length;
         const lyPercent = total > 0 ? Math.min(100, Math.round((done / total) * 100)) : 0;
         const lyBar = document.getElementById('lyBar');
         if (lyBar) {
@@ -220,8 +210,9 @@ function updateProgressSidebar() {
             else if (lyPercent < 66) lyBar.classList.add('bg-warning');
             else lyBar.classList.add('bg-success');
         }
+        const subjectName = window.currentTopic && window.currentSubject === 'ly' ? `Lý (${window.currentTopic})` : 'Lý';
         const lyLabel = document.getElementById('lyProgressText');
-        if (lyLabel) lyLabel.textContent = `Lý: ${done}/${total} câu (${lyPercent}%)`;
+        if (lyLabel) lyLabel.textContent = `${subjectName}: ${done}/${total} câu (${lyPercent}%)`;
         document.getElementById('lyPercent').textContent = `${lyPercent}%`;
     } catch (e) {}
 
@@ -229,8 +220,7 @@ function updateProgressSidebar() {
     try {
         const done = (data.progress && data.progress.hoa && Number(data.progress.hoa.done)) || 0;
         const questions = Array.isArray(window.questions_hoa) ? window.questions_hoa : (window.questions_hoa_by_topic && Array.isArray(window.questions_hoa_by_topic['Tất cả']) ? window.questions_hoa_by_topic['Tất cả'] : []);
-        const total = questions.length > 0 ? new Set(questions.map(q => q.q)).size : 0;
-        console.log('Hoa: questions.length', questions.length, 'total unique', total);
+        const total = questions.length;
         const hoaPercent = total > 0 ? Math.min(100, Math.round((done / total) * 100)) : 0;
         const hoaBar = document.getElementById('hoaBar');
         if (hoaBar) {
@@ -241,8 +231,9 @@ function updateProgressSidebar() {
             else if (hoaPercent < 66) hoaBar.classList.add('bg-warning');
             else hoaBar.classList.add('bg-success');
         }
+        const subjectName = window.currentTopic && window.currentSubject === 'hoa' ? `Hóa (${window.currentTopic})` : 'Hóa';
         const hoaLabel = document.getElementById('hoaProgressText');
-        if (hoaLabel) hoaLabel.textContent = `Hóa: ${done}/${total} câu (${hoaPercent}%)`;
+        if (hoaLabel) hoaLabel.textContent = `${subjectName}: ${done}/${total} câu (${hoaPercent}%)`;
         document.getElementById('hoaPercent').textContent = `${hoaPercent}%`;
     } catch (e) {}
 
@@ -250,8 +241,7 @@ function updateProgressSidebar() {
     try {
         const done = (data.progress && data.progress.sinh && Number(data.progress.sinh.done)) || 0;
         const questions = Array.isArray(window.questions_sinh) ? window.questions_sinh : (window.questions_sinh_by_topic && Array.isArray(window.questions_sinh_by_topic['Tất cả']) ? window.questions_sinh_by_topic['Tất cả'] : []);
-        const total = questions.length > 0 ? new Set(questions.map(q => q.q)).size : 0;
-        console.log('Sinh: questions.length', questions.length, 'total unique', total);
+        const total = questions.length;
         const sinhPercent = total > 0 ? Math.min(100, Math.round((done / total) * 100)) : 0;
         const sinhBar = document.getElementById('sinhBar');
         if (sinhBar) {
@@ -262,8 +252,9 @@ function updateProgressSidebar() {
             else if (sinhPercent < 66) sinhBar.classList.add('bg-warning');
             else sinhBar.classList.add('bg-success');
         }
+        const subjectName = window.currentTopic && window.currentSubject === 'sinh' ? `Sinh (${window.currentTopic})` : 'Sinh';
         const sinhLabel = document.getElementById('sinhProgressText');
-        if (sinhLabel) sinhLabel.textContent = `Sinh: ${done}/${total} câu (${sinhPercent}%)`;
+        if (sinhLabel) sinhLabel.textContent = `${subjectName}: ${done}/${total} câu (${sinhPercent}%)`;
         document.getElementById('sinhPercent').textContent = `${sinhPercent}%`;
     } catch (e) {}
 
@@ -280,6 +271,9 @@ function updateProgressSidebar() {
     document.getElementById('bestScore').textContent = `Điểm cao nhất: ${p.total.bestScore || 0}`;
     updateLeaderboard();
 }
+
+// Expose updateProgressSidebar to global scope for quiz.js to call
+window.updateProgressSidebar = updateProgressSidebar;
 
 // Update leaderboard
 function updateLeaderboard() {
@@ -379,11 +373,11 @@ async function showSubjectOptions(subject) {
                 'NĂNG LƯỢNG VỚI CUỘC SỐNG'
             ],
             hoa: [
-                'KIM LOẠI – PHI KIM',
-                'HỢP CHẤT HỮU CƠ – HIĐROCACBON – NHIÊN LIỆU',
-                'ANCOL ETYLIC – AXIT AXETIC – ESTE',
-                'HÓA HỮU CƠ TRONG ĐỜI SỐNG',
-                'TÀI NGUYÊN – MÔI TRƯỜNG'
+           'KIM LOẠI – PHI KIM',
+           'HỢP CHẤT VÔ CƠ – HỮU CƠ',
+           'HIDROCACBON – ANCOL – AXIT – ESTE',
+           'GLUXIT – LIPIT – PROTEIN – POLIME',
+           'TỔNG HỢP'
             ],
             sinh: [
            'CƠ SỞ VẬT CHẤT, CƠ CHẾ DI TRUYỀN VÀ BIẾN DỊ Ở CẤP ĐỘ PHÂN TỬ',
@@ -407,7 +401,50 @@ async function showSubjectOptions(subject) {
     allOpt.textContent = 'Tất cả';
     select.appendChild(allOpt);
 
+    // Add event listener to update max count when topic changes
+    select.addEventListener('change', updateMaxCount);
+
     modal.style.display = 'flex';
+
+    // Update max count initially
+    updateMaxCount();
+}
+
+function updateMaxCount() {
+    const select = document.getElementById('subjectTopicSelect');
+    const input = document.getElementById('subjectCountInput');
+    const formText = document.getElementById('countFormText');
+    if (!select || !input || !formText) return;
+
+    const topic = select.value.trim();
+    const baseName = `questions_${currentModalSubject}`;
+    let available = 0;
+
+    const normalize = s => String(s || '')
+        .normalize('NFKD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .replace(/[–—−]/g, '-')
+        .replace(/\s+/g, ' ')
+        .trim()
+        .toLowerCase();
+
+    if (topic === 'all') {
+        available = window[baseName] ? window[baseName].length : 0;
+    } else {
+        const byTopic = window[`${baseName}_by_topic`];
+        if (byTopic) {
+            const target = normalize(topic);
+            for (const k of Object.keys(byTopic)) {
+                if (normalize(k) === target) {
+                    available = byTopic[k].length;
+                    break;
+                }
+            }
+        }
+    }
+
+    input.max = available || 50;
+    formText.textContent = `Số câu có sẵn: ${available}. Tối đa sẽ giới hạn theo số câu có sẵn.`;
 }
 
 function closeSubjectModal() {
@@ -418,8 +455,42 @@ function closeSubjectModal() {
 function startFilteredQuiz(subject) {
     closeSubjectModal();
 
-    const topic = document.getElementById('subjectTopicSelect')?.value || 'all';
-    const count = parseInt(document.getElementById('subjectCountInput')?.value) || 10;
+    const topicSelect = document.getElementById('subjectTopicSelect');
+    const countInput = document.getElementById('subjectCountInput');
+    const topic = topicSelect?.value.trim() || 'all';
+    let count = parseInt(countInput?.value) || 10;
+
+    // Calculate available questions with tolerant matching
+    const baseName = `questions_${subject}`;
+    let available = 0;
+
+    const normalize = s => String(s || '')
+        .normalize('NFKD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .replace(/[–—−]/g, '-')
+        .replace(/\s+/g, ' ')
+        .trim()
+        .toLowerCase();
+
+    if (topic === 'all') {
+        available = window[baseName] ? window[baseName].length : 0;
+    } else {
+        const byTopic = window[`${baseName}_by_topic`];
+        if (byTopic) {
+            const target = normalize(topic);
+            for (const k of Object.keys(byTopic)) {
+                if (normalize(k) === target) {
+                    available = byTopic[k].length;
+                    break;
+                }
+            }
+        }
+    }
+
+    if (count > available) {
+        // Limit to available instead of alerting
+        count = available;
+    }
 
     if (typeof startSubjectQuiz === 'function') {
         startSubjectQuiz(subject, topic === 'all' ? null : topic, count);

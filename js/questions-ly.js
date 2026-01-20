@@ -378,7 +378,7 @@ window.questions_ly_by_topic['Tất cả'] = questions_ly_all;
 		window.questions_ly_by_topic[_lyShortNames[i]] = arr;
 		window.questions_ly_by_topic[_lyLongNames[i]] = arr;
 	}
-	window.questions_ly_by_topic['Tất cả'] = combined;
+	window.questions_ly_by_topic['Tất cả'] = _lyCombined;
 })();
 
 /* Note: Populate the topic arrays above with question objects to enable

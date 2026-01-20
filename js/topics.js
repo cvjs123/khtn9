@@ -8,16 +8,18 @@ window.topics_by_subject = window.topics_by_subject || {
         'NĂNG LƯỢNG VỚI CUỘC SỐNG'
     ],
     hoa: [
-        'Kim loại – Phi kim',
-        'Hợp chất hữu cơ – Hydrocarbon',
-        'Ethylic alcohol và acetic acid',
-        'Lipit.Carbohydrate. Protein. Polymer',
-        'Tổng hợp'
+        'KIM LOẠI VÀ SỰ KHÁC NHAU CƠ BẢN VỚI PHI KIM',
+        'GIỚI THIỆU VỀ CHẤT HỮU CƠ. HYDROCARBON VÀ NGUỒN NHIÊN LIỆU',
+        'ETHYLIC ALCOHOL VÀ ACETIC ACID',
+        'LIPIT. CARBOHYDRATE. PROTEIN. POLYMER',
+        'TỔNG HỢP'
     ],
     sinh: [
-        'Cơ sở vật chất, cơ chế di truyền và biến dị ở cấp độ phân tử',
-        'Cơ sở vật chất, cơ chế di truyền và biến dị ở cấp độ tế bào',
-        'Tính quy luật của hiện tượng di truyền'
+    'CƠ SỞ VẬT CHẤT, CƠ CHẾ DI TRUYỀN VÀ BIẾN DỊ Ở CẤP ĐỘ PHÂN TỬ',
+    'CƠ SỞ VẬT CHẤT, CƠ CHẾ DI TRUYỀN VÀ BIẾN DỊ Ở CẤP ĐỘ TẾ BÀO',
+    'TÍNH QUY LUẬT CỦA HIỆN TƯỢNG DI TRUYỀN',
+    'ỨNG DỤNG DI TRUYỀN TRONG CHỌN GIỐNG VÀ CÔNG NGHỆ SINH HỌC',
+    'MÔI TRƯỜNG VÀ ĐA DẠNG SINH HỌC'
     ]
 };
 

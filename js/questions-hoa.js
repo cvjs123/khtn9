@@ -1,30 +1,30 @@
-// js/questions-hoa.js - Hóa học lớp 9 (template)
+﻿// js/questions-hoa.js - Hóa học lớp 9 (template)
 // This file provides per-topic arrays for Hóa in the same structure as questions-ly.js.
-// Currently the topic arrays are empty; populate them with question objects
-// of the shape: { q: "...", options: [...], a: "A. ...", explain: "..." }
+// Content based on ly-thuyet.html
 
 // Utility: generate N placeholder questions for a topic
 function _makePlaceholders(topic, count) {
-	const levels = ['nhan_biet', 'thong_hieu', 'van_dung'];
-	const out = [];
-	for (let i = 1; i <= count; i++) {
-		const level = levels[(i - 1) % levels.length]; // Cycle through levels
-		out.push({
-			q: `${topic} — Câu ${i}: (mẫu) Viết nội dung câu hỏi ở đây`,
-			options: [
-				'A. Đáp án mẫu 1',
-				'B. Đáp án mẫu 2',
-				'C. Đáp án mẫu 3',
-				'D. Đáp án mẫu 4'
-			],
-			a: i % 4 === 1 ? 'A. Đáp án mẫu 1' : (i % 4 === 2 ? 'B. Đáp án mẫu 2' : (i % 4 === 3 ? 'C. Đáp án mẫu 3' : 'D. Đáp án mẫu 4')),
-			explain: 'Giải thích mẫu — cập nhật khi chỉnh sửa câu hỏi.',
-			level: level
-		});
-	}
-	return out;
+const levels = ['nhan_biet', 'thong_hieu', 'van_dung'];
+const out = [];
+for (let i = 1; i <= count; i++) {
+const level = levels[(i - 1) % levels.length]; // Cycle through levels
+out.push({
+q: `${topic} — Câu ${i}: (mẫu) Viết nội dung câu hỏi ở đây`,
+options: [
+'A. Đáp án mẫu 1',
+'B. Đáp án mẫu 2',
+'C. Đáp án mẫu 3',
+'D. Đáp án mẫu 4'
+],
+a: i % 4 === 1 ? 'A. Đáp án mẫu 1' : (i % 4 === 2 ? 'B. Đáp án mẫu 2' : (i % 4 === 3 ? 'C. Đáp án mẫu 3' : 'D. Đáp án mẫu 4')),
+explain: 'Giải thích mẫu — cập nhật khi chỉnh sửa câu hỏi.',
+level: level
+});
 }
-// Chuyên đề 1: KIM LOẠI – PHI KIM
+return out;
+}
+
+// Chuyên đề 1: KIM LOẠI VÀ SỰ KHÁC NHAU CƠ BẢN VỚI PHI KIM
 const questions_hoa_topic1 = [
 // ===== NHẬN BIẾT (21 câu) =====
 {q:"Tính chất vật lí chung của kim loại là",options:["A. Dễ vỡ, cách điện","B. Dẫn điện, dẫn nhiệt, có ánh kim, dẻo","C. Tan trong nước","D. Bay hơi dễ"],a:"B. Dẫn điện, dẫn nhiệt, có ánh kim, dẻo",explain:"Kim loại có electron tự do.", level: "nhan_biet"},
@@ -131,9 +131,8 @@ const questions_hoa_topic1 = [
 {q:"Khối lượng calcium hydroxide tạo thành khi cho 5,6 g calcium oxide tác dụng với nước là",options:["A. 5,6 g","B. 6,4 g","C. 7,4 g","D. 8,4 g"],a:"D. 8,4 g",explain:"CaO + H2O → Ca(OH)2."}
 ];
 
-// Chuyên đề 2: HỢP CHẤT HỮU CƠ – HIDROCACBON
+// Chuyên đề 2: GIỚI THIỆU VỀ CHẤT HỮU CƠ. HYDROCARBON VÀ NGUỒN NHIÊN LIỆU
 const questions_hoa_topic2 = [
-// ===== Hợp chất hữu cơ – Hidrocacbon =====
 // ===== NHẬN BIẾT (21 câu) =====
 {q:"Hợp chất hữu cơ là hợp chất của",options:["A. Kim loại","B. Phi kim","C. Cacbon","D. Hidro"],a:"C. Cacbon",explain:"Hợp chất hữu cơ là hợp chất của cacbon."},
 {q:"Hidrocacbon là hợp chất chỉ gồm",options:["A. C và O","B. C và H","C. C, H, O","D. C, H, N"],a:"B. C và H",explain:"Hidrocacbon chỉ chứa C và H."},
@@ -253,7 +252,10 @@ const questions_hoa_topic2 = [
 {q:"Hydrocarbon có công thức CnH2n−2 thuộc loại",options:["A. Alkane","B. Alkene","C. Alkyne","D. Arene"],a:"C. Alkyne",explain:"Hydrocarbon mạch hở không no."},
 {q:"Khối lượng CO2 thu được khi đốt cháy hoàn toàn 6 g Ethane là",options:["A. 8,8 g","B. 11 g","C. 17,6 g","D. 22 g"],a:"C. 17,6 g",explain:"nC2H6 = 0,2 → nCO2 = 0,4."},
 {q:"Hydrocarbon có tỉ khối so với Hydrogen bằng 15 là",options:["A. Methane","B. Ethane","C. Ethene","D. Propane"],a:"B. Ethane",explain:"d = M / 2 → M = 30."},
-// ===== Ancol etylic – Axit axetic =====
+];
+
+// Chuyên đề 3: ETHYLIC ALCOHOL VÀ ACETIC ACID
+const questions_hoa_topic3 = [
 // ===== NHẬN BIẾT (21 câu) =====
 {q:"Ancol etylic có công thức hóa học là",options:["A. CH3OH","B. C2H5OH","C. CH3COOH","D. C2H4OH"],a:"B. C2H5OH",explain:"Ancol etylic là C2H5OH."},
 {q:"Ancol etylic còn gọi là",options:["A. Metanol","B. Etanol","C. Axit axetic","D. Ete"],a:"B. Etanol",explain:"Tên thay thế của Ancol etylic là etanol."},
@@ -359,9 +361,8 @@ const questions_hoa_topic2 = [
 {q:"Dung dịch ethanol 20% có khối lượng 250 g thì khối lượng ethanol là",options:["A. 25 g","B. 40 g","C. 50 g","D. 60 g"],a:"C. 50 g",explain:"20% của 250 g."}
 ];
 
-// Chuyên đề 3: ETHYLIC ALCOHOL VÀ ACETIC ACID
-const questions_hoa_topic3 = [
-// ===== Lipit – Gluxit – Protein – Polime =====
+// Chuyên đề 4: LIPIT. CARBOHYDRATE. PROTEIN. POLYMER
+const questions_hoa_topic4 = [
 // ===== NHẬN BIẾT (21 câu) =====
 {q:"Chất nào sau đây thuộc loại lipit?",options:["A. Tinh bột","B. Protein","C. Chất béo","D. Xenlulozơ"],a:"C. Chất béo",explain:"Chất béo là lipit."},
 {q:"Gluxit còn được gọi là",options:["A. Chất đạm","B. Chất béo","C. Cacbohidrat","D. Axit hữu cơ"],a:"C. Cacbohidrat",explain:"Gluxit là cacbohidrat."},
@@ -467,7 +468,10 @@ const questions_hoa_topic3 = [
 {q:"Khối lượng mol của sucrose là",options:["A. 180","B. 324","C. 342","D. 360"],a:"C. 342",explain:"C12H22O11."},
 {q:"Khối lượng glucose cần tạo 162 g starch là",options:["A. 162 g","B. 170 g","C. 180 g","D. 200 g"],a:"C. 180 g",explain:"Trùng ngưng mất nước."},
 {q:"Hợp chất có CTĐG CH2O và là polymer thiên nhiên là",options:["A. Glucose","B. Cellulose","C. Sucrose","D. Starch"],a:"B. Cellulose",explain:"Polymer thiên nhiên."},
- // Chuyên đề 5: TỔNG HỢP
+];
+
+// Chuyên đề 5: TỔNG HỢP
+const questions_hoa_topic5 = [
 // ===== NHẬN BIẾT (21 câu) =====
 {q:"Chất nào sau đây là kim loại?",options:["A. S","B. O","C. Fe","D. Cl"],a:"C. Fe",explain:"Fe là kim loại."},
 {q:"Chất nào sau đây là phi kim?",options:["A. Na","B. Al","C. Cl","D. Fe"],a:"C. Cl",explain:"Cl là phi kim."},
@@ -575,127 +579,85 @@ const questions_hoa_topic3 = [
 {q:"Khối lượng Na2CO3 cần để phản ứng hết 0,2 mol HCl là",options:["A. 5,3 g","B. 8,4 g","C. 10,6 g","D. 21,2 g"],a:"C. 10,6 g",explain:"Na2CO3 = 106."}
 ];
 
-// Chuyên đề 4: LIPIT – GLUXIT – PROTEIN – POLIME
-const questions_hoa_topic4 = _makePlaceholders('Lipit – Gluxit – Protein – Polime', 41);
-
-// Chuyên đề 5: TỔNG HỢP
-const questions_hoa_topic5 = _makePlaceholders('Tổng hợp', 82);
+const _hoaShortNames = [
+'KIM LOẠI VÀ SỰ KHÁC NHAU CƠ BẢN VỚI PHI KIM',
+'GIỚI THIỆU VỀ CHẤT HỮU CƠ. HYDROCARBON VÀ NGUỒN NHIÊN LIỆU',
+'ETHYLIC ALCOHOL VÀ ACETIC ACID',
+'LIPIT. CARBOHYDRATE. PROTEIN. POLYMER',
+'TỔNG HỢP'
+];
 
 const _hoaLongNames = [
-	'Chuyên đề 1: KIM LOẠI – PHI KIM',
-	'Chuyên đề 2: HỢP CHẤT HỮU CƠ – HIDROCACBON',
-	'Chuyên đề 3: ETHYLIC ALCOHOL VÀ ACETIC ACID',
-	'Chuyên đề 4: LIPIT – GLUXIT – PROTEIN – POLIME',
-	'Chuyên đề 5: TỔNG HỢP'
-];
-const _hoaShortNames = [
-	'KIM LOẠI – PHI KIM',
-	'HỢP CHẤT HỮU CƠ – HIDROCACBON',
-	'ETHYLIC ALCOHOL VÀ ACETIC ACID',
-	'LIPIT – GLUXIT – PROTEIN – POLIME',
-	'TỔNG HỢP'
+'Chuyên đề 1: KIM LOẠI VÀ SỰ KHÁC NHAU CƠ BẢN VỚI PHI KIM',
+'Chuyên đề 2: GIỚI THIỆU VỀ CHẤT HỮU CƠ. HYDROCARBON VÀ NGUỒN NHIÊN LIỆU',
+'Chuyên đề 3: ETHYLIC ALCOHOL VÀ ACETIC ACID',
+'Chuyên đề 4: LIPIT. CARBOHYDRATE. PROTEIN. POLYMER',
+'Chuyên đề 5: TỔNG HỢP'
 ];
 
+const _hoaCounts = [50,50,50,50,50];
+
+// Combine all questions for 'Tất cả' view
+const questions_hoa_all = [].concat(
+questions_hoa_topic1,
+questions_hoa_topic2,
+questions_hoa_topic3,
+questions_hoa_topic4,
+questions_hoa_topic5
+);
+
+// Export globals and per-topic mapping
+window.questions_hoa = questions_hoa_all;
 window.questions_hoa_by_topic = window.questions_hoa_by_topic || {};
 
 for (let i = 0; i < _hoaShortNames.length; i++) {
-	const arr = [questions_hoa_topic1, questions_hoa_topic2, questions_hoa_topic3, questions_hoa_topic4, questions_hoa_topic5][i] || [];
-	window.questions_hoa_by_topic[_hoaLongNames[i]] = arr;
-	window.questions_hoa_by_topic[_hoaShortNames[i]] = arr;
+const arr = [questions_hoa_topic1, questions_hoa_topic2, questions_hoa_topic3, questions_hoa_topic4, questions_hoa_topic5][i] || [];
+window.questions_hoa_by_topic[_hoaLongNames[i]] = arr;
+window.questions_hoa_by_topic[_hoaShortNames[i]] = arr;
 }
+window.questions_hoa_by_topic['Tất cả'] = questions_hoa_all;
 
-const _hoaMinPerTopic = 50;
+// Ensure each Hóa chuyên đề có at least 50 câu (bổ sung bằng cách nhân bản nếu cần)
+(function ensureHoaTopicCounts(minPerTopic = 50) {
 const _hoaList = [
-	{ short: _hoaShortNames[0], arr: questions_hoa_topic1 },
-	{ short: _hoaShortNames[1], arr: questions_hoa_topic2 },
-	{ short: _hoaShortNames[2], arr: questions_hoa_topic3 },
-	{ short: _hoaShortNames[3], arr: questions_hoa_topic4 },
-	{ short: _hoaShortNames[4], arr: questions_hoa_topic5 }
+{ short: _hoaShortNames[0], arr: questions_hoa_topic1 },
+{ short: _hoaShortNames[1], arr: questions_hoa_topic2 },
+{ short: _hoaShortNames[2], arr: questions_hoa_topic3 },
+{ short: _hoaShortNames[3], arr: questions_hoa_topic4 },
+{ short: _hoaShortNames[4], arr: questions_hoa_topic5 }
 ];
 _hoaList.forEach(item => {
-	const arr = item.arr;
-	if (!Array.isArray(arr)) return;
-	if (arr.length === 0) {
-		// create simple placeholders if topic is empty
-		for (let k = 0; k < _hoaMinPerTopic; k++) {
-			arr.push({ q: `${item.short} — câu mẫu ${k+1}`, options: ['A. Đáp án A','B. Đáp án B','C. Đáp án C','D. Đáp án D'], a: 'A. Đáp án A', explain: 'Câu hỏi mẫu.' });
-		}
-	} else {
-		// clone existing entries in round-robin until reach minPerTopic
-		let idx = 0;
-		while (arr.length < _hoaMinPerTopic) {
-			const src = arr[idx % arr.length];
-			const clone = JSON.parse(JSON.stringify(src));
-			arr.push(clone);
-			idx++;
-		}
-	}
+const arr = item.arr;
+if (!Array.isArray(arr)) return;
+if (arr.length === 0) {
+// create simple placeholders if topic is empty
+for (let k = 0; k < minPerTopic; k++) {
+arr.push({ q: `${item.short} — câu mẫu ${k+1}`, options: ['A. Đáp án A','B. Đáp án B','C. Đáp án C','D. Đáp án D'], a: 'A. Đáp án A', explain: 'Câu hỏi mẫu.' });
+}
+} else {
+// clone existing entries in round-robin until reach minPerTopic
+let idx = 0;
+while (arr.length < minPerTopic) {
+const src = arr[idx % arr.length];
+const clone = JSON.parse(JSON.stringify(src));
+arr.push(clone);
+idx++;
+}
+}
 });
 
 // Rebuild combined list and maps after normalization
 const _hoaCombined = [].concat(questions_hoa_topic1, questions_hoa_topic2, questions_hoa_topic3, questions_hoa_topic4, questions_hoa_topic5);
 window.questions_hoa = _hoaCombined;
+window.questions_hoa_by_topic = window.questions_hoa_by_topic || {};
+for (let i = 0; i < _hoaShortNames.length; i++) {
+const arr = [questions_hoa_topic1, questions_hoa_topic2, questions_hoa_topic3, questions_hoa_topic4, questions_hoa_topic5][i] || [];
+window.questions_hoa_by_topic[_hoaLongNames[i]] = arr;
+window.questions_hoa_by_topic[_hoaShortNames[i]] = arr;
+}
 window.questions_hoa_by_topic['Tất cả'] = _hoaCombined;
+})();
 
-// Tự động loại bỏ tiền tố phân loại ('Nhận biết:', 'Thông hiểu:', 'Vận dụng:')
-// khỏi trường `q` để đảm bảo hiển thị câu hỏi không chứa nhãn phân loại.
-(function stripHoaPrefixes(list) {
-  const re = /^(?:Nhận biết:|Thông hiểu:|Vận dụng:)\s*/;
-  for (const it of list) {
-    if (it && typeof it.q === 'string') {
-      it.q = it.q.replace(re, '');
-    }
-  }
-})(questions_hoa);
-
-/* ===== BẢNG IUPAC ===== */
-const IUPAC_MAP = {
-  "Natri": "Sodium",
-  "Kali": "Potassium",
-  "Canxi": "Calcium",
-  "Magie": "Magnesium",
-  "Nhôm": "Aluminium",
-  "Sắt": "Iron",
-  "Kẽm": "Zinc",
-  "Đồng": "Copper",
-  "Bạc": "Silver",
-  "Vàng": "Gold",
-  "Chì": "Lead",
-  "Thủy ngân": "Mercury",
-
-  "Oxi": "Oxygen",
-  "Hiđro": "Hydrogen",
-  "Clo": "Chlorine",
-  "Brom": "Bromine",
-  "Lưu huỳnh": "Sulfur",
-  "Cacbon": "Carbon",
-  "Nitơ": "Nitrogen",
-
-  "Cacbon đioxit": "Carbon dioxide",
-  "Lưu huỳnh đioxit": "Sulfur dioxide",
-  "Canxi cacbonat": "Calcium carbonate",
-  "Natri clorua": "Sodium chloride",
-  "Natri hiđroxit": "Sodium hydroxide",
-  "Canxi hiđroxit": "Calcium hydroxide",
-
-  "Metan": "Methane",
-  "Etan": "Ethane",
-  "Etilen": "Ethene",
-  "Eten": "Ethene",
-  "Axetilen": "Ethyne",
-  "Benzen": "Benzene",
-
-  "Ancol etylic": "Ethanol",
-  "Axit axetic": "Ethanoic acid",
-  "Glucozơ": "Glucose",
-  "Polietilen": "Polyethylene",
-  "Xenlulozơ": "Cellulose",
-  "Tinh bột": "Starch",
-  "Protein": "Protein",
-  "Chất béo": "Fat",
-  "xenlulozơ": "Cellulose",
-  "axit axetic": "Ethanoic acid"
-};
 
 /* ===== HÀM THAY THẾ ===== */
 function toIUPAC(text) {
