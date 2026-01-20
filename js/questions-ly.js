@@ -332,7 +332,6 @@ const _lyShortNames = [
 	'NĂNG LƯỢNG VỚI CUỘC SỐNG'
 ];
 
-let _start = 0;
 for (let i = 0; i < _lyShortNames.length; i++) {
 	const arr = [questions_ly_topic1, questions_ly_topic2, questions_ly_topic3, questions_ly_topic4, questions_ly_topic5][i] || [];
 	window.questions_ly_by_topic[_lyLongNames[i]] = arr;
@@ -343,14 +342,14 @@ window.questions_ly_by_topic['Tất cả'] = questions_ly_all;
 
 // Ensure each Lý chuyên đề có at least 50 câu (bổ sung bằng cách nhân bản nếu cần)
 (function ensureLyTopicCounts(minPerTopic = 50) {
-	const list = [
+	const _lyList = [
 		{ short: _lyShortNames[0], arr: questions_ly_topic1 },
 		{ short: _lyShortNames[1], arr: questions_ly_topic2 },
 		{ short: _lyShortNames[2], arr: questions_ly_topic3 },
 		{ short: _lyShortNames[3], arr: questions_ly_topic4 },
 		{ short: _lyShortNames[4], arr: questions_ly_topic5 }
 	];
-	list.forEach(item => {
+	_lyList.forEach(item => {
 		const arr = item.arr;
 		if (!Array.isArray(arr)) return;
 		if (arr.length === 0) {
@@ -371,8 +370,8 @@ window.questions_ly_by_topic['Tất cả'] = questions_ly_all;
 	});
 
 	// Rebuild combined list and maps after normalization
-	const combined = [].concat(questions_ly_topic1, questions_ly_topic2, questions_ly_topic3, questions_ly_topic4, questions_ly_topic5);
-	window.questions_ly = combined;
+	const _lyCombined = [].concat(questions_ly_topic1, questions_ly_topic2, questions_ly_topic3, questions_ly_topic4, questions_ly_topic5);
+	window.questions_ly = _lyCombined;
 	window.questions_ly_by_topic = window.questions_ly_by_topic || {};
 	for (let i = 0; i < _lyShortNames.length; i++) {
 		const arr = [questions_ly_topic1, questions_ly_topic2, questions_ly_topic3, questions_ly_topic4, questions_ly_topic5][i] || [];

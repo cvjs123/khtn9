@@ -1,9 +1,34 @@
-// Bộ câu hỏi môn Sinh học - biên tập theo nội dung trong pages/ly-thuyết.html
-// Mỗi câu: { q, options, a, explain, topic }
-const questions_sinh = [
+// js/questions-sinh.js - Sinh học lớp 9 (template)
+// This file provides per-topic arrays for Sinh in the same structure as questions-ly.js.
+// Currently the topic arrays are empty; populate them with question objects
+// of the shape: { q: "...", options: [...], a: "A. ...", explain: "..." }
+
+// Utility: generate N placeholder questions for a topic
+function _makePlaceholders(topic, count) {
+	const levels = ['nhan_biet', 'thong_hieu', 'van_dung'];
+	const out = [];
+	for (let i = 1; i <= count; i++) {
+		const level = levels[(i - 1) % levels.length]; // Cycle through levels
+		out.push({
+			q: `${topic} — Câu ${i}: (mẫu) Viết nội dung câu hỏi ở đây`,
+			options: [
+				'A. Đáp án mẫu 1',
+				'B. Đáp án mẫu 2',
+				'C. Đáp án mẫu 3',
+				'D. Đáp án mẫu 4'
+			],
+			a: i % 4 === 1 ? 'A. Đáp án mẫu 1' : (i % 4 === 2 ? 'B. Đáp án mẫu 2' : (i % 4 === 3 ? 'C. Đáp án mẫu 3' : 'D. Đáp án mẫu 4')),
+			explain: 'Giải thích mẫu — cập nhật khi chỉnh sửa câu hỏi.',
+			level: level
+		});
+	}
+	return out;
+}
+// Chuyên đề 1: CƠ SỞ VẬT CHẤT, CƠ CHẾ DI TRUYỀN VÀ BIẾN DỊ Ở CẤP ĐỘ PHÂN TỬ
+const questions_sinh_topic1 = [
 	// --- Cơ sở vật chất, cơ chế di truyền và biến dị ở cấp độ phân tử
 /* ===== NHẬN BIẾT (25 câu) ===== */
-{q:"DNA là viết tắt của",options:["A. Deoxyribonucleic acid","B. Ribonucleic acid","C. Amino acid","D. Nucleoprotein"],a:"A. Deoxyribonucleic acid",explain:"DNA là axit đêoxiribônuclêic."},
+{q:"DNA là viết tắt của",options:["A. Deoxyribonucleic acid","B. Ribonucleic acid","C. Amino acid","D. Nucleoprotein"],a:"A. Deoxyribonucleic acid",explain:"DNA là axit đêoxiribônuclêic.", level: "nhan_biet"},
 {q:"Đơn phân cấu tạo nên DNA là",options:["A. Amino acid","B. Nucleotide","C. Protein","D. Monosaccharide"],a:"B. Nucleotide",explain:"DNA được cấu tạo từ các nucleotide."},
 {q:"Một nucleotide của DNA gồm",options:["A. Đường + bazơ","B. Đường + bazơ + phosphate","C. Bazơ + protein","D. Đường + axit béo"],a:"B. Đường + bazơ + phosphate",explain:"Cấu trúc chuẩn của nucleotide."},
 {q:"Bazơ nitơ chỉ có trong DNA mà không có trong RNA là",options:["A. Adenine","B. Guanine","C. Cytosine","D. Thymine"],a:"D. Thymine",explain:"RNA dùng uracil thay cho thymine."},
@@ -53,7 +78,11 @@ const questions_sinh = [
 {q:"RNA được tổng hợp dựa trên mạch",options:["A. Bất kỳ","B. Khuôn DNA","C. RNA khác","D. Protein"],a:"B. Khuôn DNA",explain:"Theo nguyên tắc bổ sung."},
 {q:"Nếu DNA bị biến đổi thì có thể dẫn đến",options:["A. Không ảnh hưởng","B. Biến dị di truyền","C. Luôn có lợi","D. Không truyền được"],a:"B. Biến dị di truyền",explain:"Đột biến có thể di truyền."},
 {q:"Cấp độ phân tử là cấp độ nghiên cứu",options:["A. Tế bào","B. Cơ thể","C. DNA, RNA, protein","D. Quần thể"],a:"C. DNA, RNA, protein",explain:"Thuộc sinh học phân tử."},
-{q:"Nguồn gốc sâu xa của biến dị di truyền là",options:["A. Môi trường","B. Đột biến phân tử","C. Thụ tinh","D. Sinh sản"],a:"B. Đột biến phân tử",explain:"Phát sinh ở DNA."},
+{q:"Nguồn gốc sâu xa của biến dị di truyền là",options:["A. Môi trường","B. Đột biến phân tử","C. Thụ tinh","D. Sinh sản"],a:"B. Đột biến phân tử",explain:"Phát sinh ở DNA."}
+];
+
+// Chuyên đề 2: CƠ SỞ VẬT CHẤT, CƠ CHẾ DI TRUYỀN VÀ BIẾN DỊ Ở CẤP ĐỘ TẾ BÀO
+const questions_sinh_topic2 = [
 	// --- Cơ sở vật chất, cơ chế di truyền và biến dị ở cấp độ tế bào
 /* ===== NHẬN BIẾT (25 câu) ===== */
 {q:"Nhiễm sắc thể (chromosome) được cấu tạo chủ yếu từ",options:["A. Protein","B. DNA và protein","C. RNA và protein","D. Lipid"],a:"B. DNA và protein",explain:"NST gồm DNA quấn quanh protein histone."},
@@ -153,7 +182,11 @@ const questions_sinh = [
 {q:"Kiểu hình là kết quả của sự tương tác giữa",options:["A. Kiểu gen và môi trường","B. Gen và NST","C. DNA và RNA","D. Protein và enzyme"],a:"A. Kiểu gen và môi trường",explain:"Phenotype = genotype + environment."},
 {q:"Quy luật Mendel phản ánh tính",options:["A. Ngẫu nhiên","B. Ổn định","C. Quy luật","D. Biến đổi"],a:"C. Quy luật",explain:"Di truyền có tính quy luật."},
 {q:"Nếu gen nằm trên NST giới tính, phép lai thuận nghịch sẽ",options:["A. Giống nhau","B. Khác nhau","C. Không có kết quả","D. Không lai được"],a:"B. Khác nhau",explain:"Ảnh hưởng giới tính."},
-{q:"Tỉ lệ kiểu hình phản ánh",options:["A. Kiểu gen","B. Cách phân li alen","C. Số NST","D. Protein"],a:"B. Cách phân li alen",explain:"Liên quan giảm phân."},
+{q:"Tỉ lệ kiểu hình phản ánh",options:["A. Kiểu gen","B. Cách phân li alen","C. Số NST","D. Protein"],a:"B. Cách phân li alen",explain:"Liên quan giảm phân."}
+];
+
+// Chuyên đề 3: TÍNH QUY LUẬT CỦA HIỆN TƯỢNG DI TRUYỀN
+const questions_sinh_topic3 = [
 {q:"Sự phân li và tổ hợp alen diễn ra trong",options:["A. Nguyên phân","B. Giảm phân và thụ tinh","C. Phiên mã","D. Dịch mã"],a:"B. Giảm phân và thụ tinh",explain:"Cơ sở của di truyền."},
 {q:"Quy luật Mendel là cơ sở cho",options:["A. Sinh học phân tử","B. Di truyền học","C. Sinh thái học","D. Tiến hóa"],a:"B. Di truyền học",explain:"Nền tảng di truyền học."},
 {q:"Mendel không phát hiện quy luật liên kết gen vì",options:["A. Sai phương pháp","B. Chọn đối tượng phù hợp","C. Không nghiên cứu","D. Chưa có kính hiển vi"],a:"B. Chọn đối tượng phù hợp",explain:"Gen nằm trên NST khác nhau."},
@@ -161,73 +194,68 @@ const questions_sinh = [
 {q:"Ý nghĩa của quy luật Mendel là",options:["A. Giải thích cơ chế di truyền","B. Dự đoán kết quả lai","C. Tăng biến dị","D. Tạo giống mới"],a:"B. Dự đoán kết quả lai",explain:"Ứng dụng trong chọn giống."}
 ];
 
-// Gán topic cho từng câu hỏi dựa trên thứ tự
-questions_sinh.forEach((q, i) => {
-  if (i < 25) q.topic = 'Cơ sở vật chất, cơ chế di truyền và biến dị ở cấp độ phân tử';
-  else if (i < 50) q.topic = 'Cơ sở vật chất, cơ chế di truyền và biến dị ở cấp độ tế bào';
-  else q.topic = 'Tính quy luật của hiện tượng di truyền';
+const _sinhLongNames = [
+	'Chuyên đề 1: CƠ SỞ VẬT CHẤT, CƠ CHẾ DI TRUYỀN VÀ BIẾN DỊ Ở CẤP ĐỘ PHÂN TỬ',
+	'Chuyên đề 2: CƠ SỞ VẬT CHẤT, CƠ CHẾ DI TRUYỀN VÀ BIẾN DỊ Ở CẤP ĐỘ TẾ BÀO',
+	'Chuyên đề 3: TÍNH QUY LUẬT CỦA HIỆN TƯỢNG DI TRUYỀN'
+];
+const _sinhShortNames = [
+	'PHÂN TỬ',
+	'TẾ BÀO',
+	'QUY LUẬT'
+];
+
+window.questions_sinh_by_topic = window.questions_sinh_by_topic || {};
+
+for (let i = 0; i < _sinhShortNames.length; i++) {
+	const arr = [questions_sinh_topic1, questions_sinh_topic2, questions_sinh_topic3][i] || [];
+	window.questions_sinh_by_topic[_sinhLongNames[i]] = arr;
+	window.questions_sinh_by_topic[_sinhShortNames[i]] = arr;
+}
+
+const _sinhMinPerTopic = 50;
+const _sinhList = [
+	{ short: _sinhShortNames[0], arr: questions_sinh_topic1 },
+	{ short: _sinhShortNames[1], arr: questions_sinh_topic2 },
+	{ short: _sinhShortNames[2], arr: questions_sinh_topic3 }
+];
+_sinhList.forEach(item => {
+	const arr = item.arr;
+	if (!Array.isArray(arr)) return;
+	if (arr.length === 0) {
+		// create simple placeholders if topic is empty
+		for (let k = 0; k < _sinhMinPerTopic; k++) {
+			arr.push({ q: `${item.short} — câu mẫu ${k+1}`, options: ['A. Đáp án A','B. Đáp án B','C. Đáp án C','D. Đáp án D'], a: 'A. Đáp án A', explain: 'Câu hỏi mẫu.' });
+		}
+	} else {
+		// clone existing entries in round-robin until reach minPerTopic
+		let idx = 0;
+		while (arr.length < _sinhMinPerTopic) {
+			const src = arr[idx % arr.length];
+			const clone = JSON.parse(JSON.stringify(src));
+			arr.push(clone);
+			idx++;
+		}
+	}
 });
 
-// Export và tạo map theo chủ đề
-window.questions_sinh = questions_sinh;
-window.questions_sinh_by_topic = {};
-questions_sinh.forEach(q => {
-	const t = q.topic || 'Khác';
-	if (!window.questions_sinh_by_topic[t]) window.questions_sinh_by_topic[t] = [];
-	window.questions_sinh_by_topic[t].push(q);
+// Rebuild combined list and maps after normalization
+const _sinhCombined = [].concat(questions_sinh_topic1, questions_sinh_topic2, questions_sinh_topic3);
+window.questions_sinh = _sinhCombined;
+window.questions_sinh_by_topic['Tất cả'] = _sinhCombined;
+
+// Add level to questions for compatibility
+questions_sinh_topic1.forEach((q, i) => {
+  q.level = i < 25 ? 'nhan_biet' : 'thong_hieu';
 });
-window.questions_sinh_by_topic['Tất cả'] = questions_sinh;
-window.questions_sinh_topics = Object.keys(window.questions_sinh_by_topic);
+questions_sinh_topic2.forEach((q, i) => {
+  q.level = i < 25 ? 'nhan_biet' : 'thong_hieu';
+});
+questions_sinh_topic3.forEach((q) => {
+  q.level = 'thong_hieu';
+});
 
-// Map long titles used in pages/ly-thuyet.html to the existing short topic keys
-// so topic selection (which uses ly-thuyet headings) will show the correct questions.
-try {
-	const mapLongToShort = {
-		'Cơ sở vật chất, cơ chế di truyền và biến dị ở cấp độ phân tử': 'Phân tử',
-		'Cơ sở vật chất, cơ chế di truyền và biến dị ở cấp độ tế bào': 'Tế bào',
-		'Tính quy luật của hiện tượng di truyền': 'Quy luật',
-		'TÓM TẮT DỄ NHỚ CHO HỌC SINH': 'Tất cả'
-	};
-	Object.keys(mapLongToShort).forEach(longTitle => {
-		const short = mapLongToShort[longTitle];
-		if (window.questions_sinh_by_topic[short]) {
-			window.questions_sinh_by_topic[longTitle] = window.questions_sinh_by_topic[short];
-		}
-	});
-	// Refresh topics list to include mapped long titles (avoid duplicates)
-	window.questions_sinh_topics = Object.keys(window.questions_sinh_by_topic);
-} catch (e) {}
-
-/* Ghi chú: nếu bạn muốn thêm nhiều câu hỏi hoặc thay đổi chủ đề (ví dụ tách 'Phân tử' thành 'ADN/ARN' riêng), báo mình sẽ mở rộng. */
-
-// Đảm bảo mỗi chuyên đề Sinh có ít nhất 50 câu (bổ sung bằng cách nhân bản nếu cần)
-(function ensureSinhTopicCounts(minPerTopic = 50) {
-	const shortKeys = ['Phân tử', 'Tế bào', 'Quy luật'];
-	shortKeys.forEach(key => {
-		let arr = window.questions_sinh_by_topic[key] || [];
-		if (!Array.isArray(arr)) arr = window.questions_sinh_by_topic[key] = [];
-		if (arr.length === 0) {
-			for (let i = 0; i < minPerTopic; i++) {
-				arr.push({ q: `${key} — câu mẫu ${i+1}`, options: ['A. Đáp án A','B. Đáp án B','C. Đáp án C','D. Đáp án D'], a: 'A. Đáp án A', explain: 'Câu hỏi mẫu.', topic: key });
-			}
-		} else {
-			let idx = 0;
-			while (arr.length < minPerTopic) {
-				const src = arr[idx % arr.length];
-				const clone = JSON.parse(JSON.stringify(src));
-				arr.push(clone);
-				idx++;
-			}
-		}
-	});
-
-	// rebuild 'Tất cả' and topics list
-	const combined = [];
-	['Phân tử','Tế bào','Quy luật'].forEach(k => {
-		combined.push(...(window.questions_sinh_by_topic[k] || []));
-	});
-	window.questions_sinh_by_topic['Tất cả'] = combined;
-	window.questions_sinh = combined;
-	window.questions_sinh_topics = Object.keys(window.questions_sinh_by_topic);
-})();
+// Note: Populate the topic arrays above with question objects to enable
+// subject-specific quizzes. The quiz code expects question objects shaped
+// like: { q, options, a, explain }.
 

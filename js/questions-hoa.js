@@ -1,5 +1,31 @@
-const questions_hoa = [
-  // Chuyên đề 1: KIM LOẠI – PHI KIM
+// js/questions-hoa.js - Hóa học lớp 9 (template)
+// This file provides per-topic arrays for Hóa in the same structure as questions-ly.js.
+// Currently the topic arrays are empty; populate them with question objects
+// of the shape: { q: "...", options: [...], a: "A. ...", explain: "..." }
+
+// Utility: generate N placeholder questions for a topic
+function _makePlaceholders(topic, count) {
+	const levels = ['nhan_biet', 'thong_hieu', 'van_dung'];
+	const out = [];
+	for (let i = 1; i <= count; i++) {
+		const level = levels[(i - 1) % levels.length]; // Cycle through levels
+		out.push({
+			q: `${topic} — Câu ${i}: (mẫu) Viết nội dung câu hỏi ở đây`,
+			options: [
+				'A. Đáp án mẫu 1',
+				'B. Đáp án mẫu 2',
+				'C. Đáp án mẫu 3',
+				'D. Đáp án mẫu 4'
+			],
+			a: i % 4 === 1 ? 'A. Đáp án mẫu 1' : (i % 4 === 2 ? 'B. Đáp án mẫu 2' : (i % 4 === 3 ? 'C. Đáp án mẫu 3' : 'D. Đáp án mẫu 4')),
+			explain: 'Giải thích mẫu — cập nhật khi chỉnh sửa câu hỏi.',
+			level: level
+		});
+	}
+	return out;
+}
+// Chuyên đề 1: KIM LOẠI – PHI KIM
+const questions_hoa_topic1 = [
 // ===== NHẬN BIẾT (21 câu) =====
 {q:"Tính chất vật lí chung của kim loại là",options:["A. Dễ vỡ, cách điện","B. Dẫn điện, dẫn nhiệt, có ánh kim, dẻo","C. Tan trong nước","D. Bay hơi dễ"],a:"B. Dẫn điện, dẫn nhiệt, có ánh kim, dẻo",explain:"Kim loại có electron tự do.", level: "nhan_biet"},
 {q:"Chất nào sau đây là phi kim?",options:["A. Na","B. Al","C. S","D. Fe"],a:"C. S",explain:"Lưu huỳnh là phi kim."},
@@ -88,6 +114,25 @@ const questions_hoa = [
 {q:"Cho 5,6 lít O2 (đktc), số mol khí là",options:["A. 0,1","B. 0,2","C. 0,25","D. 0,5"],a:"B. 0,25",explain:"n = 5,6/22,4."},
 {q:"Hợp chất có M = 56 và chứa 70% kim loại, kim loại đó là",options:["A. Fe","B. Mg","C. Al","D. Cu"],a:"A. Fe",explain:"56 phù hợp với Fe."},
 {q:"Đốt cháy hoàn toàn 2,7 g Al, khối lượng Al2O3 thu được là",options:["A. 5,1 g","B. 6,8 g","C. 7,4 g","D. 10,2 g"],a:"D. 10,2 g",explain:"nAl=0,1 mol ⇒ mAl2O3=10,2 g."},
+{q:"Cho 5,6 g iron phản ứng hoàn toàn với hydrochloric acid dư. Thể tích hydrogen (đktc) thu được là",options:["A. 1,12 L","B. 2,24 L","C. 3,36 L","D. 4,48 L"],a:"B. 2,24 L",explain:"nFe=0,1 mol → nH2=0,1 mol → V=2,24 L."},
+{q:"Khối lượng sodium hydroxide thu được khi điện phân hoàn toàn 2,3 g sodium là",options:["A. 4 g","B. 8 g","C. 10 g","D. 12 g"],a:"B. 8 g",explain:"nNa=0,1 mol → nNaOH=0,1 mol → m=4 g."},
+{q:"Đốt cháy hoàn toàn 11,2 L oxygen (đktc) với carbon dư, khối lượng carbon dioxide thu được là",options:["A. 11 g","B. 22 g","C. 44 g","D. 88 g"],a:"C. 44 g",explain:"nO2=0,5 mol → nCO2=0,5 mol → m=22 g."},
+{q:"Khối lượng calcium oxide thu được khi nhiệt phân hoàn toàn 100 g calcium carbonate là",options:["A. 44 g","B. 50 g","C. 56 g","D. 60 g"],a:"C. 56 g",explain:"CaCO3 → CaO + CO2."},
+{q:"Thể tích hydrogen (đktc) thu được khi cho 6,5 g zinc phản ứng với sulfuric acid loãng là",options:["A. 1,12 L","B. 2,24 L","C. 3,36 L","D. 4,48 L"],a:"B. 2,24 L",explain:"nZn=0,1 mol → nH2=0,1 mol."},
+{q:"Khối lượng sodium chloride thu được khi trung hòa 0,2 mol hydrochloric acid bằng sodium hydroxide là",options:["A. 5,85 g","B. 11,7 g","C. 17,55 g","D. 23,4 g"],a:"B. 11,7 g",explain:"nNaCl=0,2 mol → m=11,7 g."},
+{q:"Tỉ khối của sulfur dioxide so với hydrogen là",options:["A. 16","B. 32","C. 64","D. 128"],a:"C. 64",explain:"d=64/2=32."},
+{q:"Khối lượng aluminum cần dùng để phản ứng hết 0,3 mol hydrochloric acid là",options:["A. 2,7 g","B. 4,05 g","C. 5,4 g","D. 8,1 g"],a:"B. 4,05 g",explain:"2Al + 6HCl → 2AlCl3 + 3H2."},
+{q:"Thể tích carbon dioxide (đktc) sinh ra khi cho 10 g calcium carbonate tác dụng với hydrochloric acid dư là",options:["A. 1,12 L","B. 2,24 L","C. 3,36 L","D. 4,48 L"],a:"A. 1,12 L",explain:"nCaCO3=0,1 mol → nCO2=0,1 mol."},
+{q:"Khối lượng iron(III) oxide thu được khi đốt cháy hoàn toàn 11,2 g iron là",options:["A. 16 g","B. 20 g","C. 24 g","D. 32 g"],a:"C. 24 g",explain:"4Fe + 3O2 → 2Fe2O3."},
+{q:"Thể tích chlorine (đktc) cần dùng để phản ứng hết 5,85 g sodium là",options:["A. 1,12 L","B. 2,24 L","C. 3,36 L","D. 4,48 L"],a:"B. 2,24 L",explain:"2Na + Cl2 → 2NaCl."},
+{q:"Khối lượng magnesium oxide thu được khi đốt cháy hoàn toàn 6 g magnesium là",options:["A. 8 g","B. 9 g","C. 10 g","D. 12 g"],a:"C. 10 g",explain:"Mg + 1/2O2 → MgO."},
+{q:"Số mol hydrogen sinh ra khi cho 0,2 mol aluminum phản ứng hoàn toàn với hydrochloric acid là",options:["A. 0,2","B. 0,3","C. 0,4","D. 0,6"],a:"B. 0,3",explain:"2Al → 3H2."},
+{q:"Khối lượng sulfur dioxide sinh ra khi đốt cháy hoàn toàn 3,2 g sulfur là",options:["A. 3,2 g","B. 6,4 g","C. 9,6 g","D. 12,8 g"],a:"B. 6,4 g",explain:"S + O2 → SO2."},
+{q:"Khối lượng calcium hydroxide tạo thành khi cho 5,6 g calcium oxide tác dụng với nước là",options:["A. 5,6 g","B. 6,4 g","C. 7,4 g","D. 8,4 g"],a:"D. 8,4 g",explain:"CaO + H2O → Ca(OH)2."}
+];
+
+// Chuyên đề 2: HỢP CHẤT HỮU CƠ – HIDROCACBON
+const questions_hoa_topic2 = [
 // ===== Hợp chất hữu cơ – Hidrocacbon =====
 // ===== NHẬN BIẾT (21 câu) =====
 {q:"Hợp chất hữu cơ là hợp chất của",options:["A. Kim loại","B. Phi kim","C. Cacbon","D. Hidro"],a:"C. Cacbon",explain:"Hợp chất hữu cơ là hợp chất của cacbon."},
@@ -230,6 +275,28 @@ const questions_hoa = [
 {q:"Axit axetic tan vô hạn trong",options:["A. Dầu","B. Xăng","C. Nước","D. Benzen"],a:"C. Nước",explain:"Axit axetic tan vô hạn trong nước."},
 {q:"Ancol etylic dùng trong y tế để",options:["A. Truyền dịch","B. Khử trùng","C. Gây mê","D. Giảm đau"],a:"B. Khử trùng",explain:"Ancol dùng sát trùng."},
 {q:"Axit axetic làm mất màu dung dịch nào?",options:["A. NaOH","B. Phenolphtalein","C. NaCl","D. Nước"],a:"B. Phenolphtalein",explain:"Axit làm mất màu phenolphtalein."},
+{q:"Ethanol là ancol có số nguyên tử carbon trong phân tử là",options:["A. 1","B. 2","C. 3","D. 4"],a:"B. 2",explain:"Ethanol có công thức C2H5OH."},
+{q:"Ethanoic acid là axit cacboxylic có mạch",options:["A. Dài","B. Nhánh","C. Vòng","D. Ngắn"],a:"D. Ngắn",explain:"Ethanoic acid là axit đơn giản."},
+{q:"Nhóm –OH trong ethanol được gọi là",options:["A. Carboxyl group","B. Hydroxyl group","C. Carbonyl group","D. Ester group"],a:"B. Hydroxyl group",explain:"Alcohol có nhóm hydroxyl."},
+{q:"Ethanoic acid có chứa bao nhiêu nguyên tử oxygen trong một phân tử?",options:["A. 1","B. 2","C. 3","D. 4"],a:"B. 2",explain:"CH3COOH có 2 O."},
+{q:"Ethanol có khả năng hòa tan được một số chất vì",options:["A. Có mạch carbon dài","B. Có nhóm –OH phân cực","C. Có liên kết đôi","D. Có nhóm –COOH"],a:"B. Có nhóm –OH phân cực",explain:"–OH giúp ethanol tan tốt."},
+{q:"Ethanoic acid là sản phẩm oxi hóa tiếp theo của",options:["A. Methanol","B. Ethanol","C. Propanol","D. Ethene"],a:"B. Ethanol",explain:"Ethanol bị oxi hóa thành ethanoic acid."},
+{q:"Ethanol có thể tồn tại ở trạng thái lỏng ở điều kiện thường vì",options:["A. Khối lượng lớn","B. Có liên kết hydrogen","C. Có vòng","D. Có liên kết đôi"],a:"B. Có liên kết hydrogen",explain:"Liên kết hydrogen giữa các phân tử."},
+{q:"Ethanoic acid thuộc dãy đồng đẳng của",options:["A. Alcohols","B. Aldehydes","C. Carboxylic acids","D. Esters"],a:"C. Carboxylic acids",explain:"Có nhóm –COOH."},
+{q:"Ethanol có thể phản ứng với sodium tạo ra khí",options:["A. Oxygen","B. Nitrogen","C. Hydrogen","D. Carbon dioxide"],a:"C. Hydrogen",explain:"Alcohol + Na → H2."},
+{q:"Ethanoic acid phản ứng với base tạo ra",options:["A. Alcohol","B. Salt và water","C. Ester","D. Aldehyde"],a:"B. Salt và water",explain:"Phản ứng trung hòa."},
+{q:"Trong phân tử ethanoic acid, nguyên tử carbon của nhóm –COOH có số oxi hóa",options:["A. −3","B. −1","C. +1","D. +3"],a:"D. +3",explain:"Carbon trong –COOH có số oxi hóa cao."},
+{q:"Ethanol thuộc loại alcohol",options:["A. Đa chức","B. Đơn chức","C. Hai chức","D. Ba chức"],a:"B. Đơn chức",explain:"Chỉ có một nhóm –OH."},
+{q:"Ethanoic acid là axit",options:["A. Mạnh","B. Rất mạnh","C. Yếu","D. Trung tính"],a:"C. Yếu",explain:"Axit hữu cơ yếu."},
+{q:"Ethanol có thể dùng làm dung môi vì",options:["A. Không tan trong nước","B. Tan trong nhiều chất","C. Có màu","D. Có mùi"],a:"B. Tan trong nhiều chất",explain:"Dung môi phổ biến."},
+{q:"Ethanoic acid làm tăng tính axit của dung dịch vì",options:["A. Phân li tạo H+","B. Tạo OH−","C. Không phân li","D. Bay hơi"],a:"A. Phân li tạo H+",explain:"Đặc trưng của axit."},
+{q:"Ethanol được sản xuất công nghiệp chủ yếu từ",options:["A. Benzene","B. Ethene","C. Methane","D. Propane"],a:"B. Ethene",explain:"Hydration of ethene."},
+{q:"Ethanoic acid có khả năng phản ứng với kim loại đứng trước hydrogen vì",options:["A. Là chất oxi hóa","B. Là axit","C. Là bazơ","D. Là dung môi"],a:"B. Là axit",explain:"Axit phản ứng với kim loại."},
+{q:"Trong phân tử ethanol, liên kết C–O là liên kết",options:["A. Ion","B. Kim loại","C. Cộng hóa trị phân cực","D. Không phân cực"],a:"C. Cộng hóa trị phân cực",explain:"Do độ âm điện khác nhau."},
+{q:"Ethanoic acid có thể tham gia phản ứng tạo ester với",options:["A. Alkane","B. Alcohol","C. Alkene","D. Alkyne"],a:"B. Alcohol",explain:"Phản ứng ester hóa."},
+{q:"Ethanol có mùi đặc trưng là",options:["A. Không mùi","B. Thơm nhẹ","C. Chua","D. Hắc"],a:"B. Thơm nhẹ",explain:"Mùi đặc trưng của ethanol."},
+{q:"Ethanoic acid được bảo quản trong chai thủy tinh vì",options:["A. Dễ bay hơi","B. Ăn mòn kim loại","C. Tan trong thủy tinh","D. Không phản ứng"],a:"B. Ăn mòn kim loại",explain:"Axit tác dụng với kim loại."},
+{q:"Ethanol và ethanoic acid đều thuộc nhóm hợp chất hữu cơ vì",options:["A. Chứa nitrogen","B. Có carbon trong phân tử","C. Tan trong nước","D. Có mùi"],a:"B. Có carbon trong phân tử",explain:"Đặc trưng hợp chất hữu cơ."},
 // ===== THÔNG HIỂU (14 câu) =====
 {q:"Vì sao Ancol etylic tan vô hạn trong nước?",options:["A. Có khối lượng nhỏ","B. Có nhóm –OH phân cực","C. Không màu","D. Dễ bay hơi"],a:"B. Có nhóm –OH phân cực",explain:"Nhóm –OH tạo liên kết H với nước."},
 {q:"Ancol etylic phản ứng được với Na vì",options:["A. Có C","B. Có H linh động","C. Có O","D. Có liên kết đôi"],a:"B. Có H linh động",explain:"H trong –OH bị thay thế."},
@@ -245,6 +312,20 @@ const questions_hoa = [
 {q:"Ancol etylic nhẹ hơn nước nên khi trộn sẽ",options:["A. Chìm xuống","B. Nổi lên","C. Không tan","D. Kết tủa"],a:"B. Nổi lên",explain:"Khối lượng riêng nhỏ hơn."},
 {q:"Axit axetic là axit yếu vì",options:["A. Không tan","B. Phân li không hoàn toàn","C. Không mùi","D. Không cháy"],a:"B. Phân li không hoàn toàn",explain:"Axit yếu phân li một phần."},
 {q:"Ancol etylic thuộc loại hợp chất",options:["A. Hidrocacbon","B. Axit","C. Ancol","D. Muối"],a:"C. Ancol",explain:"Có nhóm –OH gắn với C."},
+{q:"Ethanol tan vô hạn trong nước là do",options:["A. Có mạch carbon dài","B. Có nhóm hydroxyl tạo liên kết hydrogen","C. Có liên kết đôi","D. Có nhóm carboxyl"],a:"B. Có nhóm hydroxyl tạo liên kết hydrogen",explain:"–OH tạo liên kết hydrogen với nước."},
+{q:"Ethanoic acid là axit yếu vì",options:["A. Không phân li","B. Phân li không hoàn toàn trong nước","C. Không có H","D. Không tan trong nước"],a:"B. Phân li không hoàn toàn trong nước",explain:"Axit hữu cơ yếu."},
+{q:"Ethanol phản ứng được với sodium nhưng ethane thì không vì",options:["A. Ethanol nhẹ hơn","B. Ethanol có nhóm –OH","C. Ethane có liên kết đôi","D. Ethane tan trong nước"],a:"B. Ethanol có nhóm –OH",explain:"H trong –OH linh động."},
+{q:"Ethanoic acid có tính axit mạnh hơn ethanol vì",options:["A. Có nhiều C hơn","B. Có nhóm –COOH","C. Có liên kết đơn","D. Có mạch ngắn"],a:"B. Có nhóm –COOH",explain:"–COOH dễ phân li H+."},
+{q:"Phản ứng đặc trưng của ethanol là",options:["A. Trùng hợp","B. Trung hòa","C. Thế kim loại","D. Trao đổi ion"],a:"C. Thế kim loại",explain:"Alcohol phản ứng với Na."},
+{q:"Ethanoic acid phản ứng với sodium carbonate giải phóng khí",options:["A. Hydrogen","B. Oxygen","C. Carbon dioxide","D. Nitrogen"],a:"C. Carbon dioxide",explain:"Axit + carbonate → CO2."},
+{q:"Trong phản ứng ester hóa, ethanol đóng vai trò là",options:["A. Axit","B. Bazơ","C. Alcohol","D. Muối"],a:"C. Alcohol",explain:"Ester tạo từ alcohol + acid."},
+{q:"Ethanol có nhiệt độ sôi thấp hơn ethanoic acid vì",options:["A. Nhẹ hơn","B. Ít liên kết hydrogen hơn","C. Tan kém hơn","D. Có mạch dài hơn"],a:"B. Ít liên kết hydrogen hơn",explain:"Ethanoic acid tạo dimer."},
+{q:"Ethanoic acid có thể làm quỳ tím hóa đỏ vì",options:["A. Tan tốt","B. Có H+ trong dung dịch","C. Có mùi chua","D. Bay hơi"],a:"B. Có H+ trong dung dịch",explain:"Tính axit."},
+{q:"Ethanol không làm đổi màu quỳ tím vì",options:["A. Không tan","B. Không phân li ion","C. Không có H","D. Không mùi"],a:"B. Không phân li ion",explain:"Alcohol trung tính."},
+{q:"Phản ứng giữa ethanol và ethanoic acid là phản ứng",options:["A. Trung hòa","B. Oxi hóa – khử","C. Ester hóa","D. Thế"],a:"C. Ester hóa",explain:"Tạo ethyl ethanoate."},
+{q:"Ethanoic acid ăn mòn kim loại mạnh hơn ethanol vì",options:["A. Nặng hơn","B. Có tính axit","C. Tan kém","D. Có mùi"],a:"B. Có tính axit",explain:"Axit phản ứng với kim loại."},
+{q:"Ethanol được dùng làm nhiên liệu sinh học vì",options:["A. Dễ bay hơi","B. Cháy tỏa nhiệt","C. Tan trong nước","D. Không màu"],a:"B. Cháy tỏa nhiệt",explain:"Giải phóng năng lượng."},
+{q:"Ethanoic acid tồn tại dạng dimer trong pha lỏng do",options:["A. Liên kết ion","B. Liên kết hydrogen","C. Liên kết kim loại","D. Liên kết đôi"],a:"B. Liên kết hydrogen",explain:"Hai phân tử liên kết với nhau."},
 // ===== VẬN DỤNG – TÍNH TOÁN (15 câu) =====
 {q:"Đốt cháy hoàn toàn 4,6 g C2H5OH. Khối lượng CO2 thu được là",options:["A. 4,4 g","B. 8,8 g","C. 13,2 g","D. 17,6 g"],a:"C. 13,2 g",explain:"n=0,1 mol → 2 mol CO2."},
 {q:"Số mol Ancol etylic có trong 9,2 g là",options:["A. 0,1","B. 0,2","C. 0,3","D. 0,4"],a:"B. 0,2",explain:"n=9,2/46."},
@@ -261,6 +342,25 @@ const questions_hoa = [
 {q:"Khối lượng C có trong 9,2 g C2H5OH là",options:["A. 2,4","B. 3,6","C. 4,8","D. 6,0"],a:"C. 4,8",explain:"mC=24/46×9,2."},
 {q:"Dung dịch chứa 30 g C2H5OH trong 150 g dung dịch. Nồng độ % là",options:["A. 10%","B. 15%","C. 20%","D. 25%"],a:"C. 20%",explain:"C%=30/150."},
 {q:"Hợp chất hữu cơ X có CTĐG là CH2O và M = 60. X là",options:["A. C2H4O2","B. CH3COOH","C. C3H6O3","D. HCHO"],a:"B. CH3COOH",explain:"(CH2O)2 = 60."},
+{q:"Khối lượng mol của ethanol là",options:["A. 44","B. 46","C. 60","D. 62"],a:"B. 46",explain:"C2H6O = 46."},
+{q:"Số mol ethanol trong 9,2 g là",options:["A. 0,1","B. 0,15","C. 0,2","D. 0,25"],a:"C. 0,2",explain:"n = 9,2 / 46."},
+{q:"Đốt cháy hoàn toàn 1 mol ethanol thu được số mol CO2 là",options:["A. 1","B. 2","C. 3","D. 4"],a:"B. 2",explain:"C2H5OH → 2CO2."},
+{q:"Khối lượng ethanoic acid có trong 200 g dung dịch 5% là",options:["A. 5 g","B. 8 g","C. 10 g","D. 15 g"],a:"C. 10 g",explain:"5% của 200 g."},
+{q:"Số mol ethanoic acid trong 12 g là",options:["A. 0,1","B. 0,15","C. 0,2","D. 0,25"],a:"A. 0,1",explain:"M = 60."},
+{q:"Khối lượng sodium phản ứng vừa đủ với 0,1 mol ethanol là",options:["A. 2,3 g","B. 4,6 g","C. 6,9 g","D. 9,2 g"],a:"A. 2,3 g",explain:"Na : ethanol = 1 : 1."},
+{q:"Thể tích CO2 (đktc) thu được khi cho 0,2 mol ethanoic acid phản ứng với Na2CO3 là",options:["A. 2,24 l","B. 3,36 l","C. 4,48 l","D. 6,72 l"],a:"C. 4,48 l",explain:"1 mol acid → 1 mol CO2."},
+{q:"Khối lượng CO2 sinh ra khi đốt cháy 4,6 g ethanol là",options:["A. 4,4 g","B. 6,6 g","C. 8,8 g","D. 13,2 g"],a:"C. 8,8 g",explain:"0,1 mol → 0,2 mol CO2."},
+{q:"Khối lượng ethyl ethanoate thu được từ 0,1 mol ethanol (hiệu suất 100%) là",options:["A. 8,8 g","B. 9,0 g","C. 10,4 g","D. 11,6 g"],a:"C. 10,4 g",explain:"M = 104."},
+{q:"Số mol hydrogen sinh ra khi cho 0,2 mol ethanol phản ứng với sodium là",options:["A. 0,05","B. 0,1","C. 0,2","D. 0,4"],a:"B. 0,1",explain:"2 ethanol → 1 H2."},
+{q:"Khối lượng carbon trong 23 g ethanol là",options:["A. 6 g","B. 9 g","C. 12 g","D. 18 g"],a:"B. 9 g",explain:"24/46 × 23."},
+{q:"Khối lượng ethanoic acid cần dùng để trung hòa 0,1 mol NaOH là",options:["A. 4 g","B. 5 g","C. 6 g","D. 8 g"],a:"C. 6 g",explain:"1 : 1, M = 60."},
+{q:"Thể tích oxygen (đktc) cần để đốt cháy hoàn toàn 0,1 mol ethanol là",options:["A. 3,36 l","B. 4,48 l","C. 5,6 l","D. 6,72 l"],a:"D. 6,72 l",explain:"3 mol O2 cho 1 mol ethanol."},
+{q:"Khối lượng sodium ethanoate tạo thành từ 0,1 mol ethanoic acid là",options:["A. 6,8 g","B. 7,4 g","C. 8,2 g","D. 9,6 g"],a:"B. 7,4 g",explain:"CH3COONa = 82."},
+{q:"Dung dịch ethanol 20% có khối lượng 250 g thì khối lượng ethanol là",options:["A. 25 g","B. 40 g","C. 50 g","D. 60 g"],a:"C. 50 g",explain:"20% của 250 g."}
+];
+
+// Chuyên đề 3: ETHYLIC ALCOHOL VÀ ACETIC ACID
+const questions_hoa_topic3 = [
 // ===== Lipit – Gluxit – Protein – Polime =====
 // ===== NHẬN BIẾT (21 câu) =====
 {q:"Chất nào sau đây thuộc loại lipit?",options:["A. Tinh bột","B. Protein","C. Chất béo","D. Xenlulozơ"],a:"C. Chất béo",explain:"Chất béo là lipit."},
@@ -284,6 +384,28 @@ const questions_hoa = [
 {q:"Glucozơ tan tốt trong",options:["A. Dầu","B. Xăng","C. Nước","D. Benzen"],a:"C. Nước",explain:"Glucozơ tan trong nước."},
 {q:"Chất béo thường không tan trong",options:["A. Benzen","B. Nước","C. Xăng","D. Dầu"],a:"B. Nước",explain:"Chất béo kị nước."},
 {q:"Protein bị đông tụ khi",options:["A. Làm lạnh","B. Đun nóng","C. Để yên","D. Pha loãng"],a:"B. Đun nóng",explain:"Protein bị biến tính khi đun."},
+{q:"Chất nào sau đây thuộc nhóm lipit?",options:["A. Starch","B. Protein","C. Fat","D. Cellulose"],a:"C. Fat",explain:"Fat (chất béo) là lipit."},
+{q:"Gluxit còn được gọi là",options:["A. Lipid","B. Protein","C. Carbohydrate","D. Polymer"],a:"C. Carbohydrate",explain:"Gluxit là carbohydrate."},
+{q:"Monomer cấu tạo nên protein là",options:["A. Glucose","B. Amino acid","C. Fatty acid","D. Glycerol"],a:"B. Amino acid",explain:"Protein gồm các amino acid."},
+{q:"Glucose có công thức phân tử là",options:["A. C6H12O6","B. C12H22O11","C. C6H10O5","D. CH2O"],a:"A. C6H12O6",explain:"Glucose là C6H12O6."},
+{q:"Sucrose thuộc loại",options:["A. Monosaccharide","B. Disaccharide","C. Polysaccharide","D. Lipid"],a:"B. Disaccharide",explain:"Sucrose là đường đôi."},
+{q:"Starch thuộc nhóm",options:["A. Lipid","B. Protein","C. Polysaccharide","D. Alcohol"],a:"C. Polysaccharide",explain:"Tinh bột là polysaccharide."},
+{q:"Cellulose là polymer",options:["A. Synthetic","B. Natural","C. Inorganic","D. Rubber"],a:"B. Natural",explain:"Cellulose là polymer thiên nhiên."},
+{q:"Polyethylene được tạo từ monomer",options:["A. Methane","B. Ethene","C. Propene","D. Benzene"],a:"B. Ethene",explain:"PE trùng hợp từ ethene."},
+{q:"Protein có vai trò chính là",options:["A. Dự trữ năng lượng","B. Cách nhiệt","C. Xây dựng cơ thể","D. Dẫn điện"],a:"C. Xây dựng cơ thể",explain:"Protein cấu tạo tế bào."},
+{q:"Lipit giàu năng lượng vì",options:["A. Tan trong nước","B. Giàu liên kết C–H","C. Có nhóm –OH","D. Phân li mạnh"],a:"B. Giàu liên kết C–H",explain:"Liên kết C–H giải phóng nhiều năng lượng."},
+{q:"Nylon-6,6 thuộc loại",options:["A. Natural polymer","B. Synthetic polymer","C. Lipid","D. Protein"],a:"B. Synthetic polymer",explain:"Nylon là polymer tổng hợp."},
+{q:"Glucose tan tốt trong",options:["A. Oil","B. Water","C. Benzene","D. Gasoline"],a:"B. Water",explain:"Glucose tan tốt trong nước."},
+{q:"Fat thường không tan trong",options:["A. Ether","B. Benzene","C. Water","D. Oil"],a:"C. Water",explain:"Chất béo kị nước."},
+{q:"Protein bị đông tụ khi",options:["A. Làm lạnh","B. Đun nóng","C. Pha loãng","D. Để yên"],a:"B. Đun nóng",explain:"Protein bị biến tính."},
+{q:"Monomer của starch là",options:["A. Fructose","B. Glucose","C. Sucrose","D. Maltose"],a:"B. Glucose",explain:"Tinh bột tạo từ glucose."},
+{q:"Enzyme thuộc nhóm",options:["A. Lipid","B. Protein","C. Gluxit","D. Polymer"],a:"B. Protein",explain:"Enzyme là protein."},
+{q:"Polymer có đặc điểm",options:["A. M nhỏ","B. Dễ bay hơi","C. M rất lớn","D. Tan hoàn toàn"],a:"C. M rất lớn",explain:"Polymer có phân tử khối lớn."},
+{q:"Starch có nhiều trong",options:["A. Meat","B. Egg","C. Rice","D. Milk"],a:"C. Rice",explain:"Tinh bột có nhiều trong gạo."},
+{q:"Cellulose không tiêu hóa được vì",options:["A. Không tan","B. Không có enzyme phù hợp","C. Có mạch dài","D. Không màu"],a:"B. Không có enzyme phù hợp",explain:"Người không có cellulase."},
+{q:"Natural rubber là",options:["A. Lipid","B. Protein","C. Natural polymer","D. Synthetic polymer"],a:"C. Natural polymer",explain:"Cao su thiên nhiên là polymer."},
+{q:"Polymer thường dùng làm plastic vì",options:["A. Bay hơi","B. Dễ tạo hình","C. Tan trong nước","D. Dẫn điện"],a:"B. Dễ tạo hình",explain:"Dễ gia công."},
+{q:"Protein làm quỳ tím",options:["A. Hóa đỏ","B. Hóa xanh","C. Không đổi màu","D. Mất màu"],a:"C. Không đổi màu",explain:"Protein gần trung tính."},
 // ===== THÔNG HIỂU (14 câu) =====
 {q:"Tinh bột và xenlulozơ có tính chất khác nhau do",options:["A. Khối lượng khác","B. Cấu trúc khác","C. Màu khác","D. Trạng thái khác"],a:"B. Cấu trúc khác",explain:"Liên kết khác nhau."},
 {q:"Chất béo không tan trong nước vì",options:["A. Nhẹ","B. Không phân cực","C. Nặng","D. Dễ bay hơi"],a:"B. Không phân cực",explain:"Nước là dung môi phân cực."},
@@ -299,6 +421,21 @@ const questions_hoa = [
 {q:"Polime dùng làm chất dẻo vì",options:["A. Dễ cháy","B. Dễ tạo hình","C. Tan trong nước","D. Bay hơi"],a:"B. Dễ tạo hình",explain:"Có thể gia công."},
 {q:"Protein có vai trò xúc tác vì",options:["A. Tan tốt","B. Một số là enzim","C. Có mùi","D. Có màu"],a:"B. Một số là enzim",explain:"Enzim là protein."},
 {q:"Chất béo bị ôi thiu do",options:["A. Bay hơi","B. Oxi hóa","C. Tan","D. Nóng chảy"],a:"B. Oxi hóa",explain:"Axit béo bị oxi hóa."},
+{q:"Starch và cellulose khác nhau chủ yếu do",options:["A. Công thức","B. Kiểu liên kết","C. Màu sắc","D. Trạng thái"],a:"B. Kiểu liên kết",explain:"Liên kết α và β khác nhau."},
+{q:"Protein bị biến tính khi thay đổi pH vì",options:["A. Đứt peptide","B. Phá cấu trúc không gian","C. Tan tốt","D. Bay hơi"],a:"B. Phá cấu trúc không gian",explain:"Mất cấu trúc bậc cao."},
+{q:"Lipit không tan trong nước vì",options:["A. Nặng","B. Không phân cực","C. M lớn","D. Không màu"],a:"B. Không phân cực",explain:"Nước là dung môi phân cực."},
+{q:"Glucose cung cấp năng lượng vì",options:["A. Tan tốt","B. Bị oxi hóa trong tế bào","C. Có vị ngọt","D. Có –OH"],a:"B. Bị oxi hóa trong tế bào",explain:"Giải phóng năng lượng."},
+{q:"Polyethylene cách điện tốt vì",options:["A. Nhẹ","B. Không có ion tự do","C. Tan kém","D. Dẻo"],a:"B. Không có ion tự do",explain:"Không dẫn điện."},
+{q:"Protein có vai trò xúc tác vì",options:["A. Tan tốt","B. Là enzyme","C. Có mạch dài","D. Giàu C"],a:"B. Là enzyme",explain:"Enzyme là protein."},
+{q:"Fat bị ôi thiu do",options:["A. Thủy phân","B. Oxi hóa","C. Trùng hợp","D. Đông tụ"],a:"B. Oxi hóa",explain:"Axit béo bị oxi hóa."},
+{q:"Polymer bền trong môi trường vì",options:["A. Bay hơi","B. Liên kết bền","C. Tan tốt","D. Nhẹ"],a:"B. Liên kết bền",explain:"Mạch dài, bền."},
+{q:"Cellulose dùng làm giấy vì",options:["A. Tan tốt","B. Cấu trúc sợi","C. Ngọt","D. Dễ cháy"],a:"B. Cấu trúc sợi",explain:"Sợi bền."},
+{q:"Gluxit đơn giản nhất là",options:["A. Disaccharide","B. Monosaccharide","C. Polysaccharide","D. Polymer"],a:"B. Monosaccharide",explain:"Đường đơn."},
+{q:"Protein không là nguồn năng lượng chính vì",options:["A. Tan kém","B. Vai trò cấu trúc","C. Ít C","D. Không oxi hóa"],a:"B. Vai trò cấu trúc",explain:"Chủ yếu xây dựng cơ thể."},
+{q:"Polymer tổng hợp tạo bởi phản ứng",options:["A. Thế","B. Trùng hợp","C. Trung hòa","D. Phân hủy"],a:"B. Trùng hợp",explain:"Monomer liên kết."},
+{q:"Lipit cho nhiều năng lượng hơn gluxit vì",options:["A. Nặng","B. Giàu C–H","C. Tan kém","D. Có O"],a:"B. Giàu C–H",explain:"Giải phóng nhiều năng lượng."},
+{q:"Starch không tan trong nước lạnh vì",options:["A. Không phân cực","B. Phân tử lớn","C. Không màu","D. Không mùi"],a:"B. Phân tử lớn",explain:"Khó phân tán."},
+{q:"Cellulose và starch giống nhau vì",options:["A. Đều tan","B. Cùng đơn phân glucose","C. Cùng cấu trúc","D. Cùng mùi"],a:"B. Cùng đơn phân glucose",explain:"Đều từ glucose."},
 // ===== VẬN DỤNG (15 câu) =====
 {q:"Khối lượng mol của glucozơ là",options:["A. 160","B. 170","C. 180","D. 190"],a:"C. 180",explain:"C6H12O6 = 180."},
 {q:"Số mol glucozơ trong 18 g là",options:["A. 0,05","B. 0,1","C. 0,2","D. 0,3"],a:"B. 0,1",explain:"n=18/180."},
@@ -315,7 +452,22 @@ const questions_hoa = [
 {q:"Khối lượng mol của saccarozơ là",options:["A. 180","B. 324","C. 342","D. 360"],a:"C. 342",explain:"C12H22O11."},
 {q:"Khối lượng gluxit có trong 300 g gạo chứa 70% tinh bột là",options:["A. 180 g","B. 200 g","C. 210 g","D. 240 g"],a:"C. 210 g",explain:"70% của 300 g."},
 {q:"Hợp chất hữu cơ có CTĐG là CH2O và là polime thiên nhiên. Chất đó là",options:["A. Glucozơ","B. Xenlulozơ","C. Saccarozơ","D. Tinh bột"],a:"B. Xenlulozơ",explain:"Polime thiên nhiên từ glucozơ."},
-  // Chuyên đề 5: TỔNG HỢP
+{q:"Khối lượng mol của glucose là",options:["A. 162","B. 180","C. 198","D. 150"],a:"B. 180",explain:"C6H12O6."},
+{q:"Số mol glucose trong 18 g là",options:["A. 0,05","B. 0,1","C. 0,2","D. 0,3"],a:"B. 0,1",explain:"18/180."},
+{q:"Khối lượng glucose trong 200 g dung dịch 10% là",options:["A. 10 g","B. 15 g","C. 20 g","D. 25 g"],a:"C. 20 g",explain:"10% × 200."},
+{q:"Khối lượng mol mắt xích cellulose là",options:["A. 162","B. 180","C. 150","D. 170"],a:"A. 162",explain:"C6H10O5."},
+{q:"Tỉ khối hơi của glucose so với H2 là",options:["A. 45","B. 60","C. 90","D. 180"],a:"C. 90",explain:"180/2."},
+{q:"Khối lượng carbon trong 18 g glucose là",options:["A. 6 g","B. 7,2 g","C. 8 g","D. 9 g"],a:"B. 7,2 g",explain:"72/180 × 18."},
+{q:"Dung dịch protein 5% khối lượng 400 g chứa protein là",options:["A. 10 g","B. 15 g","C. 20 g","D. 25 g"],a:"C. 20 g",explain:"5% × 400."},
+{q:"Polymer X có CT (C2H4)n, monomer là",options:["A. Ethane","B. Ethene","C. Propene","D. Methane"],a:"B. Ethene",explain:"PE từ ethene."},
+{q:"Polymer có M = 28000, monomer M = 28, số mắt xích là",options:["A. 500","B. 800","C. 1000","D. 1200"],a:"C. 1000",explain:"28000/28."},
+{q:"Khối lượng starch thu từ 180 g glucose (100%) là",options:["A. 162 g","B. 170 g","C. 180 g","D. 200 g"],a:"A. 162 g",explain:"Mất nước khi trùng ngưng."},
+{q:"Chất chứa 75% carbon thuộc nhóm",options:["A. Protein","B. Lipid","C. Gluxit","D. Polymer"],a:"B. Lipid",explain:"Lipid giàu carbon."},
+{q:"Khối lượng sucrose trong 500 g dung dịch 8% là",options:["A. 30 g","B. 35 g","C. 40 g","D. 45 g"],a:"C. 40 g",explain:"8% × 500."},
+{q:"Khối lượng mol của sucrose là",options:["A. 180","B. 324","C. 342","D. 360"],a:"C. 342",explain:"C12H22O11."},
+{q:"Khối lượng glucose cần tạo 162 g starch là",options:["A. 162 g","B. 170 g","C. 180 g","D. 200 g"],a:"C. 180 g",explain:"Trùng ngưng mất nước."},
+{q:"Hợp chất có CTĐG CH2O và là polymer thiên nhiên là",options:["A. Glucose","B. Cellulose","C. Sucrose","D. Starch"],a:"B. Cellulose",explain:"Polymer thiên nhiên."},
+ // Chuyên đề 5: TỔNG HỢP
 // ===== NHẬN BIẾT (21 câu) =====
 {q:"Chất nào sau đây là kim loại?",options:["A. S","B. O","C. Fe","D. Cl"],a:"C. Fe",explain:"Fe là kim loại."},
 {q:"Chất nào sau đây là phi kim?",options:["A. Na","B. Al","C. Cl","D. Fe"],a:"C. Cl",explain:"Cl là phi kim."},
@@ -338,6 +490,28 @@ const questions_hoa = [
 {q:"Chất nào là oxit axit?",options:["A. Na2O","B. CaO","C. SO2","D. MgO"],a:"C. SO2",explain:"SO2 là oxit axit."},
 {q:"Dung dịch NaOH có tính",options:["A. Axit","B. Trung tính","C. Bazơ","D. Muối"],a:"C. Bazơ",explain:"NaOH là bazơ mạnh."},
 {q:"Chất nào không tan trong nước?",options:["A. NaCl","B. Glucozơ","C. C2H5OH","D. Chất béo"],a:"D. Chất béo",explain:"Chất béo không tan trong nước."},
+{q:"Chất nào sau đây là đơn chất?",options:["A. Sodium chloride","B. Oxygen","C. Water","D. Carbon dioxide"],a:"B. Oxygen",explain:"Oxygen là đơn chất."},
+{q:"Hợp chất được tạo bởi hai nguyên tố là",options:["A. Oxygen","B. Iron","C. Sodium chloride","D. Copper"],a:"C. Sodium chloride",explain:"NaCl gồm Na và Cl."},
+{q:"Phản ứng hóa học là quá trình",options:["A. Thay đổi trạng thái","B. Tạo chất mới","C. Tan trong nước","D. Bay hơi"],a:"B. Tạo chất mới",explain:"Có chất mới tạo thành."},
+{q:"Kim loại có tính chất chung là",options:["A. Dễ vỡ","B. Dẫn điện","C. Tan trong nước","D. Bay hơi"],a:"B. Dẫn điện",explain:"Kim loại dẫn điện tốt."},
+{q:"Phi kim thường có tính chất",options:["A. Dẫn điện","B. Dẫn nhiệt","C. Không dẫn điện","D. Ánh kim"],a:"C. Không dẫn điện",explain:"Phi kim cách điện."},
+{q:"Hydrogen chloride tan trong nước tạo thành",options:["A. Sodium hydroxide","B. Hydrochloric acid","C. Nitric acid","D. Sulfuric acid"],a:"B. Hydrochloric acid",explain:"HCl + H2O → acid."},
+{q:"Carbon dioxide là oxide",options:["A. Basic oxide","B. Acidic oxide","C. Neutral oxide","D. Amphoteric oxide"],a:"B. Acidic oxide",explain:"CO2 là oxide axit."},
+{q:"Calcium oxide có tên thông thường là",options:["A. Limestone","B. Quicklime","C. Slaked lime","D. Chalk"],a:"B. Quicklime",explain:"CaO là vôi sống."},
+{q:"Alcohol thuộc loại hợp chất",options:["A. Hydrocarbon","B. Organic compound","C. Inorganic compound","D. Salt"],a:"B. Organic compound",explain:"Alcohol là hợp chất hữu cơ."},
+{q:"Ethanoic acid thuộc nhóm",options:["A. Alcohol","B. Ester","C. Carboxylic acid","D. Aldehyde"],a:"C. Carboxylic acid",explain:"Có nhóm –COOH."},
+{q:"Glucose thuộc loại",options:["A. Lipid","B. Protein","C. Carbohydrate","D. Polymer"],a:"C. Carbohydrate",explain:"Glucose là gluxit."},
+{q:"Polyethylene thuộc loại",options:["A. Natural polymer","B. Synthetic polymer","C. Protein","D. Lipid"],a:"B. Synthetic polymer",explain:"PE là polime tổng hợp."},
+{q:"Protein được cấu tạo từ",options:["A. Fatty acid","B. Amino acid","C. Glucose","D. Glycerol"],a:"B. Amino acid",explain:"Protein gồm amino acid."},
+{q:"Phản ứng trung hòa xảy ra giữa",options:["A. Acid và base","B. Acid và metal","C. Base và salt","D. Metal và water"],a:"A. Acid và base",explain:"Axit + bazơ → muối + nước."},
+{q:"Chất làm quỳ tím hóa đỏ là",options:["A. Sodium hydroxide","B. Calcium oxide","C. Hydrochloric acid","D. Sodium chloride"],a:"C. Hydrochloric acid",explain:"Dung dịch axit."},
+{q:"Chất làm quỳ tím hóa xanh là",options:["A. Hydrochloric acid","B. Sodium hydroxide","C. Carbon dioxide","D. Ethanol"],a:"B. Sodium hydroxide",explain:"Dung dịch bazơ."},
+{q:"Kim loại đứng trước hydrogen trong dãy hoạt động",options:["A. Không phản ứng","B. Phản ứng với acid","C. Không tan","D. Bay hơi"],a:"B. Phản ứng với acid",explain:"Giải phóng H2."},
+{q:"Hydrocarbon chỉ chứa",options:["A. C, H","B. C, O","C. C, H, O","D. C, N"],a:"A. C, H",explain:"Chỉ gồm carbon và hydrogen."},
+{q:"Ethanol có công thức phân tử",options:["A. C2H4","B. C2H6O","C. CH3COOH","D. C3H8"],a:"B. C2H6O",explain:"Ethanol = C2H5OH."},
+{q:"Sodium chloride thuộc loại",options:["A. Acid","B. Base","C. Salt","D. Oxide"],a:"C. Salt",explain:"NaCl là muối."},
+{q:"Phản ứng tạo polymer gọi là",options:["A. Substitution","B. Addition","C. Polymerization","D. Neutralization"],a:"C. Polymerization",explain:"Tạo polime."},
+{q:"Carbon monoxide là oxide",options:["A. Acidic","B. Basic","C. Neutral","D. Amphoteric"],a:"C. Neutral",explain:"CO là oxide trung tính."},
 // ===== THÔNG HIỂU (14 câu) =====
 {q:"Kim loại dẫn điện tốt vì",options:["A. Có khối lượng lớn","B. Có electron tự do","C. Có màu sáng","D. Có độ cứng cao"],a:"B. Có electron tự do",explain:"Electron tự do giúp dẫn điện."},
 {q:"Axit axetic là axit yếu vì",options:["A. Không tan","B. Phân li không hoàn toàn","C. Không mùi","D. Không màu"],a:"B. Phân li không hoàn toàn",explain:"Axit yếu phân li một phần."},
@@ -353,6 +527,21 @@ const questions_hoa = [
 {q:"Polime thiên nhiên có sẵn trong tự nhiên như",options:["A. PE","B. PVC","C. Xenlulozơ","D. Nilon"],a:"C. Xenlulozơ",explain:"Xenlulozơ có sẵn."},
 {q:"Chất béo không tan trong nước vì",options:["A. Nhẹ","B. Không phân cực","C. Nặng","D. Có O"],a:"B. Không phân cực",explain:"Nước là dung môi phân cực."},
 {q:"Hidrocacbon không làm đổi màu quỳ tím vì",options:["A. Không tan","B. Trung tính","C. Không cháy","D. Không mùi"],a:"B. Trung tính",explain:"Không phải axit hay bazơ."},
+{q:"Carbon dioxide làm nước vôi trong vẩn đục vì",options:["A. Tạo CaO","B. Tạo CaCO3 kết tủa","C. Bay hơi","D. Trung hòa"],a:"B. Tạo CaCO3 kết tủa",explain:"CO2 + Ca(OH)2."},
+{q:"Kim loại phản ứng mạnh với acid vì",options:["A. Nhẹ","B. Đứng trước H","C. Tan tốt","D. Dẫn điện"],a:"B. Đứng trước H",explain:"Giải phóng H2."},
+{q:"Phi kim thường tạo oxide axit vì",options:["A. Dễ tan","B. Có độ âm điện lớn","C. Nặng","D. Có ánh kim"],a:"B. Có độ âm điện lớn",explain:"Dễ tạo oxide axit."},
+{q:"Ethanol tan vô hạn trong nước do",options:["A. Nhẹ","B. Có liên kết hydrogen","C. Có mạch dài","D. Bay hơi"],a:"B. Có liên kết hydrogen",explain:"Nhóm –OH."},
+{q:"Ethanoic acid là axit yếu vì",options:["A. Không phân li","B. Phân li không hoàn toàn","C. Không tan","D. Không có H"],a:"B. Phân li không hoàn toàn",explain:"Axit hữu cơ yếu."},
+{q:"Glucose cung cấp năng lượng vì",options:["A. Tan tốt","B. Bị oxi hóa","C. Có vị ngọt","D. Có O"],a:"B. Bị oxi hóa",explain:"Giải phóng năng lượng."},
+{q:"Protein bị biến tính khi đun nóng vì",options:["A. Đứt liên kết peptide","B. Phá cấu trúc không gian","C. Bay hơi","D. Tan tốt"],a:"B. Phá cấu trúc không gian",explain:"Mất cấu trúc bậc cao."},
+{q:"Polyethylene cách điện vì",options:["A. Nhẹ","B. Không có ion tự do","C. Tan kém","D. Có mạch dài"],a:"B. Không có ion tự do",explain:"Không dẫn điện."},
+{q:"Carbon monoxide độc vì",options:["A. Mùi nặng","B. Gắn với hemoglobin","C. Tan trong nước","D. Nặng"],a:"B. Gắn với hemoglobin",explain:"Ngăn vận chuyển O2."},
+{q:"Kim loại kiềm phản ứng mạnh với nước vì",options:["A. Nhẹ","B. Hoạt động hóa học mạnh","C. Tan tốt","D. Có ánh kim"],a:"B. Hoạt động hóa học mạnh",explain:"Dễ nhường electron."},
+{q:"Hydrocarbon không phân cực vì",options:["A. Có C","B. Chỉ chứa C–H","C. Có liên kết đôi","D. Tan trong nước"],a:"B. Chỉ chứa C–H",explain:"Độ âm điện gần nhau."},
+{q:"Polymer bền vì",options:["A. Bay hơi","B. Liên kết bền","C. Tan tốt","D. Nhẹ"],a:"B. Liên kết bền",explain:"Mạch dài."},
+{q:"Acid làm kim loại tan vì",options:["A. Nặng","B. Phản ứng oxi hóa – khử","C. Bay hơi","D. Tan"],a:"B. Phản ứng oxi hóa – khử",explain:"Kim loại bị oxi hóa."},
+{q:"Base làm trơn tay vì",options:["A. Tan tốt","B. Phản ứng với chất béo","C. Bay hơi","D. Nặng"],a:"B. Phản ứng với chất béo",explain:"Xà phòng hóa."},
+{q:"Ester có mùi thơm vì",options:["A. Bay hơi","B. Phân tử nhỏ","C. Cấu trúc đặc trưng","D. Tan trong nước"],a:"C. Cấu trúc đặc trưng",explain:"Đặc trưng ester."},
 // ===== VẬN DỤNG (15 câu) =====
 {q:"Số mol NaOH có trong 8 g NaOH là",options:["A. 0,1","B. 0,2","C. 0,3","D. 0,4"],a:"B. 0,2",explain:"n=8/40."},
 {q:"Khối lượng CO2 tạo ra khi đốt cháy 0,1 mol CH4 là",options:["A. 2,2 g","B. 4,4 g","C. 6,6 g","D. 8,8 g"],a:"B. 4,4 g",explain:"1 mol CH4 → 1 mol CO2."},
@@ -368,63 +557,83 @@ const questions_hoa = [
 {q:"Khối lượng NaOH cần để pha 400 g dung dịch 5% là",options:["A. 10 g","B. 15 g","C. 20 g","D. 25 g"],a:"C. 20 g",explain:"5% của 400 g."},
 {q:"Chất X có M = 60 và là axit hữu cơ đơn chức. X là",options:["A. HCOOH","B. CH3COOH","C. C2H5COOH","D. C3H7COOH"],a:"B. CH3COOH",explain:"M = 60."},
 {q:"Số mol CO2 thu được khi đốt 0,2 mol C2H6 là",options:["A. 0,2","B. 0,4","C. 0,6","D. 0,8"],a:"D. 0,8",explain:"1 mol C2H6 → 2 mol CO2."},
-{q:"Một hợp chất hữu cơ có CTĐG là CH2 và là hidrocacbon. Công thức có thể là",options:["A. C2H4","B. C3H8","C. C2H6","D. CH4"],a:"A. C2H4",explain:"CTĐG CH2."}
+{q:"Một hợp chất hữu cơ có CTĐG là CH2 và là hidrocacbon. Công thức có thể là",options:["A. C2H4","B. C3H8","C. C2H6","D. CH4"],a:"A. C2H4",explain:"CTĐG CH2."},
+{q:"Khối lượng mol của calcium carbonate là",options:["A. 90","B. 100","C. 110","D. 120"],a:"B. 100",explain:"CaCO3 = 100."},
+{q:"Số mol NaOH trong 20 g là",options:["A. 0,25","B. 0,4","C. 0,5","D. 1,0"],a:"C. 0,5",explain:"20/40."},
+{q:"Khối lượng NaCl tạo ra khi trung hòa 0,1 mol HCl là",options:["A. 5,85 g","B. 4,0 g","C. 3,65 g","D. 2,3 g"],a:"A. 5,85 g",explain:"M NaCl = 58,5."},
+{q:"Thể tích H2 (đktc) thu được khi cho 0,1 mol Zn phản ứng với HCl là",options:["A. 1,12 l","B. 2,24 l","C. 3,36 l","D. 4,48 l"],a:"B. 2,24 l",explain:"1 mol Zn → 1 mol H2."},
+{q:"Khối lượng CaO thu được khi nung 100 g CaCO3 là",options:["A. 44 g","B. 50 g","C. 56 g","D. 60 g"],a:"C. 56 g",explain:"CaO = 56."},
+{q:"Số mol CO2 sinh ra khi đốt cháy 0,5 mol methane là",options:["A. 0,25","B. 0,5","C. 1,0","D. 2,0"],a:"B. 0,5",explain:"CH4 → CO2."},
+{q:"Khối lượng ethanol trong 200 g dung dịch 10% là",options:["A. 10 g","B. 15 g","C. 20 g","D. 25 g"],a:"C. 20 g",explain:"10% × 200."},
+{q:"Số mol ethanoic acid trong 12 g là",options:["A. 0,1","B. 0,2","C. 0,3","D. 0,4"],a:"A. 0,1",explain:"12/60."},
+{q:"Khối lượng CO2 sinh ra khi nhiệt phân 100 g CaCO3 là",options:["A. 22 g","B. 44 g","C. 56 g","D. 78 g"],a:"B. 44 g",explain:"CO2 = 44."},
+{q:"Khối lượng sodium phản ứng với 0,2 mol ethanol là",options:["A. 2,3 g","B. 4,6 g","C. 6,9 g","D. 9,2 g"],a:"B. 4,6 g",explain:"Na : ethanol = 1 : 1."},
+{q:"Tỉ khối CO2 so với H2 là",options:["A. 11","B. 22","C. 44","D. 88"],a:"B. 22",explain:"44/2."},
+{q:"Khối lượng glucose trong 300 g dung dịch 15% là",options:["A. 30 g","B. 40 g","C. 45 g","D. 60 g"],a:"C. 45 g",explain:"15% × 300."},
+{q:"Khối lượng polymer tạo từ 180 g monomer glucose là",options:["A. 162 g","B. 170 g","C. 180 g","D. 200 g"],a:"A. 162 g",explain:"Trùng ngưng mất nước."},
+{q:"Thể tích O2 (đktc) cần để đốt cháy 0,5 mol ethene là",options:["A. 11,2 l","B. 22,4 l","C. 33,6 l","D. 44,8 l"],a:"C. 33,6 l",explain:"3 mol O2 cho 1 mol C2H4."},
+{q:"Khối lượng Na2CO3 cần để phản ứng hết 0,2 mol HCl là",options:["A. 5,3 g","B. 8,4 g","C. 10,6 g","D. 21,2 g"],a:"C. 10,6 g",explain:"Na2CO3 = 106."}
 ];
 
-// Build per-topic arrays from the full list (file contains 337 questions in 5 sections)
-window.questions_hoa_by_topic = window.questions_hoa_by_topic || {};
-// Known section sizes (as in this file): 100,140,43,41,65 = 389
-const _hoaCounts = [100,140,43,41,65];
+// Chuyên đề 4: LIPIT – GLUXIT – PROTEIN – POLIME
+const questions_hoa_topic4 = _makePlaceholders('Lipit – Gluxit – Protein – Polime', 41);
+
+// Chuyên đề 5: TỔNG HỢP
+const questions_hoa_topic5 = _makePlaceholders('Tổng hợp', 82);
+
 const _hoaLongNames = [
-  'Kim loại – Phi kim',
-  'Hợp chất hữu cơ – Hydrocarbon',
-  'Ethylic alcohol và acetic acid',
-  'Lipit – Gluxit – Protein – Polime',
-  'Tổng hợp'
+	'Chuyên đề 1: KIM LOẠI – PHI KIM',
+	'Chuyên đề 2: HỢP CHẤT HỮU CƠ – HIDROCACBON',
+	'Chuyên đề 3: ETHYLIC ALCOHOL VÀ ACETIC ACID',
+	'Chuyên đề 4: LIPIT – GLUXIT – PROTEIN – POLIME',
+	'Chuyên đề 5: TỔNG HỢP'
 ];
-let _idx = 0;
-// Slice sections according to _hoaCounts then ensure each section has at least 50 questions
-const actualCounts = [];
-for (let i = 0; i < _hoaCounts.length; i++) {
-  const cnt = _hoaCounts[i];
-  let section = questions_hoa.slice(_idx, _idx + cnt);
-  _idx += cnt;
-  // If section has fewer than 50 questions, duplicate existing items (shallow clone) until 50
-  if (section.length > 0 && section.length < 50) {
-    const needed = 50 - section.length;
-    for (let j = 0; j < needed; j++) {
-      // clone a random existing question from the same section to avoid mutating originals
-      const pick = section[j % section.length];
-      const clone = JSON.parse(JSON.stringify(pick));
-      section.push(clone);
-    }
-  }
-  // If section is empty, leave it empty (no auto-fill)
-  window.questions_hoa_by_topic[_hoaLongNames[i]] = section;
-  actualCounts.push(section.length);
-}
-// Update _hoaCounts to reflect actual prepared section lengths
-for (let i = 0; i < actualCounts.length; i++) _hoaCounts[i] = actualCounts[i];
-// Short/display names used in the dropdown
 const _hoaShortNames = [
-  'Kim loại – Phi kim',
-  'Hợp chất vô cơ – hữu cơ',
-  'Hidrocacbon – Ancol – Axit – Este',
-  'Gluxit – Lipit – Protein – Polime',
-  'Tổng hợp'
+	'KIM LOẠI – PHI KIM',
+	'HỢP CHẤT HỮU CƠ – HIDROCACBON',
+	'ETHYLIC ALCOHOL VÀ ACETIC ACID',
+	'LIPIT – GLUXIT – PROTEIN – POLIME',
+	'TỔNG HỢP'
 ];
+
+window.questions_hoa_by_topic = window.questions_hoa_by_topic || {};
+
 for (let i = 0; i < _hoaShortNames.length; i++) {
-  window.questions_hoa_by_topic[_hoaShortNames[i]] = window.questions_hoa_by_topic[_hoaLongNames[i]];
+	const arr = [questions_hoa_topic1, questions_hoa_topic2, questions_hoa_topic3, questions_hoa_topic4, questions_hoa_topic5][i] || [];
+	window.questions_hoa_by_topic[_hoaLongNames[i]] = arr;
+	window.questions_hoa_by_topic[_hoaShortNames[i]] = arr;
 }
 
-// Export full list and provide a safe default key 'Tất cả' pointing to the full set
+const _hoaMinPerTopic = 50;
+const _hoaList = [
+	{ short: _hoaShortNames[0], arr: questions_hoa_topic1 },
+	{ short: _hoaShortNames[1], arr: questions_hoa_topic2 },
+	{ short: _hoaShortNames[2], arr: questions_hoa_topic3 },
+	{ short: _hoaShortNames[3], arr: questions_hoa_topic4 },
+	{ short: _hoaShortNames[4], arr: questions_hoa_topic5 }
+];
+_hoaList.forEach(item => {
+	const arr = item.arr;
+	if (!Array.isArray(arr)) return;
+	if (arr.length === 0) {
+		// create simple placeholders if topic is empty
+		for (let k = 0; k < _hoaMinPerTopic; k++) {
+			arr.push({ q: `${item.short} — câu mẫu ${k+1}`, options: ['A. Đáp án A','B. Đáp án B','C. Đáp án C','D. Đáp án D'], a: 'A. Đáp án A', explain: 'Câu hỏi mẫu.' });
+		}
+	} else {
+		// clone existing entries in round-robin until reach minPerTopic
+		let idx = 0;
+		while (arr.length < _hoaMinPerTopic) {
+			const src = arr[idx % arr.length];
+			const clone = JSON.parse(JSON.stringify(src));
+			arr.push(clone);
+			idx++;
+		}
+	}
+});
 
-// Build combined normalized 'Tất cả' from per-topic prepared sections
-const _hoaCombined = [];
-for (const name of _hoaLongNames) {
-  const sec = window.questions_hoa_by_topic[name] || [];
-  _hoaCombined.push(...sec);
-}
+// Rebuild combined list and maps after normalization
+const _hoaCombined = [].concat(questions_hoa_topic1, questions_hoa_topic2, questions_hoa_topic3, questions_hoa_topic4, questions_hoa_topic5);
 window.questions_hoa = _hoaCombined;
 window.questions_hoa_by_topic['Tất cả'] = _hoaCombined;
 
@@ -438,11 +647,6 @@ window.questions_hoa_by_topic['Tất cả'] = _hoaCombined;
     }
   }
 })(questions_hoa);
-
-/*************************************************
- * CHUẨN HÓA TÊN CHẤT SANG IUPAC
- * ÁP DỤNG TRỰC TIẾP CHO questions_hoa
- *************************************************/
 
 /* ===== BẢNG IUPAC ===== */
 const IUPAC_MAP = {
