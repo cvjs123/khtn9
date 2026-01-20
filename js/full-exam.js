@@ -22,10 +22,27 @@ function startFullExam() {
     }
 
     // Chemistry: 14 questions (5 metals-nonmetals, 3 organic, 3 ethanol-acetic, 3 bio compounds)
-    let hoaQuestions = _selectRandom(questions_hoa, 14);
+    let hoaQuestions = [];
+    // Assuming questions_hoa_topic1 to topic5 are available
+    if (typeof questions_hoa_topic1 !== 'undefined') {
+        hoaQuestions.push(..._selectRandom(questions_hoa_topic1, 5)); // metals-nonmetals
+        hoaQuestions.push(..._selectRandom(questions_hoa_topic2, 3)); // organic
+        hoaQuestions.push(..._selectRandom(questions_hoa_topic3, 3)); // ethanol-acetic
+        hoaQuestions.push(..._selectRandom(questions_hoa_topic4, 3)); // bio compounds
+    } else {
+        hoaQuestions = _selectRandom(questions_hoa, 14);
+    }
 
     // Biology: 12 questions (4 molecular genetics, 4 cellular genetics, 4 Mendel)
-    let sinhQuestions = _selectRandom(questions_sinh, 12);
+    let sinhQuestions = [];
+    // Assuming questions_sinh_topic1 to topic5 are available
+    if (typeof questions_sinh_topic1 !== 'undefined') {
+        sinhQuestions.push(..._selectRandom(questions_sinh_topic1, 4)); // molecular genetics
+        sinhQuestions.push(..._selectRandom(questions_sinh_topic2, 4)); // cellular genetics
+        sinhQuestions.push(..._selectRandom(questions_sinh_topic3, 4)); // Mendel
+    } else {
+        sinhQuestions = _selectRandom(questions_sinh, 12);
+    }
 
     let examQ = [...lyQuestions, ...hoaQuestions, ...sinhQuestions];
 
