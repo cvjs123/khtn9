@@ -16,6 +16,9 @@
         .subject-icon { width: 130px; height: 130px; object-fit: contain; margin-bottom: 15px; filter: drop-shadow(0 8px 16px rgba(0,0,0,0.25)); }
         .topic-btn { text-align: left; width: 100%; }
         .topic-content { padding: .75rem 1rem; border: 1px solid rgba(0,0,0,0.08); border-radius: .25rem; margin-bottom: .75rem; background: #fff; }
+        .card-header-physics { background: linear-gradient(135deg,#007bff,#0056b3); }
+        .card-header-chemistry { background: linear-gradient(135deg,#28a745,#19692c); }
+        .card-header-biology { background: linear-gradient(135deg,#ffc107,#e0a800); }
     </style>
 </head>
 <body>
@@ -31,7 +34,7 @@
                 <!-- Vật Lý -->
                 <div class="col-lg-4">
                     <div class="card theory-card h-100 shadow-lg border-0">
-                        <div class="card-header text-white text-center py-5" style="background: linear-gradient(135deg,#007bff,#0056b3);">
+                        <div class="card-header text-white text-center py-5 card-header-physics">
                             <img src="https://static.vecteezy.com/system/resources/thumbnails/069/018/564/small_2x/3d-atomic-structure-icon-in-purple-blue-glass-symbolizing-science-physics-innovation-and-technology-png.png" alt="Icon 3D Vật Lý - Atom kính xanh" class="subject-icon">
                             <h3 class="subject-header">VẬT LÍ</h3>
                         </div>
@@ -113,13 +116,13 @@
                 <!-- Hóa Học -->
                 <div class="col-lg-4">
                     <div class="card theory-card h-100 shadow-lg border-0">
-                        <div class="card-header text-white text-center py-5" style="background: linear-gradient(135deg,#28a745,#19692c);">
+                        <div class="card-header text-white text-center py-5 card-header-chemistry">
                             <img src="https://png.pngtree.com/png-vector/20250911/ourlarge/pngtree-green-chemical-laboratory-flask-with-bubbling-liquid-png-image_17406514.webp" alt="Icon 3D Hóa Học - Bình cầu xanh với bọt khí sôi" class="subject-icon">
                             <h3 class="subject-header">HOÁ HỌC</h3>
                         </div>
                         <div class="card-body">
                             <div class="d-grid gap-2">
-                                <button class="btn btn-success topic-btn" type="button" data-bs-toggle="collapse" data-bs-target="#hoaTopic1">Kim loại – Phi kim</button>
+                                <button class="btn btn-success topic-btn" type="button" data-bs-toggle="collapse" data-bs-target="#hoaTopic1">KIM LOẠI VÀ SỰ KHÁC NHAU CƠ BẢN VỚI PHI KIM</button>
                                 <div class="collapse" id="hoaTopic1"><div class="topic-content">
                                     <h6>1. KIM LOẠI</h6>
                                     <h6>1.1. Bản chất – cấu tạo</h6>
@@ -189,14 +192,18 @@
                                     <p>S + O<sub>2</sub> → SO<sub>2</sub></p>
                                     <p><strong>📌 Oxit axit + nước → axit</strong></p>
                                     <p>SO<sub>2</sub> + H<sub>2</sub>O → H<sub>2</sub>SO<sub>3</sub></p>
+                                    <h6>3. SỰ KHÁC NHAU CƠ BẢN GIỮA KIM LOẠI VÀ PHI KIM</h6>
+                                    <p><strong>📌 Dẫn điện:</strong> Kim loại dẫn tốt, phi kim không dẫn (trừ than chì)</p>
+                                    <p><strong>📌 Liên kết:</strong> Kim loại có liên kết kim loại, phi kim có liên kết cộng hóa trị</p>
+                                    <p><strong>📌 Tính chất vật lý:</strong> Kim loại dẻo, phi kim giòn</p>
                                 </div></div>
 
-                                <button class="btn btn-success topic-btn" type="button" data-bs-toggle="collapse" data-bs-target="#hoaTopic2">Hợp chất vô cơ – hữu cơ</button>
+                                <button class="btn btn-success topic-btn" type="button" data-bs-toggle="collapse" data-bs-target="#hoaTopic2">GIỚI THIỆU VỀ CHẤT HỮU CƠ. HYDROCARBON VÀ NGUỒN NHIÊN LIỆU</button>
                                 <div class="collapse" id="hoaTopic2"><div class="topic-content">
                                     <h6>1. HỢP CHẤT HỮU CƠ</h6>
                                     <p>Là hợp chất của C</p>
                                     <p>Trừ: CO, CO₂, muối cacbonat, cacbua</p>
-                                    <h6>2. HIDROCACBON (chỉ gồm C và H)</h6>
+                                    <h6>2. HYDROCARBON (chỉ gồm C và H)</h6>
                                     <h6>2.1. Ankan</h6>
                                     <p>CT chung: CₙH₂ₙ₊₂</p>
                                     <p>Liên kết đơn → kém hoạt động</p>
@@ -213,9 +220,14 @@
                                     <p>CT chung: CₙH₂ₙ₋₂</p>
                                     <p>Có liên kết ba</p>
                                     <p>Ví dụ: C₂H₂</p>
+                                    <h6>3. NGUỒN NHIÊN LIỆU TỪ HYDROCARBON</h6>
+                                    <p><strong>Than đá:</strong> Chứa hydrocarbon, dùng làm nhiên liệu</p>
+                                    <p><strong>Dầu mỏ:</strong> Hỗn hợp hydrocarbon, tinh chế thành xăng, dầu diesel</p>
+                                    <p><strong>Khí tự nhiên:</strong> Chủ yếu CH₄, dùng làm nhiên liệu sạch</p>
+                                    <p><strong>📌 Vai trò:</strong> Cung cấp năng lượng, nguyên liệu cho hóa chất</p>
                                 </div></div>
 
-                                <button class="btn btn-success topic-btn" type="button" data-bs-toggle="collapse" data-bs-target="#hoaTopic3">Hidrocacbon – Ancol – Axit – Este</button>
+                                <button class="btn btn-success topic-btn" type="button" data-bs-toggle="collapse" data-bs-target="#hoaTopic3">ETHYLIC ALCOHOL VÀ ACETIC ACID</button>
                                 <div class="collapse" id="hoaTopic3"><div class="topic-content">
                                     <h6>1. ANCÔL ETYLIC (C₂H₅OH)</h6>
                                     <h6>1.1. Công thức cấu tạo</h6>
@@ -239,9 +251,9 @@
                                     <p><strong>📌 Axit yếu → phân li không hoàn toàn</strong></p>
                                 </div></div>
 
-                                <button class="btn btn-success topic-btn" type="button" data-bs-toggle="collapse" data-bs-target="#hoaTopic4">Gluxit – Lipit – Protein – Polime</button>
+                                <button class="btn btn-success topic-btn" type="button" data-bs-toggle="collapse" data-bs-target="#hoaTopic4">LIPIT. CARBOHYDRATE. PROTEIN. POLYMER</button>
                                 <div class="collapse" id="hoaTopic4"><div class="topic-content">
-                                    <h6>1. GLUXIT</h6>
+                                    <h6>1. CARBOHYDRATE</h6>
                                     <h6>1.1. Glucozơ</h6>
                                     <p>CTPT: C6H12O6</p>
                                     <p>Tan trong nước</p>
@@ -278,16 +290,48 @@
                                     <p>Có sản phẩm phụ (H₂O)</p>
                                 </div></div>
 
-                                <button class="btn btn-success topic-btn" type="button" data-bs-toggle="collapse" data-bs-target="#hoaTopic5">Tổng hợp</button>
+                                <button class="btn btn-success topic-btn" type="button" data-bs-toggle="collapse" data-bs-target="#hoaTopic5">TỔNG HỢP</button>
                                 <div class="collapse" id="hoaTopic5"><div class="topic-content">
-                                    <h6>1. Cơ bản</h6>
-                                    <p>n = m / M</p>
-                                    <p>V(khí, đktc) = 22,4 × n</p>
-                                    <p>C% = (m chất tan / m dung dịch) × 100%</p>
-                                    <p>dA/B = MA / MB</p>
-                                    <h6>2. Xác định công thức hóa học</h6>
-                                    <p>Từ % khối lượng → CTĐG → CTPT</p>
-                                    <p>Dựa vào M</p>
+                                    <h6>1. Các định luật cơ bản</h6>
+                                    <p><strong>Định luật bảo toàn khối lượng:</strong> Khối lượng các chất phản ứng = Khối lượng các chất sản phẩm.</p>
+                                    <p><strong>Định luật tỷ lệ xác định:</strong> Các hợp chất có thành phần xác định.</p>
+                                    <p><strong>Định luật tỷ lệ bội:</strong> Các nguyên tố kết hợp theo tỷ lệ khối lượng bội số nguyên.</p>
+
+                                    <h6>2. Khối lượng mol và số mol</h6>
+                                    <p><strong>Khối lượng mol (M):</strong> Khối lượng 1 mol chất (g/mol).</p>
+                                    <p><strong>Số mol (n):</strong> n = m / M (m: khối lượng, M: khối lượng mol).</p>
+                                    <p><strong>Thể tích mol khí (đktc):</strong> V = 22,4 × n (L).</p>
+                                    <p><strong>Số hạt (N):</strong> N = n × N_A (N_A = 6,022 × 10²³ mol⁻¹).</p>
+
+                                    <h6>3. Phần trăm khối lượng</h6>
+                                    <p><strong>% khối lượng nguyên tố:</strong> % = (m_nguyên tố / m_chất) × 100%</p>
+                                    <p><strong>% khối lượng chất tan:</strong> C% = (m_chất_tan / m_dung_dịch) × 100%</p>
+                                    <p><strong>Nồng độ mol/l:</strong> C(M) = n / V(L)</p>
+
+                                    <h6>4. Tỷ lệ khối lượng</h6>
+                                    <p><strong>Tỷ lệ khối lượng (d):</strong> d_A/B = m_A / m_B = (a × M_A) / (b × M_B)</p>
+                                    <p><strong>Tỷ lệ thể tích khí:</strong> d_A/B = V_A / V_B = (a / b) (đktc)</p>
+
+                                    <h6>5. Xác định công thức hóa học</h6>
+                                    <p><strong>Công thức đơn giản nhất:</strong> Từ % khối lượng → tỷ lệ nguyên tử → công thức.</p>
+                                    <p><strong>Công thức phân tử:</strong> M_phân_tử = k × M_đơn_giản (k từ dữ liệu).</p>
+                                    <p><strong>Công thức cấu tạo:</strong> Xác định từ cấu trúc phân tử.</p>
+
+                                    <h6>6. Phản ứng hóa học</h6>
+                                    <p><strong>Cân bằng phản ứng:</strong> Tổng hệ số = 0 cho mỗi nguyên tố.</p>
+                                    <p><strong>Tính khối lượng:</strong> m = n × M, dựa trên hệ số.</p>
+                                    <p><strong>Phản ứng oxi hóa khử:</strong> Số oxi hóa thay đổi.</p>
+                                    <p><strong>Điện phân:</strong> Cathode (-): kim loại, anode (+): phi kim.</p>
+
+                                    <h6>7. Dung dịch</h6>
+                                    <p><strong>Nồng độ mol/l:</strong> C = n / V</p>
+                                    <p><strong>Chuẩn hóa:</strong> C1 × V1 = C2 × V2</p>
+                                    <p><strong>pH:</strong> pH = -log[H⁺], axit mạnh pH < 7, bazơ pH > 7.</p>
+
+                                    <h6>8. Các công thức quan trọng khác</h6>
+                                    <p><strong>Áp suất khí:</strong> P × V = n × R × T (PTNK)</p>
+                                    <p><strong>Năng lượng:</strong> Q = m × c × Δt</p>
+                                    <p><strong>Điện năng:</strong> A = U × I × t</p>
                                 </div></div>
                             </div>
                         </div>
@@ -297,7 +341,7 @@
                 <!-- Sinh Học -->
                 <div class="col-lg-4">
                     <div class="card theory-card h-100 shadow-lg border-0">
-                        <div class="card-header text-dark text-center py-5" style="background: linear-gradient(135deg,#ffc107,#e0a800);">
+                        <div class="card-header text-dark text-center py-5 card-header-biology">
                             <img src="https://static.vecteezy.com/system/resources/thumbnails/068/881/315/small/abstract-yellow-dna-double-helix-in-orb-on-white-background-png.png" alt="Icon 3D Sinh Học - DNA Helix vàng trong quả cầu" class="subject-icon">
                             <h3 class="subject-header">SINH HỌC</h3>
                         </div>
@@ -372,14 +416,71 @@
                                     <p>Biết phân tích đề, vẽ sơ đồ lai, xác định kiểu gen và kiểu hình.</p>
                                 </div></div>
 
-                                <button class="btn btn-warning topic-btn" type="button" data-bs-toggle="collapse" data-bs-target="#sinhSummary">TÓM TẮT DỄ NHỚ CHO HỌC SINH</button>
+                                <button class="btn btn-warning topic-btn" type="button" data-bs-toggle="collapse" data-bs-target="#sinhTopic4">ỨNG DỤNG DI TRUYỀN TRONG CHỌN GIỐNG VÀ CÔNG NGHỆ SINH HỌC</button>
+                                <div class="collapse" id="sinhTopic4"><div class="topic-content">
+                                    <h6>Hiểu đơn giản</h6>
+                                    <p>Phần này học về ứng dụng di truyền trong chọn giống và công nghệ sinh học.</p>
+
+                                    <h6>1. Ứng dụng di truyền trong chọn giống</h6>
+                                    <p><strong>Chọn giống tự nhiên:</strong> Lựa chọn cá thể ưu thế để nhân giống.</p>
+                                    <p><strong>Chọn giống nhân tạo:</strong> Tạo đột biến bằng hóa chất, bức xạ để có tính trạng mới.</p>
+                                    <p><strong>Lai tạo:</strong> Lai giữa các giống khác nhau để kết hợp tính trạng tốt.</p>
+
+                                    <h6>2. Công nghệ sinh học</h6>
+                                    <p><strong>Định nghĩa:</strong> Sử dụng sinh vật sống để sản xuất sản phẩm hoặc giải quyết vấn đề.</p>
+                                    <p><strong>Ví dụ:</strong> Sản xuất insulin từ vi khuẩn, vaccine từ virus.</p>
+
+                                    <h6>3. Công nghệ gen (Biotechnology)</h6>
+                                    <p><strong>Kỹ thuật:</strong> Cắt ghép gen, nhân bản gen, tạo GMO (Genetically Modified Organism).</p>
+                                    <p><strong>Ứng dụng:</strong> Cây trồng kháng sâu (Bt bông), vật nuôi tăng trưởng nhanh.</p>
+                                    <p><strong>Ưu điểm:</strong> Tăng năng suất, giảm sử dụng hóa chất.</p>
+                                    <p><strong>Nhược điểm:</strong> Nguy cơ ảnh hưởng đến đa dạng sinh học, sức khỏe.</p>
+
+                                    <p><strong>Thi thường hỏi:</strong> Ví dụ ứng dụng, ưu nhược điểm, quy trình tạo GMO.</p>
+                                </div></div>
+
+                                <button class="btn btn-warning topic-btn" type="button" data-bs-toggle="collapse" data-bs-target="#sinhTopic5">MÔI TRƯỜNG VÀ ĐA DẠNG SINH HỌC</button>
+                                <div class="collapse" id="sinhTopic5"><div class="topic-content">
+                                    <h6>Hiểu đơn giản</h6>
+                                    <p>Phần này học về đa dạng sinh học, bảo vệ môi trường và phát triển bền vững.</p>
+
+                                    <h6>1. Đa dạng sinh học</h6>
+                                    <p><strong>Định nghĩa:</strong> Sự đa dạng của sinh vật và hệ sinh thái trên Trái Đất.</p>
+                                    <p><strong>Cấp độ:</strong></p>
+                                    <ul>
+                                        <li>Đa dạng gen: Sự khác nhau về gen trong loài.</li>
+                                        <li>Đa dạng loài: Số lượng loài khác nhau.</li>
+                                        <li>Đa dạng hệ sinh thái: Các kiểu hệ sinh thái.</li>
+                                    </ul>
+                                    <p><strong>Ý nghĩa:</strong> Cân bằng tự nhiên, nguồn tài nguyên, nghiên cứu khoa học.</p>
+
+                                    <h6>2. Nguyên nhân suy giảm đa dạng sinh học</h6>
+                                    <p><strong>Tự nhiên:</strong> Thiên tai, biến đổi khí hậu.</p>
+                                    <p><strong>Do con người:</strong> Phá rừng, ô nhiễm, khai thác quá mức, buôn bán động vật hoang dã.</p>
+
+                                    <h6>3. Bảo vệ đa dạng sinh học</h6>
+                                    <p><strong>Biện pháp:</strong></p>
+                                    <ul>
+                                        <li>Bảo tồn in situ: Bảo vệ tại chỗ (khu bảo tồn, vườn quốc gia).</li>
+                                        <li>Bảo tồn ex situ: Bảo vệ ngoài chỗ (vườn thực vật, ngân hàng gen).</li>
+                                        <li>Giảm ô nhiễm, sử dụng bền vững tài nguyên.</li>
+                                    </ul>
+
+                                    <h6>4. Môi trường và phát triển bền vững</h6>
+                                    <p><strong>Phát triển bền vững:</strong> Đáp ứng nhu cầu hiện tại mà không ảnh hưởng đến thế hệ tương lai.</p>
+                                    <p><strong>Biện pháp:</strong> Sử dụng năng lượng tái tạo, giảm phát thải, bảo vệ rừng.</p>
+
+                                    <p><strong>Thi thường hỏi:</strong> Nguyên nhân mất đa dạng, biện pháp bảo vệ, ví dụ đa dạng.</p>
+                                </div></div>
                                 <div class="collapse" id="sinhSummary"><div class="topic-content">
                                     <table class="table table-sm">
                                         <thead><tr><th>Chủ đề</th><th>Học về</th><th>Cần nhớ</th></tr></thead>
                                         <tbody>
-                                            <tr><td>Phân tử</td><td>ADN – ARN – Gen</td><td>ADN → ARN → Prôtêin</td></tr>
-                                            <tr><td>Tế bào</td><td>NST – Phân bào</td><td>Nguyên phân ≠ Giảm phân</td></tr>
-                                            <tr><td>Quy luật</td><td>Lai giống</td><td>Tỉ lệ 3:1 ; 9:3:3:1</td></tr>
+                                            <tr><td>Cơ sở vật chất, cơ chế di truyền và biến dị ở cấp độ phân tử</td><td>ADN – ARN – Gen</td><td>ADN → ARN → Prôtêin</td></tr>
+                                            <tr><td>Cơ sở vật chất, cơ chế di truyền và biến dị ở cấp độ tế bào</td><td>NST – Phân bào</td><td>Nguyên phân ≠ Giảm phân</td></tr>
+                                            <tr><td>Tính quy luật của hiện tượng di truyền</td><td>Lai giống</td><td>Tỉ lệ 3:1 ; 9:3:3:1</td></tr>
+                                            <tr><td>Ứng dụng di truyền trong chọn giống và công nghệ sinh học</td><td>Chọn giống – Công nghệ sinh học</td><td>GMO, insulin</td></tr>
+                                            <tr><td>Môi trường và đa dạng sinh học</td><td>Đa dạng sinh học</td><td>Bảo tồn in/ex situ</td></tr>
                                         </tbody>
                                     </table>
                                 </div></div>
