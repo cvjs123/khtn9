@@ -283,7 +283,7 @@ function updateLeaderboard() {
     data.leaderboard.forEach((item, i) => {
         const li = document.createElement('li');
         li.className = 'list-group-item d-flex justify-content-between';
-        li.innerHTML = `<strong>${i + 1}.</strong> ${item.name} <span class="badge bg-primary">${item.score}/40</span>`;
+        li.innerHTML = `<strong>${i + 1}.</strong> ${item.name} <span class="badge bg-primary">${item.score}/10</span>`;
         lb.appendChild(li);
     });
 }

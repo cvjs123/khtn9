@@ -13,20 +13,20 @@ function startFullExam() {
         _selectRandom(window.questions_ly_nhan_biet || questions_ly, 6),
         _selectRandom(window.questions_ly_thong_hieu || [], 4),
         _selectRandom(window.questions_ly_van_dung || [], 4)
-    );
+    ).map(q => ({ ...q, subject: 'Vật lý' }));
 
     // Chemistry: 14 questions (6 recognition, 4 comprehension, 4 application) - 5 metals-nonmetals, 3 organic, 3 ethanol-acetic, 3 bio compounds
     let hoaQuestions = [].concat(
         _selectRandom(window.questions_hoa_nhan_biet || questions_hoa, 6),
         _selectRandom(window.questions_hoa_thong_hieu || [], 4),
         _selectRandom(window.questions_hoa_van_dung || [], 4)
-    );
+    ).map(q => ({ ...q, subject: 'Hóa học' }));
 
     // Biology: 12 questions (6 recognition, 6 comprehension) - 4 molecular genetics, 4 cellular genetics, 4 Mendel
     let sinhQuestions = [].concat(
         _selectRandom(window.questions_sinh_nhan_biet || questions_sinh, 6),
         _selectRandom(window.questions_sinh_thong_hieu || [], 6)
-    );
+    ).map(q => ({ ...q, subject: 'Sinh học' }));
 
     let examQ = [...lyQuestions, ...hoaQuestions, ...sinhQuestions];
 
@@ -103,7 +103,7 @@ function startFullExam() {
     }
 
     examQ = examQ.map(_normalizeQuestion);
-    let qIndex = 0, examScore = 0;
+    let qIndex = 0, examScore = 0, correctCount = 0;
 
     let timeLeft = 90 * 60;
     document.getElementById('mainMenu').style.display = 'none';
@@ -231,7 +231,8 @@ function startFullExam() {
 
         // Show detailed feedback similar to subject quiz
         if (selected === q.a) {
-            examScore++;
+            examScore += 0.25;
+            correctCount++;
             playSound('correctSound');
             feedbackEl.innerHTML = `
                 <div class="alert alert-success p-4 rounded shadow-sm">
@@ -276,7 +277,10 @@ function startFullExam() {
     }
 
     function nextQ(selected) {
-        if (selected === examQ[qIndex].a) examScore++;
+        if (selected === examQ[qIndex].a) {
+            examScore += 0.25;
+            correctCount++;
+        }
         qIndex++;
         showQ();
     }
@@ -287,7 +291,7 @@ function startFullExam() {
 
         // Play completion or encourage music depending on percent correct
         const total = examQ.length || 40;
-        const pct = Math.round((examScore / total) * 100);
+        const pct = Math.round((correctCount / total) * 100);
         if (pct >= 70) playSound('completionMusic');
         else playSound('encourageSound');
 
@@ -296,7 +300,7 @@ function startFullExam() {
         document.getElementById('contentArea').innerHTML = `
             <div class="text-center py-5">
                 <h2 class="text-success">Kết thúc bài thi!</h2>
-                <h3>Điểm số: ${examScore} / 40</h3>
+                <h3>Điểm số: ${examScore} / 10</h3>
                 <div class="back-btn-container">
                     <button class="btn btn-primary btn-lg" onclick="backToMenu()">← Quay lại menu chính</button>
                 </div>

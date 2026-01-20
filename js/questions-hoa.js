@@ -660,6 +660,7 @@ window.questions_hoa_by_topic['Tất cả'] = _hoaCombined;
 
 
 /* ===== HÀM THAY THẾ ===== */
+/*
 function toIUPAC(text) {
   if (typeof text !== "string") return text;
   let out = text;
@@ -671,15 +672,16 @@ function toIUPAC(text) {
   }
   return out;
 }
+*/
 
 /* ===== CHUẨN HÓA MẢNG CÂU HỎI ===== */
 if (Array.isArray(window.questions_hoa)) {
   window.questions_hoa.forEach(q => {
-    q.q = toIUPAC(q.q);
-    q.a = toIUPAC(q.a);
-    q.explain = toIUPAC(q.explain);
+    // q.q = toIUPAC(q.q);
+    // q.a = toIUPAC(q.a);
+    // q.explain = toIUPAC(q.explain);
     if (Array.isArray(q.options)) {
-      q.options = q.options.map(o => toIUPAC(o));
+      // q.options = q.options.map(o => toIUPAC(o));
     }
   });
 
