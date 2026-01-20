@@ -687,3 +687,33 @@ if (Array.isArray(window.questions_hoa)) {
 } else {
   console.error("❌ Không tìm thấy window.questions_hoa");
 }
+
+// Tạo mảng cấp độ
+const questions_hoa_nhan_biet = [].concat(
+  questions_hoa_topic1.slice(0,21),
+  questions_hoa_topic2.slice(0,21),
+  questions_hoa_topic3.slice(0,21),
+  questions_hoa_topic4.slice(0,21),
+  questions_hoa_topic5.slice(0,21)
+);
+
+const questions_hoa_thong_hieu = [].concat(
+  questions_hoa_topic1.slice(21,21+14),
+  questions_hoa_topic2.slice(21,21+14),
+  questions_hoa_topic3.slice(21,21+14),
+  questions_hoa_topic4.slice(21,21+14),
+  questions_hoa_topic5.slice(21,21+14)
+);
+
+const questions_hoa_van_dung = [].concat(
+  questions_hoa_topic1.slice(21+14),
+  questions_hoa_topic2.slice(21+14),
+  questions_hoa_topic3.slice(21+14),
+  questions_hoa_topic4.slice(21+14),
+  questions_hoa_topic5.slice(21+14)
+);
+
+// Export
+window.questions_hoa_nhan_biet = questions_hoa_nhan_biet;
+window.questions_hoa_thong_hieu = questions_hoa_thong_hieu;
+window.questions_hoa_van_dung = questions_hoa_van_dung;

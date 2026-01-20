@@ -8,41 +8,25 @@ function _selectRandom(array, count) {
 
 function startFullExam() {
     // Select questions according to exam pattern analysis
-    // Physics: 14 questions (4 energy, 2 light, 4 electricity, 2 electromagnetism, 2 energy in life)
-    let lyQuestions = [];
-    // Assuming questions_ly_topic1 to topic5 are available
-    if (typeof questions_ly_topic1 !== 'undefined') {
-        lyQuestions.push(..._selectRandom(questions_ly_topic1, 4)); // energy
-        lyQuestions.push(..._selectRandom(questions_ly_topic2, 2)); // light
-        lyQuestions.push(..._selectRandom(questions_ly_topic3, 4)); // electricity
-        lyQuestions.push(..._selectRandom(questions_ly_topic4, 2)); // electromagnetism
-        lyQuestions.push(..._selectRandom(questions_ly_topic5, 2)); // energy in life
-    } else {
-        lyQuestions = _selectRandom(questions_ly, 14);
-    }
+    // Physics: 14 questions (6 recognition, 4 comprehension, 4 application) - 4 energy, 2 light, 4 electricity, 2 electromagnetism, 2 energy in life
+    let lyQuestions = [].concat(
+        _selectRandom(window.questions_ly_nhan_biet || questions_ly, 6),
+        _selectRandom(window.questions_ly_thong_hieu || [], 4),
+        _selectRandom(window.questions_ly_van_dung || [], 4)
+    );
 
-    // Chemistry: 14 questions (5 metals-nonmetals, 3 organic, 3 ethanol-acetic, 3 bio compounds)
-    let hoaQuestions = [];
-    // Assuming questions_hoa_topic1 to topic5 are available
-    if (typeof questions_hoa_topic1 !== 'undefined') {
-        hoaQuestions.push(..._selectRandom(questions_hoa_topic1, 5)); // metals-nonmetals
-        hoaQuestions.push(..._selectRandom(questions_hoa_topic2, 3)); // organic
-        hoaQuestions.push(..._selectRandom(questions_hoa_topic3, 3)); // ethanol-acetic
-        hoaQuestions.push(..._selectRandom(questions_hoa_topic4, 3)); // bio compounds
-    } else {
-        hoaQuestions = _selectRandom(questions_hoa, 14);
-    }
+    // Chemistry: 14 questions (6 recognition, 4 comprehension, 4 application) - 5 metals-nonmetals, 3 organic, 3 ethanol-acetic, 3 bio compounds
+    let hoaQuestions = [].concat(
+        _selectRandom(window.questions_hoa_nhan_biet || questions_hoa, 6),
+        _selectRandom(window.questions_hoa_thong_hieu || [], 4),
+        _selectRandom(window.questions_hoa_van_dung || [], 4)
+    );
 
-    // Biology: 12 questions (4 molecular genetics, 4 cellular genetics, 4 Mendel)
-    let sinhQuestions = [];
-    // Assuming questions_sinh_topic1 to topic5 are available
-    if (typeof questions_sinh_topic1 !== 'undefined') {
-        sinhQuestions.push(..._selectRandom(questions_sinh_topic1, 4)); // molecular genetics
-        sinhQuestions.push(..._selectRandom(questions_sinh_topic2, 4)); // cellular genetics
-        sinhQuestions.push(..._selectRandom(questions_sinh_topic3, 4)); // Mendel
-    } else {
-        sinhQuestions = _selectRandom(questions_sinh, 12);
-    }
+    // Biology: 12 questions (6 recognition, 6 comprehension) - 4 molecular genetics, 4 cellular genetics, 4 Mendel
+    let sinhQuestions = [].concat(
+        _selectRandom(window.questions_sinh_nhan_biet || questions_sinh, 6),
+        _selectRandom(window.questions_sinh_thong_hieu || [], 6)
+    );
 
     let examQ = [...lyQuestions, ...hoaQuestions, ...sinhQuestions];
 

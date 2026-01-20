@@ -381,6 +381,36 @@ window.questions_ly_by_topic['Tất cả'] = questions_ly_all;
 	window.questions_ly_by_topic['Tất cả'] = _lyCombined;
 })();
 
+// Tạo mảng cấp độ
+const questions_ly_nhan_biet = [].concat(
+  questions_ly_topic1.slice(0,25),
+  questions_ly_topic2.slice(0,25),
+  questions_ly_topic3.slice(0,25),
+  questions_ly_topic4.slice(0,25),
+  questions_ly_topic5.slice(0,25)
+);
+
+const questions_ly_thong_hieu = [].concat(
+  questions_ly_topic1.slice(25,25+14),
+  questions_ly_topic2.slice(25,25+14),
+  questions_ly_topic3.slice(25,25+14),
+  questions_ly_topic4.slice(25,25+14),
+  questions_ly_topic5.slice(25,25+14)
+);
+
+const questions_ly_van_dung = [].concat(
+  questions_ly_topic1.slice(25+14),
+  questions_ly_topic2.slice(25+14),
+  questions_ly_topic3.slice(25+14),
+  questions_ly_topic4.slice(25+14),
+  questions_ly_topic5.slice(25+14)
+);
+
+// Export
+window.questions_ly_nhan_biet = questions_ly_nhan_biet;
+window.questions_ly_thong_hieu = questions_ly_thong_hieu;
+window.questions_ly_van_dung = questions_ly_van_dung;
+
 /* Note: Populate the topic arrays above with question objects to enable
    subject-specific quizzes. The quiz code expects question objects shaped
    like: { q, options, a, explain }.

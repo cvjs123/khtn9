@@ -291,3 +291,24 @@ global.questions_sinh_topic5 = questions_sinh_topic5;
 }
 })();
 
+// Tạo mảng cấp độ
+const questions_sinh_nhan_biet = [].concat(
+  questions_sinh_topic1.slice(0,21),
+  questions_sinh_topic2.slice(0,21),
+  questions_sinh_topic3.slice(0,21),
+  questions_sinh_topic4.slice(0,21),
+  questions_sinh_topic5.slice(0,21)
+);
+
+const questions_sinh_thong_hieu = [].concat(
+  questions_sinh_topic1.slice(21,21+14),
+  questions_sinh_topic2.slice(21,21+14),
+  questions_sinh_topic3.slice(21,21+14),
+  questions_sinh_topic4.slice(21,21+14),
+  questions_sinh_topic5.slice(21,21+14)
+);
+
+// Export
+window.questions_sinh_nhan_biet = questions_sinh_nhan_biet;
+window.questions_sinh_thong_hieu = questions_sinh_thong_hieu;
+
