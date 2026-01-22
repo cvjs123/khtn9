@@ -854,7 +854,7 @@ const localExams = [
         questions: []
     },
     { 
-        name: 'trường PTDTBT THCS Hùng Lợi', 
+        name: 'Trường PTDTBT THCS Hùng Lợi', 
         year: 2026, 
         description: 'Đề thi thử Trường PTDTBT THCS Hùng Lợi (sưu tầm và upload bởi admin)',
         questions: [
@@ -1131,7 +1131,7 @@ function startExamWithQuestions(questions, title) {
         correctCount = 0;
         for (let i = 0; i < questions.length; i++) {
             if (qAnswers[i] === questions[i].a) {
-                examScore += 2.5; // 100/40 = 2.5 per question
+                examScore += 0.25; // 10/40 = 0.25 per question
                 correctCount++;
                 qStatus[i] = 'correct';
             } else if (qAnswers[i] !== null) {
@@ -1144,7 +1144,7 @@ function startExamWithQuestions(questions, title) {
             <div class="exam-results">
                 <h2 class="text-center text-success mb-4">Kết quả thi thử</h2>
                 <div class="results-summary text-center mb-4">
-                    <h3 class="text-primary">${examScore.toFixed(1)}/100 điểm</h3>
+                    <h3 class="text-primary">${examScore.toFixed(1)}/10 điểm</h3>
                     <p>Đúng ${correctCount}/${questions.length} câu</p>
                     <p>Thời gian còn lại: ${Math.floor(timeLeft / 60)}:${String(timeLeft % 60).padStart(2, '0')}</p>
                 </div>
@@ -1167,15 +1167,9 @@ function startExamWithQuestions(questions, title) {
                         `).join('')}
                     </div>
                 </div>
-                <div class="row mt-4">
-                    <div class="col"></div>
-                    <div class="col">
-                        <button class="btn btn-primary btn-lg" onclick="backToMenu()">← Quay lại menu chính</button>
-                    </div>
-                    <div class="col">
-                        <button class="btn btn-secondary btn-lg" onclick="location.reload()">Thi lại →</button>
-                    </div>
-                    <div class="col"></div>
+                <div class="d-flex justify-content-between mt-4">
+                    <button class="btn btn-primary btn-lg" onclick="backToMenu()">← Quay lại menu chính</button>
+                    <button class="btn btn-secondary btn-lg" onclick="location.reload()">Thi lại →</button>
                 </div>
             </div>
         `;
@@ -1212,20 +1206,36 @@ function showLocalExams() {
     const list = document.getElementById('localExamsList');
     if (!modal || !list) return;
 
+    // Array of gradient backgrounds for variety
+    const cardGradients = [
+        'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+        'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
+        'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
+        'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)',
+        'linear-gradient(135deg, #fa709a 0%, #fee140 100%)',
+        'linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)',
+        'linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%)',
+        'linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%)',
+        'linear-gradient(135deg, #d299c2 0%, #fef9d7 100%)',
+        'linear-gradient(135deg, #a8c0ff 0%, #3f2b96 100%)'
+    ];
+
     list.innerHTML = '';
     localExams.forEach((exam, index) => {
-        const item = document.createElement('a');
-        item.href = '#';
-        item.className = 'list-group-item list-group-item-action';
-        item.innerHTML = `
-            <div class="d-flex w-100 justify-content-between">
-                <h6 class="mb-1">${exam.name} ${exam.year}</h6>
-                <small>${exam.questions.length} câu</small>
+        const gradient = cardGradients[index % cardGradients.length];
+        const card = document.createElement('div');
+        card.className = 'metro-card-wrapper';
+        card.innerHTML = `
+            <div class="card h-100 shadow-sm metro-card" onclick="startLocalExam(${index})" style="cursor: pointer; margin-bottom: 1rem; break-inside: avoid; background: ${gradient};">
+                <div class="card-body text-center">
+                    <i class="fas fa-map-marker-alt fa-3x text-white mb-3"></i>
+                    <h6 class="card-title text-white">${exam.name} ${exam.year}</h6>
+                    <p class="card-text text-white-50 small">${exam.description}</p>
+                    <span class="badge bg-white text-dark">${exam.questions.length} câu</span>
+                </div>
             </div>
-            <p class="mb-1">${exam.description}</p>
         `;
-        item.onclick = () => startLocalExam(index);
-        list.appendChild(item);
+        list.appendChild(card);
     });
 
     modal.style.display = 'block';
