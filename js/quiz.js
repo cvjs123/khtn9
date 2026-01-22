@@ -240,26 +240,23 @@ function showSubjectQuestion() {
 
                 <div id="subjectFeedback" class="mt-5"></div>
 
-                <!-- Nút hành động (ẩn ban đầu) -->
-                <div id="actionBtnContainer" class="text-center mt-5" style="display: none;">
-                    ${isLastQuestion ? `
-                        <button class="btn btn-success btn-lg px-5 py-3 shadow" onclick="finishQuiz()">
-                            <i class="fas fa-check-circle me-2"></i> Hoàn thành
-                        </button>
-                    ` : `
-                        <button class="btn btn-success btn-lg px-5 py-3 shadow" onclick="nextQuestion()">
-                            <i class="fas fa-arrow-right me-2"></i> Tiếp theo
-                        </button>
-                    `}
+                <!-- Nút hành động -->
+                <div class="d-flex justify-content-between mt-5">
+                    <button class="btn btn-secondary btn-lg px-4" onclick="backToMenu()">
+                        ← Quay lại menu chính
+                    </button>
+                    <div id="actionBtnContainer" style="display: none;">
+                        ${isLastQuestion ? `
+                            <button class="btn btn-success btn-lg px-5 py-3 shadow" onclick="finishQuiz()">
+                                <i class="fas fa-check-circle me-2"></i> Hoàn thành
+                            </button>
+                        ` : `
+                            <button class="btn btn-success btn-lg px-5 py-3 shadow" onclick="nextQuestion()">
+                                <i class="fas fa-arrow-right me-2"></i> Tiếp theo
+                            </button>
+                        `}
+                    </div>
                 </div>
-            </div>
-        </div>
-
-        <div class="back-btn-container">
-            <button class="btn btn-secondary btn-lg px-4" onclick="backToMenu()">
-                ← Quay lại menu chính
-            </button>
-        </div>
     `;
 }
 

@@ -904,19 +904,26 @@ const localExams = [
 
 // Initialize local exams with questions
 function initLocalExams() {
+    // Ensure questions are loaded
+    if (!window.questions_ly || !window.questions_hoa || !window.questions_sinh) {
+        console.warn('Question files not loaded yet, retrying...');
+        setTimeout(initLocalExams, 500);
+        return;
+    }
+    
     localExams.forEach(exam => {
         if (exam.questions.length === 0) {
-            // Select 10 Physics, 10 Chemistry, 8 Biology questions (total 28)
-            let lyQ = _selectRandom(window.questions_ly || [], 10).map(q => ({ ...q, subject: 'Vật lý' }));
-            let hoaQ = _selectRandom(window.questions_hoa || [], 10).map(q => ({ ...q, subject: 'Hóa học' }));
-            let sinhQ = _selectRandom(window.questions_sinh || [], 8).map(q => ({ ...q, subject: 'Sinh học' }));
+            // Select 14 Physics, 14 Chemistry, 12 Biology questions
+            let lyQ = _selectRandom(window.questions_ly || [], 14).map(q => ({ ...q, subject: 'Vật lý' }));
+            let hoaQ = _selectRandom(window.questions_hoa || [], 14).map(q => ({ ...q, subject: 'Hóa học' }));
+            let sinhQ = _selectRandom(window.questions_sinh || [], 12).map(q => ({ ...q, subject: 'Sinh học' }));
             exam.questions = [...lyQ, ...hoaQ, ...sinhQ].sort(() => 0.5 - Math.random());
         }
     });
 }
 
-// Call initLocalExams after declaration
-initLocalExams();
+// Call initLocalExams after a short delay to ensure all question files are loaded
+setTimeout(initLocalExams, 100);
 
 function startLocalExam(examIndex) {
     const exam = localExams[examIndex];
@@ -1005,15 +1012,15 @@ function startExamWithQuestions(questions, title) {
     questions = questions.map(_normalizeQuestion);
     let qIndex = 0, examScore = 0, correctCount = 0;
 
-    let timeLeft = 60 * 60; // 60 minutes for 28 questions
+    let timeLeft = 90 * 60;
     document.getElementById('mainMenu').style.display = 'none';
     document.getElementById('contentArea').innerHTML = `
         <div class="d-flex justify-content-between mb-4 align-items-center">
             <div>
                 <h3 class="exam-title text-info">${title}</h3>
-                <div class="exam-subtitle">${questions.length} câu trắc nghiệm — Thời gian 60 phút</div>
+                <div class="exam-subtitle">${questions.length} câu trắc nghiệm — Thời gian 90 phút</div>
             </div>
-            <h4 id="examTimer" class="text-danger">Thời gian: 60:00</h4>
+            <h4 id="examTimer" class="text-danger">Thời gian: 90:00</h4>
         </div>
         <div class="exam-layout">
             <div id="examQArea"></div>
@@ -1160,9 +1167,15 @@ function startExamWithQuestions(questions, title) {
                         `).join('')}
                     </div>
                 </div>
-                <div class="text-center mt-4">
-                    <button class="btn btn-primary btn-lg me-2" onclick="backToMenu()">Về trang chủ</button>
-                    <button class="btn btn-secondary btn-lg" onclick="location.reload()">Thi lại</button>
+                <div class="row mt-4">
+                    <div class="col"></div>
+                    <div class="col">
+                        <button class="btn btn-primary btn-lg" onclick="backToMenu()">← Quay lại menu chính</button>
+                    </div>
+                    <div class="col">
+                        <button class="btn btn-secondary btn-lg" onclick="location.reload()">Thi lại →</button>
+                    </div>
+                    <div class="col"></div>
                 </div>
             </div>
         `;
