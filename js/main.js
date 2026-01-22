@@ -824,6 +824,36 @@ const localExams = [
         questions: []
     },
     { 
+        name: 'Bắc Ninh', 
+        year: 2024, 
+        description: 'Đề thi thử THPT Bắc Ninh 2024 (sưu tầm và upload bởi admin)',
+        questions: []
+    },
+    { 
+        name: 'Thanh Hóa', 
+        year: 2024, 
+        description: 'Đề thi thử THPT Thanh Hóa 2024 (sưu tầm và upload bởi admin)',
+        questions: []
+    },
+    { 
+        name: 'Nghệ An', 
+        year: 2024, 
+        description: 'Đề thi thử THPT Nghệ An 2024 (sưu tầm và upload bởi admin)',
+        questions: []
+    },
+    { 
+        name: 'Quảng Ninh', 
+        year: 2023, 
+        description: 'Đề thi thử THPT Quảng Ninh 2023 (sưu tầm và upload bởi admin)',
+        questions: []
+    },
+    { 
+        name: 'Lâm Đồng', 
+        year: 2023, 
+        description: 'Đề thi thử THPT Lâm Đồng 2023 (sưu tầm và upload bởi admin)',
+        questions: []
+    },
+    { 
         name: 'trường PTDTBT THCS Hùng Lợi', 
         year: 2026, 
         description: 'Đề thi thử Trường PTDTBT THCS Hùng Lợi (sưu tầm và upload bởi admin)',
@@ -876,10 +906,10 @@ const localExams = [
 function initLocalExams() {
     localExams.forEach(exam => {
         if (exam.questions.length === 0) {
-            // Select 14 Physics, 14 Chemistry, 12 Biology questions
-            let lyQ = _selectRandom(window.questions_ly || [], 14).map(q => ({ ...q, subject: 'Vật lý' }));
-            let hoaQ = _selectRandom(window.questions_hoa || [], 14).map(q => ({ ...q, subject: 'Hóa học' }));
-            let sinhQ = _selectRandom(window.questions_sinh || [], 12).map(q => ({ ...q, subject: 'Sinh học' }));
+            // Select 10 Physics, 10 Chemistry, 8 Biology questions (total 28)
+            let lyQ = _selectRandom(window.questions_ly || [], 10).map(q => ({ ...q, subject: 'Vật lý' }));
+            let hoaQ = _selectRandom(window.questions_hoa || [], 10).map(q => ({ ...q, subject: 'Hóa học' }));
+            let sinhQ = _selectRandom(window.questions_sinh || [], 8).map(q => ({ ...q, subject: 'Sinh học' }));
             exam.questions = [...lyQ, ...hoaQ, ...sinhQ].sort(() => 0.5 - Math.random());
         }
     });
@@ -975,15 +1005,15 @@ function startExamWithQuestions(questions, title) {
     questions = questions.map(_normalizeQuestion);
     let qIndex = 0, examScore = 0, correctCount = 0;
 
-    let timeLeft = 90 * 60;
+    let timeLeft = 60 * 60; // 60 minutes for 28 questions
     document.getElementById('mainMenu').style.display = 'none';
     document.getElementById('contentArea').innerHTML = `
         <div class="d-flex justify-content-between mb-4 align-items-center">
             <div>
                 <h3 class="exam-title text-info">${title}</h3>
-                <div class="exam-subtitle">${questions.length} câu trắc nghiệm — Thời gian 90 phút</div>
+                <div class="exam-subtitle">${questions.length} câu trắc nghiệm — Thời gian 60 phút</div>
             </div>
-            <h4 id="examTimer" class="text-danger">Thời gian: 90:00</h4>
+            <h4 id="examTimer" class="text-danger">Thời gian: 60:00</h4>
         </div>
         <div class="exam-layout">
             <div id="examQArea"></div>
@@ -998,14 +1028,29 @@ function startExamWithQuestions(questions, title) {
 
     examTimer = setInterval(() => {
         timeLeft--;
+        const timerEl = document.getElementById('examTimer');
+        if (!timerEl) {
+            clearInterval(examTimer);
+            return;
+        }
         const m = String(Math.floor(timeLeft / 60)).padStart(2, '0');
         const s = String(timeLeft % 60).padStart(2, '0');
-        document.getElementById('examTimer').textContent = `Thời gian: ${m}:${s}`;
+        timerEl.textContent = `Thời gian: ${m}:${s}`;
         if (timeLeft <= 0) endExam();
     }, 1000);
 
     const qStatus = Array(questions.length).fill('unanswered');
     const qAnswers = Array(questions.length).fill(null);
+
+    function nextQuestion() {
+        if (qIndex < questions.length - 1) {
+            qIndex++;
+            showQ(qIndex);
+        }
+    }
+
+    // Make functions global for onclick handlers
+    window.nextQuestion = nextQuestion;
 
     function renderNavGrid() {
         const nav = document.getElementById('examNav');
@@ -1067,13 +1112,6 @@ function startExamWithQuestions(questions, title) {
         document.querySelectorAll('.exam-nav-btn').forEach((btn, i) => {
             btn.classList.toggle('active', i === idx);
         });
-    }
-
-    function nextQuestion() {
-        if (qIndex < questions.length - 1) {
-            qIndex++;
-            showQ(qIndex);
-        }
     }
 
     // Make functions global for onclick handlers
