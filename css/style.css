@@ -99,14 +99,107 @@ body, html { height: 100%; margin: 0; font-family: 'Segoe UI', sans-serif; backg
 .tip-item .small { color:#444; }
 
 /* Full exam: larger buttons and readable feedback */
-.exam-opt-btn { font-size: 1.2rem; padding: 14px 12px !important; }
-#examActionContainer .btn { font-size: 1.15rem; padding: 12px 26px; }
-#examFeedback .alert { font-size: 1.05rem; }
+.exam-opt-btn { font-size: 1.4rem; padding: 18px 16px !important; line-height: 1.5; }
+#examActionContainer .btn { font-size: 1.25rem; padding: 14px 30px; }
+#examFeedback .alert { font-size: 1.15rem; }
+
+/* Exam question styling - larger text like full exam */
+.exam-question .question-text {
+    font-size: 1.6rem;
+    font-weight: 600;
+    line-height: 1.6;
+    margin: 20px 0;
+    color: #0b1220;
+}
+
+.exam-question .question-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.exam-question .question-number {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #0ea5e9;
+}
+
+.exam-question .question-subject {
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.exam-question .options {
+    margin-top: 25px;
+}
+
+.exam-question .option {
+    display: block;
+    margin-bottom: 15px;
+    padding: 16px 20px;
+    border: 2px solid #e5e7eb;
+    border-radius: 12px;
+    background: #ffffff;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.exam-question .option:hover {
+    border-color: #0ea5e9;
+    background: #f0f9ff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(14, 165, 233, 0.15);
+}
+
+.exam-question .option input[type="radio"] {
+    margin-right: 12px;
+    transform: scale(1.2);
+}
+
+.exam-question .option-text {
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: #374151;
+    line-height: 1.4;
+}
+
+.exam-question .option input[type="radio"]:checked + .option-text {
+    color: #0ea5e9;
+    font-weight: 700;
+}
+
+/* Exam navigation buttons */
+.exam-navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 40px;
+    padding: 20px 0;
+    border-top: 2px solid #e5e7eb;
+    gap: 20px;
+}
+
+.nav-btn-left, .nav-btn-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    min-width: 140px;
+    justify-content: center;
+}
+
+.nav-btn-left:hover, .nav-btn-right:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
 
 .exam-layout {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
+    position: relative;
 }
 
 #examQArea {
@@ -148,17 +241,17 @@ body, html { height: 100%; margin: 0; font-family: 'Segoe UI', sans-serif; backg
 }
 
 /* Full exam question header and title styles */
-#examQArea .card-header { font-size: 1.4rem; font-weight: 800; color: #0b1220; background: linear-gradient(90deg, #f8fafc, #ffffff); }
-#examQArea .card-body { font-size: 1.05rem; color: #1f2937; }
+#examQArea .card-header { font-size: 1.8rem; font-weight: 800; color: #0b1220; background: linear-gradient(90deg, #f8fafc, #ffffff); padding: 20px; }
+#examQArea .card-body { font-size: 1.2rem; color: #1f2937; padding: 25px; }
 
 /* Styled exam title used on the full-exam page */
 .exam-title {
-    font-size: 2rem;
+    font-size: 2.5rem;
     font-weight: 900;
     letter-spacing: 1px;
     margin: 0;
-    padding: 6px 12px;
-    border-radius: 8px;
+    padding: 8px 16px;
+    border-radius: 10px;
     background: linear-gradient(90deg,#06b6d4,#0ea5e9);
     -webkit-background-clip: text;
     background-clip: text;
@@ -168,13 +261,13 @@ body, html { height: 100%; margin: 0; font-family: 'Segoe UI', sans-serif; backg
 .exam-title::after {
     content: '';
     position: absolute;
-    left: 0; right: 0; bottom: -6px;
-    height: 6px;
-    border-radius: 6px;
+    left: 0; right: 0; bottom: -8px;
+    height: 8px;
+    border-radius: 8px;
     background: linear-gradient(90deg, rgba(6,182,212,0.18), rgba(14,165,233,0.18));
     pointer-events: none;
 }
-.exam-subtitle { font-size: 0.95rem; color: #0b1220; margin-top:4px; font-weight:700; }
+.exam-subtitle { font-size: 1.1rem; color: #0b1220; margin-top:6px; font-weight:700; }
 
 #examTimer { margin-right: 20px; }
 
