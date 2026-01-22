@@ -54,5 +54,5 @@ document.addEventListener('DOMContentLoaded', function() {
         if(!panel) return;
         if(panel.style.display==='none'){ panel.style.display=''; toggleBtn.textContent='Thu nhỏ'; } else { panel.style.display='none'; toggleBtn.textContent='Mở'; }
     });
-    addMessage('bot','Xin chào! Gõ câu hỏi để mình trả lời.');
+    addMessage('bot','Xin chào! Mình có thể giúp gì cho bạn.');
 });
