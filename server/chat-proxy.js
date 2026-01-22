@@ -61,7 +61,7 @@ function callOllama(payload) {
     const options = {
       method: 'POST',
       hostname: 'localhost',
-      port: 11435,
+      port: 11434,
       path: '/api/chat',
       headers: {
         'Content-Type': 'application/json',
