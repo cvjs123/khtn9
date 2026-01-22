@@ -154,6 +154,14 @@
                         <button class="btn btn-secondary btn-lg mt-auto" onclick="window.location.href='pages/flashcard.html'">Bắt đầu</button>
                     </div>
                 </div>
+                <!-- Ô 7 -->
+                <div class="card card-option h-100 shadow-lg bg-white">
+                    <div class="card-body text-center p-5">
+                        <h3 class="card-title text-primary"><i class="fas fa-map-marker-alt fa-2x mb-3"></i><br>Đề Thi Thử các trường</h3>
+                        <p class="card-text">Tập hợp đề thi thử từ các trường</p>
+                        <button class="btn btn-primary btn-lg mt-auto" onclick="showLocalExams()">Xem đề thi</button>
+                    </div>
+                </div>
             </div>
 
             <div id="contentArea" class="mt-5"></div>
@@ -248,6 +256,26 @@
                 <button id="switchToRegister" class="btn btn-link me-auto" onclick="switchAuthMode('register')">Đăng ký</button>
                 <button class="btn btn-secondary me-2" onclick="closeAuthModal()">Hủy</button>
                 <button id="authPrimaryBtn" class="btn btn-primary" onclick="handleAuthPrimary()">Đăng nhập</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal đề thi thử địa phương -->
+    <div id="localExamsModal" class="khtn-modal" style="display:none;">
+        <div class="khtn-modal-backdrop" onclick="closeLocalExamsModal()"></div>
+        <div class="khtn-modal-dialog">
+            <div class="khtn-modal-header">
+                <h5>Đề Thi Thử Địa Phương</h5>
+                <button class="khtn-modal-close" onclick="closeLocalExamsModal()">×</button>
+            </div>
+            <div class="khtn-modal-body">
+                <p class="text-muted">Chọn đề thi thử từ các tỉnh thành để luyện tập:</p>
+                <div id="localExamsList" class="list-group">
+                    <!-- Danh sách đề thi sẽ được thêm động -->
+                </div>
+            </div>
+            <div class="khtn-modal-footer">
+                <button class="btn btn-secondary" onclick="closeLocalExamsModal()">Đóng</button>
             </div>
         </div>
     </div>
