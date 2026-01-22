@@ -261,7 +261,7 @@
     </div>
 
     <!-- Modal đề thi thử địa phương -->
-    <div id="localExamsModal" class="khtn-modal" style="display:none;">
+    <div id="localExamsModal" class="khtn-modal local-exams-modal" style="display:none;">
         <div class="khtn-modal-backdrop" onclick="closeLocalExamsModal()"></div>
         <div class="khtn-modal-dialog">
             <div class="khtn-modal-header">
@@ -269,8 +269,8 @@
                 <button class="khtn-modal-close" onclick="closeLocalExamsModal()">×</button>
             </div>
             <div class="khtn-modal-body">
-                <p class="text-muted">Chọn đề thi thử từ các tỉnh thành để luyện tập:</p>
-                <div id="localExamsList" class="list-group">
+                <p class="local-exams-description">Chọn đề thi thử để luyện tập</p>
+                <div id="localExamsList" class="local-exams-container">
                     <!-- Danh sách đề thi sẽ được thêm động -->
                 </div>
             </div>
