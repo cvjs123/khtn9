@@ -1120,13 +1120,19 @@ function startExamWithQuestions(questions, title) {
         // Calculate score
         examScore = 0;
         correctCount = 0;
+        const subjectStats = { 'Vật lý': { total: 0, correct: 0 }, 'Hóa học': { total: 0, correct: 0 }, 'Sinh học': { total: 0, correct: 0 } };
         for (let i = 0; i < questions.length; i++) {
-            if (qAnswers[i] === questions[i].a) {
-                examScore += 0.25; // 0.25 per question
-                correctCount++;
-                qStatus[i] = 'correct';
-            } else if (qAnswers[i] !== null) {
-                qStatus[i] = 'wrong';
+            const subject = questions[i].subject || 'KHTN';
+            if (subjectStats[subject]) {
+                subjectStats[subject].total++;
+                if (qAnswers[i] === questions[i].a) {
+                    examScore += 0.25; // 0.25 per question
+                    correctCount++;
+                    subjectStats[subject].correct++;
+                    qStatus[i] = 'correct';
+                } else if (qAnswers[i] !== null) {
+                    qStatus[i] = 'wrong';
+                }
             }
         }
 
@@ -1149,12 +1155,51 @@ function startExamWithQuestions(questions, title) {
                                         </div>
                                         <p class="mb-2">Đúng ${correctCount}/${questions.length} câu (${Math.round((correctCount / questions.length) * 100)}%)</p>
                                         <p class="text-muted">Thời gian còn lại: ${Math.floor(timeLeft / 60)}:${String(timeLeft % 60).padStart(2, '0')}</p>
+                                        <div class="row text-center mt-3">
+                                            <div class="col-4">
+                                                <div class="border rounded p-2">
+                                                    <h6 class="text-success">${correctCount}</h6>
+                                                    <small>Đúng</small>
+                                                </div>
+                                            </div>
+                                            <div class="col-4">
+                                                <div class="border rounded p-2">
+                                                    <h6 class="text-danger">${questions.length - correctCount}</h6>
+                                                    <small>Sai</small>
+                                                </div>
+                                            </div>
+                                            <div class="col-4">
+                                                <div class="border rounded p-2">
+                                                    <h6 class="text-warning">${questions.filter((_, i) => qAnswers[i] === null).length}</h6>
+                                                    <small>Chưa làm</small>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="grade-badge">
                                         ${examScore >= 8 ? '<span class="badge bg-success fs-5 p-2">Xuất sắc</span>' :
                                           examScore >= 6.5 ? '<span class="badge bg-info fs-5 p-2">Khá</span>' :
                                           examScore >= 5 ? '<span class="badge bg-warning fs-5 p-2">Trung bình</span>' :
                                           '<span class="badge bg-danger fs-5 p-2">Cần cố gắng</span>'}
+                                    </div>
+                                </div>
+                                <div class="subject-stats mb-4">
+                                    <h4 class="mb-3"><i class="fas fa-chart-bar me-2"></i>Thống kê theo môn học:</h4>
+                                    <div class="row g-3">
+                                        ${Object.entries(subjectStats).map(([subject, stats]) => `
+                                            <div class="col-md-4">
+                                                <div class="card h-100">
+                                                    <div class="card-body text-center">
+                                                        <h5 class="card-title">${subject}</h5>
+                                                        <div class="progress mb-2" style="height: 15px;">
+                                                            <div class="progress-bar bg-primary" role="progressbar" style="width: ${stats.total > 0 ? (stats.correct / stats.total) * 100 : 0}%;" aria-valuenow="${stats.correct}" aria-valuemin="0" aria-valuemax="${stats.total}"></div>
+                                                        </div>
+                                                        <p class="mb-1"><strong>${stats.correct}/${stats.total}</strong> câu đúng</p>
+                                                        <small class="text-muted">${Math.round((stats.correct / stats.total) * 100) || 0}%</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        `).join('')}
                                     </div>
                                 </div>
                                 <div class="results-details">
