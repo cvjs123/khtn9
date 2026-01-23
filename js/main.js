@@ -1120,7 +1120,9 @@ function startExamWithQuestions(questions, title) {
         // Calculate score
         examScore = 0;
         correctCount = 0;
-        const subjectStats = { 'Vật lý': { total: 0, correct: 0 }, 'Hóa học': { total: 0, correct: 0 }, 'Sinh học': { total: 0, correct: 0 } };
+        let wrongCount = 0;
+        let unansweredCount = 0;
+        const subjectStats = { 'Vật lý': { total: 0, correct: 0, wrong: 0 }, 'Hóa học': { total: 0, correct: 0, wrong: 0 }, 'Sinh học': { total: 0, correct: 0, wrong: 0 } };
         for (let i = 0; i < questions.length; i++) {
             const subject = questions[i].subject || 'KHTN';
             if (subjectStats[subject]) {
@@ -1131,7 +1133,11 @@ function startExamWithQuestions(questions, title) {
                     subjectStats[subject].correct++;
                     qStatus[i] = 'correct';
                 } else if (qAnswers[i] !== null) {
+                    wrongCount++;
+                    subjectStats[subject].wrong++;
                     qStatus[i] = 'wrong';
+                } else {
+                    unansweredCount++;
                 }
             }
         }
@@ -1164,13 +1170,13 @@ function startExamWithQuestions(questions, title) {
                                             </div>
                                             <div class="col-4">
                                                 <div class="border rounded p-2">
-                                                    <h6 class="text-danger">${questions.length - correctCount}</h6>
+                                                    <h6 class="text-danger">${wrongCount}</h6>
                                                     <small>Sai</small>
                                                 </div>
                                             </div>
                                             <div class="col-4">
                                                 <div class="border rounded p-2">
-                                                    <h6 class="text-warning">${questions.filter((_, i) => qAnswers[i] === null).length}</h6>
+                                                    <h6 class="text-warning">${unansweredCount}</h6>
                                                     <small>Chưa làm</small>
                                                 </div>
                                             </div>
@@ -1192,10 +1198,10 @@ function startExamWithQuestions(questions, title) {
                                                     <div class="card-body text-center">
                                                         <h5 class="card-title">${subject}</h5>
                                                         <div class="progress mb-2" style="height: 15px;">
-                                                            <div class="progress-bar bg-primary" role="progressbar" style="width: ${stats.total > 0 ? (stats.correct / stats.total) * 100 : 0}%;" aria-valuenow="${stats.correct}" aria-valuemin="0" aria-valuemax="${stats.total}"></div>
+                                                            <div class="progress-bar bg-primary" role="progressbar" style="width: ${stats.total > 0 ? ((stats.correct + stats.wrong) > 0 ? (stats.correct / (stats.correct + stats.wrong)) * 100 : 0) : 0}%;" aria-valuenow="${stats.correct}" aria-valuemin="0" aria-valuemax="${stats.correct + stats.wrong}"></div>
                                                         </div>
-                                                        <p class="mb-1"><strong>${stats.correct}/${stats.total}</strong> câu đúng</p>
-                                                        <small class="text-muted">${Math.round((stats.correct / stats.total) * 100) || 0}%</small>
+                                                        <p class="mb-1"><strong>${stats.correct}/${stats.correct + stats.wrong}</strong> câu đúng trong số đã làm</p>
+                                                        <small class="text-muted">${(stats.correct + stats.wrong) > 0 ? Math.round((stats.correct / (stats.correct + stats.wrong)) * 100) : 0}% (${stats.correct + stats.wrong}/${stats.total} đã làm)</small>
                                                     </div>
                                                 </div>
                                             </div>
