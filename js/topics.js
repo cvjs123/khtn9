@@ -15,11 +15,11 @@ window.topics_by_subject = window.topics_by_subject || {
         'TỔNG HỢP'
     ],
     sinh: [
-    'CƠ SỞ VẬT CHẤT, CƠ CHẾ DI TRUYỀN VÀ BIẾN DỊ Ở CẤP ĐỘ PHÂN TỬ',
-    'CƠ SỞ VẬT CHẤT, CƠ CHẾ DI TRUYỀN VÀ BIẾN DỊ Ở CẤP ĐỘ TẾ BÀO',
-    'TÍNH QUY LUẬT CỦA HIỆN TƯỢNG DI TRUYỀN',
-    'ỨNG DỤNG DI TRUYỀN TRONG CHỌN GIỐNG VÀ CÔNG NGHỆ SINH HỌC',
-    'MÔI TRƯỜNG VÀ ĐA DẠNG SINH HỌC'
+    'PHÂN TỬ',
+    'TẾ BÀO',
+    'QUY LUẬT',
+    'ỨNG DỤNG',
+    'MÔI TRƯỜNG'
     ]
 };
 

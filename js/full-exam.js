@@ -301,6 +301,7 @@ function startFullExam() {
             <div class="text-center py-5">
                 <h2 class="text-success">Kết thúc bài thi!</h2>
                 <h3>Điểm số: ${examScore} / 10</h3>
+                <p>Số câu đúng: ${correctCount} / 40 (${Math.round((correctCount / 40) * 100)}%)</p>
                 <div class="back-btn-container">
                     <button class="btn btn-primary btn-lg" onclick="backToMenu()">← Quay lại menu chính</button>
                 </div>
