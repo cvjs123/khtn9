@@ -1,9 +1,10 @@
 document.addEventListener('DOMContentLoaded', function() {
     const newsItems = [
+        { title: 'TUYẾN SINH LỚP 10 THPT ĐẠI TRÀ MÔN KHTN 9', url: 'pages/exam-structure.html', caption: 'Chi tiết khung ma trận và chương trình bồi dưỡng cho môn KHTN.' },
         { title: 'Thông báo tuyển sinh & hướng dẫn — Bộ GD&ĐT', url: 'https://chinhphu.vn/?pageid=27160&docid=212363&classid=1', caption: 'Trang chính thức của Bộ GD&ĐT — kiểm tra thông báo, lịch thi, quy chế.' },
         { title: 'Tin tức & hướng dẫn Thi vào 10 — VnExpress', url: 'https://vnexpress.net/thi-vao-10', caption: 'Mục chuyên đề Thi vào 10: bài hướng dẫn, kinh nghiệm và thông báo liên quan.' },
         { title: 'Báo Giáo dục — VietnamNet (mục Giáo dục)', url: 'https://vietnamnet.vn/vn/giao-duc', caption: 'Cập nhật chính sách, tư vấn ôn tập và thông tin tuyển sinh.' },
-        { title: 'Chuyên mục Thi cử & Giáo dục — Tuổi Trẻ', url: 'https://tuoitre.vn/thi-vao-10.htm', caption: 'Bài viết, phóng sự và chia sẻ kinh nghiệm thi tuyển.' },
+        { title: 'Tuyên Quang: Chọn KHTN là môn thi thứ ba vào 10 được cân nhắc rất kỹ', url: 'https://giaoduc.net.vn/giam-doc-so-gddt-tuyen-quang-chon-khtn-la-mon-thi-thu-ba-vao-10-duoc-can-nhac-rat-ky-post257259.gd', caption: 'Bài viết, phóng sự và chia sẻ kinh nghiệm thi tuyển.' },
         { title: 'Sở GD&ĐT Tuyên Quang— Thông báo tuyển sinh', url: 'https://tuyenquang.edu.vn/van-ban-cong-van/van-ban-so-gd-dt/phong-qlclgd/thi-tuyen-sinh/huong-dan-tuyen-sinh-thcs-va-thpt-nam-hoc-2025-2026-cv-so-408-sgddt-qlcl-gdnn.html', caption: 'Trang Sở GD&ĐT địa phương — luôn kiểm tra thông báo vùng/thành phố.' }
     ];
 
@@ -92,6 +93,16 @@ document.addEventListener('DOMContentLoaded', function() {
             small.textContent = item.caption;
             small.style.display = 'block';
             small.style.color = '#6b7280';
+
+            if (item.isExpandable) {
+                small.style.display = 'none';
+                small.style.whiteSpace = 'pre-wrap';
+                a.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    small.style.display = small.style.display === 'none' ? 'block' : 'none';
+                });
+                a.style.cursor = 'pointer';
+            }
 
             contentDiv.appendChild(strong);
             contentDiv.appendChild(small);
