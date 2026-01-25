@@ -12,8 +12,15 @@
     <style>
         .theory-card { transition: transform 0.3s ease; }
         .theory-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.15); }
-        .subject-header { font-size: 2rem; font-weight: bold; }
-        .subject-icon { width: 130px; height: 130px; object-fit: contain; margin-bottom: 15px; filter: drop-shadow(0 8px 16px rgba(0,0,0,0.25)); }
+        .theory-card .card-header { padding: 4rem 1.5rem; }
+        .theory-card .card-body { padding: 2.5rem 1.5rem; }
+        .theory-card .btn { font-size: 1rem; padding: 0.75rem 1rem; }
+        .container { max-width: 5000px; }
+        .row { flex-wrap: nowrap; }
+        .col-lg-6 { flex: 0 0 50%; max-width: 50%; }
+        .col-lg-4 { flex: 0 0 63%; max-width: 63%; }
+        .subject-header { font-size: 2.5rem; font-weight: bold; }
+        .subject-icon { width: 160px; height: 160px; object-fit: contain; margin-bottom: 20px; filter: drop-shadow(0 8px 16px rgba(0,0,0,0.25)); }
         .topic-btn { text-align: left; width: 100%; }
         .topic-content { padding: 95rem 1rem; border: 1px solid rgba(0,0,0,0.08); border-radius: .25rem; margin-bottom: .75rem; background: #fff; }
         .card-header-physics { background: linear-gradient(135deg,#007bff,#0056b3); }
@@ -35,6 +42,70 @@
             font-weight: bold;
             color: #d31717;
         }
+        .sidebar-left {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 250px;
+            height: 100vh;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-radius: 0;
+            padding: 15px;
+            box-shadow: 2px 0 6px rgba(0,0,0,0.1);
+            overflow-y: auto;
+            z-index: 1000;
+        }
+        .sidebar-right {
+            position: fixed;
+            right: 0;
+            top: 0;
+            width: 250px;
+            height: 100vh;
+            background: linear-gradient(135deg, #fff3cd, #ffeaa7);
+            border-radius: 0;
+            padding: 15px;
+            box-shadow: -2px 0 6px rgba(0,0,0,0.1);
+            overflow-y: auto;
+            z-index: 1000;
+        }
+        .main-content-wrapper {
+            margin-left: 250px;
+            margin-right: 250px;
+            min-height: 100vh;
+        }
+        @media (max-width: 1199px) {
+            .sidebar-left, .sidebar-right {
+                display: none;
+            }
+            .main-content-wrapper {
+                margin-left: 0;
+                margin-right: 0;
+            }
+        }
+        .sidebar-title {
+            font-weight: bold;
+            color: #495057;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+        .sidebar-link {
+            display: block;
+            padding: 8px 0;
+            color: #007bff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .sidebar-link:hover {
+            color: #0056b3;
+            text-decoration: underline;
+        }
+        .tip-item {
+            background: rgba(255,255,255,0.8);
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-left: 4px solid #ffc107;
+        }
     </style>
 </head>
 <body>
@@ -43,77 +114,119 @@
         <h2 class="mb-0 title-3d"><i class="fas fa-book-open me-3"></i>LÝ THUYẾT TRỌNG TÂM THI VÀO 10</h2>
     </div>
 
-    <div class="main-content">
-        <div class="container py-5">
+    <!-- Sidebar trái -->
+    <div class="sidebar-left d-none d-xl-block">
+        <h5 class="sidebar-title"><i class="fas fa-navicon me-2"></i>Menu Điều Hướng</h5>
+        <a href="../index.html" class="sidebar-link"><i class="fas fa-home me-2"></i>Trang Chủ</a>
+        <a href="quiz.html" class="sidebar-link"><i class="fas fa-question-circle me-2"></i>Bài Kiểm Tra</a>
+        <a href="flashcard.html" class="sidebar-link"><i class="fas fa-clone me-2"></i>Flashcard</a>
+        <a href="news.html" class="sidebar-link"><i class="fas fa-newspaper me-2"></i>Tin Tức</a>
+        <a href="tips.html" class="sidebar-link"><i class="fas fa-lightbulb me-2"></i>Mẹo Học Tập</a>
+        <hr>
+        <h6 class="sidebar-title"><i class="fas fa-book me-2"></i>Lý Thuyết</h6>
+        <a href="physics-theory.html" class="sidebar-link">Vật Lý</a>
+        <a href="chemistry-theory.html" class="sidebar-link">Hóa Học</a>
+        <a href="biology-theory.html" class="sidebar-link">Sinh Học</a>
+    </div>
 
-            <div class="row g-5">
-                <!-- Vật Lý -->
-                <div class="col-lg-4" id="physics">
-                    <div class="card theory-card h-100 shadow-lg border-0">
-                        <div class="card-header text-white text-center py-5 card-header-physics">
-                            <img src="https://static.vecteezy.com/system/resources/thumbnails/069/018/564/small_2x/3d-atomic-structure-icon-in-purple-blue-glass-symbolizing-science-physics-innovation-and-technology-png.png" alt="Icon 3D Vật Lý - Atom kính xanh" class="subject-icon">
-                            <h3 class="subject-header">VẬT LÍ</h3>
+    <!-- Sidebar phải -->
+    <div class="sidebar-right d-none d-xl-block">
+        <h5 class="sidebar-title"><i class="fas fa-lightbulb me-2"></i>Mẹo Học Tập</h5>
+        <div class="tip-item">
+            <strong>📚 Ôn tập đều đặn:</strong> Học 1-2 giờ mỗi ngày tốt hơn học nhồi nhét.
+        </div>
+        <div class="tip-item">
+            <strong>🎯 Tập trung chủ đề:</strong> Ôn kỹ các phần trọng tâm thi vào 10.
+        </div>
+        <div class="tip-item">
+            <strong>✏️ Luyện đề:</strong> Giải nhiều bài tập để nắm vững kiến thức.
+        </div>
+        <div class="tip-item">
+            <strong>💡 Kết hợp thực hành:</strong> Áp dụng lý thuyết vào bài tập thực tế.
+        </div>
+        <div class="tip-item">
+            <strong>🔄 Ôn lại:</strong> Xem lại kiến thức sau 1-2 ngày để ghi nhớ lâu.
+        </div>
+        <hr>
+        <h6 class="sidebar-title"><i class="fas fa-star me-2"></i>Liên Kết Nhanh</h6>
+        <a href="https://www.moet.gov.vn" target="_blank" class="sidebar-link">Bộ Giáo Dục</a>
+        <a href="https://thpt.edu.vn" target="_blank" class="sidebar-link">THPT Quốc Gia</a>
+        <a href="https://vnexpress.net/giao-duc" target="_blank" class="sidebar-link">Tin Giáo Dục</a>
+    </div>
+
+    <div class="main-content-wrapper">
+        <div class="main-content">
+            <div class="container py-5">
+                <div class="row g-3 justify-content-center">
+                    <!-- Vật Lý -->
+                    <div class="col-lg-4" id="physics">
+                        <div class="card theory-card h-100 shadow-lg border-0">
+                            <div class="card-header text-white text-center py-5 card-header-physics">
+                                <img src="https://static.vecteezy.com/system/resources/thumbnails/069/018/564/small_2x/3d-atomic-structure-icon-in-purple-blue-glass-symbolizing-science-physics-innovation-and-technology-png.png" alt="Icon 3D Vật Lý - Atom kính xanh" class="subject-icon">
+                                <h3 class="subject-header">VẬT LÍ</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="d-grid gap-2">
+                                    <a href="physics-theory.html#nang-luong-co-hoc" class="btn btn-primary btn-sm">NĂNG LƯỢNG CƠ HỌC</a>
+                                    <a href="physics-theory.html#anh-sang" class="btn btn-primary btn-sm">ÁNH SÁNG</a>
+                                    <a href="physics-theory.html#dien-hoc" class="btn btn-primary btn-sm">ĐIỆN HỌC</a>
+                                    <a href="physics-theory.html#dien-tu" class="btn btn-primary btn-sm">ĐIỆN TỪ</a>
+                                    <a href="physics-theory.html#nang-luong-cuoc-song" class="btn btn-primary btn-sm">NĂNG LƯỢNG VỚI CUỘC SỐNG</a>
+                                </div>
+                            </div>
                         </div>
-                        <div class="card-body">
-                            <div class="d-grid gap-2">
-                                <a href="physics-theory.html#nang-luong-co-hoc" class="btn btn-primary btn-sm">NĂNG LƯỢNG CƠ HỌC</a>
-                                <a href="physics-theory.html#anh-sang" class="btn btn-primary btn-sm">ÁNH SÁNG</a>
-                                <a href="physics-theory.html#dien-hoc" class="btn btn-primary btn-sm">ĐIỆN HỌC</a>
-                                <a href="physics-theory.html#dien-tu" class="btn btn-primary btn-sm">ĐIỆN TỪ</a>
-                                <a href="physics-theory.html#nang-luong-cuoc-song" class="btn btn-primary btn-sm">NĂNG LƯỢNG VỚI CUỘC SỐNG</a>
+                    </div>
+
+                    <!-- Hóa Học -->
+                    <div class="col-lg-4">
+                        <div class="card theory-card h-100 shadow-lg border-0">
+                            <div class="card-header text-white text-center py-5 card-header-chemistry">
+                                <img src="https://png.pngtree.com/png-vector/20250911/ourlarge/pngtree-green-chemical-laboratory-flask-with-bubbling-liquid-png-image_17406514.webp" alt="Icon 3D Hóa Học - Bình cầu xanh với bọt khí sôi" class="subject-icon">
+                                <h3 class="subject-header">HOÁ HỌC</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="d-grid gap-2">
+                                    <a href="chemistry-theory.html#kim-loai" class="btn btn-success btn-sm">KIM LOẠI VÀ SỰ KHÁC NHAU VỚI PHI KIM</a>
+                                    <a href="chemistry-theory.html#chat-huu-co" class="btn btn-success btn-sm">CHẤT HỮU CƠ. HYDROCARBON</a>
+                                    <a href="chemistry-theory.html#ethyl-alcohol" class="btn btn-success btn-sm">ETHYL ALCOHOL VÀ ACETIC ACID</a>
+                                    <a href="chemistry-theory.html#lipit" class="btn btn-success btn-sm">LIPIT. CARBOHYDRATE. PROTEIN</a>
+                                    <a href="chemistry-theory.html#tong-hop" class="btn btn-success btn-sm">TỔNG HỢP</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sinh Học -->
+                    <div class="col-lg-4">
+                        <div class="card theory-card h-100 shadow-lg border-0">
+                            <div class="card-header text-dark text-center py-5 card-header-biology">
+                                <img src="https://static.vecteezy.com/system/resources/thumbnails/068/881/315/small/abstract-yellow-dna-double-helix-in-orb-on-white-background-png.png" alt="Icon 3D Sinh Học - DNA Helix vàng trong quả cầu" class="subject-icon">
+                                <h3 class="subject-header">SINH HỌC</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="d-grid gap-2">
+                                    <a href="biology-theory.html#co-so-phan-tu" class="btn btn-warning btn-sm">CƠ SỞ PHÂN TỬ</a>
+                                    <a href="biology-theory.html#co-so-te-bao" class="btn btn-warning btn-sm">CƠ SỞ TẾ BÀO</a>
+                                    <a href="biology-theory.html#tinh-quy-luat" class="btn btn-warning btn-sm">TÍNH QUY LUẬT DI TRUYỀN</a>
+                                    <a href="biology-theory.html#ung-dung" class="btn btn-warning btn-sm">ỨNG DỤNG DI TRUYỀN</a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Hóa Học -->
-                <div class="col-lg-4">
-                    <div class="card theory-card h-100 shadow-lg border-0">
-                        <div class="card-header text-white text-center py-5 card-header-chemistry">
-                            <img src="https://png.pngtree.com/png-vector/20250911/ourlarge/pngtree-green-chemical-laboratory-flask-with-bubbling-liquid-png-image_17406514.webp" alt="Icon 3D Hóa Học - Bình cầu xanh với bọt khí sôi" class="subject-icon">
-                            <h3 class="subject-header">HOÁ HỌC</h3>
-                        </div>
-                        <div class="card-body">
-                            <div class="d-grid gap-2">
-                                <a href="chemistry-theory.html#kim-loai" class="btn btn-success btn-sm">KIM LOẠI VÀ SỰ KHÁC NHAU VỚI PHI KIM</a>
-                                <a href="chemistry-theory.html#chat-huu-co" class="btn btn-success btn-sm">CHẤT HỮU CƠ. HYDROCARBON</a>
-                                <a href="chemistry-theory.html#ethyl-alcohol" class="btn btn-success btn-sm">ETHYL ALCOHOL VÀ ACETIC ACID</a>
-                                <a href="chemistry-theory.html#lipit" class="btn btn-success btn-sm">LIPIT. CARBOHYDRATE. PROTEIN</a>
-                                <a href="chemistry-theory.html#tong-hop" class="btn btn-success btn-sm">TỔNG HỢP</a>
-                            </div>
-                        </div>
+                    <div class="back-btn-container">
+                        <button class="btn btn-primary btn-lg mt-5" onclick="window.location.href='../index.html'">
+                            ← Quay lại trang chủ
+                        </button>
                     </div>
                 </div>
-
-                <!-- Sinh Học -->
-                <div class="col-lg-4">
-                    <div class="card theory-card h-100 shadow-lg border-0">
-                        <div class="card-header text-dark text-center py-5 card-header-biology">
-                            <img src="https://static.vecteezy.com/system/resources/thumbnails/068/881/315/small/abstract-yellow-dna-double-helix-in-orb-on-white-background-png.png" alt="Icon 3D Sinh Học - DNA Helix vàng trong quả cầu" class="subject-icon">
-                            <h3 class="subject-header">SINH HỌC</h3>
-                        </div>
-                        <div class="card-body">
-                            <div class="d-grid gap-2">
-                                <a href="biology-theory.html#co-so-phan-tu" class="btn btn-warning btn-sm">CƠ SỞ PHÂN TỬ</a>
-                                <a href="biology-theory.html#co-so-te-bao" class="btn btn-warning btn-sm">CƠ SỞ TẾ BÀO</a>
-                                <a href="biology-theory.html#tinh-quy-luat" class="btn btn-warning btn-sm">TÍNH QUY LUẬT DI TRUYỀN</a>
-                                <a href="biology-theory.html#ung-dung" class="btn btn-warning btn-sm">ỨNG DỤNG DI TRUYỀN</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="back-btn-container">
-                <button class="btn btn-primary btn-lg mt-5" onclick="window.location.href='../index.html'">
-                    ← Quay lại trang chủ
-                </button>
             </div>
         </div>
     </div>
 
     <div class="footer">
-        Ôn tập hiệu quả – Chinh phục điểm 9+ KHTN vào 10!
+        Ôn tập hiệu quả – Chinh phục điểm 9 tiến bước vào 10!
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
