@@ -64,28 +64,249 @@ function logoutUser() {
 let currentModalSubject = '';
 
 function showSubjectOptions(subject) {
+    console.log('showSubjectOptions called with subject:', subject);
     currentModalSubject = subject;
     const modal = document.getElementById('subjectModal');
-    if (!modal) return;
+    if (!modal) {
+        console.error('Modal subjectModal not found');
+        return;
+    }
     document.getElementById('subjectModalTitle').textContent = `Chọn cấu hình ôn tập ${subject === 'ly' ? 'Vật Lý' : subject === 'hoa' ? 'Hóa Học' : 'Sinh Học'}`;
     
+    // Populate single topic dropdown
     const topicSelect = document.getElementById('subjectTopicSelect');
-    topicSelect.innerHTML = '<option value="all">Tất cả</option>';
+    if (topicSelect) {
+        topicSelect.innerHTML = '<option value="all">Tất cả</option>';
+        
+        const topics = window.topics_by_subject?.[subject] || [];
+        console.log('Topics for subject', subject, ':', topics);
+        topics.forEach(topic => {
+            const option = document.createElement('option');
+            option.value = topic;
+            option.textContent = topic;
+            topicSelect.appendChild(option);
+        });
+    }
     
-    const topics = window.topics_by_subject?.[subject] || [];
-    topics.forEach(topic => {
-        const option = document.createElement('option');
-        option.value = topic;
-        option.textContent = topic;
-        topicSelect.appendChild(option);
-    });
+    // Populate multi topic checkboxes
+    populateSubjectTopicCheckboxes(subject);
+    
+    // Reset to single topic mode
+    const multiTopicMode = document.getElementById('multiTopicMode');
+    if (multiTopicMode) multiTopicMode.checked = false;
+    toggleTopicSelectionMode();
     
     modal.style.display = 'flex';
+}
+
+function populateSubjectTopicCheckboxes(subject) {
+    const container = document.getElementById('subjectTopicCheckboxes');
+    if (!container) {
+        console.error('Container subjectTopicCheckboxes not found');
+        return;
+    }
+    
+    container.innerHTML = '';
+    const topics = window.topics_by_subject?.[subject] || [];
+    console.log('Populating checkboxes for subject:', subject, 'topics:', topics);
+    
+    if (topics.length === 0) {
+        container.innerHTML = '<p class="text-muted">Không có chủ đề nào cho môn này.</p>';
+        return;
+    }
+    
+    let html = '';
+    topics.forEach((topic, index) => {
+        const safeId = `subject_${subject}_${index}`;
+        const escapedTopic = topic.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+        html += `
+        <div class="form-check mb-2">
+            <input class="form-check-input" type="checkbox" value="${escapedTopic}" id="${safeId}">
+            <label class="form-check-label" for="${safeId}">
+                ${escapedTopic}
+            </label>
+        </div>`;
+    });
+    
+    container.innerHTML = html;
+    console.log('Checkboxes HTML set:', html);
+}
+
+function toggleTopicSelectionMode() {
+    const multiTopicMode = document.getElementById('multiTopicMode');
+    const singleTopicSection = document.getElementById('singleTopicSection');
+    const multiTopicSection = document.getElementById('multiTopicSection');
+    
+    if (multiTopicMode.checked) {
+        singleTopicSection.style.display = 'none';
+        multiTopicSection.style.display = 'block';
+    } else {
+        singleTopicSection.style.display = 'block';
+        multiTopicSection.style.display = 'none';
+    }
 }
 
 function closeSubjectModal() {
     const modal = document.getElementById('subjectModal');
     if (modal) modal.style.display = 'none';
+}
+
+// Export subject quiz to Word document
+function exportSubjectToWord() {
+    const multiTopicMode = document.getElementById('multiTopicMode');
+    const countInput = document.getElementById('subjectCountInput');
+    
+    const selectedTopics = getSelectedSubjectTopics();
+    const questionCount = parseInt(countInput.value) || 10;
+    
+    // Generate questions based on selection
+    const quizData = generateSubjectQuizData(currentModalSubject, selectedTopics, questionCount);
+    
+    if (!quizData || quizData.questions.length === 0) {
+        alert('Không có câu hỏi nào được tạo. Vui lòng kiểm tra lại chủ đề đã chọn.');
+        return;
+    }
+    
+    // Create Word document content
+    let wordContent = createSubjectWordDocumentContent(quizData, currentModalSubject, selectedTopics);
+    
+    // Create blob and download
+    const blob = new Blob([wordContent], { type: 'application/msword' });
+    const url = URL.createObjectURL(blob);
+    
+    const a = document.createElement('a');
+    a.href = url;
+    const subjectName = currentModalSubject === 'ly' ? 'Vat_Ly' : currentModalSubject === 'hoa' ? 'Hoa_Hoc' : 'Sinh_Hoc';
+    a.download = `De_Thi_${subjectName}_${new Date().toISOString().split('T')[0]}.doc`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+    
+    // Show success message
+    alert('File Word đã được tải xuống thành công!');
+}
+
+function getSelectedSubjectTopics() {
+    const multiTopicMode = document.getElementById('multiTopicMode');
+    
+    if (multiTopicMode.checked) {
+        // Get selected checkboxes
+        const checkboxes = document.querySelectorAll('#subjectTopicCheckboxes input[type="checkbox"]:checked');
+        const selectedTopics = Array.from(checkboxes).map(cb => cb.value);
+        return selectedTopics.length > 0 ? selectedTopics : null; // null means all topics
+    } else {
+        // Get selected dropdown value
+        const topicSelect = document.getElementById('subjectTopicSelect');
+        const selectedTopic = topicSelect.value;
+        return selectedTopic === 'all' ? null : [selectedTopic];
+    }
+}
+
+function generateSubjectQuizData(subject, selectedTopics, count) {
+    // Resolve base question array for the subject
+    const baseName = `questions_${subject}`;
+    let questions = window[baseName] || [];
+
+    // If topics are specified, filter questions from those topics
+    if (selectedTopics && selectedTopics.length > 0) {
+        const byTopic = window[`${baseName}_by_topic`];
+        let filteredQuestions = [];
+        
+        if (byTopic) {
+            selectedTopics.forEach(topic => {
+                const topicQuestions = byTopic[topic];
+                if (Array.isArray(topicQuestions)) {
+                    filteredQuestions = filteredQuestions.concat(topicQuestions);
+                }
+            });
+        }
+        
+        if (filteredQuestions.length > 0) {
+            questions = filteredQuestions;
+        }
+    }
+
+    // Shuffle and limit to requested count
+    const shuffle = arr => {
+        for (let i = arr.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [arr[i], arr[j]] = [arr[j], arr[i]];
+        }
+    };
+    shuffle(questions);
+    questions = questions.slice(0, Math.min(count, questions.length));
+
+    return {
+        questions: questions,
+        topics: selectedTopics,
+        count: questions.length
+    };
+}
+
+function createSubjectWordDocumentContent(quizData, subject, selectedTopics) {
+    const { questions, topics, count } = quizData;
+    const subjectName = subject === 'ly' ? 'Vật Lý' : subject === 'hoa' ? 'Hóa Học' : 'Sinh Học';
+    const topicDisplay = !topics || topics.length === 0 ? 'Tất cả chủ đề' : topics.join(', ');
+    
+    let html = `<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Đề Thi ${subjectName}</title>
+    <style>
+        body { font-family: 'Times New Roman', serif; font-size: 12pt; line-height: 1.5; margin: 1in; }
+        .header { text-align: center; font-weight: bold; margin-bottom: 20px; }
+        .header h1 { font-size: 16pt; margin-bottom: 10px; }
+        .header h2 { font-size: 14pt; margin-bottom: 5px; }
+        .header p { margin: 5px 0; }
+        .question { margin-bottom: 15px; page-break-inside: avoid; }
+        .question-number { font-weight: bold; margin-bottom: 5px; }
+        .options { margin-left: 20px; }
+        .options div { margin-bottom: 3px; }
+        .subject-info { margin-top: 30px; font-style: italic; border-top: 1px solid #000; padding-top: 10px; }
+        .footer { margin-top: 50px; text-align: center; font-size: 10pt; border-top: 1px solid #000; padding-top: 20px; }
+        @page { margin: 1in; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>ĐỀ THI TRẮC NGHIỆM</h1>
+        <h2>Môn: ${subjectName}</h2>
+        <p>Thời gian: 45 phút</p>
+        <p>Số câu: ${count}</p>
+        <p>Ngày tạo: ${new Date().toLocaleDateString('vi-VN')}</p>
+    </div>
+    
+    <div class="subject-info">
+        <p><strong>Chủ đề:</strong> ${topicDisplay}</p>
+    </div>
+    
+    <div class="questions">`;
+    
+    questions.forEach((q, index) => {
+        const questionNumber = index + 1;
+        html += `
+        <div class="question">
+            <div class="question-number">Câu ${questionNumber}:</div>
+            <div>${q.q}</div>
+            <div class="options">
+                ${q.options.map(option => `<div>${option}</div>`).join('')}
+            </div>
+        </div>`;
+    });
+    
+    html += `
+    </div>
+    
+    <div class="footer">
+        <p>--- Hết ---</p>
+        <p>Đề thi được tạo từ hệ thống ôn tập KHTN Lớp 9</p>
+    </div>
+</body>
+</html>`;
+    
+    return html;
 }
 
 // Authentication modal handlers
@@ -455,45 +676,40 @@ function closeSubjectModal() {
 function startFilteredQuiz(subject) {
     closeSubjectModal();
 
-    const topicSelect = document.getElementById('subjectTopicSelect');
     const countInput = document.getElementById('subjectCountInput');
-    const topic = topicSelect?.value.trim() || 'all';
+    const selectedTopics = getSelectedSubjectTopics();
     let count = parseInt(countInput?.value) || 10;
 
-    // Calculate available questions with tolerant matching
+    // Calculate available questions
     const baseName = `questions_${subject}`;
     let available = 0;
 
-    const normalize = s => String(s || '')
-        .normalize('NFKD')
-        .replace(/[\u0300-\u036f]/g, '')
-        .replace(/[–—−]/g, '-')
-        .replace(/\s+/g, ' ')
-        .trim()
-        .toLowerCase();
-
-    if (topic === 'all') {
+    if (!selectedTopics || selectedTopics.length === 0) {
+        // All topics
         available = window[baseName] ? window[baseName].length : 0;
     } else {
+        // Selected topics
         const byTopic = window[`${baseName}_by_topic`];
         if (byTopic) {
-            const target = normalize(topic);
-            for (const k of Object.keys(byTopic)) {
-                if (normalize(k) === target) {
-                    available = byTopic[k].length;
-                    break;
+            selectedTopics.forEach(topic => {
+                const topicQuestions = byTopic[topic];
+                if (Array.isArray(topicQuestions)) {
+                    available += topicQuestions.length;
                 }
-            }
+            });
         }
     }
 
     if (count > available) {
-        // Limit to available instead of alerting
         count = available;
     }
 
+    // For quiz.js compatibility, if multiple topics selected, pass null to use all
+    // Otherwise pass the single topic
+    const topicForQuiz = selectedTopics && selectedTopics.length === 1 ? selectedTopics[0] : null;
+
     if (typeof startSubjectQuiz === 'function') {
-        startSubjectQuiz(subject, topic === 'all' ? null : topic, count);
+        startSubjectQuiz(subject, topicForQuiz, count);
     } else {
         alert('Lỗi: Hàm startSubjectQuiz chưa được định nghĩa trong quiz.js');
     }
@@ -503,6 +719,12 @@ function startFilteredQuiz(subject) {
 document.addEventListener('DOMContentLoaded', () => {
     renderUserArea();
     updateProgressSidebar();
+    
+    // Ensure modal elements exist
+    const multiTopicMode = document.getElementById('multiTopicMode');
+    if (multiTopicMode) {
+        multiTopicMode.addEventListener('change', toggleTopicSelectionMode);
+    }
 });
 
 // Check for mock exam parameter on page load

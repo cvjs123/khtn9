@@ -27,6 +27,7 @@ function _makePlaceholders(topic, count) {
 // Chuyên đề 1: NĂNG LƯỢNG CƠ HỌC
 const questions_ly_topic1 = [
 /* ===== NHẬN BIẾT (25 câu) ===== */
+  {q:"Đây là câu hỏi mẫu có hình ảnh", options:["A. Đáp án A", "B. Đáp án B", "C. Đáp án C", "D. Đáp án D"], a:"A. Đáp án A", explain:"Đây là câu hỏi mẫu để test hình ảnh.", level: "nhan_biet", image: "images/solubility-table.png"},
   {q:"Đơn vị của công cơ học là gì?", options:["A. Jun (J)", "B. Oát (W)", "C. Niutơn (N)", "D. Pascal (Pa)"], a:"A. Jun (J)", explain:"Công cơ học có đơn vị là Jun, ký hiệu J.", level: "nhan_biet"},
   {q:"Khi một vật chuyển động, dạng năng lượng mà vật có được gọi là gì?", options:["A. Thế năng", "B. Nhiệt năng", "C. Động năng", "D. Hóa năng"], a:"C. Động năng", explain:"Động năng là năng lượng do chuyển động mà có.", level: "nhan_biet"},
   {q:"Thế năng hấp dẫn của một vật phụ thuộc trực tiếp vào những yếu tố nào?", options:["A. Khối lượng và thể tích", "B. Khối lượng và độ cao", "C. Trọng lượng và vận tốc", "D. Độ cao và vận tốc"], a:"B. Khối lượng và độ cao", explain:"Wt = m.g.h, phụ thuộc khối lượng (m) và độ cao (h).", level: "nhan_biet"},

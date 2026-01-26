@@ -6,27 +6,128 @@ function _selectRandom(array, count) {
     return shuffled.slice(0, Math.min(count, array.length));
 }
 
-function startFullExam() {
+// Full exam topic selection modal functions
+function showFullExamTopicSelection() {
+    const modal = document.getElementById('fullExamTopicModal');
+    if (!modal) return;
+    
+    // Populate checkboxes for each subject
+    populateTopicCheckboxes('ly', 'lyTopicCheckboxes');
+    populateTopicCheckboxes('hoa', 'hoaTopicCheckboxes');
+    populateTopicCheckboxes('sinh', 'sinhTopicCheckboxes');
+    
+    modal.style.display = 'flex';
+}
+
+function closeFullExamTopicModal() {
+    const modal = document.getElementById('fullExamTopicModal');
+    if (modal) modal.style.display = 'none';
+}
+
+function populateTopicCheckboxes(subject, containerId) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    
+    container.innerHTML = '';
+    const topics = window.topics_by_subject?.[subject] || [];
+    
+    topics.forEach(topic => {
+        const col = document.createElement('div');
+        col.className = 'col-md-6 mb-2';
+        
+        const checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.id = `${subject}_${topic.replace(/\s+/g, '_')}`;
+        checkbox.value = topic;
+        checkbox.className = 'form-check-input me-2';
+        checkbox.checked = true; // Default to checked
+        
+        const label = document.createElement('label');
+        label.className = 'form-check-label';
+        label.htmlFor = checkbox.id;
+        label.textContent = topic;
+        
+        col.appendChild(checkbox);
+        col.appendChild(label);
+        container.appendChild(col);
+    });
+}
+
+function getSelectedTopics(subject) {
+    const checkboxes = document.querySelectorAll(`#${subject}TopicCheckboxes input[type="checkbox"]:checked`);
+    return Array.from(checkboxes).map(cb => cb.value);
+}
+
+function startFullExamWithTopics() {
+    const lyTopics = getSelectedTopics('ly');
+    const hoaTopics = getSelectedTopics('hoa');
+    const sinhTopics = getSelectedTopics('sinh');
+    
+    closeFullExamTopicModal();
+    startFullExam(lyTopics, hoaTopics, sinhTopics);
+}
+
+function startFullExam(lyTopics = [], hoaTopics = [], sinhTopics = []) {
+    // Helper function to get questions from selected topics
+    function getQuestionsFromTopics(subject, topics, levelCounts) {
+        let allQuestions = [];
+        
+        if (topics.length === 0) {
+            // If no topics selected, use all topics
+            const byTopic = window[`questions_${subject}_by_topic`];
+            if (byTopic) {
+                topics = Object.keys(byTopic).filter(k => k !== 'Tất cả');
+            }
+        }
+        
+        // Collect questions from selected topics
+        const byTopic = window[`questions_${subject}_by_topic`];
+        if (byTopic) {
+            topics.forEach(topic => {
+                const topicQuestions = byTopic[topic];
+                if (Array.isArray(topicQuestions)) {
+                    allQuestions = allQuestions.concat(topicQuestions);
+                }
+            });
+        }
+        
+        // If no questions found, fall back to global array
+        if (allQuestions.length === 0) {
+            allQuestions = window[`questions_${subject}`] || [];
+        }
+        
+        // Separate by levels
+        const nhanBiet = allQuestions.filter(q => q.level === 'nhan_biet');
+        const thongHieu = allQuestions.filter(q => q.level === 'thong_hieu');
+        const vanDung = allQuestions.filter(q => q.level === 'van_dung');
+        
+        // Select questions from each level
+        let selected = [];
+        if (levelCounts.nhan_biet > 0) {
+            selected = selected.concat(_selectRandom(nhanBiet, levelCounts.nhan_biet));
+        }
+        if (levelCounts.thong_hieu > 0) {
+            selected = selected.concat(_selectRandom(thongHieu, levelCounts.thong_hieu));
+        }
+        if (levelCounts.van_dung > 0) {
+            selected = selected.concat(_selectRandom(vanDung, levelCounts.van_dung));
+        }
+        
+        return selected;
+    }
+    
     // Select questions according to exam pattern analysis
-    // Physics: 14 questions (6 recognition, 4 comprehension, 4 application) - 4 energy, 2 light, 4 electricity, 2 electromagnetism, 2 energy in life
-    let lyQuestions = [].concat(
-        _selectRandom(window.questions_ly_nhan_biet || questions_ly, 6),
-        _selectRandom(window.questions_ly_thong_hieu || [], 4),
-        _selectRandom(window.questions_ly_van_dung || [], 4)
-    ).map(q => ({ ...q, subject: 'Vật lý' }));
+    // Physics: 14 questions (6 recognition, 4 comprehension, 4 application)
+    let lyQuestions = getQuestionsFromTopics('ly', lyTopics, { nhan_biet: 6, thong_hieu: 4, van_dung: 4 })
+        .map(q => ({ ...q, subject: 'Vật lý' }));
 
-    // Chemistry: 14 questions (6 recognition, 4 comprehension, 4 application) - 5 metals-nonmetals, 3 organic, 3 ethanol-acetic, 3 bio compounds
-    let hoaQuestions = [].concat(
-        _selectRandom(window.questions_hoa_nhan_biet || questions_hoa, 6),
-        _selectRandom(window.questions_hoa_thong_hieu || [], 4),
-        _selectRandom(window.questions_hoa_van_dung || [], 4)
-    ).map(q => ({ ...q, subject: 'Hóa học' }));
+    // Chemistry: 14 questions (6 recognition, 4 comprehension, 4 application)
+    let hoaQuestions = getQuestionsFromTopics('hoa', hoaTopics, { nhan_biet: 6, thong_hieu: 4, van_dung: 4 })
+        .map(q => ({ ...q, subject: 'Hóa học' }));
 
-    // Biology: 12 questions (6 recognition, 6 comprehension) - 4 molecular genetics, 4 cellular genetics, 4 Mendel
-    let sinhQuestions = [].concat(
-        _selectRandom(window.questions_sinh_nhan_biet || questions_sinh, 6),
-        _selectRandom(window.questions_sinh_thong_hieu || [], 6)
-    ).map(q => ({ ...q, subject: 'Sinh học' }));
+    // Biology: 12 questions (6 recognition, 6 comprehension)
+    let sinhQuestions = getQuestionsFromTopics('sinh', sinhTopics, { nhan_biet: 6, thong_hieu: 6, van_dung: 0 })
+        .map(q => ({ ...q, subject: 'Sinh học' }));
 
     let examQ = [...lyQuestions, ...hoaQuestions, ...sinhQuestions];
 
@@ -179,6 +280,7 @@ function startFullExam() {
         document.getElementById('examQArea').innerHTML = `
             <div class="card mb-4">
                 <div class="card-header"><strong>Câu ${qIndex + 1}:</strong> ${q.q}</div>
+                ${q.image ? `<div class="text-center mb-3"><img src="${q.image}" alt="Hình minh họa" class="img-fluid rounded" style="max-width: 100%; height: auto;"></div>` : ''}
                 <div class="card-body">
                     <div class="row g-3">
                         ${q.options.map(opt => `
@@ -312,4 +414,170 @@ function startFullExam() {
     // initial render
     renderNavGrid();
     showQ();
+}
+
+// Export exam to Word document
+function exportExamToWord() {
+    const lyTopics = getSelectedTopics('ly');
+    const hoaTopics = getSelectedTopics('hoa');
+    const sinhTopics = getSelectedTopics('sinh');
+    
+    // Generate exam questions
+    const examData = generateExamQuestions(lyTopics, hoaTopics, sinhTopics);
+    
+    if (!examData || examData.questions.length === 0) {
+        alert('Không có câu hỏi nào được tạo. Vui lòng kiểm tra lại chủ đề đã chọn.');
+        return;
+    }
+    
+    // Create Word document content
+    let wordContent = createWordDocumentContent(examData);
+    
+    // Create blob and download
+    const blob = new Blob([wordContent], { type: 'application/msword' });
+    const url = URL.createObjectURL(blob);
+    
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `De_Thi_Thu_To_Hop_${new Date().toISOString().split('T')[0]}.doc`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+    
+    // Show success message
+    alert('File Word đã được tải xuống thành công!');
+}
+
+function generateExamQuestions(lyTopics, hoaTopics, sinhTopics) {
+    // Helper function to get questions from topics (same as in startFullExam)
+    function getQuestionsFromTopics(subject, topics, levelCounts) {
+        let allQuestions = [];
+        
+        if (topics.length === 0) {
+            const byTopic = window[`questions_${subject}_by_topic`];
+            if (byTopic) {
+                topics = Object.keys(byTopic).filter(k => k !== 'Tất cả');
+            }
+        }
+        
+        const byTopic = window[`questions_${subject}_by_topic`];
+        if (byTopic) {
+            topics.forEach(topic => {
+                const topicQuestions = byTopic[topic];
+                if (Array.isArray(topicQuestions)) {
+                    allQuestions = allQuestions.concat(topicQuestions);
+                }
+            });
+        }
+        
+        if (allQuestions.length === 0) {
+            allQuestions = window[`questions_${subject}`] || [];
+        }
+        
+        const nhanBiet = allQuestions.filter(q => q.level === 'nhan_biet');
+        const thongHieu = allQuestions.filter(q => q.level === 'thong_hieu');
+        const vanDung = allQuestions.filter(q => q.level === 'van_dung');
+        
+        let selected = [];
+        if (levelCounts.nhan_biet > 0) {
+            selected = selected.concat(_selectRandom(nhanBiet, levelCounts.nhan_biet));
+        }
+        if (levelCounts.thong_hieu > 0) {
+            selected = selected.concat(_selectRandom(thongHieu, levelCounts.thong_hieu));
+        }
+        if (levelCounts.van_dung > 0) {
+            selected = selected.concat(_selectRandom(vanDung, levelCounts.van_dung));
+        }
+        
+        return selected;
+    }
+    
+    const lyQuestions = getQuestionsFromTopics('ly', lyTopics, { nhan_biet: 6, thong_hieu: 4, van_dung: 4 })
+        .map(q => ({ ...q, subject: 'Vật lý' }));
+    
+    const hoaQuestions = getQuestionsFromTopics('hoa', hoaTopics, { nhan_biet: 6, thong_hieu: 4, van_dung: 4 })
+        .map(q => ({ ...q, subject: 'Hóa học' }));
+    
+    const sinhQuestions = getQuestionsFromTopics('sinh', sinhTopics, { nhan_biet: 6, thong_hieu: 6, van_dung: 0 })
+        .map(q => ({ ...q, subject: 'Sinh học' }));
+    
+    const allQuestions = [...lyQuestions, ...hoaQuestions, ...sinhQuestions];
+    
+    // Shuffle questions
+    const shuffledQuestions = allQuestions.sort(() => 0.5 - Math.random());
+    
+    return {
+        questions: shuffledQuestions,
+        topics: {
+            ly: lyTopics,
+            hoa: hoaTopics,
+            sinh: sinhTopics
+        }
+    };
+}
+
+function createWordDocumentContent(examData) {
+    const { questions, topics } = examData;
+    
+    let html = `<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Đề Thi Thử Tổ Hợp KHTN Lớp 9</title>
+    <style>
+        body { font-family: 'Times New Roman', serif; font-size: 12pt; line-height: 1.5; margin: 1in; }
+        .header { text-align: center; font-weight: bold; margin-bottom: 20px; }
+        .header h1 { font-size: 16pt; margin-bottom: 10px; }
+        .header h2 { font-size: 14pt; margin-bottom: 5px; }
+        .header p { margin: 5px 0; }
+        .question { margin-bottom: 15px; page-break-inside: avoid; }
+        .question-number { font-weight: bold; margin-bottom: 5px; }
+        .options { margin-left: 20px; }
+        .options div { margin-bottom: 3px; }
+        .subject-info { margin-top: 30px; font-style: italic; border-top: 1px solid #000; padding-top: 10px; }
+        .footer { margin-top: 50px; text-align: center; font-size: 10pt; border-top: 1px solid #000; padding-top: 20px; }
+        @page { margin: 1in; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>ĐỀ THI THỬ TỔ HỢP</h1>
+        <h2>Môn: KHỐI TỰ NHIÊN (Vật lý - Hóa học - Sinh học)</h2>
+        <p>Thời gian: 90 phút</p>
+        <p>Ngày thi: ${new Date().toLocaleDateString('vi-VN')}</p>
+    </div>
+    
+    <div class="subject-info">
+        <p><strong>Chủ đề đã chọn:</strong></p>
+        <p><strong>Vật lý:</strong> ${topics.ly.length > 0 ? topics.ly.join(', ') : 'Tất cả'}</p>
+        <p><strong>Hóa học:</strong> ${topics.hoa.length > 0 ? topics.hoa.join(', ') : 'Tất cả'}</p>
+        <p><strong>Sinh học:</strong> ${topics.sinh.length > 0 ? topics.sinh.join(', ') : 'Tất cả'}</p>
+    </div>
+    
+    <div class="questions">`;
+    
+    questions.forEach((q, index) => {
+        const questionNumber = index + 1;
+        html += `
+        <div class="question">
+            <div class="question-number">Câu ${questionNumber} (${q.subject}):</div>
+            <div>${q.q}</div>
+            <div class="options">
+                ${q.options.map(option => `<div>${option}</div>`).join('')}
+            </div>
+        </div>`;
+    });
+    
+    html += `
+    </div>
+    
+    <div class="footer">
+        <p>--- Hết ---</p>
+        <p>Đề thi được tạo từ hệ thống ôn tập KHTN Lớp 9</p>
+    </div>
+</body>
+</html>`;
+    
+    return html;
 }

@@ -152,6 +152,8 @@ function showSubjectQuestion() {
     }
     // explanation alias
     if (!q.explain && q.explanation) q.explain = q.explanation;
+    // image alias
+    if (!q.image && q.img) q.image = q.img;
     // Persist normalized question back to the quiz array so selectAnswer uses the same shape
     currentQuiz[currentQuestion] = q;
     // Compute canonical correct letter (A-D) for robust comparisons
@@ -227,6 +229,7 @@ function showSubjectQuestion() {
             </div>
             <div class="card-body p-5">
                 <h5 class="fw-bold fs-4 mb-5 text-dark">${q.q}</h5>
+                ${q.image ? `<div class="text-center mb-4"><img src="${q.image}" alt="Hình minh họa" class="img-fluid rounded" style="max-width: 100%; height: auto;"></div>` : ''}
                 <div class="row g-4">
                     ${Array.isArray(q.options) ? q.options.map(opt => `
                         <div class="col-12 col-md-6">
