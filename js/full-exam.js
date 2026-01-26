@@ -536,8 +536,13 @@ function createWordDocumentContent(examData) {
         .options { margin-left: 20px; }
         .options div { margin-bottom: 3px; }
         .subject-info { margin-top: 30px; font-style: italic; border-top: 1px solid #000; padding-top: 10px; }
+        .answers-table { width: 100%; border-collapse: collapse; font-size: 11pt; }
+        .answers-table td { padding: 8px; border: 1px solid #000; vertical-align: top; }
+        .answer-number { font-weight: bold; margin-bottom: 3px; }
+        .answer-text { color: #d32f2f; font-weight: bold; margin-bottom: 3px; }
+        .answer-explain { font-style: italic; color: #666; font-size: 10pt; }
         .footer { margin-top: 50px; text-align: center; font-size: 10pt; border-top: 1px solid #000; padding-top: 20px; }
-        @page { margin: 1in; }
+        @page { margin-top: 2cm; margin-bottom: 2cm; margin-left: 2.5cm; margin-right: 2cm; }
     </style>
 </head>
 <body>
@@ -570,6 +575,62 @@ function createWordDocumentContent(examData) {
     });
     
     html += `
+    </div>
+    
+    <div style="page-break-before: always; margin-top: 50px;">
+        <h2 style="text-align: center; font-weight: bold; margin-bottom: 30px;">ĐÁP ÁN</h2>
+        <table class="answers-table">
+            <tbody>`;
+    
+    // Group questions into pairs for 2-column layout
+    for (let i = 0; i < questions.length; i += 2) {
+        html += `<tr>`;
+        
+        // First question
+        const q1 = questions[i];
+        const q1Number = i + 1;
+        html += `
+        <td>
+            <div class="answer-number">Câu ${q1Number} (${q1.subject}):</div>
+            <div class="answer-text">${q1.a}</div>`;
+        
+        if (q1.explain) {
+            html += `
+            <div class="answer-explain">
+                <strong>Giải thích:</strong> ${q1.explain}
+            </div>`;
+        }
+        
+        html += `</td>`;
+        
+        // Second question (if exists)
+        if (i + 1 < questions.length) {
+            const q2 = questions[i + 1];
+            const q2Number = i + 2;
+            html += `
+        <td>
+            <div class="answer-number">Câu ${q2Number} (${q2.subject}):</div>
+            <div class="answer-text">${q2.a}</div>`;
+            
+            if (q2.explain) {
+                html += `
+            <div class="answer-explain">
+                <strong>Giải thích:</strong> ${q2.explain}
+                </div>`;
+            }
+            
+            html += `</td>`;
+        } else {
+            // Empty cell for odd number of questions
+            html += `<td></td>`;
+        }
+        
+        html += `</tr>`;
+    }
+    
+    html += `
+            </tbody>
+        </table>
     </div>
     
     <div class="footer">
