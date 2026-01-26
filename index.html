@@ -143,7 +143,7 @@
                     <div class="card-body text-center p-5">
                         <h3 class="card-title text-info"><i class="fas fa-file-alt fa-2x mb-3"></i><br>Thi Thử Tổ Hợp</h3>
                         <p class="card-text">40 câu, 90 phút</p>
-                        <button class="btn btn-info btn-lg mt-auto" onclick="startFullExam()">Bắt đầu thi</button>
+                        <button class="btn btn-info btn-lg mt-auto" onclick="showFullExamTopicSelection()">Bắt đầu thi</button>
                     </div>
                 </div>
                 <!-- Ô 6 -->
@@ -198,11 +198,33 @@
             </div>
             <div class="khtn-modal-body">
                 <div class="mb-3">
+                    <label class="form-label">Chế độ chọn chủ đề</label>
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" id="multiTopicMode" onchange="toggleTopicSelectionMode()">
+                        <label class="form-check-label" for="multiTopicMode">
+                            Chọn nhiều chủ đề
+                        </label>
+                    </div>
+                </div>
+                
+                <!-- Single topic selection -->
+                <div id="singleTopicSection" class="mb-3">
                     <label class="form-label">Chủ đề</label>
                     <select id="subjectTopicSelect" class="form-select">
                         <option value="all">Tất cả</option>
                     </select>
                 </div>
+                
+                <!-- Multiple topic selection -->
+                <div id="multiTopicSection" class="mb-3" style="display:none;">
+                    <label class="form-label">Chọn chủ đề (có thể chọn nhiều)</label>
+                    <div id="subjectTopicCheckboxes" class="border rounded p-3" style="max-height: 200px; overflow-y: auto; background-color: white;">
+                        <!-- Checkboxes will be populated by JS -->
+                    </div>
+                    <div class="form-text">Nếu không chọn chủ đề nào, hệ thống sẽ chọn từ tất cả chủ đề.</div>
+                    <button type="button" class="btn btn-sm btn-outline-secondary mt-2" onclick="populateSubjectTopicCheckboxes(currentModalSubject)">Tải lại chủ đề</button>
+                </div>
+                
                 <div class="mb-3">
                     <label class="form-label">Số lượng câu hỏi</label>
                     <input id="subjectCountInput" type="number" class="form-control" min="1" max="50" value="10">
@@ -211,7 +233,48 @@
             </div>
             <div class="khtn-modal-footer">
                 <button class="btn btn-secondary me-2" onclick="closeSubjectModal()">Hủy</button>
+                <button class="btn btn-outline-primary me-2" onclick="exportSubjectToWord()">Xuất Word</button>
                 <button class="btn btn-primary" onclick="startFilteredQuiz(currentModalSubject)">Bắt đầu</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal chọn chủ đề thi thử tổ hợp -->
+    <div id="fullExamTopicModal" class="khtn-modal" style="display:none;">
+        <div class="khtn-modal-backdrop" onclick="closeFullExamTopicModal()"></div>
+        <div class="khtn-modal-dialog">
+            <div class="khtn-modal-header">
+                <h5>Chọn chủ đề cho thi thử tổ hợp</h5>
+                <button class="khtn-modal-close" onclick="closeFullExamTopicModal()">×</button>
+            </div>
+            <div class="khtn-modal-body">
+                <p class="text-muted">Chọn các chủ đề bạn muốn ôn tập cho mỗi môn. Nếu không chọn chủ đề nào, hệ thống sẽ chọn ngẫu nhiên từ tất cả chủ đề.</p>
+                
+                <div class="mb-4">
+                    <h6 class="text-danger">Vật Lý</h6>
+                    <div id="lyTopicCheckboxes" class="row">
+                        <!-- Checkboxes will be populated by JS -->
+                    </div>
+                </div>
+                
+                <div class="mb-4">
+                    <h6 class="text-success">Hóa Học</h6>
+                    <div id="hoaTopicCheckboxes" class="row">
+                        <!-- Checkboxes will be populated by JS -->
+                    </div>
+                </div>
+                
+                <div class="mb-4">
+                    <h6 class="text-warning">Sinh Học</h6>
+                    <div id="sinhTopicCheckboxes" class="row">
+                        <!-- Checkboxes will be populated by JS -->
+                    </div>
+                </div>
+            </div>
+            <div class="khtn-modal-footer">
+                <button class="btn btn-secondary me-2" onclick="closeFullExamTopicModal()">Hủy</button>
+                <button class="btn btn-outline-primary me-2" onclick="exportExamToWord()">Xuất Word</button>
+                <button class="btn btn-primary" onclick="startFullExamWithTopics()">Bắt đầu thi</button>
             </div>
         </div>
     </div>
@@ -283,10 +346,10 @@
     <!-- Question data -->    <script src="js/questions-ly.js" defer></script>
     <script src="js/questions-hoa.js" defer></script>
     <script src="js/questions-sinh.js" defer></script>
-    <script src="js/topics.js?v=202601231234" defer></script>
+    <script src="js/topics.js?v=202601231234"></script>
     <script src="js/news-tips.js?v=202601231234" defer></script>
     <script src="js/chatbot.js?v=202601231234" defer></script>
-    <script src="js/main.js?v=202601231234" defer></script>
+    <script src="js/main.js?v=202601231234"></script>
     <script src="js/quiz.js?v=202601231234" defer></script>
     <script src="js/full-exam.js?v=202601231234" defer></script>
 </body>
