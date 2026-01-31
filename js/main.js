@@ -1659,4 +1659,3 @@ function backToMenu() {
     // Update progress
     updateProgressSidebar();
 };
-
