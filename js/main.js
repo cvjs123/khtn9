@@ -1100,7 +1100,7 @@ const localExams = [
     },
     { 
         name: 'Trường PTDTBT THCS Hùng Lợi', 
-        year: 2023, 
+        year: 2026, 
         description: 'Đề thi thử PTDTBT THCS Hùng Lợi lần 2 (sưu tầm và upload bởi admin)',
         questions: [
             {q:"Nguồn nhiên liệu nào sau đây được coi là nhiên liệu sạch, khi cháy ít tạo ra sản phẩm gây ô nhiễm nhất?",options:["A. Diesel (hỗn hợp các hydrocarbon)","B. Xăng (hỗn hợp các hydrocarbon)","C. Khí biogas (thành phần chính là Methane - CH₄)","D. Than đá"],a:"C. Khí biogas (thành phần chính là Methane - CH₄)",subject:"Hóa học"},
@@ -1659,3 +1659,4 @@ function backToMenu() {
     // Update progress
     updateProgressSidebar();
 };
+
