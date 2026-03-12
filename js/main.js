@@ -1464,46 +1464,58 @@ function startExamWithQuestions(questions, title) {
             else q.a = src;
         }
         if (!q.explain && q.explanation) q.explain = q.explanation;
-        // Shuffle options
+        // Shuffle options & keep answer synced
         try {
             if (Array.isArray(q.options) && q.options.length > 0) {
                 const rawOpts = q.options.map(o => String(o || '').replace(/^[A-D]\.\s*/i, '').trim());
-                let origIdx = -1;
-                if (q.answer) {
-                    const letter = String(q.answer).trim().charAt(0).toUpperCase();
-                    const map = { A:0, B:1, C:2, D:3 };
-                    origIdx = map[letter] !== undefined ? map[letter] : -1;
-                }
-                if (origIdx === -1 && q.a) {
-                    const aText = String(q.a).replace(/^[A-D]\.\s*/i, '').trim();
-                    origIdx = rawOpts.findIndex(r => r === aText);
+                
+                // Get correct answer text (without A/B/C/D prefix)
+                const correctText = String(q.a || q.answer || '').replace(/^[A-D]\.\s*/i, '').trim();
+                
+                // Find which raw option matches the correct answer
+                let origIdx = rawOpts.findIndex(r => r === correctText);
+                if (origIdx === -1 && correctText) {
+                    // Fallback: try fuzzy match with lowercase + normalize spaces
+                    const normalized = correctText.toLowerCase().replace(/\s+/g, ' ');
+                    origIdx = rawOpts.findIndex(r => r.toLowerCase().replace(/\s+/g, ' ') === normalized);
                 }
 
+                // Shuffle indices (Fisher-Yates)
                 const idxs = rawOpts.map((_, i) => i);
                 for (let i = idxs.length - 1; i > 0; i--) {
                     const j = Math.floor(Math.random() * (i + 1));
                     [idxs[i], idxs[j]] = [idxs[j], idxs[i]];
                 }
 
+                // Build new options with new letters
                 const letters = ['A','B','C','D'];
                 const newOptions = [];
-                let newCorrect = null;
+                let newCorrectAnswer = null;
+                
                 for (let i = 0; i < idxs.length; i++) {
-                    const oi = idxs[i];
-                    const text = rawOpts[oi] || '';
+                    const originalIdx = idxs[i];
+                    const text = rawOpts[originalIdx] || '';
                     newOptions.push(`${letters[i]}. ${text}`);
-                    if (oi === origIdx) newCorrect = newOptions[newOptions.length - 1];
-                }
-                if (!newCorrect && q.a) {
-                    const prev = String(q.a).replace(/^[A-D]\.\s*/i, '').trim();
-                    const found = newOptions.find(o => o.replace(/^[A-D]\.\s*/i, '').trim() === prev);
-                    if (found) newCorrect = found;
+                    
+                    // If this is the position where correct answer ended up
+                    if (originalIdx === origIdx) {
+                        newCorrectAnswer = `${letters[i]}. ${text}`;
+                    }
                 }
 
+                // Update options and answer
                 q.options = newOptions;
-                if (newCorrect) q.a = newCorrect;
+                if (newCorrectAnswer) {
+                    q.a = newCorrectAnswer;
+                } else if (correctText) {
+                    // Safety: reconstruct answer if shuffle lost track
+                    const foundOpt = newOptions.find(o => o.replace(/^[A-D]\.\s*/i, '').trim() === correctText);
+                    if (foundOpt) q.a = foundOpt;
+                }
             }
-        } catch (e) {}
+        } catch (e) {
+            console.error('Shuffle options error:', e);
+        }
         return q;
     }
 

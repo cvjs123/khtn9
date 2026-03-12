@@ -15,11 +15,21 @@ document.addEventListener('DOMContentLoaded', function() {
         // Add to history
         history.push({ role: role === 'user' ? 'user' : 'assistant', content: html.replace(/<[^>]*>/g, '') }); // strip html for content
     }
-    const API_BASE = 'http://localhost:3000';
+    const API_BASE = 'http://localhost:11434';
     async function askServer(text){
         const url = API_BASE + '/api/chat';
         try{
-            const res = await fetch(url, { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({ message:text, history: history.slice(0, -1) }) });
+            const res = await fetch(url, {
+                method:'POST',
+                headers:{'Content-Type':'application/json'},
+                body:JSON.stringify({
+                    model: 'mistral',
+                    messages: [
+                        { role: 'system', content: 'Bạn là trợ lý AI hữu ích cho học sinh Việt Nam học môn Khoa học Tự nhiên lớp 9 (KHTN). Luôn trả lời CHỈ bằng tiếng Việt.' },
+                        { role: 'user', content: text }
+                    ]
+                })
+            });
             if(!res.ok){
                 let errorMsg = res.statusText;
                 try {
@@ -34,7 +44,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
                 return 'Lỗi server: ' + errorMsg + ' (status ' + res.status + ')';
             }
-            const j = await res.json(); return j.reply || 'Không có phản hồi.';
+            const j = await res.json();
+            return j.message?.content || 'Không có phản hồi.';
         }catch(e){
             console.error('Client fetch error', e);
             return 'Lỗi kết nối: '+ (e.message || e);

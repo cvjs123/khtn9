@@ -168,54 +168,55 @@ function showSubjectQuestion() {
         }
     }
     // RANDOMIZE option order so correct answer isn't always same letter
+    // Track the correct option by text (not by old A/B/C/D label), then re-derive the new letter after shuffling.
     try {
         if (Array.isArray(q.options) && q.options.length > 0) {
-            // Extract raw option texts (strip leading 'A. ' etc.)
-            const raw = q.options.map(o => String(o || '').replace(/^[A-D]\.?\s*/i, '').trim());
+            const stripLabel = (s) => String(s || '').replace(/^[A-D]\.?\s*/i, '').trim();
+            const letters = ['A','B','C','D'];
 
-            // Determine original correct index
-            let origCorrectIdx = -1;
-            if (q.answer) {
+            // Determine correct answer text before shuffling.
+            let correctText = null;
+            if (q.a) {
+                correctText = stripLabel(q.a);
+            } else if (q.answer && Array.isArray(q.options)) {
+                const map = { A:0, B:1, C:2, D:3 };
                 const letter = String(q.answer).trim().charAt(0).toUpperCase();
+                const idx = map[letter];
+                if (typeof idx === 'number' && q.options[idx]) correctText = stripLabel(q.options[idx]);
+            } else if (q.correctLetter && Array.isArray(q.options)) {
                 const map = { A:0, B:1, C:2, D:3 };
-                origCorrectIdx = typeof map[letter] === 'number' ? map[letter] : -1;
-            } else if (q.a) {
-                // q.a may be full option text or include label; match against raw
-                const aText = String(q.a).replace(/^[A-D]\.?\s*/i, '').trim();
-                origCorrectIdx = raw.findIndex(r => r === aText);
-            } else if (q.correctLetter) {
-                const map = { A:0, B:1, C:2, D:3 };
-                origCorrectIdx = typeof map[q.correctLetter] === 'number' ? map[q.correctLetter] : -1;
+                const idx = map[q.correctLetter];
+                if (typeof idx === 'number' && q.options[idx]) correctText = stripLabel(q.options[idx]);
             }
 
+            const rawTexts = q.options.map(stripLabel);
+
             // Build shuffled index order
-            const idxs = raw.map((_, i) => i);
+            const idxs = rawTexts.map((_, i) => i);
             for (let i = idxs.length - 1; i > 0; i--) {
                 const j = Math.floor(Math.random() * (i + 1));
                 [idxs[i], idxs[j]] = [idxs[j], idxs[i]];
             }
 
-            // Create new labeled options and update correctLetter to new position
-            const letters = ['A','B','C','D'];
-            const newOptions = [];
-            let newCorrectLetter = null;
-            for (let i = 0; i < idxs.length; i++) {
-                const oi = idxs[i];
-                const text = raw[oi] || '';
-                newOptions.push(`${letters[i]}. ${text}`);
-                if (oi === origCorrectIdx) newCorrectLetter = letters[i];
-            }
-            // If we couldn't determine correct by matching, try fallback: keep previous q.correctLetter if present
-            if (!newCorrectLetter && q.correctLetter) {
-                // find new option whose text matches previous correct option text
-                const prevText = (q.a || '').replace(/^[A-D]\.?\s*/i, '').trim();
-                const found = newOptions.findIndex(o => o.replace(/^[A-D]\.?\s*/i, '').trim() === prevText);
-                if (found >= 0) newCorrectLetter = letters[found];
-            }
-
-            // Apply
+            // Create new labeled options
+            const newOptions = idxs.map((oi, i) => letters[i] + '. ' + (rawTexts[oi] || ''));
             q.options = newOptions;
-            if (newCorrectLetter) q.correctLetter = newCorrectLetter;
+
+            // Recompute correct letter (and q.a for display) based on the correct text.
+            if (correctText) {
+                let found = newOptions.findIndex(o => stripLabel(o) === correctText);
+                
+                // Fuzzy match fallback: lowercase + normalize whitespace
+                if (found < 0 && correctText) {
+                    const normalized = correctText.toLowerCase().replace(/\s+/g, ' ');
+                    found = newOptions.findIndex(o => stripLabel(o).toLowerCase().replace(/\s+/g, ' ') === normalized);
+                }
+                
+                if (found >= 0) {
+                    q.correctLetter = letters[found];
+                    q.a = newOptions[found];
+                }
+            }
         }
     } catch (e) {
         // ignore shuffling errors and fall back to original ordering
@@ -288,13 +289,14 @@ function selectAnswer(selected) {
         `;
     } else {
         playSound('wrongSound');
-        // Determine display of correct answer: prefer full option text if available
-        let correctDisplay = q.a || '';
-        if (!correctDisplay && Array.isArray(q.options) && correctLetter) {
+        // Determine display of correct answer from current option order (post-shuffle)
+        let correctDisplay = '';
+        if (Array.isArray(q.options) && correctLetter) {
             const map = { A:0, B:1, C:2, D:3 };
             const idx = map[correctLetter];
             if (typeof idx === 'number' && q.options[idx]) correctDisplay = q.options[idx];
         }
+        if (!correctDisplay) correctDisplay = q.a || '';
         feedback.innerHTML = `
             <div class="alert alert-danger p-5 rounded shadow">
                 <h4 class="fw-bold mb-3">❌ Sai rồi!</h4>
