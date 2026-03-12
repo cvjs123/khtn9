@@ -1,9 +1,26 @@
 const http = require('http');
+const https = require('https');
 const fs = require('fs');
 const path = require('path');
 const url = require('url');
 
 const PORT = process.env.PORT || 3000;
+// Groq API Configuration
+const GROQ_TOKEN = process.env.GROQ_TOKEN || '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';
+const GROQ_API_URL = 'https://api.groq.com/openai/v1/chat/completions';
+const GROQ_MODEL = 'llama-3.1-8b-instant';  // Updated model (faster & free)
+const GROQ_TEMPERATURE = 0.7;
+const GROQ_MAX_TOKENS = 500;
+const HISTORY_MAX_TURNS = 6;
+// System prompt: concise, grade 9 level, practical examples, no grade 12+ concepts
+const SYSTEM_PROMPT = process.env.SYSTEM_PROMPT || `Bạn là trợ lý cho học sinh lớp 9 môn Khoa học Tự nhiên. Quy tắc trả lời:
+1. Dùng từ ngữ ĐƠNGIẢN, dễ hiểu, phù hợp lớp 9 (KHÔNG dùng kiến thức cấp 3).
+2. Luôn trả lời TIẾNG VIỆT, từ 1–3 câu tóm tắt + 1–3 gạch đầu dòng ví dụ/chi tiết thực tế.
+3. Ưu tiên dùng ví dụ thực tế, so sánh dễ hình dung thay vì công thức/lý thuyết trừu tượng.
+4. Nếu thiếu thông tin, hỏi 1 câu làm rõ, không trống trải.
+5. TỐI ĐA 3–4 dòng, không lan man.`;
+// Simple in-memory cache: message -> { r: reply, t: timestamp }
+const replyCache = new Map();
 
 function sendJson(res, status, obj) {
   const body = JSON.stringify(obj);
@@ -48,45 +65,86 @@ function collectRequestBody(req) {
   });
 }
 
-function callOllama(payload) {
+// callGroq accepts (message, historyArray)
+function callGroq(message, history = []) {
   return new Promise((resolve, reject) => {
-    const body = JSON.stringify({
-      model: 'llama3.2:1b',
-      messages: [
-        { role: 'system', content: 'Bạn là trợ lý AI hữu ích cho học sinh Việt Nam học môn Khoa học Tự nhiên lớp 9 (KHTN). Luôn trả lời CHỈ bằng tiếng Việt, không dùng bất kỳ ngôn ngữ nào khác. Trả lời trực tiếp, đúng trọng tâm, không vòng vo. Sử dụng tiếng Việt chuẩn, chính xác, không sai chính tả. Trả lời chính xác về khoa học, sử dụng kiến thức chuẩn, tránh thông tin sai lệch. Tập trung trả lời câu hỏi hiện tại, không lẫn lộn với câu hỏi trước. Ngắn gọn, dễ hiểu. Sử dụng LaTeX cho công thức (ví dụ: \( E = mc^2 \)). Giữ dưới 150 từ.' },
-        ...payload.messages
-      ],
-      stream: false
-    });
-    const options = {
-      method: 'POST',
-      hostname: 'localhost',
-      port: 11434,
-      path: '/api/chat',
-      headers: {
-        'Content-Type': 'application/json',
-        'Content-Length': Buffer.byteLength(body)
+    try {
+      // build cache key
+      const cacheKey = (history.slice(-HISTORY_MAX_TURNS).map(h => `${h.role}:${h.content}`).join('|') + '||' + message).slice(0, 2000);
+      const cached = replyCache.get(cacheKey);
+      if (cached && (Date.now() - cached.t) < 60_000) {
+        return resolve({ choices: [{ message: { content: cached.r } }] });
       }
-    };
-    const req = http.request(options, (res) => {
-      let data = '';
-      res.on('data', (c) => data += c);
-      res.on('end', () => {
-        try {
-          const j = JSON.parse(data);
-          if (res.statusCode >= 200 && res.statusCode < 300) {
-            resolve({ choices: [{ message: { content: j.message.content } }] });
-          } else {
-            reject({ status: res.statusCode, body: j });
-          }
-        } catch (e) {
-          reject(e);
+
+      // construct messages: system, trimmed history, then current user message
+      const messages = [{ role: 'system', content: SYSTEM_PROMPT }];
+      const histTrim = Array.isArray(history) ? history.slice(-HISTORY_MAX_TURNS) : [];
+      for (const h of histTrim) {
+        if (!h || !h.role || !h.content) continue;
+        const role = h.role === 'assistant' ? 'assistant' : 'user';
+        messages.push({ role, content: String(h.content) });
+      }
+      messages.push({ role: 'user', content: message });
+
+      const bodyObj = {
+        model: GROQ_MODEL,
+        messages,
+        temperature: GROQ_TEMPERATURE,
+        max_tokens: GROQ_MAX_TOKENS
+      };
+      const body = JSON.stringify(bodyObj);
+
+      const options = {
+        hostname: 'api.groq.com',
+        port: 443,
+        path: '/openai/v1/chat/completions',
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Content-Length': Buffer.byteLength(body),
+          'Authorization': `Bearer ${GROQ_TOKEN}`
         }
+      };
+
+      console.log('Calling Groq API...');
+      const start = Date.now();
+      const req = https.request(options, (res) => {
+        let data = '';
+        res.on('data', (c) => data += c);
+        res.on('end', () => {
+          const elapsed = Date.now() - start;
+          console.log('Groq response time (ms):', elapsed);
+          if (res.statusCode >= 200 && res.statusCode < 300) {
+            try {
+              const j = JSON.parse(data);
+              const reply = j?.choices?.[0]?.message?.content || '';
+              if (!reply) throw new Error('No content in response');
+              try { replyCache.set(cacheKey, { r: reply, t: Date.now() }); } catch (e) {}
+              return resolve({ choices: [{ message: { content: reply } }] });
+            } catch (e) {
+              return reject(e);
+            }
+          } else {
+            try {
+              const j = JSON.parse(data);
+              return reject({ status: res.statusCode, body: j });
+            } catch (e) {
+              return reject({ status: res.statusCode, body: data });
+            }
+          }
+        });
       });
-    });
-    req.on('error', reject);
-    req.write(body);
-    req.end();
+
+      req.on('error', (err) => reject(err));
+      req.setTimeout(60000, () => {
+        req.destroy();
+        reject(new Error('Groq API request timed out'));
+      });
+      req.write(body);
+      req.end();
+    } catch (err) {
+      return reject(err);
+    }
   });
 }
 
@@ -113,15 +171,12 @@ const server = http.createServer(async (req, res) => {
       const history = Array.isArray(body.history) ? body.history : [];
       if (!message) return sendJson(res, 400, { error: 'missing message' });
       console.log('Proxy /api/chat request, message length:', (message || '').length);
-      const payload = {
-        messages: [...history, { role: 'user', content: message }]
-      };
       try {
-        const data = await callOllama(payload);
+        const data = await callGroq(message, history);
         const reply = data?.choices?.[0]?.message?.content ?? '';
         return sendJson(res, 200, { reply });
       } catch (upErr) {
-        console.error('Ollama error', upErr);
+        console.error('Groq API error', upErr);
         if (upErr && upErr.status) return sendJson(res, upErr.status, { error: upErr.body || 'upstream error' });
         return sendJson(res, 500, { error: String(upErr) });
       }
@@ -132,7 +187,7 @@ const server = http.createServer(async (req, res) => {
   }
 
   // Serve static files from project root
-  serveStatic(req, res, pathname);
+  serveStatic(req, res, parsed);
 });
 
 server.listen(PORT, () => console.log(`Chat proxy running on http://localhost:${PORT}`));
