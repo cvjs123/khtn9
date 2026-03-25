@@ -162,6 +162,15 @@
                         <button class="btn btn-primary btn-lg mt-auto" onclick="showLocalExams()">Xem đề thi</button>
                     </div>
                 </div>
+                <!-- Ô 8 -->
+                <div class="card card-option h-100 shadow-lg bg-white">
+                    <div class="card-body text-center p-5">
+                        <h3 class="card-title text-success"><i class="fas fa-stopwatch fa-2x mb-3"></i><br>Đề tập huấn</h3>
+                        <p class="card-text">Lý • Hóa • Sinh (tuỳ số câu)</p>
+                        <button class="btn btn-success btn-lg mt-auto" onclick="showShortExamModal()">Bắt đầu</button>
+                    </div>
+                </div>
+
             </div>
 
             <div id="contentArea" class="mt-5"></div>
@@ -343,6 +352,55 @@
         </div>
     </div>
 
+
+    <!-- Modal đề ngắn 3 môn (Lý - Hóa - Sinh) -->
+    <div id="shortExamModal" class="khtn-modal" style="display:none;">
+        <div class="khtn-modal-backdrop" onclick="closeShortExamModal()"></div>
+        <div class="khtn-modal-dialog">
+            <div class="khtn-modal-header">
+                <h5>Đề tập huấn</h5>
+                <button class="khtn-modal-close" onclick="closeShortExamModal()">×</button>
+            </div>
+            <div class="khtn-modal-body">
+                <p class="text-muted mb-3">Tạo nhanh 1 đề trộn 3 phân môn Lý - Hóa - Sinh.</p>
+
+                <div class="row g-3">
+                    <div class="col-md-4">
+                        <label class="form-label">Số câu Lý</label>
+                        <input id="shortLyCount" type="number" class="form-control" min="0" value="5">
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label">Số câu Hóa</label>
+                        <input id="shortHoaCount" type="number" class="form-control" min="0" value="5">
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label">Số câu Sinh</label>
+                        <input id="shortSinhCount" type="number" class="form-control" min="0" value="5">
+                    </div>
+                </div>
+
+                <div class="row g-3 mt-1">
+                    <div class="col-md-6">
+                        <label class="form-label">Thời gian (phút)</label>
+                        <input id="shortExamDuration" type="number" class="form-control" min="5" max="90" value="30">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Tổng số câu</label>
+                        <div class="form-control bg-light" style="cursor:default;">
+                            <strong id="shortExamTotal">15</strong> câu
+                        </div>
+                    </div>
+                </div>
+
+                <div id="shortExamAvailability" class="form-text mt-2"></div>
+            </div>
+            <div class="khtn-modal-footer">
+                <button class="btn btn-secondary me-2" onclick="closeShortExamModal()">Hủy</button>
+                <button class="btn btn-success" onclick="startShortExamFromModal()">Bắt đầu</button>
+            </div>
+        </div>
+    </div>
+    <script src="js/short-exam-questions.js" defer></script>
     <!-- Question data -->    <script src="js/questions-ly.js" defer></script>
     <script src="js/questions-hoa.js" defer></script>
     <script src="js/questions-sinh.js" defer></script>
