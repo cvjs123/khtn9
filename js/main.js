@@ -1605,7 +1605,10 @@ function startLocalExam(examIndex) {
     startExamWithQuestions(exam.questions, window.currentExamTitle);
 }
 
-function startExamWithQuestions(questions, title) {
+function startExamWithQuestions(questions, title, opts = {}) {
+    const durationMinutes = Number.isFinite(opts.durationMinutes) ? opts.durationMinutes : 90;
+    const totalScore = Number.isFinite(opts.totalScore) ? opts.totalScore : 10;
+
     // Normalize questions
     function _normalizeQuestion(raw) {
         const q = Object.assign({}, raw);
@@ -1686,15 +1689,16 @@ function startExamWithQuestions(questions, title) {
     questions = questions.map(_normalizeQuestion);
     let qIndex = 0, examScore = 0, correctCount = 0;
 
-    let timeLeft = 90 * 60;
+    const scorePerQuestion = questions.length > 0 ? (totalScore / questions.length) : 0;
+    let timeLeft = Math.max(1, Math.round(durationMinutes * 60));
     document.getElementById('mainMenu').style.display = 'none';
     document.getElementById('contentArea').innerHTML = `
         <div class="d-flex justify-content-between mb-4 align-items-center">
             <div>
                 <h3 class="exam-title text-info">${title}</h3>
-                <div class="exam-subtitle">${questions.length} câu trắc nghiệm — Thời gian 90 phút</div>
+                <div class="exam-subtitle">${questions.length} câu trắc nghiệm — Thời gian ${durationMinutes} phút</div>
             </div>
-            <h4 id="examTimer" class="text-danger">Thời gian: 90:00</h4>
+            <h4 id="examTimer" class="text-danger">Thời gian: ${String(Math.floor(timeLeft / 60)).padStart(2, '0')}:${String(timeLeft % 60).padStart(2, '0')}</h4>
         </div>
         <div class="exam-layout">
             <div id="examQArea"></div>
@@ -1829,7 +1833,7 @@ function startExamWithQuestions(questions, title) {
             if (subjectStats[subject]) {
                 subjectStats[subject].total++;
                 if (qAnswers[i] === questions[i].a) {
-                    examScore += 0.25; // 0.25 per question
+                    examScore += scorePerQuestion;
                     correctCount++;
                     subjectStats[subject].correct++;
                     qStatus[i] = 'correct';
@@ -1856,9 +1860,9 @@ function startExamWithQuestions(questions, title) {
                             <div class="card-body p-4">
                                 <div class="results-summary text-center mb-4">
                                     <div class="score-display mb-3">
-                                        <h3 class="text-primary display-4 fw-bold">${examScore.toFixed(2)}/10</h3>
+                                        <h3 class="text-primary display-4 fw-bold">${examScore.toFixed(2)}/${totalScore}</h3>
                                         <div class="progress mb-3" style="height: 20px;">
-                                            <div class="progress-bar bg-success" role="progressbar" style="width: ${Math.min(100, (examScore / 10) * 100)}%;" aria-valuenow="${examScore}" aria-valuemin="0" aria-valuemax="10"></div>
+                                            <div class="progress-bar bg-success" role="progressbar" style="width: ${Math.min(100, (examScore / totalScore) * 100)}%;" aria-valuenow="${examScore}" aria-valuemin="0" aria-valuemax="${totalScore}"></div>
                                         </div>
                                         <p class="mb-2">Đúng ${correctCount}/${questions.length} câu (${Math.round((correctCount / questions.length) * 100)}%)</p>
                                         <p class="text-muted">Thời gian còn lại: ${Math.floor(timeLeft / 60)}:${String(timeLeft % 60).padStart(2, '0')}</p>
@@ -2040,3 +2044,119 @@ function backToMenu() {
     // Update progress
     updateProgressSidebar();
 };
+
+// Short exam (3 subjects) modal
+function showShortExamModal() {
+    const modal = document.getElementById('shortExamModal');
+    if (!modal) return;
+
+    const lyAvail = Array.isArray(window.short_exam_questions?.ly) ? window.short_exam_questions.ly.length : 0;
+    const hoaAvail = Array.isArray(window.short_exam_questions?.hoa) ? window.short_exam_questions.hoa.length : 0;
+    const sinhAvail = Array.isArray(window.short_exam_questions?.sinh) ? window.short_exam_questions.sinh.length : 0;
+
+    const lyInput = document.getElementById('shortLyCount');
+    const hoaInput = document.getElementById('shortHoaCount');
+    const sinhInput = document.getElementById('shortSinhCount');
+    const durationInput = document.getElementById('shortExamDuration');
+    const availabilityEl = document.getElementById('shortExamAvailability');
+
+    if (lyInput) {
+        lyInput.max = String(lyAvail);
+        const lyCurrent = parseInt(lyInput.value || '0', 10) || 0;
+        if (lyCurrent > lyAvail) lyInput.value = String(lyAvail);
+        if (!lyInput.value) lyInput.value = String(Math.min(5, lyAvail));
+        lyInput.oninput = updateShortExamTotal;
+    }
+    if (hoaInput) {
+        hoaInput.max = String(hoaAvail);
+        const hoaCurrent = parseInt(hoaInput.value || '0', 10) || 0;
+        if (hoaCurrent > hoaAvail) hoaInput.value = String(hoaAvail);
+        if (!hoaInput.value) hoaInput.value = String(Math.min(5, hoaAvail));
+        hoaInput.oninput = updateShortExamTotal;
+    }
+    if (sinhInput) {
+        sinhInput.max = String(sinhAvail);
+        const sinhCurrent = parseInt(sinhInput.value || '0', 10) || 0;
+        if (sinhCurrent > sinhAvail) sinhInput.value = String(sinhAvail);
+        if (!sinhInput.value) sinhInput.value = String(Math.min(5, sinhAvail));
+        sinhInput.oninput = updateShortExamTotal;
+    }
+    if (durationInput) {
+        durationInput.max = '90';
+        durationInput.min = '5';
+        if (!durationInput.value) durationInput.value = '30';
+    }
+    if (availabilityEl) {
+        availabilityEl.textContent = `Có sẵn: Lý ${lyAvail} • Hóa ${hoaAvail} • Sinh ${sinhAvail}`;
+    }
+
+    updateShortExamTotal();
+    modal.style.display = 'flex';
+}
+
+function closeShortExamModal() {
+    const modal = document.getElementById('shortExamModal');
+    if (modal) modal.style.display = 'none';
+}
+
+function updateShortExamTotal() {
+    const ly = parseInt(document.getElementById('shortLyCount')?.value || '0', 10) || 0;
+    const hoa = parseInt(document.getElementById('shortHoaCount')?.value || '0', 10) || 0;
+    const sinh = parseInt(document.getElementById('shortSinhCount')?.value || '0', 10) || 0;
+    const total = ly + hoa + sinh;
+    const totalEl = document.getElementById('shortExamTotal');
+    if (totalEl) totalEl.textContent = String(total);
+}
+
+function startShortExamFromModal() {
+    const lyAvail = Array.isArray(window.short_exam_questions?.ly) ? window.short_exam_questions.ly.length : 0;
+    const hoaAvail = Array.isArray(window.short_exam_questions?.hoa) ? window.short_exam_questions.hoa.length : 0;
+    const sinhAvail = Array.isArray(window.short_exam_questions?.sinh) ? window.short_exam_questions.sinh.length : 0;
+
+    let lyCount = parseInt(document.getElementById('shortLyCount')?.value || '0', 10) || 0;
+    let hoaCount = parseInt(document.getElementById('shortHoaCount')?.value || '0', 10) || 0;
+    let sinhCount = parseInt(document.getElementById('shortSinhCount')?.value || '0', 10) || 0;
+    const durationMinutes = parseInt(document.getElementById('shortExamDuration')?.value || '30', 10) || 30;
+
+    lyCount = Math.max(0, Math.min(lyCount, lyAvail));
+    hoaCount = Math.max(0, Math.min(hoaCount, hoaAvail));
+    sinhCount = Math.max(0, Math.min(sinhCount, sinhAvail));
+
+    const total = lyCount + hoaCount + sinhCount;
+    if (total <= 0) {
+        alert('Vui lòng chọn số câu cho ít nhất 1 phân môn (Lý/Hóa/Sinh).');
+        return;
+    }
+
+    const lyQs = _khtnSample(window.short_exam_questions?.ly || [], lyCount).map(q => _khtnCloneQuestion(q, 'Vật lý'));
+    const hoaQs = _khtnSample(window.short_exam_questions?.hoa || [], hoaCount).map(q => _khtnCloneQuestion(q, 'Hóa học'));
+    const sinhQs = _khtnSample(window.short_exam_questions?.sinh || [], sinhCount).map(q => _khtnCloneQuestion(q, 'Sinh học'));
+
+    const questions = [...lyQs, ...hoaQs, ...sinhQs];
+    _khtnShuffleInPlace(questions);
+
+    closeShortExamModal();
+    startExamWithQuestions(questions, `Đề tập huấn (${total} câu)`, { durationMinutes, totalScore: 10 });
+}
+
+function _khtnCloneQuestion(raw, subject) {
+    const q = Object.assign({}, raw);
+    if (Array.isArray(raw?.options)) q.options = raw.options.slice();
+    q.subject = subject;
+    return q;
+}
+
+function _khtnShuffleInPlace(arr) {
+    for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
+}
+
+function _khtnSample(arr, n) {
+    if (!Array.isArray(arr) || n <= 0) return [];
+    const copy = arr.slice();
+    _khtnShuffleInPlace(copy);
+    return copy.slice(0, Math.min(n, copy.length));
+}
