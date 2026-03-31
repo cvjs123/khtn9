@@ -156,6 +156,8 @@ function startFullExam(lyTopics = [], hoaTopics = [], sinhTopics = []) {
             else q.a = src;
         }
         if (!q.explain && q.explanation) q.explain = q.explanation;
+        // Image alias compatibility
+        if (!q.image && q.img) q.image = q.img;
         // Shuffle options to avoid correct answers always being at same label
         try {
             if (Array.isArray(q.options) && q.options.length > 0) {

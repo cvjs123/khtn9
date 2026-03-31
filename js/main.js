@@ -1280,51 +1280,51 @@ const localExams = [
         ]
     },
   {
-    name: 'Trường PTDTBT THCS Hùng Lợi',
+    name: 'Sở giáo dục và đào tạo Tuyên Quang',
     year: 2026,
-    description: 'Đề thi thử Trường PTDTBT THCS Hùng Lợi - Đề số 1',
+    description: 'Đề đề xuất của sở giáo dục và đào tạo Tuyên Quang - Đề số 1',
     questions: [
-      {q:"Một vật có khối lượng 1 kg được nâng lên độ cao 5 m so với mặt đất. Lấy g = 10 m/s². Thế năng của vật là:",options:["A. 5 J","B. 25 J","C. 50 J","D. 10 J"],a:"C. 50 J",subject:"Vật lý"},
-      {q:"Một vật có khối lượng 2 kg đang chuyển động với vận tốc 4 m/s. Động năng của vật là:",options:["A. 8 J","B. 16 J","C. 32 J","D. 4 J"],a:"B. 16 J",subject:"Vật lý"},
-      {q:"Cơ năng của một vật được tính bằng:",options:["A. Tổng động năng và thế năng","B. Hiệu động năng và thế năng","C. Tích động năng và thế năng","D. Chỉ gồm động năng"],a:"A. Tổng động năng và thế năng",subject:"Vật lý"},
-      {q:"Một máy bơm có công suất 500 W thực hiện công 2500 J. Thời gian máy hoạt động là:",options:["A. 2 s","B. 5 s","C. 10 s","D. 25 s"],a:"B. 5 s",subject:"Vật lý"},
-      {q:"Hiện tượng ánh sáng bị gãy khúc tại mặt phân cách hai môi trường trong suốt gọi là:",options:["A. Phản xạ ánh sáng","B. Khúc xạ ánh sáng","C. Tán xạ ánh sáng","D. Nhiễu xạ ánh sáng"],a:"B. Khúc xạ ánh sáng",subject:"Vật lý"},
-      {q:"Thấu kính hội tụ có đặc điểm:",options:["A. Phần rìa dày hơn phần giữa","B. Phần giữa dày hơn phần rìa","C. Có độ dày đều nhau","D. Không cho ánh sáng đi qua"],a:"B. Phần giữa dày hơn phần rìa",subject:"Vật lý"},
-      {q:"Điện trở của một dây dẫn phụ thuộc vào:",options:["A. Hiệu điện thế đặt vào hai đầu dây","B. Cường độ dòng điện qua dây","C. Chiều dài, tiết diện và vật liệu làm dây","D. Nhiệt độ môi trường xung quanh"],a:"C. Chiều dài, tiết diện và vật liệu làm dây",subject:"Vật lý"},
-      {q:"Theo định luật Ohm, cường độ dòng điện qua dây dẫn tỉ lệ:",options:["A. Thuận với điện trở, nghịch với hiệu điện thế","B. Nghịch với điện trở, thuận với hiệu điện thế","C. Thuận với cả điện trở và hiệu điện thế","D. Nghịch với cả điện trở và hiệu điện thế"],a:"B. Nghịch với điện trở, thuận với hiệu điện thế",subject:"Vật lý"},
-      {q:"Hai điện trở R₁ = 6 Ω và R₂ = 3 Ω mắc song song. Điện trở tương đương là:",options:["A. 9 Ω","B. 2 Ω","C. 3 Ω","D. 18 Ω"],a:"B. 2 Ω",subject:"Vật lý"},
-      {q:"Một bóng đèn có công suất 60 W sử dụng trong 2 giờ. Điện năng tiêu thụ là:",options:["A. 120 Wh","B. 60 Wh","C. 30 Wh","D. 240 Wh"],a:"A. 120 Wh",subject:"Vật lý"},
-      {q:"Dòng điện xoay chiều được tạo ra dựa trên nguyên tắc:",options:["A. Tác dụng nhiệt của dòng điện","B. Cảm ứng điện từ","C. Tác dụng hóa học của dòng điện","D. Hiệu ứng quang điện"],a:"B. Cảm ứng điện từ",subject:"Vật lý"},
-      {q:"Tác dụng nào sau đây là tác dụng của dòng điện xoay chiều mà dòng điện một chiều không có?",options:["A. Tác dụng nhiệt","B. Tác dụng từ","C. Tác dụng làm quay động cơ điện xoay chiều","D. Tác dụng phát sáng"],a:"C. Tác dụng làm quay động cơ điện xoay chiều",subject:"Vật lý"},
-      {q:"Nguồn năng lượng nào sau đây là năng lượng tái tạo?",options:["A. Than đá","B. Dầu mỏ","C. Năng lượng mặt trời","D. Khí tự nhiên"],a:"C. Năng lượng mặt trời",subject:"Vật lý"},
-      {q:"Vòng năng lượng trên Trái Đất chủ yếu bắt nguồn từ:",options:["A. Năng lượng hạt nhân","B. Năng lượng Mặt Trời","C. Năng lượng địa nhiệt","D. Năng lượng thủy triều"],a:"B. Năng lượng Mặt Trời",subject:"Vật lý"},
-      {q:"Kim loại nào sau đây có tính hoạt động hóa học mạnh nhất?",options:["A. Iron (Fe)","B. Aluminium (Al)","C. Copper (Cu)","D. Potassium (K)"],a:"D. Potassium (K)",subject:"Hóa học"},
-      {q:"Phản ứng nào sau đây chứng minh tính khử của kim loại?",options:["A. Kim loại tác dụng với phi kim","B. Kim loại tác dụng với acid","C. Kim loại tác dụng với dung dịch muối","D. Tất cả đều đúng"],a:"D. Tất cả đều đúng",subject:"Hóa học"},
-      {q:"Trong dãy hoạt động hóa học, kim loại đứng trước có thể:",options:["A. Đẩy kim loại đứng sau ra khỏi dung dịch muối","B. Đẩy kim loại đứng trước ra khỏi dung dịch muối","C. Không phản ứng với dung dịch muối","D. Tan trong nước ở điều kiện thường"],a:"A. Đẩy kim loại đứng sau ra khỏi dung dịch muối",subject:"Hóa học"},
-      {q:"Tính chất nào sau đây là của phi kim?",options:["A. Dẫn điện tốt","B. Dẻo, dễ kéo thành sợi","C. Thường là chất khí hoặc chất rắn giòn ở điều kiện thường","D. Có ánh kim"],a:"C. Thường là chất khí hoặc chất rắn giòn ở điều kiện thường",subject:"Hóa học"},
-      {q:"Hợp kim là:",options:["A. Hỗn hợp của một kim loại với một phi kim","B. Hỗn hợp của hai hay nhiều kim loại hoặc kim loại với phi kim","C. Hợp chất của hai kim loại","D. Dung dịch của kim loại trong acid"],a:"B. Hỗn hợp của hai hay nhiều kim loại hoặc kim loại với phi kim",subject:"Hóa học"},
-      {q:"Công thức tổng quát của alkane là:",options:["A. CₙH₂ₙ₊₂","B. CₙH₂ₙ","C. CₙH₂ₙ₋₂","D. CₙHₙ"],a:"A. CₙH₂ₙ₊₂",subject:"Hóa học"},
-      {q:"Ethene (C₂H₄) thuộc loại hợp chất nào?",options:["A. Alkane","B. Alkene","C. Alcohol","D. Carboxylic acid"],a:"B. Alkene",subject:"Hóa học"},
-      {q:"Phản ứng đặc trưng của alkene là:",options:["A. Phản ứng thế","B. Phản ứng cộng","C. Phản ứng tách","D. Phản ứng oxi hóa hoàn toàn"],a:"B. Phản ứng cộng",subject:"Hóa học"},
-      {q:"Ethanol (C₂H₅OH) có thể tác dụng với:",options:["A. Sodium (Na) kim loại","B. Acetic acid (CH₃COOH)","C. Oxygen (O₂) khi đốt","D. Tất cả đều đúng"],a:"D. Tất cả đều đúng",subject:"Hóa học"},
-      {q:"Acetic acid (CH₃COOH) có tính acid yếu, thể hiện qua việc:",options:["A. Làm quỳ tím chuyển xanh","B. Làm quỳ tím chuyển đỏ","C. Không làm đổi màu quỳ tím","D. Làm quỳ tím mất màu"],a:"B. Làm quỳ tím chuyển đỏ",subject:"Hóa học"},
-      {q:"Phản ứng ester hóa giữa ethanol (C₂H₅OH) và acetic acid (CH₃COOH) tạo ra:",options:["A. Ethene (C₂H₄) và nước (H₂O)","B. Ethyl acetate (CH₃COOC₂H₅) và nước (H₂O)","C. Acetaldehyde (CH₃CHO) và nước (H₂O)","D. Acetic acid (CH₃COOH) và hydrogen (H₂)"],a:"B. Ethyl acetate (CH₃COOC₂H₅) và nước (H₂O)",subject:"Hóa học"},
-      {q:"Lipid (chất béo) khi thủy phân trong môi trường kiềm tạo ra:",options:["A. Amino acid","B. Glycerol (C₃H₅(OH)₃) và muối sodium của acid béo (xà phòng)","C. Glucose (C₆H₁₂O₆)","D. Ethanol (C₂H₅OH)"],a:"B. Glycerol (C₃H₅(OH)₃) và muối sodium của acid béo (xà phòng)",subject:"Hóa học"},
-      {q:"Phản ứng nhận biết tinh bột (starch, (C₆H₁₀O₅)ₙ) dùng thuốc thử nào?",options:["A. Dung dịch silver nitrate/ammonia (AgNO₃/NH₃)","B. Dung dịch iodine (I₂)","C. Dung dịch sodium hydroxide (NaOH)","D. Dung dịch hydrochloric acid (HCl)"],a:"B. Dung dịch iodine (I₂)",subject:"Hóa học"},
-      {q:"Polymer nào sau đây được dùng để sản xuất túi nhựa phổ biến?",options:["A. Polyvinyl chloride (PVC)","B. Polyethylene (PE, (-CH₂-CH₂-)ₙ)","C. Cao su thiên nhiên (polyisoprene)","D. Nylon-6,6 (polyamide)"],a:"B. Polyethylene (PE, (-CH₂-CH₂-)ₙ)",subject:"Hóa học"},
-      {q:"DNA có chức năng chính là:",options:["A. Vận chuyển amino acid","B. Lưu trữ và truyền đạt thông tin di truyền","C. Xúc tác phản ứng sinh hóa","D. Cấu tạo màng tế bào"],a:"B. Lưu trữ và truyền đạt thông tin di truyền",subject:"Sinh học"},
-      {q:"Quá trình phiên mã tạo ra sản phẩm là:",options:["A. DNA mới","B. mRNA","C. Protein","D. tRNA"],a:"B. mRNA",subject:"Sinh học"},
-      {q:"Trong quá trình dịch mã, anticodon nằm trên:",options:["A. mRNA","B. rRNA","C. tRNA","D. DNA"],a:"C. tRNA",subject:"Sinh học"},
-      {q:"Một đoạn mạch gốc DNA có trình tự: 3'-ATG GCT TAA-5'. Trình tự mRNA tương ứng là:",options:["A. 5'-UAC CGA AUU-3'","B. 5'-AUG GCU UAA-3'","C. 3'-TAC CGA ATT-5'","D. 5'-TAC CGA ATT-3'"],a:"B. 5'-AUG GCU UAA-3'",subject:"Sinh học"},
-      {q:"Bộ nhiễm sắc thể lưỡng bội (2n) của người là:",options:["A. 23","B. 46","C. 48","D. 44"],a:"B. 46",subject:"Sinh học"},
-      {q:"Kết thúc nguyên phân, từ một tế bào mẹ (2n) tạo ra:",options:["A. 2 tế bào con (n)","B. 4 tế bào con (n)","C. 2 tế bào con (2n)","D. 4 tế bào con (2n)"],a:"C. 2 tế bào con (2n)",subject:"Sinh học"},
-      {q:"Giảm phân xảy ra ở:",options:["A. Tế bào sinh dưỡng","B. Tế bào sinh dục chín","C. Tế bào thần kinh","D. Tế bào biểu bì"],a:"B. Tế bào sinh dục chín",subject:"Sinh học"},
-      {q:"Thụ tinh là quá trình:",options:["A. Phân bào giảm nhiễm tạo giao tử","B. Hợp nhất nhân của tinh trùng và trứng tạo hợp tử","C. Phân bào nguyên nhiễm của hợp tử","D. Hình thành giao tử đực"],a:"B. Hợp nhất nhân của tinh trùng và trứng tạo hợp tử",subject:"Sinh học"},
-      {q:"Trong thí nghiệm của Mendel, khi lai hai giống đậu thuần chủng hạt vàng × hạt xanh, đời F1 có kiểu hình:",options:["A. Toàn hạt xanh","B. Toàn hạt vàng","C. 1 vàng : 1 xanh","D. 3 vàng : 1 xanh"],a:"B. Toàn hạt vàng",subject:"Sinh học"},
-      {q:"Quy luật phân li của Mendel phát biểu rằng:",options:["A. Các gen luôn di truyền cùng nhau","B. Mỗi giao tử chỉ chứa một trong hai alen của cặp gen","C. Gen trội luôn át chế hoàn toàn gen lặn","D. Các tính trạng không di truyền độc lập"],a:"B. Mỗi giao tử chỉ chứa một trong hai alen của cặp gen",subject:"Sinh học"},
-      {q:"Phép lai Aa × Aa cho tỉ lệ kiểu gen ở đời con là:",options:["A. 1AA : 2Aa : 1aa","B. 3AA : 1aa","C. 1AA : 1aa","D. 2AA : 1Aa : 1aa"],a:"A. 1AA : 2Aa : 1aa",subject:"Sinh học"},
-      {q:"Trong quy luật phân li độc lập, khi lai AaBb × AaBb, tỉ lệ kiểu hình ở đời con là:",options:["A. 1 : 1 : 1 : 1","B. 3 : 1","C. 9 : 3 : 3 : 1","D. 1 : 2 : 1"],a:"C. 9 : 3 : 3 : 1",subject:"Sinh học"},
-    ]
+{"q":"Điều kiện để xuất hiện dòng điện cảm ứng trong cuộn dây dẫn kín là","options":["A. đặt một nam châm đứng yên trước cuộn dây","B. số đường sức từ xuyên qua tiết diện S của cuộn dây đó biến thiên","C. nối hai đầu cuộn dây với hai cực của một bình acquy","D. đặt cuộn dây gần một dây dẫn có dòng điện không đổi"],"a":"B. số đường sức từ xuyên qua tiết diện S của cuộn dây đó biến thiên","subject":"Vật lý"},
+{"q":"Bàn là (bàn ủi) điện hoạt động chủ yếu dựa trên tác dụng nào của dòng điện xoay chiều?","options":["A. Tác dụng từ","B. Tác dụng sinh lí","C. Tác dụng hóa học","D. Tác dụng nhiệt"],"a":"D. Tác dụng nhiệt","subject":"Vật lý"},
+{"q":"Nguồn năng lượng đóng vai trò chủ đạo trong việc duy trì sự sống và các hiện tượng tự nhiên trên Trái Đất là","options":["A. năng lượng gió","B. năng lượng hạt nhân","C. năng lượng Mặt Trời","D. năng lượng địa nhiệt"],"a":"C. năng lượng Mặt Trời","subject":"Vật lý"},
+{"q":"Năng lượng gió được khai thác chủ yếu thông qua thiết bị nào?","options":["A. Đập ngăn nước","B. Tấm pin mặt trời","C. Tuabin nước","D. Tuabin gió"],"a":"D. Tuabin gió","subject":"Vật lý"},
+{"q":"Kim loại nào sau đây dẫn điện tốt nhất?","options":["A. Ag","B. Cu","C. Fe","D. Au"],"a":"A. Ag","subject":"Hóa học"},
+{"q":"Dãy nào sau đây sắp xếp các kim loại theo chiều hoạt động hóa học giảm dần từ trái sang phải?","options":["A. Mg, Na, K","B. K, Na, Mg","C. K, Mg, Na","D. Na, Mg, K"],"a":"B. K, Na, Mg","subject":"Hóa học"},
+{"q":"Kim loại nào sau đây không tác dụng với dung dịch H2SO4 loãng?","options":["A. Na","B. Al","C. Mg","D. Cu"],"a":"D. Cu","subject":"Hóa học"},
+{"q":"Đơn phân cấu tạo nên phân tử DNA là gì?","options":["A. Amino acid","B. Nucleotide","C. Glucose","D. Phosphate"],"a":"B. Nucleotide","subject":"Sinh học"},
+{"q":"Một phân tử DNA thực hiện nhân đôi một lần, kết quả tạo ra bao nhiêu phân tử DNA?","options":["A. 2","B. 3","C. 4","D. 5"],"a":"A. 2","subject":"Sinh học"},
+{"q":"Dãy nào sau đây gồm các hợp chất đều là hợp chất hữu cơ?","options":["A. K2CO3, HCOOH, C2H6","B. CH4, KHCO3, C2H4","C. C2H4O2, C3H8, CH3COONa","D. CH4, CH3Cl, CO2"],"a":"C. C2H4O2, C3H8, CH3COONa","subject":"Hóa học"},
+{"q":"Hợp chất nào dưới đây là alcohol?","options":["A. CH3OH","B. CH3COOH","C. CH3COOC2H5","D. HCHO"],"a":"A. CH3OH","subject":"Hóa học"},
+{"q":"Dung dịch acetic acid không phản ứng được với chất nào sau đây?","options":["A. CuO","B. Mg(OH)2","C. Na2CO3","D. K2SO4"],"a":"D. K2SO4","subject":"Hóa học"},
+{"q":"Ở sinh vật nhân thực, nhiễm sắc thể được cấu tạo từ hai thành phần hóa học chủ yếu nào?","options":["A. RNA và protein loại histone","B. DNA và protein loại histone","C. DNA và lipid","D. RNA và carbohydrate"],"a":"B. DNA và protein loại histone","subject":"Sinh học"},
+{"q":"Cặp nhiễm sắc thể tương đồng gồm","options":["A. 2 NST khác nhau","B. 2 NST giống nhau","C. 4 NST giống nhau","D. 4 NST khác nhau"],"a":"B. 2 NST giống nhau","subject":"Sinh học"},
+{"q":"Phép lai phân tích là phép lai giữa cá thể mang kiểu hình trội đang cần xác định kiểu gene với cá thể có kiểu hình nào?","options":["A. Cá thể có kiểu hình trội thuần chủng","B. Cá thể có kiểu hình trung gian","C. Cá thể có kiểu hình giống F1","D. Cá thể có kiểu hình lặn"],"a":"D. Cá thể có kiểu hình lặn","subject":"Sinh học"},
+{"q":"Ở đậu Hà Lan, hạt vàng (A) trội hoàn toàn so với hạt xanh (a), hạt trơn (B) trội hoàn toàn so với hạt nhăn (b). Kiểu gene nào sau đây quy định kiểu hình hạt vàng, nhăn?","options":["A. AABB","B. AaBB","C. Aabb","D. aabb"],"a":"C. Aabb","subject":"Sinh học"},
+{"q":"Hiện tượng tia sáng bị gãy khúc khi truyền từ môi trường trong suốt này sang môi trường trong suốt khác gọi là","options":["A. hiện tượng phản xạ ánh sáng","B. hiện tượng tán sắc ánh sáng","C. hiện tượng khúc xạ ánh sáng","D. hiện tượng phản xạ toàn phần"],"a":"C. hiện tượng khúc xạ ánh sáng","subject":"Vật lý"},
+{"q":"Thấu kính nào sau đây thường dùng làm kính lúp?","options":["A. Thấu kính phân kì","B. Thấu kính hội tụ","C. Gương phẳng","D. Gương cầu"],"a":"B. Thấu kính hội tụ","subject":"Vật lý"},
+{"q":"Tiến hành các thí nghiệm sau: (a) Điện phân hỗn hợp Al2O3 và cryolite nóng chảy. (b) Nhiệt phân hoàn toàn mẫu đá vôi CaCO3. (c) Cho mầu kim loại Na vào dung dịch CuSO4. (d) Nung hỗn hợp gồm ZnO với than cốc ở nhiệt độ cao. Sau khi các phản ứng kết thúc, những thí nghiệm thu được kim loại là","options":["A. (a) và (c)","B. (a) và (d)","C. (b) và (c)","D. (d) và (c)"],"a":"B. (a) và (d)","subject":"Hóa học"},
+{"q":"Trong công nghiệp, quá trình tách kẽm ra từ quặng chứa zinc sulfide (ZnS) được thực hiện theo sơ đồ sau: ZnS → ZnO → Zn. Các chất X, Y trong sơ đồ lần lượt là","options":["A. CO2, CO","B. O2 và C","C. HCl và Al","D. O2, S"],"a":"B. O2 và C","subject":"Hóa học"},
+{"q":"Một alkane X có khối lượng phân tử là 44. Tổng số nguyên tử trong một phân tử X là","options":["A. 3","B. 5","C. 8","D. 11"],"a":"D. 11","subject":"Hóa học"},
+{"q":"Có 3 chất lỏng không màu: CH3COOC2H5, C2H5OH, CH3COOH đựng trong 3 lọ mất nhãn. Hoá chất có thể dùng để phân biệt ba chất lỏng trên là","options":["A. quỳ tím, dung dịch AgNO3/NH3","B. quỳ tím, nước","C. nước, Na","D. dung dịch AgNO3/NH3, Na"],"a":"B. quỳ tím, nước","subject":"Hóa học"},
+{"q":"Một mạch khuôn của gene có trình tự các nucleotide là –A–G–C–T–. Xác định trình tự các nucleotide tương ứng trên phân tử mRNA được tổng hợp từ mạch khuôn này?","options":["A. – T– C – G – A –","B. – U – C – G – A –","C. – A – G – C – U –","D. – U – C – G – T –"],"a":"B. – U – C – G – A –","subject":"Sinh học"},
+{"q":"Sản phẩm của quá trình dịch mã tạo ra sản phẩm nào?","options":["A. Chuỗi polypeptide (protein)","B. Phân tử mRNA","C. Phân tử DNA","D. Các nucleotide tự do"],"a":"A. Chuỗi polypeptide (protein)","subject":"Sinh học"},
+{"q":"Trong nguyên phân, các nhiễm sắc thể kép co ngắn, xoắn cực đại và tập trung thành một hàng trên mặt phẳng xích đạo của thoi phân bào tại","options":["A. kỳ đầu","B. kỳ giữa","C. kỳ sau","D. kỳ cuối"],"a":"B. kỳ giữa","subject":"Sinh học"},
+{"q":"Kết quả của quá trình giảm phân từ một tế bào mẹ (2n) tạo ra:","options":["A. 2 tế bào con có bộ NST giống hệt tế bào mẹ (2n)","B. 2 tế bào con có bộ NST đơn bội (n)","C. 4 tế bào con có bộ NST (n)","D. 4 tế bào con có bộ NST lưỡng bội (2n)"],"a":"C. 4 tế bào con có bộ NST (n)","subject":"Sinh học"},
+{"q":"Theo quy luật phân li của Mendel, phép lai nào cho đời con (F1) có tỉ lệ kiểu gen là 1:2:1?","options":["A. AA x AA","B. Aa x Aa","C. AA x aa","D. Aa x aa"],"a":"B. Aa x Aa","subject":"Sinh học"},
+{"q":"Theo quy luật phân li độc lập, cơ thể có kiểu gene AaBb khi giảm phân bình thường sẽ tạo ra tối đa bao nhiêu loại giao tử?","options":["A. 1 loại","B. 2 loại","C. 3 loại","D. 4 loại"],"a":"D. 4 loại","subject":"Sinh học"},
+{"q":"Một vật có khối lượng 500 g được ném thẳng đứng lên cao với tốc độ ban đầu là 10 m/s từ mặt đất. Bỏ qua sức cản của không khí, chọn mốc thế năng tại mặt đất. Cơ năng của vật tại vị trí ném là","options":["A. 50 J","B. 25 J","C. 100 J","D. 5 J"],"a":"B. 25 J","subject":"Vật lý"},
+{"q":"Một người kéo một vật nặng bằng một lực F = 50 N đi được quãng đường s = 2 m theo hướng của lực kéo. Công mà người đó đã thực hiện là","options":["A. 25 J","B. 52 J","C. 100 J","D. 10 J"],"a":"C. 100 J","subject":"Vật lý"},
+{"q":"Một cần cẩu nâng một thùng hàng có khối lượng 2 tấn lên cao 15 m trong thời gian 1 phút. Bỏ qua mọi hao phí, công suất của cần cẩu là","options":["A. 3000 W","B. 30.000 W","C. 5000 W","D. 50.000 W"],"a":"C. 5000 W","subject":"Vật lý"},
+{"q":"Một vật có trọng lượng 50 N đang ở một độ cao h so với mặt đất. Biết thế năng trọng trường của vật tại vị trí đó là 200 J (chọn mốc thế năng tại mặt đất). Độ cao h của vật là","options":["A. 2 m","B. 4 m","C. 5 m","D. 8 m"],"a":"B. 4 m","subject":"Vật lý"},
+{"q":"Đặt một hiệu điện thế U = 12 V vào hai đầu một điện trở R = 24 Ω. Cường độ dòng điện chạy qua điện trở đó là","options":["A. 2 A","B. 0,5 A","C. 288 A","D. 36 A"],"a":"B. 0,5 A","subject":"Vật lý"},
+{"q":"Một bóng đèn loại 220V - 100W được sử dụng ở hiệu điện thế 220V trong 4 giờ mỗi ngày. Năng lượng điện mà bóng đèn tiêu thụ trong 30 ngày là","options":["A. 12 kWh","B. 120 kWh","C. 1,2 kWh","D. 400 kWh"],"a":"A. 12 kWh","subject":"Vật lý"},
+{"q":"Đặt một hiệu điện thế 12 V vào hai đầu một bóng đèn thì cường độ dòng điện chạy qua đèn là 0,5 A. Công suất điện của bóng đèn này là","options":["A. 24 W","B. 6 W","C. 12 W","D. 12,5 W"],"a":"B. 6 W","subject":"Vật lý"},
+{"q":"Hai điện trở R1 = 20 Ω và R2 = 40 Ω được mắc nối tiếp với nhau vào một mạch điện. Biết cường độ dòng điện chạy qua điện trở R1 là 0,5 A. Hiệu điện thế giữa hai đầu đoạn mạch là","options":["A. 10 V","B. 20 V","C. 30 V","D. 60 V"],"a":"C. 30 V","subject":"Vật lý"},
+{"q":"Giả thiết rằng gas trong bình gas là một hỗn hợp propane và butane có tỉ lệ thể tích 1 : 1. Tính nhiệt lượng sinh ra khi đốt cháy 1 kg loại gas này. Biết rằng nhiệt lượng tương ứng sinh ra khi đốt cháy 1 mol mỗi chất propane và butane lần lượt là 2220 kJ và 2878 kJ.","options":["A. 44990,5 kJ","B. 48996,8 kJ","C. 50009,6 kJ","D. 49980,4 kJ"],"a":"D. 49980,4 kJ","subject":"Hóa học"},
+{"q":"Thủy phân hoàn toàn 89 gam chất béo cần 300 mL dung dịch NaOH 1 M để điều chế xà phòng chứa 60% muối của acid béo (như hình vẽ). Khối lượng xà phòng thu được là","options":["A. 153 gam","B. 58,92 gam","C. 55,08 gam","D. 91,8 gam"],"a":"A. 153 gam","subject":"Hóa học","image":"https://files.catbox.moe/oce8hf.PNG"},
+{"q":"Giả sử có 1 kg nho tươi có chứa khoảng 45 gam glucose. Khi lên men 9 kg nho sẽ thu được V mL rượu nho 9,2°. Biết hiệu suất lên men đạt 81% và khối lượng riêng của ethylic alcohol là 0,8 g/mL. Giá trị V là","options":["A. 2278,1","B. 258,7","C. 2812,5","D. 3472,2"],"a":"A. 2278,1","subject":"Hóa học"},
+{"q":"Một đoạn polyethylene có khối lượng phân tử 5.040 amu. Số mắt xích có trong đoạn polymer trên là","options":["A. 168","B. 200","C. 180","D. 90"],"a":"C. 180","subject":"Hóa học"}
+]
   },
   {
     name: 'Trường PTDTBT THCS Hùng Lợi',
@@ -1631,6 +1631,8 @@ function startExamWithQuestions(questions, title, opts = {}) {
             else q.a = src;
         }
         if (!q.explain && q.explanation) q.explain = q.explanation;
+        // Image alias compatibility
+        if (!q.image && q.img) q.image = q.img;
         // Shuffle options & keep answer synced
         try {
             if (Array.isArray(q.options) && q.options.length > 0) {
@@ -1767,6 +1769,7 @@ function startExamWithQuestions(questions, title, opts = {}) {
                     <span class="question-subject badge bg-secondary">${q.subject || 'KHTN'}</span>
                 </div>
                 <div class="question-text">${q.q}</div>
+                ${q.image ? `<div class="text-center mb-3"><img src="${q.image}" alt="Hình minh họa" class="img-fluid rounded" style="max-width: 100%; height: auto;"></div>` : ''}
                 <div class="options">
                     ${q.options.map((opt, i) => `
                         <label class="option">
