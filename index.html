@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
@@ -85,7 +85,7 @@
             <hr>
 
             <!-- Chatbot trợ giúp nhanh -->
-            <div id="chatbotWidget" class="p-2">
+            <div id="chatbotWidget" class="p-2" data-api="/api/chat">
                 <div class="d-flex justify-content-between align-items-center mb-2">
                     <h6 class="mb-0"><i class="fas fa-robot me-2"></i>Trợ lý học tập</h6>
                     <button id="chatbotToggle" class="btn btn-sm btn-outline-secondary">Thu nhỏ</button>
@@ -396,6 +396,7 @@
             </div>
             <div class="khtn-modal-footer">
                 <button class="btn btn-secondary me-2" onclick="closeShortExamModal()">Hủy</button>
+                <button class="btn btn-info me-2" onclick="exportShortExamToWord()"><i class="fas fa-download me-2"></i>Xuất Word</button>
                 <button class="btn btn-success" onclick="startShortExamFromModal()">Bắt đầu</button>
             </div>
         </div>
@@ -412,3 +413,4 @@
     <script src="js/full-exam.js?v=202601231234" defer></script>
 </body>
 </html>
+
