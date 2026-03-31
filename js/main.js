@@ -1691,16 +1691,20 @@ function startExamWithQuestions(questions, title, opts = {}) {
     questions = questions.map(_normalizeQuestion);
     let qIndex = 0, examScore = 0, correctCount = 0;
 
+    // Store current exam for export
+    window.currentExamQuestions = questions;
+    window.currentExamTitle = title;
+
     const scorePerQuestion = questions.length > 0 ? (totalScore / questions.length) : 0;
     let timeLeft = Math.max(1, Math.round(durationMinutes * 60));
     document.getElementById('mainMenu').style.display = 'none';
     document.getElementById('contentArea').innerHTML = `
-        <div class="d-flex justify-content-between mb-4 align-items-center">
-            <div>
-                <h3 class="exam-title text-info">${title}</h3>
-                <div class="exam-subtitle">${questions.length} câu trắc nghiệm — Thời gian ${durationMinutes} phút</div>
-            </div>
-            <h4 id="examTimer" class="text-danger">Thời gian: ${String(Math.floor(timeLeft / 60)).padStart(2, '0')}:${String(timeLeft % 60).padStart(2, '0')}</h4>
+        <div class="text-center mb-3">
+            <h3 class="exam-title text-info">${title}</h3>
+            <div class="exam-subtitle">${questions.length} câu trắc nghiệm</div>
+        </div>
+        <div class="text-center mb-3 exam-timer-wrapper">
+            <h4 id="examTimer" class="text-danger mb-0"><i class="fas fa-clock me-2"></i>${String(Math.floor(timeLeft / 60)).padStart(2, '0')}:${String(timeLeft % 60).padStart(2, '0')}</h4>
         </div>
         <div class="exam-layout">
             <div id="examQArea"></div>
@@ -1779,9 +1783,12 @@ function startExamWithQuestions(questions, title, opts = {}) {
                     `).join('')}
                 </div>
                 ${q.explain ? `<div class="explanation" style="display:none;"><strong>Giải thích:</strong> ${q.explain}</div>` : ''}
-                <div class="exam-navigation">
+                <div class="exam-navigation d-flex justify-content-between flex-wrap gap-2">
                     <button class="btn btn-secondary btn-lg nav-btn-left" id="backBtn">
                         <i class="fas fa-arrow-left me-2"></i>Quay về
+                    </button>
+                    <button class="btn btn-info btn-lg nav-btn-export" id="exportBtn" onclick="exportCurrentExamToWord()">
+                        <i class="fas fa-download me-2"></i>Xuất Word
                     </button>
                     ${!isLast ? `
                         <button class="btn btn-primary btn-lg nav-btn-right" id="nextBtn">
@@ -2012,6 +2019,7 @@ function showLocalExams() {
         card.onmouseout = () => {
             card.style.transform = 'scale(1) rotateY(0deg)';
         };
+        card.onclick = () => startLocalExam(index);
         card.innerHTML = `
             <div class="d-flex align-items-center mb-2">
                 <i class="fas fa-check-circle me-2"></i>
@@ -2019,8 +2027,8 @@ function showLocalExams() {
             </div>
             <p class="mb-1">${exam.description}</p>
             <small>${exam.questions.length} câu</small>
+
         `;
-        card.onclick = () => startLocalExam(index);
         item.appendChild(card);
         list.appendChild(item);
     });
@@ -2147,6 +2155,229 @@ function _khtnCloneQuestion(raw, subject) {
     if (Array.isArray(raw?.options)) q.options = raw.options.slice();
     q.subject = subject;
     return q;
+}
+
+// Export local exam to Word
+function exportLocalExamToWord(examIndex) {
+    const exam = localExams[examIndex];
+    if (!exam || !exam.questions.length) {
+        alert('Đề thi không có câu hỏi.');
+        return;
+    }
+
+    const wordContent = createExamWordDocumentContent(exam.questions, exam.name + ' ' + exam.year, exam.description);
+    const blob = new Blob([wordContent], { type: 'application/msword' });
+    const url = URL.createObjectURL(blob);
+    
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'De_Thi_' + exam.name.replace(/\s+/g, '_') + '_' + exam.year + '.doc';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+    
+    alert('File Word đã được tải xuống thành công!');
+}
+
+// Export current exam (while taking exam) to Word
+function exportCurrentExamToWord() {
+    const questions = window.currentExamQuestions;
+    const title = window.currentExamTitle || 'Đề Thi';
+    
+    if (!questions || !Array.isArray(questions) || questions.length === 0) {
+        alert('Không có dữ liệu đề thi để xuất.');
+        return;
+    }
+
+    const wordContent = createExamWordDocumentContent(questions, title, 'Đề thi được xuất trong quá trình làm bài');
+    const blob = new Blob([wordContent], { type: 'application/msword' });
+    const url = URL.createObjectURL(blob);
+    
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'De_Thi_' + title.replace(/\s+/g, '_') + '_' + new Date().toISOString().split('T')[0] + '.doc';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+    
+    alert('File Word đã được tải xuống thành công!');
+}
+
+// Export short exam to Word
+function exportShortExamToWord() {
+    const lyAvail = Array.isArray(window.short_exam_questions?.ly) ? window.short_exam_questions.ly.length : 0;
+    const hoaAvail = Array.isArray(window.short_exam_questions?.hoa) ? window.short_exam_questions.hoa.length : 0;
+    const sinhAvail = Array.isArray(window.short_exam_questions?.sinh) ? window.short_exam_questions.sinh.length : 0;
+
+    let lyCount = parseInt(document.getElementById('shortLyCount')?.value || '0', 10) || 0;
+    let hoaCount = parseInt(document.getElementById('shortHoaCount')?.value || '0', 10) || 0;
+    let sinhCount = parseInt(document.getElementById('shortSinhCount')?.value || '0', 10) || 0;
+
+    lyCount = Math.max(0, Math.min(lyCount, lyAvail));
+    hoaCount = Math.max(0, Math.min(hoaCount, hoaAvail));
+    sinhCount = Math.max(0, Math.min(sinhCount, sinhAvail));
+
+    const total = lyCount + hoaCount + sinhCount;
+    if (total <= 0) {
+        alert('Vui lòng chọn số câu cho ít nhất 1 phân môn (Lý/Hóa/Sinh).');
+        return;
+    }
+
+    const lyQs = _khtnSample(window.short_exam_questions?.ly || [], lyCount).map(q => _khtnCloneQuestion(q, 'Vật lý'));
+    const hoaQs = _khtnSample(window.short_exam_questions?.hoa || [], hoaCount).map(q => _khtnCloneQuestion(q, 'Hóa học'));
+    const sinhQs = _khtnSample(window.short_exam_questions?.sinh || [], sinhCount).map(q => _khtnCloneQuestion(q, 'Sinh học'));
+
+    const questions = [...lyQs, ...hoaQs, ...sinhQs];
+    _khtnShuffleInPlace(questions);
+
+    const dateStr = new Date().toLocaleDateString('vi-VN');
+    const title = 'Đề Tập Huấn ' + dateStr;
+    const description = 'Lý ' + lyCount + ' • Hóa ' + hoaCount + ' • Sinh ' + sinhCount + ' = ' + total + ' câu';
+    
+    const wordContent = createExamWordDocumentContent(questions, title, description);
+    const blob = new Blob([wordContent], { type: 'application/msword' });
+    const url = URL.createObjectURL(blob);
+    
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'De_Tap_Huan_' + new Date().toISOString().split('T')[0] + '.doc';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+    
+    alert('File Word đã được tải xuống thành công!');
+}
+
+// Create Word document content for exams
+function createExamWordDocumentContent(questions, examTitle, examDescription) {
+    let html = `<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>${examTitle}</title>
+    <style>
+        body { font-family: 'Times New Roman', serif; font-size: 12pt; line-height: 1.5; margin: 1in; }
+        .header { text-align: center; font-weight: bold; margin-bottom: 20px; }
+        .header h1 { font-size: 16pt; margin-bottom: 10px; }
+        .header p { margin: 5px 0; }
+        .question { margin-bottom: 15px; page-break-inside: avoid; }
+        .question-number { font-weight: bold; margin-bottom: 5px; }
+        .question-img { margin: 10px 0; text-align: center; }
+        .question-img em { font-style: italic; color: #666; }
+        .options { margin-left: 20px; }
+        .options div { margin-bottom: 3px; }
+        .footer { margin-top: 50px; text-align: center; font-size: 10pt; border-top: 1px solid #000; padding-top: 20px; }
+        @page { margin-top: 2cm; margin-bottom: 2cm; margin-left: 2.5cm; margin-right: 2cm; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>ĐỀ THI TRẮC NGHIỆM</h1>
+        <p><strong>${examTitle}</strong></p>
+        <p>${examDescription}</p>
+        <p>Ngày tạo: ${new Date().toLocaleDateString('vi-VN')}</p>
+    </div>
+    
+    <div class="questions">`;
+    
+    questions.forEach((q, index) => {
+        const questionNumber = index + 1;
+        html += `
+        <div class="question">
+            <div class="question-number">Câu ${questionNumber}:</div>
+            <div>${q.q}</div>`;
+        
+        if (q.image) {
+            html += `
+            <div class="question-img">
+                <em>[Hình minh họa: ${q.image}]</em>
+            </div>`;
+        }
+        
+        html += `
+            <div class="options">`;
+        if (Array.isArray(q.options)) {
+            q.options.forEach(option => {
+                html += `
+                <div>${option}</div>`;
+            });
+        }
+        html += `
+            </div>
+        </div>`;
+    });
+    
+    html += `
+    </div>
+    
+    <div style="page-break-before: always; margin-top: 50px;">
+        <h2 style="text-align: center; font-weight: bold; margin-bottom: 30px;">ĐÁP ÁN</h2>
+        <table style="width: 100%; border-collapse: collapse;">
+            <tbody>`;
+    
+    for (let i = 0; i < questions.length; i += 2) {
+        html += `
+        <tr>`;
+        
+        const q1 = questions[i];
+        const q1Number = i + 1;
+        html += `
+            <td style="width: 50%; padding: 10px; border: 1px solid #ddd; vertical-align: top;">
+                <div class="question-number">Câu ${q1Number}:</div>
+                <div>${q1.a}</div>`;
+        
+        if (q1.explain) {
+            html += `
+                <div style="margin-top: 5px; font-size: 11pt;">
+                    <strong>Giải thích:</strong> ${q1.explain}
+                </div>`;
+        }
+        
+        html += `
+            </td>`;
+        
+        if (i + 1 < questions.length) {
+            const q2 = questions[i + 1];
+            const q2Number = i + 2;
+            html += `
+            <td style="width: 50%; padding: 10px; border: 1px solid #ddd; vertical-align: top;">
+                <div class="question-number">Câu ${q2Number}:</div>
+                <div>${q2.a}</div>`;
+            
+            if (q2.explain) {
+                html += `
+                <div style="margin-top: 5px; font-size: 11pt;">
+                    <strong>Giải thích:</strong> ${q2.explain}
+                </div>`;
+            }
+            
+            html += `
+            </td>`;
+        } else {
+            html += `
+            <td style="width: 50%; padding: 10px; border: 1px solid #ddd;"></td>`;
+        }
+        
+        html += `
+        </tr>`;
+    }
+    
+    html += `
+            </tbody>
+        </table>
+    </div>
+    
+    <div class="footer">
+        <p>--- Hết ---</p>
+        <p>Đề thi được tạo từ hệ thống ôn tập KHTN Lớp 9</p>
+    </div>
+</body>
+</html>`;
+    
+    return html;
 }
 
 function _khtnShuffleInPlace(arr) {
