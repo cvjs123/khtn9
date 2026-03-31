@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
         { title: 'Tin tức & hướng dẫn Thi vào 10 — VnExpress', url: 'https://vnexpress.net/thi-vao-10', caption: 'Mục chuyên đề Thi vào 10: bài hướng dẫn, kinh nghiệm và thông báo liên quan.' },
         { title: 'Báo Giáo dục — VietnamNet (mục Giáo dục)', url: 'https://vietnamnet.vn/vn/giao-duc', caption: 'Cập nhật chính sách, tư vấn ôn tập và thông tin tuyển sinh.' },
         { title: 'Tuyên Quang: Chọn KHTN là môn thi thứ ba vào 10 được cân nhắc rất kỹ', url: 'https://giaoduc.net.vn/giam-doc-so-gddt-tuyen-quang-chon-khtn-la-mon-thi-thu-ba-vao-10-duoc-can-nhac-rat-ky-post257259.gd', caption: 'Bài viết, phóng sự và chia sẻ kinh nghiệm thi tuyển.' },
-        { title: 'Sở GD&ĐT Tuyên Quang— Thông báo tuyển sinh', url: 'https://tuyenquang.edu.vn/van-ban-cong-van/van-ban-so-gd-dt/phong-qlclgd/thi-tuyen-sinh/huong-dan-tuyen-sinh-thcs-va-thpt-nam-hoc-2025-2026-cv-so-408-sgddt-qlcl-gdnn.html', caption: 'Trang Sở GD&ĐT địa phương — luôn kiểm tra thông báo vùng/thành phố.' }
+        { title: 'Sở GD&ĐT Tuyên Quang— Thông báo tuyển sinh', url: 'https://tuyenquang.edu.vn/van-ban-cong-van/van-ban-so-gd-dt/phong-qlclgd/thi-tuyen-sinh/v-v-gioi-thieu-de-thi-minh-hoa-ky-thi-tuyen-sinh-vao-lop-10-trung-hoc-pho-thong-nam-hoc-2026-2027-doi-voi-cac-mon-thi-ch.html?fbclid=IwY2xjawQ4g6BleHRuA2FlbQIxMQBicmlkETFvTTdSWEFLbFB0ekhzR3o2c3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHttGyNGc-zxv7mTtV-phKzBsf9zZfToJ8W66ZivB2uUwGr6zoj-G-U8XaKYK_aem_2BugECYSEs8NpergdBkU2g' }
     ];
 
     const tipsItems = [
