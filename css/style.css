@@ -178,16 +178,35 @@ body, html { height: 100%; margin: 0; font-family: 'Segoe UI', sans-serif; backg
     padding: 20px 0;
     border-top: 2px solid #e5e7eb;
     gap: 20px;
+    flex-wrap: wrap;
 }
 
-.nav-btn-left, .nav-btn-right {
+.exam-timer-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#examTimer {
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+.nav-btn-left, .nav-btn-right, .nav-btn-export {
     display: flex;
     align-items: center;
     gap: 8px;
     font-weight: 600;
     transition: all 0.2s ease;
-    min-width: 140px;
+    min-width: 130px;
     justify-content: center;
+    flex: 1 1 auto;
+}
+
+.nav-btn-export {
+    min-width: 140px;
+    max-width: 220px;
+}
 }
 
 .nav-btn-left:hover, .nav-btn-right:hover {
