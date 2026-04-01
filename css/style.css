@@ -1,4 +1,4 @@
-body, html { height: 100%; margin: 0; font-family: 'Segoe UI', sans-serif; background: linear-gradient(180deg,#f7fbff,#eef6ff); }
+body, html { height: 100%; margin: 0; font-family: 'Segoe UI', sans-serif; background: linear-gradient(180deg,#f7fbff,#eef6ff); scroll-behavior: smooth; }
 .sidebar { position: fixed; top: 0; bottom: 0; width: 300px; overflow-y: auto; padding-top: 120px; background: #ffffff; box-shadow: 2px 0 18px rgba(20,24,40,0.06); z-index: 1000; }
 .sidebar-left { left: 0; background: linear-gradient(180deg,#fff7ed,#fffefc); }
 .sidebar-right { right: 0; background: linear-gradient(180deg,#f0fff4,#ffffff); }
@@ -15,6 +15,16 @@ body, html { height: 100%; margin: 0; font-family: 'Segoe UI', sans-serif; backg
 .card-option .card-title { font-weight:700; font-size:1.25rem; }
 .card-option .card-text { color:#556; }
 .card-option .btn { border-radius: 10px; padding: 12px 20px; font-weight:600; box-shadow: 0 8px 20px rgba(2,6,23,0.06); }
+
+.table-of-contents a {
+    color: #0066cc;
+    transition: color 0.3s ease;
+}
+
+.table-of-contents a:hover {
+    color: #00aaff;
+    text-decoration: underline !important;
+}
 
 .options-grid {
     display: grid;
