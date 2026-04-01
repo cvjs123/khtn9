@@ -313,7 +313,7 @@ const questions_hoa_topic1 = [
   {q: "Cho luồng khí CO dư qua ống sứ đựng 5,36 gam hỗn hợp FeO và Fe2O3 (nung nóng), thu được m gam chất rắn và hỗn hợp khí X. Cho X vào dung dịch Ca(OH)2 dư, thu được 9 gam kết tủa. Biết các phản ứng xảy ra hoàn toàn. Giá trị của m là", options: ["A. 3,75.", "B. 3,88.", "C. 2,48.", "D. 3,92."], a: "D. 3,92.", explain: "Gọi nFeO=x, nFe2O3=y. 72x+160y=5.36 và x+3y=nCO2=0.09 mol → y=0.02, x=0.03. Khối lượng Fe = 56(x+2y)=56(0.03+0.04)=3.92 g.", level: "van_dung_cao"}
 ];
 
-// Chuyên đề 2: GIỚI THIỆU VỀ CHẤT HỮU CƠ. HYDROCARBON VÀ NGUỒN NHIÊN LIỆU
+// Giới thiệu về chất hữu cơ. Hydrocarbon và nguồn nhiên liệu.
 const questions_hoa_topic2 = [
 {"q":"Carbon có mấy dạng thù hình chính?","options":["A. 1","B. 2","C. 3","D. 4"],"a":"C. 3","explain":"Carbon có 3 dạng thù hình chính: kim cương, than chì, carbon vô định hình.","level":"nhan_biet"},
 {"q":"Dãy các chất nào sau đây đều là hydrocarbon?","options":["A. C₂H₄, CH₃COOH, C₆H₆","B. C₂H₅OH, CH₄, C₂H₂","C. C₂H₆, C₄H₁₀, C₂H₄","D. C₂H₆O, C₃H₈, C₂H₂"],"a":"C. C₂H₆, C₄H₁₀, C₂H₄","explain":"Hydrocarbon là hợp chất chỉ gồm C và H. C₂H₆, C₄H₁₀, C₂H₄ đều chỉ chứa C và H.","level":"nhan_biet"},
@@ -905,7 +905,7 @@ const questions_hoa_topic5 = [
 
 const _hoaShortNames = [
 'KIM LOẠI VÀ SỰ KHÁC NHAU CƠ BẢN VỚI PHI KIM',
-'GIỚI THIỆU VỀ CHẤT HỮU CƠ. HYDROCARBON VÀ NGUỒN NHIÊN LIỆU',
+'Giới thiệu về chất hữu cơ. Hydrocarbon và nguồn nhiên liệu.',
 'ETHYLIC ALCOHOL VÀ ACETIC ACID',
 'LIPIT. CARBOHYDRATE. PROTEIN. POLYMER',
 'TỔNG HỢP'
@@ -913,7 +913,7 @@ const _hoaShortNames = [
 
 const _hoaLongNames = [
 'Chuyên đề 1: KIM LOẠI VÀ SỰ KHÁC NHAU CƠ BẢN VỚI PHI KIM',
-'Chuyên đề 2: GIỚI THIỆU VỀ CHẤT HỮU CƠ. HYDROCARBON VÀ NGUỒN NHIÊN LIỆU',
+'Giới thiệu về chất hữu cơ. Hydrocarbon và nguồn nhiên liệu.',
 'Chuyên đề 3: ETHYLIC ALCOHOL VÀ ACETIC ACID',
 'Chuyên đề 4: LIPIT. CARBOHYDRATE. PROTEIN. POLYMER',
 'Chuyên đề 5: TỔNG HỢP'
