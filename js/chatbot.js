@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     // Groq API direct
-    const GROQ_TOKEN = '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';
+    const GROQ_TOKEN = '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';
     const GROQ_API = 'https://api.groq.com/openai/v1/chat/completions';
     const GROQ_MODEL = 'llama-3.1-8b-instant';  // Updated model (faster & free)
     
