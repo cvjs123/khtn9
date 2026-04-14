@@ -45,9 +45,9 @@ function renderUserArea() {
     if (!userArea) return;
     userArea.innerHTML = data.loggedInUser
         ? `<span class="user-name">${data.loggedInUser}</span>
-           <button class="btn btn-sm btn-outline-dark ms-2" onclick="logoutUser()">Đăng xuất</button>`
-        : `<button class="btn btn-sm btn-light" onclick="openAuthModal('login')">Đăng nhập</button>
-           <button class="btn btn-sm btn-primary ms-2" onclick="openAuthModal('register')">Đăng ký</button>`;
+           <button class="btn btn-sm btn-outline-dark ms-2" data-auth-action="logout">Đăng xuất</button>`
+        : `<button class="btn btn-sm btn-light" data-auth-action="login">Đăng nhập</button>
+           <button class="btn btn-sm btn-primary ms-2" data-auth-action="register">Đăng ký</button>`;
     setTimeout(() => updateProgressSidebar(), 500);
 }
 
@@ -775,16 +775,17 @@ function startFilteredQuiz(subject) {
 document.addEventListener('DOMContentLoaded', () => {
     renderUserArea();
     updateProgressSidebar();
+    initMainMenuActions();
+    initUserAreaActions();
+    initModalActions();
     
     // Ensure modal elements exist
     const multiTopicMode = document.getElementById('multiTopicMode');
     if (multiTopicMode) {
         multiTopicMode.addEventListener('change', toggleTopicSelectionMode);
     }
-});
-
-// Check for mock exam parameter on page load
-window.addEventListener('DOMContentLoaded', () => {
+    
+    // Check for mock exam parameter on page load
     const urlParams = new URLSearchParams(window.location.search);
     if (urlParams.has('mockExam')) {
         const examData = JSON.parse(localStorage.getItem('currentMockExam'));
