@@ -29,8 +29,8 @@
                     <i class="fas fa-music"></i>
                 </button>
                 <div id="userArea" class="ms-3 d-flex align-items-center">
-                    <button class="btn btn-sm btn-light" onclick="openAuthModal('login')">Đăng nhập</button>
-                    <button class="btn btn-sm btn-primary ms-2" onclick="openAuthModal('register')">Đăng ký</button>
+                    <button class="btn btn-sm btn-light" data-auth-action="login">Đăng nhập</button>
+                    <button class="btn btn-sm btn-primary ms-2" data-auth-action="register">Đăng ký</button>
                 </div>
             </div>
         </div>
@@ -111,7 +111,7 @@
                     <div class="card-body text-center p-5">
                         <h3 class="card-title text-primary"><i class="fas fa-book fa-2x mb-3"></i><br>Ôn Lý Thuyết</h3>
                         <p class="card-text">Tóm tắt kiến thức 3 môn</p>
-                        <button class="btn btn-outline-primary btn-lg mt-auto" onclick="window.location.href='pages/ly-thuyet.html'">Bắt đầu</button>
+                        <button class="btn btn-outline-primary btn-lg mt-auto" data-menu-action="navigate" data-target-url="pages/ly-thuyet.html">Bắt đầu</button>
                     </div>
                 </div>
                 <!-- Ô 2 -->
@@ -119,7 +119,7 @@
                     <div class="card-body text-center p-5">
                         <h3 class="card-title text-danger"><i class="fas fa-bolt fa-2x mb-3"></i><br>Vật Lý</h3>
                         <p class="card-text">Trắc nghiệm theo chủ đề</p>
-                        <button class="btn btn-danger btn-lg mt-auto" onclick="showSubjectOptions('ly')">Bắt đầu</button>
+                        <button class="btn btn-danger btn-lg mt-auto" data-menu-action="subject" data-subject="ly">Bắt đầu</button>
                     </div>
                 </div>
                 <!-- Ô 3 -->
@@ -127,7 +127,7 @@
                     <div class="card-body text-center p-5">
                         <h3 class="card-title text-success"><i class="fas fa-flask fa-2x mb-3"></i><br>Hóa Học</h3>
                         <p class="card-text">Trắc nghiệm theo chủ đề</p>
-                        <button class="btn btn-success btn-lg mt-auto" onclick="showSubjectOptions('hoa')">Bắt đầu</button>
+                        <button class="btn btn-success btn-lg mt-auto" data-menu-action="subject" data-subject="hoa">Bắt đầu</button>
                     </div>
                 </div>
                 <!-- Ô 4 -->
@@ -135,7 +135,7 @@
                     <div class="card-body text-center p-5">
                         <h3 class="card-title text-warning"><i class="fas fa-dna fa-2x mb-3"></i><br>Sinh Học</h3>
                         <p class="card-text">Trắc nghiệm theo chủ đề</p>
-                        <button class="btn btn-warning btn-lg mt-auto text-dark" onclick="showSubjectOptions('sinh')">Bắt đầu</button>
+                        <button class="btn btn-warning btn-lg mt-auto text-dark" data-menu-action="subject" data-subject="sinh">Bắt đầu</button>
                     </div>
                 </div>
                 <!-- Ô 5 -->
@@ -143,7 +143,7 @@
                     <div class="card-body text-center p-5">
                         <h3 class="card-title text-info"><i class="fas fa-file-alt fa-2x mb-3"></i><br>Thi Thử Tổ Hợp</h3>
                         <p class="card-text">40 câu, 90 phút</p>
-                        <button class="btn btn-info btn-lg mt-auto" onclick="showFullExamTopicSelection()">Bắt đầu thi</button>
+                        <button class="btn btn-info btn-lg mt-auto" data-menu-action="full-exam">Bắt đầu thi</button>
                     </div>
                 </div>
                 <!-- Ô 6 -->
@@ -151,7 +151,7 @@
                     <div class="card-body text-center p-5">
                         <h3 class="card-title text-secondary"><i class="fas fa-bolt-lightning fa-2x mb-3"></i><br>Ôn Nhanh Flashcard</h3>
                         <p class="card-text">Công thức, mẹo nhớ nhanh</p>
-                        <button class="btn btn-secondary btn-lg mt-auto" onclick="window.location.href='pages/flashcard.html'">Bắt đầu</button>
+                        <button class="btn btn-secondary btn-lg mt-auto" data-menu-action="navigate" data-target-url="pages/flashcard.html">Bắt đầu</button>
                     </div>
                 </div>
                 <!-- Ô 7 -->
@@ -159,7 +159,7 @@
                     <div class="card-body text-center p-5">
                         <h3 class="card-title text-primary"><i class="fas fa-map-marker-alt fa-2x mb-3"></i><br>Đề Thi Thử các trường</h3>
                         <p class="card-text">Tập hợp đề thi thử từ các trường</p>
-                        <button class="btn btn-primary btn-lg mt-auto" onclick="showLocalExams()">Xem đề thi</button>
+                        <button class="btn btn-primary btn-lg mt-auto" data-menu-action="local-exams">Xem đề thi</button>
                     </div>
                 </div>
                 <!-- Ô 8 -->
@@ -167,7 +167,7 @@
                     <div class="card-body text-center p-5">
                         <h3 class="card-title text-success"><i class="fas fa-stopwatch fa-2x mb-3"></i><br>Đề tập huấn</h3>
                         <p class="card-text">Lý • Hóa • Sinh (tuỳ số câu)</p>
-                        <button class="btn btn-success btn-lg mt-auto" onclick="showShortExamModal()">Bắt đầu</button>
+                        <button class="btn btn-success btn-lg mt-auto" data-menu-action="short-exam">Bắt đầu</button>
                     </div>
                 </div>
 
@@ -202,17 +202,17 @@
 
     <!-- Modal chủ đề & số câu -->
     <div id="subjectModal" class="khtn-modal" style="display:none;">
-        <div class="khtn-modal-backdrop" onclick="closeSubjectModal()"></div>
+        <div class="khtn-modal-backdrop" data-modal-action="close-subject"></div>
         <div class="khtn-modal-dialog">
             <div class="khtn-modal-header">
                 <h5 id="subjectModalTitle">Chọn cấu hình ôn tập</h5>
-                <button class="khtn-modal-close" onclick="closeSubjectModal()">×</button>
+                <button class="khtn-modal-close" data-modal-action="close-subject">×</button>
             </div>
             <div class="khtn-modal-body">
                 <div class="mb-3">
                     <label class="form-label">Chế độ chọn chủ đề</label>
                     <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" id="multiTopicMode" onchange="toggleTopicSelectionMode()">
+                        <input class="form-check-input" type="checkbox" id="multiTopicMode">
                         <label class="form-check-label" for="multiTopicMode">
                             Chọn nhiều chủ đề
                         </label>
@@ -234,7 +234,7 @@
                         <!-- Checkboxes will be populated by JS -->
                     </div>
                     <div class="form-text">Nếu không chọn chủ đề nào, hệ thống sẽ chọn từ tất cả chủ đề.</div>
-                    <button type="button" class="btn btn-sm btn-outline-secondary mt-2" onclick="populateSubjectTopicCheckboxes(currentModalSubject)">Tải lại chủ đề</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary mt-2" data-modal-action="reload-subject-topics">Tải lại chủ đề</button>
                 </div>
                 
                 <div class="mb-3">
@@ -244,20 +244,20 @@
                 </div>
             </div>
             <div class="khtn-modal-footer">
-                <button class="btn btn-secondary me-2" onclick="closeSubjectModal()">Hủy</button>
-                <button class="btn btn-outline-primary me-2" onclick="exportSubjectToWord()">Xuất Word</button>
-                <button class="btn btn-primary" onclick="startFilteredQuiz(currentModalSubject)">Bắt đầu</button>
+                <button class="btn btn-secondary me-2" data-modal-action="close-subject">Hủy</button>
+                <button class="btn btn-outline-primary me-2" data-modal-action="export-subject-word">Xuất Word</button>
+                <button class="btn btn-primary" data-modal-action="start-filtered-quiz">Bắt đầu</button>
             </div>
         </div>
     </div>
 
     <!-- Modal chọn chủ đề thi thử tổ hợp -->
     <div id="fullExamTopicModal" class="khtn-modal" style="display:none;">
-        <div class="khtn-modal-backdrop" onclick="closeFullExamTopicModal()"></div>
+        <div class="khtn-modal-backdrop" data-modal-action="close-full-exam-topic"></div>
         <div class="khtn-modal-dialog">
             <div class="khtn-modal-header">
                 <h5>Chọn chủ đề cho thi thử tổ hợp</h5>
-                <button class="khtn-modal-close" onclick="closeFullExamTopicModal()">×</button>
+                <button class="khtn-modal-close" data-modal-action="close-full-exam-topic">×</button>
             </div>
             <div class="khtn-modal-body">
                 <p class="text-muted">Chọn các chủ đề bạn muốn ôn tập cho mỗi môn. Nếu không chọn chủ đề nào, hệ thống sẽ chọn ngẫu nhiên từ tất cả chủ đề.</p>
@@ -284,20 +284,20 @@
                 </div>
             </div>
             <div class="khtn-modal-footer">
-                <button class="btn btn-secondary me-2" onclick="closeFullExamTopicModal()">Hủy</button>
-                <button class="btn btn-outline-primary me-2" onclick="exportExamToWord()">Xuất Word</button>
-                <button class="btn btn-primary" onclick="startFullExamWithTopics()">Bắt đầu thi</button>
+                <button class="btn btn-secondary me-2" data-modal-action="close-full-exam-topic">Hủy</button>
+                <button class="btn btn-outline-primary me-2" data-modal-action="export-exam-word">Xuất Word</button>
+                <button class="btn btn-primary" data-modal-action="start-full-exam-topics">Bắt đầu thi</button>
             </div>
         </div>
     </div>
 
     <!-- Modal đăng nhập / đăng ký -->
     <div id="authModal" class="khtn-modal" style="display:none;">
-        <div class="khtn-modal-backdrop" onclick="closeAuthModal()"></div>
+        <div class="khtn-modal-backdrop" data-modal-action="close-auth"></div>
         <div class="khtn-modal-dialog">
             <div class="khtn-modal-header">
                 <h5 id="authModalTitle">Đăng nhập</h5>
-                <button class="khtn-modal-close" onclick="closeAuthModal()">×</button>
+                <button class="khtn-modal-close" data-modal-action="close-auth">×</button>
             </div>
             <div class="khtn-modal-body">
                 <div id="authForms">
@@ -328,20 +328,20 @@
                 </div>
             </div>
             <div class="khtn-modal-footer">
-                <button id="switchToRegister" class="btn btn-link me-auto" onclick="switchAuthMode('register')">Đăng ký</button>
-                <button class="btn btn-secondary me-2" onclick="closeAuthModal()">Hủy</button>
-                <button id="authPrimaryBtn" class="btn btn-primary" onclick="handleAuthPrimary()">Đăng nhập</button>
+                <button id="switchToRegister" class="btn btn-link me-auto" data-modal-action="switch-auth-register">Đăng ký</button>
+                <button class="btn btn-secondary me-2" data-modal-action="close-auth">Hủy</button>
+                <button id="authPrimaryBtn" class="btn btn-primary" data-modal-action="auth-primary">Đăng nhập</button>
             </div>
         </div>
     </div>
 
     <!-- Modal đề thi thử địa phương -->
     <div id="localExamsModal" class="khtn-modal local-exams-modal" style="display:none;">
-        <div class="khtn-modal-backdrop" onclick="closeLocalExamsModal()"></div>
+        <div class="khtn-modal-backdrop" data-modal-action="close-local-exams"></div>
         <div class="khtn-modal-dialog">
             <div class="khtn-modal-header">
                 <h5>Đề Thi Thử Địa Phương</h5>
-                <button class="khtn-modal-close" onclick="closeLocalExamsModal()">×</button>
+                <button class="khtn-modal-close" data-modal-action="close-local-exams">×</button>
             </div>
             <div class="khtn-modal-body">
                 <p class="local-exams-description">Chọn đề thi thử để luyện tập</p>
@@ -350,7 +350,7 @@
                 </div>
             </div>
             <div class="khtn-modal-footer">
-                <button class="btn btn-secondary" onclick="closeLocalExamsModal()">Đóng</button>
+                <button class="btn btn-secondary" data-modal-action="close-local-exams">Đóng</button>
             </div>
         </div>
     </div>
@@ -358,11 +358,11 @@
 
     <!-- Modal đề ngắn 3 môn (Lý - Hóa - Sinh) -->
     <div id="shortExamModal" class="khtn-modal" style="display:none;">
-        <div class="khtn-modal-backdrop" onclick="closeShortExamModal()"></div>
+        <div class="khtn-modal-backdrop" data-modal-action="close-short-exam"></div>
         <div class="khtn-modal-dialog">
             <div class="khtn-modal-header">
                 <h5>Đề tập huấn</h5>
-                <button class="khtn-modal-close" onclick="closeShortExamModal()">×</button>
+                <button class="khtn-modal-close" data-modal-action="close-short-exam">×</button>
             </div>
             <div class="khtn-modal-body">
                 <p class="text-muted mb-3">Tạo nhanh 1 đề trộn 3 phân môn Lý - Hóa - Sinh.</p>
@@ -398,9 +398,9 @@
                 <div id="shortExamAvailability" class="form-text mt-2"></div>
             </div>
             <div class="khtn-modal-footer">
-                <button class="btn btn-secondary me-2" onclick="closeShortExamModal()">Hủy</button>
-                <button class="btn btn-info me-2" onclick="exportShortExamToWord()"><i class="fas fa-download me-2"></i>Xuất Word</button>
-                <button class="btn btn-success" onclick="startShortExamFromModal()">Bắt đầu</button>
+                <button class="btn btn-secondary me-2" data-modal-action="close-short-exam">Hủy</button>
+                <button class="btn btn-info me-2" data-modal-action="export-short-exam-word"><i class="fas fa-download me-2"></i>Xuất Word</button>
+                <button class="btn btn-success" data-modal-action="start-short-exam">Bắt đầu</button>
             </div>
         </div>
     </div>
@@ -408,10 +408,11 @@
     <!-- Question data -->    <script src="js/questions-ly.js" defer></script>
     <script src="js/questions-hoa.js" defer></script>
     <script src="js/questions-sinh.js" defer></script>
-    <script src="js/topics.js?v=202601231234"></script>
+    <script src="js/topics.js?v=202601231234" defer></script>
     <script src="js/news-tips.js?v=202601231234" defer></script>
     <script src="js/chatbot.js?v=202601231234" defer></script>
-    <script src="js/main.js?v=202601231234"></script>
+    <script src="js/ui-events.js?v=202601231234" defer></script>
+    <script src="js/main.js?v=202601231234" defer></script>
     <script src="js/quiz.js?v=202601231234" defer></script>
     <script src="js/full-exam.js?v=202601231234" defer></script>
 </body>
