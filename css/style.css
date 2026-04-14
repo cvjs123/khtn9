@@ -33,13 +33,17 @@ body, html { height: 100%; margin: 0; font-family: 'Segoe UI', sans-serif; backg
 }
 @media (max-width: 992px) {
     .options-grid { grid-template-columns: repeat(2, 1fr); }
-    .header, .footer { display: none; }
-    .main-content { margin: 0; padding-top: 80px; }
-    .header { left: 0; right: 0; display: flex; }
-    .footer { left: 0; right: 0; }
+    .sidebar { display: none; }
+    .main-content { margin: 0; padding-top: 132px; padding-bottom: 20px; }
+    .header { left: 0; right: 0; height: 120px; }
+    .footer { display: none; }
 }
 @media (max-width: 576px) {
-    .options-grid { grid-template-columns: 1fr; }
+    .options-grid { grid-template-columns: 1fr; gap: 1rem; }
+    .main-content { padding-top: 122px; }
+    .card-option .card-body { padding: 1.25rem !important; }
+    .card-option .card-title { font-size: 1.05rem; }
+    .card-option .btn { width: 100%; }
 }
 
 /* Mobile-only helper: show some widgets inside main content when sidebars are hidden */
@@ -380,7 +384,7 @@ body, html { height: 100%; margin: 0; font-family: 'Segoe UI', sans-serif; backg
     height: 80vh;
     resize: both;
     overflow: auto;
-    min-width: 600px;
+    min-width: 320px;
     min-height: 400px;
     max-width: 100vw;
     max-height: 100vh;
@@ -402,11 +406,13 @@ body, html { height: 100%; margin: 0; font-family: 'Segoe UI', sans-serif; backg
     .local-exams-modal .khtn-modal-dialog {
         max-width: calc(100vw - 2rem);
         width: calc(100vw - 2rem);
+        min-width: 0;
+        height: 88vh;
     }
 }
 
 @media (max-width: 576px) {
-    .khtn-modal-dialog { margin: 12px; max-width: calc(100% - 24px); }
+    .khtn-modal-dialog { margin: 12px; max-width: calc(100% - 24px); max-height: calc(100vh - 24px); overflow-y: auto; }
 }
 
 /* Header user area */
@@ -488,7 +494,7 @@ body, html { height: 100%; margin: 0; font-family: 'Segoe UI', sans-serif; backg
 
 @media (max-width: 992px) {
     .exam-layout { flex-direction: column; }
-    .exam-nav-container { margin-left: 0; position: fixed; top: 250px; right: 100px; z-index: 1000; }
+    .exam-nav-container { margin-left: 0; position: static; top: auto; right: auto; z-index: auto; width: 100%; padding: 10px; }
     .exam-nav-grid { position: static; right: auto; top: auto; max-width: 100%; grid-template-columns: repeat(4, 32px); grid-auto-rows: repeat(10, 32px); }
 }
 
