@@ -6,7 +6,7 @@ const url = require('url');
 
 const PORT = process.env.PORT || 3000;
 // Groq API Configuration
-const GROQ_TOKEN = process.env.GROQ_TOKEN || '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';
+const GROQ_TOKEN = process.env.GROQ_TOKEN || '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';
 const GROQ_API_URL = 'https://api.groq.com/openai/v1/chat/completions';
 const GROQ_MODEL = 'llama-3.1-8b-instant';  // Updated model (faster & free)
 const GROQ_TEMPERATURE = 0.7;
